@@ -13,7 +13,7 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.js": [
+    "*.ts": [
       "ng lint --fix",
       "git add"
     ]
