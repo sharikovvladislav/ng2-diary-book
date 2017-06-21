@@ -14,8 +14,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "ng lint --fix",
-      "git add"
+      "ng lint"
     ]
   },
   "repository": {
