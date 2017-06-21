@@ -9,7 +9,14 @@
     "lint": "ng lint",
     "test": "ng test --code-coverage",
     "e2e": "ng e2e",
-    "build": "ng build --prod"
+    "build": "ng build --prod",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "ng lint --fix",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
@@ -56,6 +63,7 @@
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "husky": "^0.13.4",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "karma": "~1.4.1",
@@ -64,6 +72,7 @@
     "karma-coverage-istanbul-reporter": "^0.2.0",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lint-staged": "^4.0.0",
     "ngrx-store-freeze": "^0.1.6",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
