@@ -41,6 +41,7 @@ import * as fromSearch from './search';
 import * as fromBooks from './books';
 import * as fromCollection from './collection';
 import * as fromLayout from './layout';
+import * as fromUser from './user';
 
 
 /**
@@ -53,6 +54,7 @@ export interface State {
   collection: fromCollection.State;
   layout: fromLayout.State;
   router: fromRouter.RouterState;
+  user: fromUser.State;
 }
 
 
@@ -69,6 +71,7 @@ const reducers = {
   collection: fromCollection.reducer,
   layout: fromLayout.reducer,
   router: fromRouter.routerReducer,
+  user: fromUser.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -157,3 +160,8 @@ export const isSelectedBookInCollection = createSelector(getCollectionBookIds, g
 export const getLayoutState = (state: State) => state.layout;
 
 export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
+
+export const getUserState = (state: State) => state.user;
+
+export const getUser = createSelector(getUserState, fromUser.getUser);
+export const getIsLoggedIn = createSelector(getUserState, fromUser.isLoggedIn);

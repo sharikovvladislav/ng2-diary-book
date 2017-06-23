@@ -22,6 +22,10 @@ import { ViewBookPageComponent } from './containers/view-book-page';
 import { SelectedBookPageComponent } from './containers/selected-book-page';
 import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
+import { MyDairyPageComponent } from './containers/my-dairy-page';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { GoogleBooksService } from './services/google-books';
 
@@ -29,8 +33,8 @@ import { routes } from './routes';
 import { reducer } from './reducers';
 import { schema } from './db';
 
-
-
+import { environment } from '../environments/environment';
+console.log(environment);
 @NgModule({
   imports: [
     CommonModule,
@@ -39,6 +43,8 @@ import { schema } from './db';
     MaterialModule,
     ComponentsModule,
     RouterModule.forRoot(routes, { useHash: true }),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
 
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
@@ -88,7 +94,8 @@ import { schema } from './db';
     SelectedBookPageComponent,
     ViewBookPageComponent,
     CollectionPageComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    MyDairyPageComponent,
   ],
   providers: [
     BookExistsGuard,

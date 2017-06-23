@@ -5,10 +5,19 @@ import { FindBookPageComponent } from './containers/find-book-page';
 import { ViewBookPageComponent } from './containers/view-book-page';
 import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
+import { MyDairyPageComponent } from './containers/my-dairy-page';
 
 export const routes: Routes = [
   {
     path: '',
+    component: MyDairyPageComponent
+  },
+  {
+    path: 'diary/my-dairy',
+    component: MyDairyPageComponent
+  },
+  {
+    path: 'book/collection',
     component: CollectionPageComponent
   },
   {
