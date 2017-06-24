@@ -39,6 +39,7 @@ import { reducer } from './reducers';
 import { schema } from './db';
 
 import { environment } from '../environments/environment';
+import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 
 @NgModule({
   imports: [
@@ -105,6 +106,7 @@ import { environment } from '../environments/environment';
     NotFoundPageComponent,
     MyDairyPageComponent,
     EntryCreateContainerComponent,
+    CommonShowIfLoggedInComponent,
   ],
   providers: [
     BookExistsGuard,

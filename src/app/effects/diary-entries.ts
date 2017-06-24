@@ -1,15 +1,19 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import {Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
+
+import * as fromRoot from '../reducers';
 
 import { DiaryEntryService } from '../services/diary-entry';
 import * as diaryEntry from '../actions/diary-entries';
@@ -40,7 +44,8 @@ export class DiaryEntriesEffects {
   @Effect()
   load$: Observable<Action> = this.actions$
     .ofType(diaryEntry.LOAD_LIST)
-    .map(toPayload)
+    .withLatestFrom(this.store)
+    .filter(([action, state]) => fromRoot.getIsLoggedIn(state))
     .switchMap(() => {
       return this.diaryEntryService.retrieveEntries()
         .map((diaryEntries: DiaryEntry[]) => new diaryEntry.LoadListSuccessAction(diaryEntries))
@@ -57,5 +62,9 @@ export class DiaryEntriesEffects {
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
     });
 
-    constructor(private actions$: Actions, private diaryEntryService: DiaryEntryService) { }
+    constructor(
+      private actions$: Actions,
+      private diaryEntryService: DiaryEntryService,
+      private store: Store<fromRoot.State>,
+    ) { }
 }
