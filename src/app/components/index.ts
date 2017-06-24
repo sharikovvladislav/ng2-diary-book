@@ -18,6 +18,8 @@ import { ToolbarComponent } from './toolbar';
 import { NotLoggedInComponent } from './not-logged-in';
 import { EntryDetailComponent } from './entry-detail';
 import { CommonDatePickerComponent } from './common-date-picker';
+import { EntryListItemComponent } from './entry-list-item';
+import { EntryListComponent } from './entry-list';
 
 import { PipesModule } from '../pipes';
 
@@ -35,6 +37,8 @@ export const COMPONENTS = [
   EntryDetailComponent,
   NotLoggedInComponent,
   CommonDatePickerComponent,
+  EntryListComponent,
+  EntryListItemComponent,
 ];
 
 

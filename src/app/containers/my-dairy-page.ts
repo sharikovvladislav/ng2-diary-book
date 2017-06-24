@@ -8,6 +8,7 @@ import {isLoggedIn} from '../reducers/user';
 import * as diaryEntries from '../actions/diary-entries';
 
 import { DiaryEntryService } from '../services/diary-entry';
+import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'diary-page',
@@ -16,6 +17,9 @@ import { DiaryEntryService } from '../services/diary-entry';
       <div *ngSwitchCase="true">my dairy page</div>
       <div>
         <diary-entry-create></diary-entry-create>
+      </div>
+      <div>
+        <diary-entry-list [entries]="diaryEntries$ | async"></diary-entry-list>
       </div>
       <div *ngSwitchCase="false">
         <diary-not-logged-in></diary-not-logged-in>
@@ -26,21 +30,20 @@ import { DiaryEntryService } from '../services/diary-entry';
 export class MyDairyPageComponent {
   isLoggedIn: boolean;
   isLoggedIn$: Observable<boolean>;
+  diaryEntries$: Observable<DiaryEntry[]>;
 
   constructor(
     private store: Store<fromRoot.State>,
-    private cd: ChangeDetectorRef,
-    private diaryEntryService: DiaryEntryService
+    private cd: ChangeDetectorRef
   ) {
     this.isLoggedIn$ = store.select(fromRoot.getIsLoggedIn);
+    this.diaryEntries$ = store.select(fromRoot.getEntries);
     this.isLoggedIn$
       .subscribe((newIsLoggedIn: boolean) => {
         this.isLoggedIn = newIsLoggedIn;
         this.cd.markForCheck();
       });
 
-    // debugger;
-    // this.store.dispatch(new diaryEntries.CreateEntryAction({message: '123'}));
-    // this.store.dispatch(new diaryEntries.LoadListAction());
+    this.store.dispatch(new diaryEntries.LoadListAction());
   }
 }

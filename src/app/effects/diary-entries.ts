@@ -14,6 +14,9 @@ import { of } from 'rxjs/observable/of';
 import { DiaryEntryService } from '../services/diary-entry';
 import * as diaryEntry from '../actions/diary-entries';
 
+import { DiaryEntry } from '../models/diary-entry';
+import { DiaryEntrySet } from '../models/diary-entry-set';
+
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -40,7 +43,7 @@ export class DiaryEntriesEffects {
     .map(toPayload)
     .switchMap(() => {
       return this.diaryEntryService.retrieveEntries()
-        .map(entries => new diaryEntry.LoadListSuccessAction(entries))
+        .map((diaryEntries: DiaryEntry[]) => new diaryEntry.LoadListSuccessAction(diaryEntries))
         .catch(() => of(new diaryEntry.LoadListFailureAction([])));
     });
 
@@ -48,9 +51,9 @@ export class DiaryEntriesEffects {
   create$: Observable<Action> = this.actions$
     .ofType(diaryEntry.CREATE_ENTRY)
     .map(toPayload)
-    .switchMap(entryData => {
+    .switchMap((entryData: DiaryEntrySet) => {
       return this.diaryEntryService.createEntry(entryData)
-        .map((newEntryData: any) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
+        .map((newEntryData: DiaryEntry) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
     });
 

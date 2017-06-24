@@ -1,11 +1,10 @@
-import { createSelector } from 'reselect';
-import { Book } from '../models/book';
 import * as diaryEntries from '../actions/diary-entries';
-
+import { DiaryEntry } from '../models/diary-entry';
+import * as moment from 'moment';
 
 export interface State {
-  entries: object[];
-};
+  entries: DiaryEntry[];
+}
 
 export const initialState: State = {
   entries: []
@@ -14,16 +13,16 @@ export const initialState: State = {
 export function reducer(state = initialState, action: diaryEntries.Actions ): State {
   switch (action.type) {
     case diaryEntries.LOAD_LIST_SUCCESS: {
-      return {
-        ...state,
-        entries: action.payload
-      };
-    }
+      const entries = action.payload
+        .map(entry => ({
+          ...entry,
+          createDate: moment(entry.createDate).toDate(),
+          date: moment(entry.date).toDate()
+        }));
 
-    case diaryEntries.CREATE_ENTRY_SUCCESS: {
       return {
         ...state,
-        entries: [...state.entries, action.payload]
+        entries: entries
       };
     }
 

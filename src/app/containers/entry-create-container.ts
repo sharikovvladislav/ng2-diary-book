@@ -33,7 +33,7 @@ export class EntryCreateContainerComponent {
   }
 
   onCreate() {
-    const entryDate = moment(this.entryToCreate.date).format('YYYY-DD-MM');
+    const entryDate = moment(this.entryToCreate.date).format('YYYY-MM-DD');
 
     this.store.dispatch(new diaryActions.CreateEntryAction({
       ...this.entryToCreate,

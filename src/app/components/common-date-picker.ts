@@ -24,7 +24,7 @@ export class CommonDatePickerComponent {
     this.dateChange.emit(this.dateValue);
   }
 
-  onSelectedChanged(newDate) {
+  onSelectedChanged(newDate: object) {
     this.date = newDate;
   }
 }
