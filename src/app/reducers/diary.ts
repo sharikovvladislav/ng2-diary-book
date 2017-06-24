@@ -26,6 +26,13 @@ export function reducer(state = initialState, action: diaryEntries.Actions ): St
       };
     }
 
+    case diaryEntries.CREATE_ENTRY_SUCCESS: {
+      return {
+        ...state,
+        entries: [action.payload, ...state.entries]
+      };
+    }
+
     default: {
       return state;
     }
