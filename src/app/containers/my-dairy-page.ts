@@ -14,6 +14,9 @@ import { DiaryEntryService } from '../services/diary-entry';
   template: `
     <div [ngSwitch]="isLoggedIn">
       <div *ngSwitchCase="true">my dairy page</div>
+      <div>
+        <diary-entry-create></diary-entry-create>
+      </div>
       <div *ngSwitchCase="false">
         <diary-not-logged-in></diary-not-logged-in>
       </div>
