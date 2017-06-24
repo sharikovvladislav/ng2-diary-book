@@ -46,8 +46,10 @@ export class DiaryEntriesEffects {
     .ofType(diaryEntry.LOAD_LIST)
     .withLatestFrom(this.store)
     .filter(([action, state]) => fromRoot.getIsLoggedIn(state))
-    .switchMap(() => {
-      return this.diaryEntryService.retrieveEntries()
+    .switchMap(([action, state]) => {
+      const uid = fromRoot.getUid(state);
+
+      return this.diaryEntryService.retrieveEntries(uid)
         .map((diaryEntries: DiaryEntry[]) => new diaryEntry.LoadListSuccessAction(diaryEntries))
         .catch(() => of(new diaryEntry.LoadListFailureAction([])));
     });
@@ -55,9 +57,11 @@ export class DiaryEntriesEffects {
   @Effect()
   create$: Observable<Action> = this.actions$
     .ofType(diaryEntry.CREATE_ENTRY)
-    .map(toPayload)
-    .switchMap((entryData: DiaryEntrySet) => {
-      return this.diaryEntryService.createEntry(entryData)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const uid = fromRoot.getUid(state);
+
+      return this.diaryEntryService.createEntry(uid, action.payload)
         .map((newEntryData: DiaryEntry) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
     });
