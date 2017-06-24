@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
+import { DiaryEntry } from '../models/diary-entry';
+
 import * as moment from 'moment';
 
 import * as fromRoot from '../reducers';
@@ -12,12 +14,12 @@ import * as diaryActions from '../actions/diary-entries';
     <diary-entry-detail
       [entry]="entryToCreate"
       [options]="entryDetailComponentOptions"
-      (submit)="onCreate($event)"
+      (submit)="onCreate()"
     ></diary-entry-detail>
   `
 })
 export class EntryCreateContainerComponent {
-  entryToCreate;
+  entryToCreate: DiaryEntry;
   entryDetailComponentOptions: object;
 
   constructor(private store: Store<fromRoot.State>) {
@@ -30,8 +32,8 @@ export class EntryCreateContainerComponent {
     };
   }
 
-  onCreate($event) {
-    const entryDate = moment(this.entryToCreate.date).toISOString();
+  onCreate() {
+    const entryDate = moment(this.entryToCreate.date).format('YYYY-DD-MM');
 
     this.store.dispatch(new diaryActions.CreateEntryAction({
       ...this.entryToCreate,
