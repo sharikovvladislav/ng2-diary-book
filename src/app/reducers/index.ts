@@ -42,6 +42,7 @@ import * as fromBooks from './books';
 import * as fromCollection from './collection';
 import * as fromLayout from './layout';
 import * as fromUser from './user';
+import * as fromDiary from './diary';
 
 
 /**
@@ -55,6 +56,7 @@ export interface State {
   layout: fromLayout.State;
   router: fromRouter.RouterState;
   user: fromUser.State;
+  diary: fromDiary.State;
 }
 
 
@@ -72,6 +74,7 @@ const reducers = {
   layout: fromLayout.reducer,
   router: fromRouter.routerReducer,
   user: fromUser.reducer,
+  diary: fromDiary.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -158,10 +161,18 @@ export const isSelectedBookInCollection = createSelector(getCollectionBookIds, g
  * Layout Reducers
  */
 export const getLayoutState = (state: State) => state.layout;
-
 export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
 
+/**
+ * User Reducers
+ */
 export const getUserState = (state: State) => state.user;
-
 export const getUser = createSelector(getUserState, fromUser.getUser);
 export const getIsLoggedIn = createSelector(getUserState, fromUser.isLoggedIn);
+export const getUid = createSelector(getUserState, fromUser.getUid);
+
+/**
+ * Diary Reducers
+ */
+export const getDiaryState = (state: State) => state.diary;
+export const getEntries = createSelector(getDiaryState, fromDiary.getEntries);

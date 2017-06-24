@@ -13,6 +13,7 @@ import { MaterialModule } from '@angular/material';
 
 import { ComponentsModule } from './components';
 import { BookEffects } from './effects/book';
+import { DiaryEntriesEffects } from './effects/diary-entries';
 import { CollectionEffects } from './effects/collection';
 import { BookExistsGuard } from './guards/book-exists';
 
@@ -26,15 +27,17 @@ import { MyDairyPageComponent } from './containers/my-dairy-page';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { GoogleBooksService } from './services/google-books';
+import { DiaryEntryService } from './services/diary-entry';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
 import { schema } from './db';
 
 import { environment } from '../environments/environment';
-console.log(environment);
+
 @NgModule({
   imports: [
     CommonModule,
@@ -45,6 +48,7 @@ console.log(environment);
     RouterModule.forRoot(routes, { useHash: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireDatabaseModule,
 
     /**
      * StoreModule.provideStore is imported once in the root module, accepting a reducer
@@ -81,6 +85,7 @@ console.log(environment);
      */
     EffectsModule.run(BookEffects),
     EffectsModule.run(CollectionEffects),
+    EffectsModule.run(DiaryEntriesEffects),
 
     /**
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
@@ -99,7 +104,8 @@ console.log(environment);
   ],
   providers: [
     BookExistsGuard,
-    GoogleBooksService
+    GoogleBooksService,
+    DiaryEntryService
   ],
   bootstrap: [
     AppComponent

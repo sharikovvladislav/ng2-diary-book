@@ -53,7 +53,8 @@ export class AppComponent implements OnInit {
         if (providerData !== null) {
           const userData = {
             displayName: providerData.displayName,
-            email: providerData.email
+            email: providerData.email,
+            uid: providerData.uid
           };
           this.store.dispatch(new user.LoadUserAction(userData));
         } else {

@@ -1,29 +1,31 @@
-import * as user from '../actions/user';
+import { createSelector } from 'reselect';
+import { Book } from '../models/book';
+import * as diaryEntries from '../actions/diary-entries';
 
 
 export interface State {
-  user: {
-    displayName: string;
-    email: string;
-    uid: string;
-  };
-}
-
-export const initialState: State = {
-  user: null
+  entries: object[];
 };
 
-export function reducer(state = initialState, action: user.Actions): State {
-  switch (action.type) {
-    case user.LOAD_USER_DATA:
-      return {
-        user: action.payload
-      };
+export const initialState: State = {
+  entries: []
+};
 
-    case user.UNLOAD_USER_DATA:
+export function reducer(state = initialState, action: diaryEntries.Actions ): State {
+  switch (action.type) {
+    case diaryEntries.LOAD_LIST_SUCCESS: {
       return {
-        user: null
+        ...state,
+        entries: action.payload
       };
+    }
+
+    case diaryEntries.CREATE_ENTRY_SUCCESS: {
+      return {
+        ...state,
+        entries: [...state.entries, action.payload]
+      };
+    }
 
     default: {
       return state;
@@ -40,6 +42,4 @@ export function reducer(state = initialState, action: user.Actions): State {
  * use-case.
  */
 
-export const getUser = (state: State) => state.user;
-export const isLoggedIn = (state: State) => state.user !== null;
-export const getUid = (state: State) => state.user.uid;
+export const getEntries = (state: State) => state.entries;
