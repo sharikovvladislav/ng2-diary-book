@@ -38,10 +38,14 @@ export class DiaryEntryService {
   }
 
   updateEntry(uid: string, itemKey: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+    // i think this must be an issue
+    // why i must delete $key ?
+    delete entryData.$key;
+
     return new Observable(observer => {
       this.getDbRef(uid)
         .update(itemKey, entryData)
-        .then(() => {
+        .then((test) => {
           observer.next(entryData);
           observer.complete();
         });
