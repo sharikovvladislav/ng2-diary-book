@@ -1,4 +1,5 @@
-import { NgModule, } from '@angular/core';
+import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +25,7 @@ import { SelectedBookPageComponent } from './containers/selected-book-page';
 import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
+import { EntryCreateContainerComponent } from './containers/entry-create-container';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -37,6 +39,7 @@ import { reducer } from './reducers';
 import { schema } from './db';
 
 import { environment } from '../environments/environment';
+import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 
 @NgModule({
   imports: [
@@ -45,6 +48,7 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     MaterialModule,
     ComponentsModule,
+    HttpModule,
     RouterModule.forRoot(routes, { useHash: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -101,6 +105,8 @@ import { environment } from '../environments/environment';
     CollectionPageComponent,
     NotFoundPageComponent,
     MyDairyPageComponent,
+    EntryCreateContainerComponent,
+    CommonShowIfLoggedInComponent,
   ],
   providers: [
     BookExistsGuard,

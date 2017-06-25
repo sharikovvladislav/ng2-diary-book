@@ -1,18 +1,25 @@
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/filter';
+import 'rxjs/add/operator/withLatestFrom';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import { Action } from '@ngrx/store';
+import {Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { empty } from 'rxjs/observable/empty';
 import { of } from 'rxjs/observable/of';
 
+import * as fromRoot from '../reducers';
+
 import { DiaryEntryService } from '../services/diary-entry';
 import * as diaryEntry from '../actions/diary-entries';
+
+import { DiaryEntry } from '../models/diary-entry';
+import { DiaryEntrySet } from '../models/diary-entry-set';
 
 
 /**
@@ -37,22 +44,31 @@ export class DiaryEntriesEffects {
   @Effect()
   load$: Observable<Action> = this.actions$
     .ofType(diaryEntry.LOAD_LIST)
-    .map(toPayload)
-    .switchMap(() => {
-      return this.diaryEntryService.retrieveEntries()
-        .map(entries => new diaryEntry.LoadListSuccessAction(entries))
+    .withLatestFrom(this.store)
+    .filter(([action, state]) => fromRoot.getIsLoggedIn(state))
+    .switchMap(([action, state]) => {
+      const uid = fromRoot.getUid(state);
+
+      return this.diaryEntryService.retrieveEntries(uid)
+        .map((diaryEntries: DiaryEntry[]) => new diaryEntry.LoadListSuccessAction(diaryEntries))
         .catch(() => of(new diaryEntry.LoadListFailureAction([])));
     });
 
   @Effect()
   create$: Observable<Action> = this.actions$
     .ofType(diaryEntry.CREATE_ENTRY)
-    .map(toPayload)
-    .switchMap(entryData => {
-      return this.diaryEntryService.createEntry(entryData)
-        .map((newEntryData: any) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const uid = fromRoot.getUid(state);
+
+      return this.diaryEntryService.createEntry(uid, action.payload)
+        .map((newEntryData: DiaryEntry) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
     });
 
-    constructor(private actions$: Actions, private diaryEntryService: DiaryEntryService) { }
+    constructor(
+      private actions$: Actions,
+      private diaryEntryService: DiaryEntryService,
+      private store: Store<fromRoot.State>,
+    ) { }
 }

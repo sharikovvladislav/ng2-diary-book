@@ -1,5 +1,8 @@
 import { Action } from '@ngrx/store';
 
+import { DiaryEntry } from '../models/diary-entry';
+import { DiaryEntrySet } from '../models/diary-entry-set';
+
 export const LOAD_LIST         = '[Diary entries] Load list';
 export const LOAD_LIST_SUCCESS = '[Diary entries] Load list success';
 export const LOAD_LIST_FAILURE = '[Diary entries] Load list failure';
@@ -23,7 +26,7 @@ export class LoadListAction implements Action {
 export class LoadListSuccessAction implements Action {
   readonly type = LOAD_LIST_SUCCESS;
 
-  constructor(public payload: object[]) { }
+  constructor(public payload: DiaryEntry[]) { }
 }
 
 export class LoadListFailureAction implements Action {
@@ -35,13 +38,13 @@ export class LoadListFailureAction implements Action {
 export class CreateEntryAction implements Action {
   readonly type = CREATE_ENTRY;
 
-  constructor(public payload: object) { }
+  constructor(public payload: DiaryEntrySet) { }
 }
 
 export class CreateEntrySuccessAction implements Action {
   readonly type = CREATE_ENTRY_SUCCESS;
 
-  constructor(public payload: any) { }
+  constructor(public payload: DiaryEntry) { }
 }
 
 export class CreateEntryFailureAction implements Action {

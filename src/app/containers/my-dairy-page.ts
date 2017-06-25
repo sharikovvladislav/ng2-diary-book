@@ -1,43 +1,36 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Store } from '@ngrx/store';
+import {Component} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Store} from '@ngrx/store';
 
 import * as fromRoot from '../reducers/index';
-import {isLoggedIn} from '../reducers/user';
 
 import * as diaryEntries from '../actions/diary-entries';
 
-import { DiaryEntryService } from '../services/diary-entry';
+import {DiaryEntry} from '../models/diary-entry';
 
 @Component({
   selector: 'diary-page',
   template: `
-    <div [ngSwitch]="isLoggedIn">
-      <div *ngSwitchCase="true">my dairy page</div>
-      <div *ngSwitchCase="false">
-        <diary-not-logged-in></diary-not-logged-in>
+    <common-show-if-logged-in>
+      <div>
+        <diary-entry-create></diary-entry-create>
       </div>
-    </div>
+      <div>
+        <diary-entry-list [entries]="diaryEntries$ | async"></diary-entry-list>
+      </div>
+    </common-show-if-logged-in>
   `
 })
 export class MyDairyPageComponent {
-  isLoggedIn: boolean;
-  isLoggedIn$: Observable<boolean>;
+  diaryEntries$: Observable<DiaryEntry[]>;
 
-  constructor(
-    private store: Store<fromRoot.State>,
-    private cd: ChangeDetectorRef,
-    private diaryEntryService: DiaryEntryService
-  ) {
-    this.isLoggedIn$ = store.select(fromRoot.getIsLoggedIn);
-    this.isLoggedIn$
-      .subscribe((newIsLoggedIn: boolean) => {
-        this.isLoggedIn = newIsLoggedIn;
-        this.cd.markForCheck();
+  constructor(private store: Store<fromRoot.State>) {
+    this.diaryEntries$ = store.select(fromRoot.getEntries);
+    store.select(fromRoot.getIsLoggedIn)
+      .subscribe((isLoggedIn) => {
+        if (isLoggedIn) {
+          this.store.dispatch(new diaryEntries.LoadListAction());
+        }
       });
-
-    // debugger;
-    // this.store.dispatch(new diaryEntries.CreateEntryAction({message: '123'}));
-    // this.store.dispatch(new diaryEntries.LoadListAction());
   }
 }
