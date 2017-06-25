@@ -26,6 +26,10 @@ import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
+import { EntryEditContainerComponent } from './containers/entry-edit-container';
+
+import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
+import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -106,12 +110,19 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
     NotFoundPageComponent,
     MyDairyPageComponent,
     EntryCreateContainerComponent,
+    EntryEditContainerComponent,
     CommonShowIfLoggedInComponent,
+    EntryEditDialogComponent,
+    EntryCreateDialogComponent,
   ],
   providers: [
     BookExistsGuard,
     GoogleBooksService,
     DiaryEntryService
+  ],
+  entryComponents: [
+    EntryEditDialogComponent,
+    EntryCreateDialogComponent,
   ],
   bootstrap: [
     AppComponent

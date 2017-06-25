@@ -10,14 +10,15 @@ import {DiaryEntry} from '../models/diary-entry';
 
 import {MdDialog, MdDialogRef} from '@angular/material';
 
-import {EntryCreateDialogComponent} from './create-entry-dialog';
+import { EntryCreateDialogComponent } from './create-entry-dialog';
+import { EntryEditDialogComponent } from './edit-entry-dialog';
 
 @Component({
   selector: 'diary-page',
   template: `
     <common-show-if-logged-in>
       <div>
-        <button md-button (click)="openDialog()">+ Добавить запись</button>
+        <button md-button (click)="openCreateDialog()">+ Добавить запись</button>
       </div>
       <!--
       <div>
@@ -25,7 +26,10 @@ import {EntryCreateDialogComponent} from './create-entry-dialog';
       </div>
       -->
       <div>
-        <diary-entry-list [entries]="diaryEntries$ | async"></diary-entry-list>
+        <diary-entry-list 
+          [entries]="diaryEntries$ | async"
+          (onClick)="openEditDialog($event)"
+        ></diary-entry-list>
       </div>
     </common-show-if-logged-in>
   `
@@ -44,11 +48,17 @@ export class MyDairyPageComponent {
       });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EntryCreateDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
+  openCreateDialog() {
+    const createDialogRef = this.dialog.open(EntryCreateDialogComponent);
+    createDialogRef.afterClosed().subscribe(result => {
       this.selectedOption = result;
     });
     // this.store.dispatch(new diaryDialogs.OpenCreateDialogAction());
+  }
+
+  openEditDialog(entryToEdit: DiaryEntry) {
+    this.dialog.open(EntryEditDialogComponent, {
+      data: entryToEdit
+    });
   }
 }

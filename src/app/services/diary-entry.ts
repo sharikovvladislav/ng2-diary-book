@@ -37,6 +37,17 @@ export class DiaryEntryService {
     });
   }
 
+  updateEntry(uid: string, itemKey: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+    return new Observable(observer => {
+      this.getDbRef(uid)
+        .update(itemKey, entryData)
+        .then(() => {
+          observer.next(entryData);
+          observer.complete();
+        });
+    });
+  }
+
   private getDbRef(uid: string) {
     return this.db.list(`/${uid}${this.API_PATH}`);
   }

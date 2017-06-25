@@ -26,6 +26,17 @@ export function reducer(state = initialState, action: diaryEntries.Actions ): St
       };
     }
 
+    case diaryEntries.EDIT_ENTRY_SUCCESS: {
+      const itemKey = action.key;
+      const updatedEntries =
+        state.entries.map(entry => entry.$key === itemKey ? {...action.payload} : entry);
+
+      return {
+        ...state,
+        entries: updatedEntries
+      };
+    }
+
     case diaryEntries.CREATE_ENTRY_SUCCESS: {
       return {
         ...state,
