@@ -8,23 +8,37 @@ import * as diaryEntries from '../actions/diary-entries';
 
 import {DiaryEntry} from '../models/diary-entry';
 
+import {MdDialog, MdDialogRef} from '@angular/material';
+
+import { EntryCreateDialogComponent } from './create-entry-dialog';
+import { EntryEditDialogComponent } from './edit-entry-dialog';
+
 @Component({
   selector: 'diary-page',
   template: `
     <common-show-if-logged-in>
       <div>
+        <button md-button (click)="openCreateDialog()">+ Добавить запись</button>
+      </div>
+      <!--
+      <div>
         <diary-entry-create></diary-entry-create>
       </div>
+      -->
       <div>
-        <diary-entry-list [entries]="diaryEntries$ | async"></diary-entry-list>
+        <diary-entry-list 
+          [entries]="diaryEntries$ | async"
+          (onClick)="openEditDialog($event)"
+        ></diary-entry-list>
       </div>
     </common-show-if-logged-in>
   `
 })
 export class MyDairyPageComponent {
+  selectedOption: any;
   diaryEntries$: Observable<DiaryEntry[]>;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(private store: Store<fromRoot.State>, public dialog: MdDialog) {
     this.diaryEntries$ = store.select(fromRoot.getEntries);
     store.select(fromRoot.getIsLoggedIn)
       .subscribe((isLoggedIn) => {
@@ -32,5 +46,19 @@ export class MyDairyPageComponent {
           this.store.dispatch(new diaryEntries.LoadListAction());
         }
       });
+  }
+
+  openCreateDialog() {
+    const createDialogRef = this.dialog.open(EntryCreateDialogComponent);
+    createDialogRef.afterClosed().subscribe(result => {
+      this.selectedOption = result;
+    });
+    // this.store.dispatch(new diaryDialogs.OpenCreateDialogAction());
+  }
+
+  openEditDialog(entryToEdit: DiaryEntry) {
+    this.dialog.open(EntryEditDialogComponent, {
+      data: entryToEdit
+    });
   }
 }

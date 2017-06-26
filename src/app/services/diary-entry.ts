@@ -37,6 +37,21 @@ export class DiaryEntryService {
     });
   }
 
+  updateEntry(uid: string, itemKey: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+    // i think this must be an issue
+    // why i must delete $key ?
+    delete entryData.$key;
+
+    return new Observable(observer => {
+      this.getDbRef(uid)
+        .update(itemKey, entryData)
+        .then((test) => {
+          observer.next(entryData);
+          observer.complete();
+        });
+    });
+  }
+
   private getDbRef(uid: string) {
     return this.db.list(`/${uid}${this.API_PATH}`);
   }

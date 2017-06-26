@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'diary-entry-detail',
@@ -25,7 +26,18 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   ]
 })
 export class EntryDetailComponent {
-  @Input() entry: any;
   @Input() options: any;
   @Output() submit = new EventEmitter<string>();
+
+  _entry: DiaryEntry;
+  get entry(): DiaryEntry {
+    return this._entry;
+  }
+
+  @Input()
+  set entry(value: DiaryEntry) {
+    this._entry = {
+      ...value
+    };
+  }
 }

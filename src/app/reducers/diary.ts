@@ -16,6 +16,7 @@ export function reducer(state = initialState, action: diaryEntries.Actions ): St
       const entries = action.payload
         .map(entry => ({
           ...entry,
+          $key: entry.$key,
           createDate: moment(entry.createDate).toDate(),
           date: moment(entry.date).toDate()
         }));
@@ -23,6 +24,19 @@ export function reducer(state = initialState, action: diaryEntries.Actions ): St
       return {
         ...state,
         entries: entries
+      };
+    }
+
+    case diaryEntries.EDIT_ENTRY_SUCCESS: {
+      const itemKey = action.key;
+      const updatedEntries =
+        state.entries.map(entry =>
+          entry.$key === itemKey ? {...action.payload, $key: itemKey} : entry
+        );
+
+      return {
+        ...state,
+        entries: updatedEntries
       };
     }
 

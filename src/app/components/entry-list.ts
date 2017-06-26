@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
@@ -6,7 +6,10 @@ import { DiaryEntry } from '../models/diary-entry';
   template: `
     <div>
       <div *ngFor="let entry of entries">
-        <diary-list-item [entry]="entry"></diary-list-item>
+        <diary-list-item 
+          [entry]="entry"
+          (onClick)="onClick.emit($event)"
+        ></diary-list-item>
       </div>
     </div>
   `
@@ -14,6 +17,7 @@ import { DiaryEntry } from '../models/diary-entry';
 
 export class EntryListComponent {
   @Input() entries: DiaryEntry[];
+  @Output() onClick = new EventEmitter();
 
   constructor() {
   }

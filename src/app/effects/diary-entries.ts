@@ -21,6 +21,7 @@ import * as diaryEntry from '../actions/diary-entries';
 import { DiaryEntry } from '../models/diary-entry';
 import { DiaryEntrySet } from '../models/diary-entry-set';
 
+import * as moment from 'moment';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -61,9 +62,35 @@ export class DiaryEntriesEffects {
     .switchMap(([action, state]) => {
       const uid = fromRoot.getUid(state);
 
-      return this.diaryEntryService.createEntry(uid, action.payload)
+      const entryToCreate = {
+        ...action.payload,
+        createDate: moment().toISOString(),
+        date: moment(action.payload.date).format('YYYY-MM-DD')
+      };
+
+      return this.diaryEntryService.createEntry(uid, entryToCreate)
         .map((newEntryData: DiaryEntry) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
+    });
+
+  @Effect()
+  edit$: Observable<Action> = this.actions$
+    .ofType(diaryEntry.EDIT_ENTRY)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const uid = fromRoot.getUid(state);
+      const itemKey = action.key;
+      const entryToCreate = {
+        ...action.payload,
+        createDate: moment().toISOString(),
+        date: moment(action.payload.date).format('YYYY-MM-DD')
+      };
+
+      return this.diaryEntryService.updateEntry(uid, itemKey, entryToCreate)
+        .map((updatedEntryData: DiaryEntry) =>
+          new diaryEntry.EditEntrySuccessAction(itemKey, updatedEntryData)
+        )
+        .catch(() => of(new diaryEntry.EditEntryFailureAction(null)));
     });
 
     constructor(
