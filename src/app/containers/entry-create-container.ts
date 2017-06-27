@@ -12,7 +12,7 @@ import * as diaryActions from '../actions/diary-entries';
     <diary-entry-detail
       [entry]="entryToCreate"
       [options]="entryDetailComponentOptions"
-      (submit)="onCreate()"
+      (submit)="onCreate($event)"
     ></diary-entry-detail>
   `
 })
@@ -30,7 +30,7 @@ export class EntryCreateContainerComponent {
     };
   }
 
-  onCreate() {
-    this.store.dispatch(new diaryActions.CreateEntryAction(this.entryToCreate));
+  onCreate(newEntryData: DiaryEntry) {
+    this.store.dispatch(new diaryActions.CreateEntryAction(newEntryData));
   }
 }

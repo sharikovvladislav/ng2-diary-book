@@ -7,13 +7,13 @@ import { DiaryEntry } from '../models/diary-entry';
     <div class="example-form">
       <p>
         <md-input-container class="example-full-width">
-          <textarea mdInput [(ngModel)]="entry.message" placeholder="Введите запись">1600 Amphitheatre Pkwy</textarea>
+          <textarea mdInput [(ngModel)]="_entry.message" placeholder="Введите запись">1600 Amphitheatre Pkwy</textarea>
         </md-input-container>
       </p>
       <p>
-        <common-date-picker [(date)]="entry.date"></common-date-picker>
+        <common-date-picker [(date)]="_entry.date"></common-date-picker>
       </p>
-      <button md-raised-button (click)="submit.emit(entry)">{{options.buttonLabel}}</button>
+      <button md-raised-button (click)="submit.emit(_entry)">{{options.buttonLabel}}</button>
     </div>
   `,
   styles: [
@@ -27,14 +27,14 @@ import { DiaryEntry } from '../models/diary-entry';
 })
 export class EntryDetailComponent {
   @Input() options: any;
-  @Output() submit = new EventEmitter<string>();
+  @Output() submit = new EventEmitter<DiaryEntry>();
 
   _entry: DiaryEntry;
+
+  @Input()
   get entry(): DiaryEntry {
     return this._entry;
   }
-
-  @Input()
   set entry(value: DiaryEntry) {
     this._entry = {
       ...value
