@@ -6,7 +6,7 @@ import { DiaryEntry } from '../models/diary-entry';
   template: `
     <md-card>
       <md-card-title>{{ entry.date | date:'MMM d' }}</md-card-title>
-      <md-card-content>{{ entry.message }}</md-card-content>
+      <md-card-content><div [innerHTML]="entry.message | diaryMarkdown"></div></md-card-content>
       <md-card-footer>
         Create date: {{ entry.createDate | date }}
         <span (click)="onClick.emit(entry)">Edit</span>
