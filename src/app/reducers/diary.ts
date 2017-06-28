@@ -1,4 +1,5 @@
 import * as diaryEntries from '../actions/diary-entries';
+import * as user from '../actions/user';
 import { DiaryEntry } from '../models/diary-entry';
 import * as moment from 'moment';
 
@@ -10,8 +11,15 @@ export const initialState: State = {
   entries: []
 };
 
-export function reducer(state = initialState, action: diaryEntries.Actions ): State {
+export function reducer(state = initialState, action: diaryEntries.Actions | user.Actions): State {
   switch (action.type) {
+    case user.UNLOAD_USER_DATA: {
+      return {
+        ...state,
+        entries: []
+      };
+    }
+
     case diaryEntries.LOAD_LIST_SUCCESS: {
       const entries = action.payload
         .map(entry => ({
