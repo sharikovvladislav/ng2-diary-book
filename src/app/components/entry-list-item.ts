@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
 import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'diary-list-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <md-card>
       <md-card-title>{{ entry.date | date:'MMM d' }}</md-card-title>
