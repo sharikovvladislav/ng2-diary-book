@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
 import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'diary-entry-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div>
       <div *ngFor="let entry of entries">
@@ -12,7 +13,12 @@ import { DiaryEntry } from '../models/diary-entry';
         ></diary-list-item>
       </div>
     </div>
-  `
+  `,
+  styles: [
+    `diary-list-item {
+      padding: 20px;
+    }`
+  ]
 })
 
 export class EntryListComponent {

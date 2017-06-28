@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { DiaryEntry } from '../models/diary-entry';
@@ -8,6 +8,7 @@ import * as diaryActions from '../actions/diary-entries';
 
 @Component({
   selector: 'diary-entry-edit',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <diary-entry-detail
       [entry]="entry"

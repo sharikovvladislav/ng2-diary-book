@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 
@@ -15,6 +15,7 @@ import { EntryEditDialogComponent } from './edit-entry-dialog';
 
 @Component({
   selector: 'diary-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <common-show-if-logged-in>
       <div>
@@ -38,12 +39,17 @@ export class MyDairyPageComponent {
   selectedOption: any;
   diaryEntries$: Observable<DiaryEntry[]>;
 
-  constructor(private store: Store<fromRoot.State>, public dialog: MdDialog) {
+  constructor(
+    private store: Store<fromRoot.State>,
+    public dialog: MdDialog,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {
     this.diaryEntries$ = store.select(fromRoot.getEntries);
     store.select(fromRoot.getIsLoggedIn)
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {
           this.store.dispatch(new diaryEntries.LoadListAction());
+          changeDetectorRef.markForCheck();
         }
       });
   }

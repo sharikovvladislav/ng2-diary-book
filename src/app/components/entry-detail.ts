@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
 import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'diary-entry-detail',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="example-form">
       <p>

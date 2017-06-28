@@ -1,7 +1,8 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'common-date-picker',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <md-input-container>
       <input mdInput [value]="dateValue" [mdDatepicker]="picker" placeholder="Choose a date">
