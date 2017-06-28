@@ -56,9 +56,9 @@ export class AppComponent implements OnInit {
             email: providerData.email,
             uid: providerData.uid
           };
-          this.store.dispatch(new user.LoadUserAction(userData));
+          this.store.dispatch(new user.LoginAction(userData));
         } else {
-          this.store.dispatch(new user.UnloadUserAction());
+          this.store.dispatch(new user.LogoutAction());
         }
       });
   }

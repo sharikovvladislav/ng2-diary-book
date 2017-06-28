@@ -13,7 +13,7 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: diaryEntries.Actions | user.Actions): State {
   switch (action.type) {
-    case user.UNLOAD_USER_DATA: {
+    case user.LOGOUT: {
       return {
         ...state,
         entries: []

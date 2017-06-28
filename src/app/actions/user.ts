@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
-export const LOAD_USER_DATA    =  '[User] Login';
-export const UNLOAD_USER_DATA  =  '[User] Logout';
+export const LOGIN    =  '[User] Login';
+export const LOGOUT  =  '[User] Logout';
 
 
 /**
@@ -11,14 +11,14 @@ export const UNLOAD_USER_DATA  =  '[User] Logout';
  *
  * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
-export class LoadUserAction implements Action {
-  readonly type = LOAD_USER_DATA;
+export class LoginAction implements Action {
+  readonly type = LOGIN;
 
   constructor(public payload: any) { }
 }
 
-export class UnloadUserAction implements Action {
-  readonly type = UNLOAD_USER_DATA;
+export class LogoutAction implements Action {
+  readonly type = LOGOUT;
 }
 
 /**
@@ -26,5 +26,5 @@ export class UnloadUserAction implements Action {
  * so that reducers can easily compose action types
  */
 export type Actions
-  = UnloadUserAction
-  | LoadUserAction;
+  = LogoutAction
+  | LoginAction;

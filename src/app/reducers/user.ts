@@ -15,12 +15,12 @@ export const initialState: State = {
 
 export function reducer(state = initialState, action: user.Actions): State {
   switch (action.type) {
-    case user.LOAD_USER_DATA:
+    case user.LOGIN:
       return {
         user: action.payload
       };
 
-    case user.UNLOAD_USER_DATA:
+    case user.LOGOUT:
       return {
         user: null
       };
