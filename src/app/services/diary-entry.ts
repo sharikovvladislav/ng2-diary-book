@@ -1,14 +1,11 @@
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import {from} from 'rxjs/Observable/from';
-import {Book} from '../models/book';
-import * as X from '../reducers/user';
-import {AngularFireDatabase, FirebaseListObservable} from 'angularfire2/database';
-import {DiaryEntry} from '../models/diary-entry';
-import {DiaryEntrySet} from '../models/diary-entry-set';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { DiaryEntry } from '../models/diary-entry';
+import { DiaryEntrySet } from '../models/diary-entry-set';
+import { DiaryProcessorService } from './diary-processor';
 
 
 @Injectable()
@@ -37,15 +34,13 @@ export class DiaryEntryService {
     });
   }
 
-  updateEntry(uid: string, itemKey: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
-    // i think this must be an issue
-    // why i must delete $key ?
-    delete entryData.$key;
+  updateEntry(userId: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+    const itemKey = entryData.$key;
 
     return new Observable(observer => {
-      this.getDbRef(uid)
-        .update(itemKey, entryData)
-        .then((test) => {
+      this.getDbRef(userId)
+        .update(itemKey, DiaryProcessorService.prepareForSave(entryData))
+        .then(() => {
           observer.next(entryData);
           observer.complete();
         });

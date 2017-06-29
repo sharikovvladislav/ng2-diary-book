@@ -60,13 +60,13 @@ export class CreateEntryFailureAction implements Action {
 export class EditEntryAction implements Action {
   readonly type = EDIT_ENTRY;
 
-  constructor(public key: string, public payload: DiaryEntry) { }
+  constructor(public payload: DiaryEntry) { }
 }
 
 export class EditEntrySuccessAction implements Action {
   readonly type = EDIT_ENTRY_SUCCESS;
 
-  constructor(public key: string, public payload: DiaryEntry) { }
+  constructor(public payload: DiaryEntry) { }
 }
 
 export class EditEntryFailureAction implements Action {
