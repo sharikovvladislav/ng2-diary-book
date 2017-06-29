@@ -37,6 +37,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { GoogleBooksService } from './services/google-books';
 import { DiaryEntryService } from './services/diary-entry';
+import { DiaryProcessorService } from './services/diary-processor';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
@@ -118,7 +119,8 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
   providers: [
     BookExistsGuard,
     GoogleBooksService,
-    DiaryEntryService
+    DiaryEntryService,
+    DiaryProcessorService,
   ],
   entryComponents: [
     EntryEditDialogComponent,
