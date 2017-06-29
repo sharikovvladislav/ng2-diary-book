@@ -28,6 +28,6 @@ export class EntryEditContainerComponent {
   }
 
   onEdit(entryToEdit: DiaryEntry) {
-    this.store.dispatch(new diaryActions.EditEntryAction(entryToEdit.$key, entryToEdit));
+    this.store.dispatch(new diaryActions.EditEntryAction(entryToEdit));
   }
 }

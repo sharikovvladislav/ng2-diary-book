@@ -79,16 +79,15 @@ export class DiaryEntriesEffects {
     .withLatestFrom(this.store)
     .switchMap(([action, state]) => {
       const uid = fromRoot.getUid(state);
-      const itemKey = action.key;
       const entryToCreate = {
         ...action.payload,
         createDate: moment().toISOString(),
         date: moment(action.payload.date).format('YYYY-MM-DD')
       };
 
-      return this.diaryEntryService.updateEntry(uid, itemKey, entryToCreate)
+      return this.diaryEntryService.updateEntry(uid, entryToCreate)
         .map((updatedEntryData: DiaryEntry) =>
-          new diaryEntry.EditEntrySuccessAction(itemKey, updatedEntryData)
+          new diaryEntry.EditEntrySuccessAction(updatedEntryData)
         )
         .catch(() => of(new diaryEntry.EditEntryFailureAction(null)));
     });

@@ -34,7 +34,9 @@ export class DiaryEntryService {
     });
   }
 
-  updateEntry(userId: string, itemKey: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+  updateEntry(userId: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
+    const itemKey = entryData.$key;
+
     return new Observable(observer => {
       this.getDbRef(userId)
         .update(itemKey, DiaryProcessorService.prepareForSave(entryData))

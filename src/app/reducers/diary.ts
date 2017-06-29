@@ -36,7 +36,7 @@ export function reducer(state = initialState, action: diaryEntries.Actions | use
     }
 
     case diaryEntries.EDIT_ENTRY_SUCCESS: {
-      const itemKey = action.key;
+      const itemKey = action.payload.$key;
       const updatedEntries =
         state.entries.map(entry =>
           entry.$key === itemKey ? {...action.payload, $key: itemKey} : entry
