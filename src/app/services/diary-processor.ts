@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class DiaryProcessorService {
-  static prepareForSave(diaryToSave: DiaryEntrySet) {
+  prepareForSave(diaryToSave: DiaryEntrySet) {
     const tmpDiary = { ...diaryToSave };
 
     delete tmpDiary.$key;

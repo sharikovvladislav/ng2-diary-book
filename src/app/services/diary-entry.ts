@@ -13,7 +13,10 @@ export class DiaryEntryService {
   private API_PATH = '/diaryEntries';
   private list$: FirebaseListObservable<{}>;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(
+    private db: AngularFireDatabase,
+    private diaryProcessor: DiaryProcessorService
+  ) {
     this.list$ = this.db.list(this.API_PATH);
   }
 
@@ -39,7 +42,7 @@ export class DiaryEntryService {
 
     return new Observable(observer => {
       this.getDbRef(userId)
-        .update(itemKey, DiaryProcessorService.prepareForSave(entryData))
+        .update(itemKey, this.diaryProcessor.prepareForSave(entryData))
         .then(() => {
           observer.next(entryData);
           observer.complete();
