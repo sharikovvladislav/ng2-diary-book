@@ -1,7 +1,7 @@
 {
   "name": "ng2-diary-book",
   "version": "1.0.0",
-  "description": "Example application demoing the @ngrx platform",
+  "description": "Diary book (try Angular 4+ and ngrx)",
   "main": "index.ts",
   "scripts": {
     "ng": "ng",
