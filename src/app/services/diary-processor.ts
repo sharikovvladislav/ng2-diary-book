@@ -1,13 +1,18 @@
 import { DiaryEntrySet } from '../models/diary-entry-set';
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable()
 export class DiaryProcessorService {
-  prepareForSave(diaryToSave: DiaryEntrySet) {
-    const tmpDiary = { ...diaryToSave };
+  prepareForServerProcess(diaryToSave: DiaryEntrySet) {
+    const diaryToSaveCopy = { ...diaryToSave };
 
-    delete tmpDiary.$key;
+    delete diaryToSaveCopy.$key;
 
-    return tmpDiary;
+    return {
+      ...diaryToSaveCopy,
+      createDate: moment().toISOString(),
+      date: moment(diaryToSave.date).format('YYYY-MM-DD')
+    };
   }
 }

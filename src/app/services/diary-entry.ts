@@ -29,7 +29,7 @@ export class DiaryEntryService {
   createEntry(uid: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
     return new Observable(observer => {
       this.getDbRef(uid)
-        .push(entryData)
+        .push(this.diaryProcessor.prepareForServerProcess(entryData))
         .then(() => {
           observer.next(entryData);
           observer.complete();
@@ -42,7 +42,7 @@ export class DiaryEntryService {
 
     return new Observable(observer => {
       this.getDbRef(userId)
-        .update(itemKey, this.diaryProcessor.prepareForSave(entryData))
+        .update(itemKey, this.diaryProcessor.prepareForServerProcess(entryData))
         .then(() => {
           observer.next(entryData);
           observer.complete();
