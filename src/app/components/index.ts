@@ -20,6 +20,7 @@ import { EntryDetailComponent } from './entry-detail';
 import { CommonDatePickerComponent } from './common-date-picker';
 import { EntryListItemComponent } from './entry-list-item';
 import { EntryListComponent } from './entry-list';
+import { FriendsListComponent } from './friends-list';
 
 import { PipesModule } from '../pipes';
 
@@ -39,6 +40,7 @@ export const COMPONENTS = [
   CommonDatePickerComponent,
   EntryListComponent,
   EntryListItemComponent,
+  FriendsListComponent,
 ];
 
 

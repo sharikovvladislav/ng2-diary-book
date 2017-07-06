@@ -27,6 +27,8 @@ import { NotFoundPageComponent } from './containers/not-found-page';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
+import { FriendsComponent } from './containers/friends';
+import { FriendsPendingComponent } from './containers/friends-pending';
 
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
 import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
@@ -115,6 +117,8 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
     CommonShowIfLoggedInComponent,
     EntryEditDialogComponent,
     EntryCreateDialogComponent,
+    FriendsComponent,
+    FriendsPendingComponent,
   ],
   providers: [
     BookExistsGuard,

@@ -94,7 +94,7 @@
       "check-type"
     ],
     "directive-selector": [true, "attribute", "bc", "camelCase"],
-    "component-selector": [true, "element", ["bc", "common", "diary"], "kebab-case"],
+    "component-selector": [true, "element", ["bc", "common", "diary", "friends"], "kebab-case"],
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
     "use-host-property-decorator": true,

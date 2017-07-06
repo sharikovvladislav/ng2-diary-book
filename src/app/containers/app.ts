@@ -20,6 +20,9 @@ import * as firebase from 'firebase/app';
         <bc-nav-item (activate)="closeSidenav()" routerLink="/diary/my-dairy" icon="book" hint="View your diary">
           My dairy
         </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="book" hint="View your diary">
+          Friends
+        </bc-nav-item>
         <bc-nav-item (activate)="closeSidenav()" routerLink="/book/collection" icon="book"
                      hint="View your book collection">
           My Collection
