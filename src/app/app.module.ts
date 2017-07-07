@@ -47,6 +47,7 @@ import { schema } from './db';
 
 import { environment } from '../environments/environment';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
+import { AddFriendDialogComponent } from './containers/add-friend-dialog';
 
 @NgModule({
   imports: [
@@ -119,6 +120,7 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
     EntryCreateDialogComponent,
     FriendsComponent,
     FriendsPendingComponent,
+    AddFriendDialogComponent,
   ],
   providers: [
     BookExistsGuard,
@@ -129,6 +131,7 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
   entryComponents: [
     EntryEditDialogComponent,
     EntryCreateDialogComponent,
+    AddFriendDialogComponent,
   ],
   bootstrap: [
     AppComponent

@@ -13,13 +13,14 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 import { EntryCreateDialogComponent } from './create-entry-dialog';
 import { EntryEditDialogComponent } from './edit-entry-dialog';
 import { Friend } from '../models/friend';
+import { AddFriendDialogComponent } from './add-friend-dialog';
 
 @Component({
   selector: 'friends-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <common-show-if-logged-in>
-      <button md-button>+ Add friend</button>
+      <button md-button (click)="onAddFriendClick()">+ Add friend</button>
       <md-tab-group>
         <md-tab>
           <ng-template md-tab-label>
@@ -53,6 +54,11 @@ export class FriendsComponent {
     },
   ];
 
-  constructor() {
+  constructor(
+    public dialog: MdDialog,
+    ) {}
+
+  onAddFriendClick() {
+    this.dialog.open(AddFriendDialogComponent);
   }
 }
