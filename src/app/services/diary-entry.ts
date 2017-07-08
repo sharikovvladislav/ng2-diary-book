@@ -51,6 +51,6 @@ export class DiaryEntryService {
   }
 
   private getDbRef(uid: string) {
-    return this.db.list(`/${uid}${this.API_PATH}`);
+    return this.db.list(`/${this.API_PATH}/${uid}`);
   }
 }
