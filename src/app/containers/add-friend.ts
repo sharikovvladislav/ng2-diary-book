@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import * as fromRoot from '../reducers';
+import * as friendsActions from '../actions/friends';
 
 @Component({
   selector: 'friends-add',
@@ -14,10 +17,13 @@ import { Component } from '@angular/core';
 export class AddFriendComponent {
   email: string;
 
-  constructor() {
+  constructor(
+    private store: Store<fromRoot.State>,
+  ) {
     this.email = '';
   }
 
   onAddClick() {
+    this.store.dispatch(new friendsActions.CreateFriendshipAction(this.email));
   }
 }

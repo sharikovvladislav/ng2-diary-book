@@ -1,12 +1,9 @@
 import * as user from '../actions/user';
+import { User } from '../models/user';
 
 
 export interface State {
-  user: {
-    displayName: string;
-    email: string;
-    uid: string;
-  };
+  user: User;
 }
 
 export const initialState: State = {

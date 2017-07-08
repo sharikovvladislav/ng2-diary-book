@@ -48,6 +48,8 @@ import { schema } from './db';
 import { environment } from '../environments/environment';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 import { AddFriendDialogComponent } from './containers/add-friend-dialog';
+import { FriendsService } from './services/friends';
+import { FriendsEffects } from './effects/friends';
 
 @NgModule({
   imports: [
@@ -98,6 +100,7 @@ import { AddFriendDialogComponent } from './containers/add-friend-dialog';
     EffectsModule.run(BookEffects),
     EffectsModule.run(CollectionEffects),
     EffectsModule.run(DiaryEntriesEffects),
+    EffectsModule.run(FriendsEffects),
 
     /**
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
@@ -127,6 +130,7 @@ import { AddFriendDialogComponent } from './containers/add-friend-dialog';
     GoogleBooksService,
     DiaryEntryService,
     DiaryProcessorService,
+    FriendsService,
   ],
   entryComponents: [
     EntryEditDialogComponent,
