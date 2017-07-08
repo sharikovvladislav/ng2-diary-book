@@ -1,47 +1,39 @@
-import {Component, ChangeDetectionStrategy, ChangeDetectorRef} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import {Store} from '@ngrx/store';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../reducers/index';
 
-import * as diaryEntries from '../actions/diary-entries';
+import * as friendsActions from '../actions/friends';
 
-import {DiaryEntry} from '../models/diary-entry';
-
-import {MdDialog, MdDialogRef} from '@angular/material';
-
-import { EntryCreateDialogComponent } from './create-entry-dialog';
-import { EntryEditDialogComponent } from './edit-entry-dialog';
 import { Friend } from '../models/friend';
+import { Observable } from 'rxjs/Observable';
+
 
 @Component({
   selector: 'friends-pending-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <friends-list
-      [friends]="pendingFriends"
+      [friends]="pendingFriends$ | async"
       [isPendingMode]="true"
       (accept)="onAccept($event)"
     ></friends-list>
   `
 })
 export class FriendsPendingComponent {
-  pendingFriends: Friend[] = [
-    {
-      name: 'pending-123',
-      email: 'pending-1234'
-    },
-    {
-      name: 'pending-123456',
-      email: 'pending-123456'
-    },
-    {
-      name: 'pending-456789',
-      email: 'pending-456789'
-    },
-  ];
+  pendingFriends$: Observable<Friend[]>;
 
-  constructor() {
+  constructor(
+    private store: Store<fromRoot.State>,
+  ) {
+    this.pendingFriends$ = store.select(fromRoot.getPendingFriends);
+
+    store.select(fromRoot.getIsLoggedIn)
+      .subscribe((isLoggedIn) => {
+        if (isLoggedIn) {
+          store.dispatch(new friendsActions.GetPendingInvitesAction());
+        }
+      });
   }
 
   onAccept(event: any) {

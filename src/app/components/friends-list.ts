@@ -6,7 +6,8 @@ import { Friend } from '../models/friend';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div *ngFor="let friend of friends">
-      <span>{{friend.name}}</span>
+      <span>Name:&nbsp;</span><span>{{friend.name}}</span>
+      <span>E-mail:&nbsp;</span><span>{{friend.email}}</span>
       <div *ngIf="isPendingMode">
         <button md-button (click)="accept.emit(friend)">Accept</button>
       </div>

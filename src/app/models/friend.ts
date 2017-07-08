@@ -1,5 +1,5 @@
 export interface Friend {
   id?: number;
-  name: string;
+  name?: string;
   email: string;
 }

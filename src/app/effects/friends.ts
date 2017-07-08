@@ -49,6 +49,38 @@ export class FriendsEffects {
         .catch(() => of(new friendsActions.CreateFriendshipFailureAction()));
     });
 
+  @Effect()
+  getPendingInvites$: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_PENDING_INVITES)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const { email } = fromRoot.getUser(state);
+
+      return this.friendsService.getPendingInvites(email)
+        .map((data: any) => {
+          return new friendsActions.GetPendingInvitesSuccessAction(data);
+        })
+        .catch((kek) => {
+          return of(new friendsActions.GetPendingInvitesFailureAction(null));
+        });
+    });
+
+  @Effect()
+  getOutcomePendingInvites$: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_OUTCOME_PENDING_INVITES)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const { email } = fromRoot.getUser(state);
+
+      return this.friendsService.getOutcomePendingInvites(email)
+        .map((data: any) => {
+          return new friendsActions.GetOutcomePendingInvitesSuccessAction(data);
+        })
+        .catch((kek) => {
+          return of(new friendsActions.GetOutcomePendingInvitesFailureAction(null));
+        });
+    });
+
     constructor(
       private actions$: Actions,
       private friendsService: FriendsService,
