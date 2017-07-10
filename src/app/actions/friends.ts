@@ -1,7 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { DiaryEntry } from '../models/diary-entry';
-import { DiaryEntrySet } from '../models/diary-entry-set';
+export const GET_ALL_LISTS_ACTION = '[Friendship] Get all friends lists';
 
 export const CREATE_FRIENDSHIP         = '[Friendship] Create friendship';
 export const CREATE_FRIENDSHIP_SUCCESS = '[Friendship] Create friendship success';
@@ -35,6 +34,10 @@ export const GET_OUTCOME_PENDING_INVITES_FAILURE = '[Friendship] Get outcome pen
  *
  * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
+export class GetAllListsAction implements Action {
+  readonly type = GET_ALL_LISTS_ACTION;
+}
+
 export class CreateFriendshipAction implements Action {
   readonly type = CREATE_FRIENDSHIP;
 

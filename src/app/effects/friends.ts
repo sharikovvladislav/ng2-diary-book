@@ -8,9 +8,9 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions, toPayload } from '@ngrx/effects';
-import {Action, Store } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import { empty } from 'rxjs/observable/empty';
+import { from } from 'rxjs/observable/from';
 import { of } from 'rxjs/observable/of';
 
 import * as fromRoot from '../reducers';
@@ -38,6 +38,16 @@ import { FriendsService } from '../services/friends';
 @Injectable()
 export class FriendsEffects {
   @Effect()
+  getAllLists$: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_ALL_LISTS_ACTION)
+    .mergeMap(() => from([
+      new friendsActions.GetRejectedInvitesAction(),
+      new friendsActions.GetFriendsAction(),
+      new friendsActions.GetPendingInvitesAction(),
+      new friendsActions.GetOutcomePendingInvitesAction(),
+    ]));
+
+  @Effect()
   add$: Observable<Action> = this.actions$
     .ofType(friendsActions.CREATE_FRIENDSHIP)
     .withLatestFrom(this.store)
@@ -57,7 +67,10 @@ export class FriendsEffects {
       const userData = fromRoot.getUser(state);
 
       return this.friendsService.acceptInvite(action.payload, userData)
-        .map((data: any) => new friendsActions.AcceptInviteSuccessAction())
+        .mergeMap(() => from([
+          new friendsActions.AcceptInviteSuccessAction(),
+          new friendsActions.GetAllListsAction(),
+        ]))
         .catch(() => of(new friendsActions.AcceptInviteFailureAction()));
     });
 
