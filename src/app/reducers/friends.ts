@@ -42,7 +42,7 @@ export function reducer(state = initialState, action: friendsActions.Actions): S
       return {
         ...state,
         pendingOutcomeInvites: action.payload.map((invite: any) => ({
-          email: invite.from,
+          email: invite.to,
           name: 'some name'
         }))
       };
