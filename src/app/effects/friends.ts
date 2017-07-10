@@ -50,6 +50,30 @@ export class FriendsEffects {
     });
 
   @Effect()
+  acceptInvite$: Observable<Action> = this.actions$
+    .ofType(friendsActions.ACCEPT_INVITE)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const userData = fromRoot.getUser(state);
+
+      return this.friendsService.acceptInvite(action.payload, userData)
+        .map((data: any) => new friendsActions.AcceptInviteSuccessAction())
+        .catch(() => of(new friendsActions.AcceptInviteFailureAction()));
+    });
+
+  @Effect()
+  getFriends$: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_FRIENDS)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const userData = fromRoot.getUser(state);
+
+      return this.friendsService.getFriends(userData.email)
+        .map((data: any) => new friendsActions.GetFriendsSuccessAction(data))
+        .catch(() => of(new friendsActions.GetFriendsFailureAction()));
+    });
+
+  @Effect()
   getPendingInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_PENDING_INVITES)
     .withLatestFrom(this.store)

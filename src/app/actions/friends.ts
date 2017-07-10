@@ -7,9 +7,17 @@ export const CREATE_FRIENDSHIP         = '[Friendship] Create friendship';
 export const CREATE_FRIENDSHIP_SUCCESS = '[Friendship] Create friendship success';
 export const CREATE_FRIENDSHIP_FAILURE = '[Friendship] Create friendship failure';
 
+export const GET_FRIENDS         = '[Friendship] Get friends';
+export const GET_FRIENDS_SUCCESS = '[Friendship] Get friends success';
+export const GET_FRIENDS_FAILURE = '[Friendship] Get friends failure';
+
 export const GET_PENDING_INVITES         = '[Friendship] Get pending invites';
 export const GET_PENDING_INVITES_SUCCESS = '[Friendship] Get pending invites success';
 export const GET_PENDING_INVITES_FAILURE = '[Friendship] Get pending invites failure';
+
+export const ACCEPT_INVITE         = '[Friendship] Accept invite';
+export const ACCEPT_INVITE_SUCCESS = '[Friendship] Accept invite success';
+export const ACCEPT_INVITE_FAILURE = '[Friendship] Accept invite failure';
 
 export const GET_OUTCOME_PENDING_INVITES         = '[Friendship] Get outcome pending invites';
 export const GET_OUTCOME_PENDING_INVITES_SUCCESS = '[Friendship] Get outcome pending invites success';
@@ -35,6 +43,36 @@ export class CreateFriendshipSuccessAction implements Action {
 
 export class CreateFriendshipFailureAction implements Action {
   readonly type = CREATE_FRIENDSHIP_FAILURE;
+}
+
+export class GetFriendsAction implements Action {
+  readonly type = GET_FRIENDS;
+}
+
+export class GetFriendsSuccessAction implements Action {
+  readonly type = GET_FRIENDS_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export class GetFriendsFailureAction implements Action {
+  readonly type = GET_FRIENDS_FAILURE;
+
+  constructor(public payload?: any) { }
+}
+
+export class AcceptInviteAction implements Action {
+  readonly type = ACCEPT_INVITE;
+
+  constructor(public payload: string) { }
+}
+
+export class AcceptInviteSuccessAction implements Action {
+  readonly type = ACCEPT_INVITE_SUCCESS;
+}
+
+export class AcceptInviteFailureAction implements Action {
+  readonly type = ACCEPT_INVITE_FAILURE;
 }
 
 export class GetPendingInvitesAction implements Action {
@@ -80,6 +118,12 @@ export type Actions
   | GetPendingInvitesAction
   | GetPendingInvitesSuccessAction
   | GetPendingInvitesFailureAction
+  | AcceptInviteAction
+  | AcceptInviteSuccessAction
+  | AcceptInviteFailureAction
+  | GetFriendsAction
+  | GetFriendsSuccessAction
+  | GetFriendsFailureAction
   | GetOutcomePendingInvitesAction
   | GetOutcomePendingInvitesSuccessAction
   | GetOutcomePendingInvitesFailureAction;

@@ -55,14 +55,14 @@ export class FriendsComponent {
     public dialog: MdDialog,
     public store: Store<fromRoot.State>,
     ) {
+    this.friends$ = store.select(fromRoot.getFriends);
     this.outcomePendingInvites$ = store.select(fromRoot.getPendingOutcomeInvites);
-    this.outcomePendingInvites$
-      .subscribe(next => console.log('', next));
 
     store.select(fromRoot.getIsLoggedIn)
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {
           store.dispatch(new friendsActions.GetOutcomePendingInvitesAction());
+          store.dispatch(new friendsActions.GetFriendsAction());
         }
       });
   }

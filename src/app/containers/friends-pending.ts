@@ -37,5 +37,6 @@ export class FriendsPendingComponent {
   }
 
   onAccept(event: any) {
+    this.store.dispatch(new friendsActions.AcceptInviteAction(event.email));
   }
 }

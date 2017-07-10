@@ -10,13 +10,10 @@ export class FriendsService {
 
   sendInvite(possibleFriendEmail: string,
              userData: User) {
-    console.log(userData, possibleFriendEmail);
-
     return new Observable(observer => {
-      this.getDbRef()
+      this.getEventsDbRef()
         .push({
           action: 'CREATE_FRIENDSHIP',
-          status: 'PENDING', // must be moved to backend functions (server-side logic)
           from: userData.email,
           to: possibleFriendEmail
         })
@@ -27,8 +24,56 @@ export class FriendsService {
     });
   }
 
+  acceptInvite(friendEmail: string,
+               userData: User) {
+    return new Observable(observer => {
+      this.getEventsDbRef()
+        .push({
+          action: 'ACCEPT_FRIENDSHIP',
+          friend_one: friendEmail,
+          friend_two: userData.email
+        })
+        .then(() => {
+          observer.next();
+          observer.complete();
+        });
+    });
+  }
+
+  rejectInvite(friendEmail: string,
+               userData: User) {
+    return new Observable(observer => {
+      this.getEventsDbRef()
+        .push({
+          action: 'REJECT_FRIENDSHIP',
+          friend_one: friendEmail,
+          friend_two: userData.email
+        })
+        .then(() => {
+          observer.next();
+          observer.complete();
+        });
+    });
+  }
+
+  stopFriendship(friendEmail: string,
+               userData: User) {
+    return new Observable(observer => {
+      this.getEventsDbRef()
+        .push({
+          action: 'STOP_FRIENDSHIP',
+          friend_one: friendEmail,
+          friend_two: userData.email
+        })
+        .then(() => {
+          observer.next();
+          observer.complete();
+        });
+    });
+  }
+
   getPendingInvites(currentUserEmail: string) {
-    return this.getDbRef({
+    return this.getGetterDbRef({
       query: {
         orderByChild: 'to',
         equalTo: currentUserEmail
@@ -41,7 +86,7 @@ export class FriendsService {
   }
 
   getOutcomePendingInvites(currentUserEmail: string) {
-    return this.getDbRef({
+    return this.getGetterDbRef({
       query: {
         orderByChild: 'from',
         equalTo: currentUserEmail
@@ -54,7 +99,7 @@ export class FriendsService {
   }
 
   getRejectedInvites(currentUserEmail: string): Observable<any> {
-    return this.getDbRef({
+    return this.getGetterDbRef({
       query: {
         orderByChild: 'to',
         equalTo: currentUserEmail
@@ -67,7 +112,7 @@ export class FriendsService {
   }
 
   getFriends(currentUserEmail: string): Observable<any> {
-    return this.getDbRef({
+    return this.getGetterDbRef({
       query: {
         orderByChild: 'to',
         equalTo: currentUserEmail
@@ -79,8 +124,12 @@ export class FriendsService {
       .take(1);
   }
 
-  private getDbRef(query = {}) {
+  private getEventsDbRef(query = {}) {
     return this.db.list(`${this.API_EVENTS_PATH}`, query);
+  }
+
+  private getGetterDbRef(query = {}) {
+    return this.db.list(`${this.API_GETTER_PATH}`, query);
   }
 
   constructor(private db: AngularFireDatabase) {
