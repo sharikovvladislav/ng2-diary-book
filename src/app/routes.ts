@@ -6,6 +6,7 @@ import { ViewBookPageComponent } from './containers/view-book-page';
 import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
+import { FriendsComponent } from './containers/friends';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'diary/my-dairy',
     component: MyDairyPageComponent
+  },
+  {
+    path: 'friends',
+    component: FriendsComponent
   },
   {
     path: 'book/collection',

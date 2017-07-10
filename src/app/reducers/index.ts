@@ -43,6 +43,7 @@ import * as fromCollection from './collection';
 import * as fromLayout from './layout';
 import * as fromUser from './user';
 import * as fromDiary from './diary';
+import * as fromFriends from './friends';
 
 
 /**
@@ -57,6 +58,7 @@ export interface State {
   router: fromRouter.RouterState;
   user: fromUser.State;
   diary: fromDiary.State;
+  friends: fromFriends.State;
 }
 
 
@@ -75,6 +77,7 @@ const reducers = {
   router: fromRouter.routerReducer,
   user: fromUser.reducer,
   diary: fromDiary.reducer,
+  friends: fromFriends.reducer,
 };
 
 const developmentReducer: ActionReducer<State> = compose(storeFreeze, combineReducers)(reducers);
@@ -176,3 +179,13 @@ export const getUid = createSelector(getUserState, fromUser.getUid);
  */
 export const getDiaryState = (state: State) => state.diary;
 export const getEntries = createSelector(getDiaryState, fromDiary.getEntries);
+
+/**
+ * Friends reducers
+ */
+
+export const getFriendsState = (state: State) => state.friends;
+export const getFriends = createSelector(getFriendsState, fromFriends.getFriends);
+export const getPendingFriends = createSelector(getFriendsState, fromFriends.getPendingInvites);
+export const getPendingOutcomeInvites = createSelector(getFriendsState, fromFriends.getPendingOutcomeInvites);
+export const getRejectedFriends = createSelector(getFriendsState, fromFriends.getRejectedInvites);
