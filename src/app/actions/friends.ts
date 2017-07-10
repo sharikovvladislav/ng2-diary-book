@@ -15,6 +15,10 @@ export const GET_PENDING_INVITES         = '[Friendship] Get pending invites';
 export const GET_PENDING_INVITES_SUCCESS = '[Friendship] Get pending invites success';
 export const GET_PENDING_INVITES_FAILURE = '[Friendship] Get pending invites failure';
 
+export const GET_REJECTED_INVITES         = '[Friendship] Get rejected invites';
+export const GET_REJECTED_INVITES_SUCCESS = '[Friendship] Get rejected invites success';
+export const GET_REJECTED_INVITES_FAILURE = '[Friendship] Get rejected invites failure';
+
 export const ACCEPT_INVITE         = '[Friendship] Accept invite';
 export const ACCEPT_INVITE_SUCCESS = '[Friendship] Accept invite success';
 export const ACCEPT_INVITE_FAILURE = '[Friendship] Accept invite failure';
@@ -91,6 +95,22 @@ export class GetPendingInvitesFailureAction implements Action {
   constructor(public payload: any) { }
 }
 
+export class GetRejectedInvitesAction implements Action {
+  readonly type = GET_REJECTED_INVITES;
+}
+
+export class GetRejectedInvitesSuccessAction implements Action {
+  readonly type = GET_REJECTED_INVITES_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export class GetRejectedInvitesFailureAction implements Action {
+  readonly type = GET_REJECTED_INVITES_FAILURE;
+
+  constructor(public payload?: any) { }
+}
+
 export class GetOutcomePendingInvitesAction implements Action {
   readonly type = GET_OUTCOME_PENDING_INVITES;
 }
@@ -118,6 +138,9 @@ export type Actions
   | GetPendingInvitesAction
   | GetPendingInvitesSuccessAction
   | GetPendingInvitesFailureAction
+  | GetRejectedInvitesAction
+  | GetRejectedInvitesSuccessAction
+  | GetRejectedInvitesFailureAction
   | AcceptInviteAction
   | AcceptInviteSuccessAction
   | AcceptInviteFailureAction

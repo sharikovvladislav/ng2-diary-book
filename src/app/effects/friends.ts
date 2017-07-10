@@ -105,6 +105,22 @@ export class FriendsEffects {
         });
     });
 
+  @Effect()
+  getRejectedInvites$: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_REJECTED_INVITES)
+    .withLatestFrom(this.store)
+    .switchMap(([action, state]) => {
+      const { email } = fromRoot.getUser(state);
+
+      return this.friendsService.getRejectedInvites(email)
+        .map((data: any) => {
+          return new friendsActions.GetRejectedInvitesSuccessAction(data);
+        })
+        .catch(() => {
+          return of(new friendsActions.GetRejectedInvitesFailureAction());
+        });
+    });
+
     constructor(
       private actions$: Actions,
       private friendsService: FriendsService,

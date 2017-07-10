@@ -5,11 +5,16 @@ import { Friend } from '../models/friend';
   selector: 'friends-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <div *ngFor="let friend of friends">
-      <span>Name:&nbsp;</span><span>{{friend.name}}</span>
-      <span>E-mail:&nbsp;</span><span>{{friend.email}}</span>
-      <div *ngIf="isPendingMode">
-        <button md-button (click)="accept.emit(friend)">Accept</button>
+    <div *ngIf="friends.length === 0">
+      List is empty
+    </div>
+    <div *ngIf="friends.length > 0">
+      <div *ngFor="let friend of friends">
+        <span>Name:&nbsp;</span><span>{{friend.name}}</span>
+        <span>E-mail:&nbsp;</span><span>{{friend.email}}</span>
+        <div *ngIf="isPendingMode">
+          <button md-button (click)="accept.emit(friend)">Accept</button>
+        </div>
       </div>
     </div>
   `,

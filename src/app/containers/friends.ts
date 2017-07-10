@@ -57,12 +57,14 @@ export class FriendsComponent {
     ) {
     this.friends$ = store.select(fromRoot.getFriends);
     this.outcomePendingInvites$ = store.select(fromRoot.getPendingOutcomeInvites);
+    this.rejectedInvites$ = store.select(fromRoot.getRejectedFriends);
 
     store.select(fromRoot.getIsLoggedIn)
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {
           store.dispatch(new friendsActions.GetOutcomePendingInvitesAction());
           store.dispatch(new friendsActions.GetFriendsAction());
+          store.dispatch(new friendsActions.GetRejectedInvitesAction());
         }
       });
   }

@@ -38,6 +38,16 @@ export function reducer(state = initialState, action: friendsActions.Actions): S
       };
     }
 
+    case friendsActions.GET_REJECTED_INVITES_SUCCESS: {
+      return {
+        ...state,
+        rejectedInvites: action.payload.map((invite: any) => ({
+          email: invite.from,
+          name: 'some name'
+        }))
+      };
+    }
+
     case friendsActions.GET_OUTCOME_PENDING_INVITES_SUCCESS: {
       return {
         ...state,
