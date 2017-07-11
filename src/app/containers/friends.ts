@@ -20,25 +20,28 @@ import { AddFriendDialogComponent } from './add-friend-dialog';
       <md-tab-group>
         <md-tab>
           <ng-template md-tab-label>
-            Friends list
+            Friends list [{{(friends$ | async).length}}]
           </ng-template>
           <friends-list [friends]="friends$ | async"></friends-list>
         </md-tab>
         <md-tab>
           <ng-template md-tab-label>
-            Rejected invites
+            Rejected invites [{{(rejectedInvites$ | async).length}}]
           </ng-template>
           <friends-list [friends]="rejectedInvites$ | async"></friends-list>
         </md-tab>
         <md-tab>
           <ng-template md-tab-label>
-            Pending invites
+            Pending invites [{{(pendingFriends$ | async).length}}]
           </ng-template>
-          <friends-pending-container></friends-pending-container>
-        </md-tab>
+          <friends-list
+            [friends]="pendingFriends$ | async"
+            [isPendingMode]="true"
+            (accept)="onAccept($event)"
+          ></friends-list>        </md-tab>
         <md-tab>
           <ng-template md-tab-label>
-            Pending invites outcome
+            Pending invites outcome [{{(outcomePendingInvites$ | async).length}}]
           </ng-template>
           <friends-list [friends]="outcomePendingInvites$ | async"></friends-list>
         </md-tab>
@@ -50,6 +53,7 @@ export class FriendsComponent {
   friends$: Observable<Friend[]>;
   rejectedInvites$: Observable<Friend[]>;
   outcomePendingInvites$: Observable<Friend[]>;
+  pendingFriends$: Observable<Friend[]>;
 
   constructor(
     public dialog: MdDialog,
@@ -58,18 +62,21 @@ export class FriendsComponent {
     this.friends$ = store.select(fromRoot.getFriends);
     this.outcomePendingInvites$ = store.select(fromRoot.getPendingOutcomeInvites);
     this.rejectedInvites$ = store.select(fromRoot.getRejectedFriends);
+    this.pendingFriends$ = store.select(fromRoot.getPendingFriends);
 
     store.select(fromRoot.getIsLoggedIn)
       .subscribe((isLoggedIn) => {
         if (isLoggedIn) {
-          store.dispatch(new friendsActions.GetOutcomePendingInvitesAction());
-          store.dispatch(new friendsActions.GetFriendsAction());
-          store.dispatch(new friendsActions.GetRejectedInvitesAction());
+          store.dispatch(new friendsActions.GetAllListsAction());
         }
       });
   }
 
   onAddFriendClick() {
     this.dialog.open(AddFriendDialogComponent);
+  }
+
+  onAccept(event: any) {
+    this.store.dispatch(new friendsActions.AcceptInviteAction(event.email));
   }
 }
