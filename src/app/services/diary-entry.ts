@@ -22,7 +22,7 @@ export class DiaryEntryService {
 
   retrieveEntries(uid: string): Observable<DiaryEntry[]> {
     return this.getDbRef(uid)
-      .map((res) => res || [])
+      .map((res) => (res || []).reverse())
       .take(1);
   }
 
@@ -50,7 +50,7 @@ export class DiaryEntryService {
     });
   }
 
-  private getDbRef(uid: string) {
-    return this.db.list(`/${this.API_PATH}/${uid}`);
+  private getDbRef(uid: string, additionalParams = {}) {
+    return this.db.list(`/${this.API_PATH}/${uid}`, additionalParams);
   }
 }
