@@ -40,3 +40,4 @@ export function reducer(state = initialState, action: user.Actions): State {
 export const getUser = (state: State) => state.user;
 export const isLoggedIn = (state: State) => state.user !== null;
 export const getUid = (state: State) => state.user.uid;
+export const getToken = (state: State) => state.user.token;

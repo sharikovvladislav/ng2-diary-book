@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class FriendsService {
@@ -132,6 +133,6 @@ export class FriendsService {
     return this.db.list(`${this.API_GETTER_PATH}`, query);
   }
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private http: HttpClient) {
   }
 }

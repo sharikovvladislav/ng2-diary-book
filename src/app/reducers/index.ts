@@ -173,6 +173,7 @@ export const getUserState = (state: State) => state.user;
 export const getUser = createSelector(getUserState, fromUser.getUser);
 export const getIsLoggedIn = createSelector(getUserState, fromUser.isLoggedIn);
 export const getUid = createSelector(getUserState, fromUser.getUid);
+export const getUserToken = createSelector(getUserState, fromUser.getToken);
 
 /**
  * Diary Reducers

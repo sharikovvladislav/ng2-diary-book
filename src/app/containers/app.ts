@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/let';
-import {Observable} from 'rxjs/Observable';
-import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
-import {Store} from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../reducers';
 import * as layout from '../actions/layout';
@@ -9,7 +9,6 @@ import * as user from '../actions/user';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-
 
 @Component({
   selector: 'bc-app',
@@ -54,12 +53,16 @@ export class AppComponent implements OnInit {
     this.user$
       .subscribe((providerData: any) => {
         if (providerData !== null) {
-          const userData = {
-            displayName: providerData.displayName,
-            email: providerData.email,
-            uid: providerData.uid
-          };
-          this.store.dispatch(new user.LoadUserAction(userData));
+          providerData.getIdToken(true)
+            .then((token) => {
+              const userData = {
+                token: token,
+                displayName: providerData.displayName,
+                email: providerData.email,
+                uid: providerData.uid
+              };
+              this.store.dispatch(new user.LoadUserAction(userData));
+            });
         } else {
           this.store.dispatch(new user.UnloadUserAction());
         }

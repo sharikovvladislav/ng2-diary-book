@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +36,10 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptor } from './core/inteceptors';
+
 import { GoogleBooksService } from './services/google-books';
 import { DiaryEntryService } from './services/diary-entry';
 import { DiaryProcessorService } from './services/diary-processor';
@@ -57,7 +61,7 @@ import { FriendsEffects } from './effects/friends';
     BrowserAnimationsModule,
     MaterialModule,
     ComponentsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -124,6 +128,11 @@ import { FriendsEffects } from './effects/friends';
     AddFriendDialogComponent,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     BookExistsGuard,
     GoogleBooksService,
     DiaryEntryService,
