@@ -22,7 +22,11 @@ import { AddFriendDialogComponent } from './add-friend-dialog';
           <ng-template md-tab-label>
             Friends list [{{(friends$ | async).length}}]
           </ng-template>
-          <friends-list [friends]="friends$ | async"></friends-list>
+          <friends-list
+            [friends]="friends$ | async"
+            [isGoToDiaries]="true"
+            (goToDiary)="goToDiary($event)"
+          ></friends-list>
         </md-tab>
         <md-tab>
           <ng-template md-tab-label>
@@ -38,7 +42,8 @@ import { AddFriendDialogComponent } from './add-friend-dialog';
             [friends]="pendingFriends$ | async"
             [isPendingMode]="true"
             (accept)="onAccept($event)"
-          ></friends-list>        </md-tab>
+          ></friends-list>
+        </md-tab>
         <md-tab>
           <ng-template md-tab-label>
             Pending invites outcome [{{(outcomePendingInvites$ | async).length}}]
@@ -78,5 +83,9 @@ export class FriendsComponent {
 
   onAccept(event: any) {
     this.store.dispatch(new friendsActions.AcceptInviteAction(event.email));
+  }
+
+  goToDiary(friendId: number) {
+    // change route state
   }
 }

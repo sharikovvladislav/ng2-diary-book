@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
 import { Friend } from '../models/friend';
+import { DiaryEntry } from '../models/diary-entry';
 
 @Component({
   selector: 'friends-list',
@@ -15,6 +16,9 @@ import { Friend } from '../models/friend';
         <div *ngIf="isPendingMode">
           <button md-button (click)="accept.emit(friend)">Accept</button>
         </div>
+        <div *ngIf="isGoToDiaries">
+          <button md-button (click)="goToDiary.emit(friend)">Go to diary</button>
+        </div>
       </div>
     </div>
   `,
@@ -29,6 +33,8 @@ export class FriendsListComponent {
   @Input() friends: Friend[];
   @Input() isPendingMode: Boolean = false;
   @Output() accept = new EventEmitter<Friend>();
+  @Input() isGoToDiaries: Boolean = false;
+  @Output() goToDiary = new EventEmitter<number>();
 
   constructor() {
   }
