@@ -26,6 +26,10 @@ export const GET_OUTCOME_PENDING_INVITES         = '[Friendship] Get outcome pen
 export const GET_OUTCOME_PENDING_INVITES_SUCCESS = '[Friendship] Get outcome pending invites success';
 export const GET_OUTCOME_PENDING_INVITES_FAILURE = '[Friendship] Get outcome pending invites failure';
 
+export const GET_FRIEND_DIARY_ENTRIES         = '[Diary entries] Get friend diary entries';
+export const GET_FRIEND_DIARY_ENTRIES_SUCCESS = '[Diary entries] Get friend diary entries success';
+export const GET_FRIEND_DIARY_ENTRIES_FAILURE = '[Diary entries] Get friend diary entries failure';
+
 
 /**
  * Every action is comprised of at least a type and an optional
@@ -130,6 +134,24 @@ export class GetOutcomePendingInvitesFailureAction implements Action {
   constructor(public payload: any) { }
 }
 
+export class GetFriendDiaryEntriesAction implements Action {
+  readonly type = GET_FRIEND_DIARY_ENTRIES;
+
+  constructor(public payload: string) { }
+}
+
+export class GetFriendDiaryEntriesSuccessAction implements Action {
+  readonly type = GET_FRIEND_DIARY_ENTRIES_SUCCESS;
+
+  constructor(public payload: any) { }
+}
+
+export class GetFriendDiaryEntriesFailureAction implements Action {
+  readonly type = GET_FRIEND_DIARY_ENTRIES_FAILURE;
+
+  constructor(public payload: any) { }
+}
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
@@ -150,6 +172,9 @@ export type Actions
   | GetFriendsAction
   | GetFriendsSuccessAction
   | GetFriendsFailureAction
+  | GetFriendDiaryEntriesAction
+  | GetFriendDiaryEntriesSuccessAction
+  | GetFriendDiaryEntriesFailureAction
   | GetOutcomePendingInvitesAction
   | GetOutcomePendingInvitesSuccessAction
   | GetOutcomePendingInvitesFailureAction;

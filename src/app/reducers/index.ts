@@ -190,3 +190,4 @@ export const getFriends = createSelector(getFriendsState, fromFriends.getFriends
 export const getPendingFriends = createSelector(getFriendsState, fromFriends.getPendingInvites);
 export const getPendingOutcomeInvites = createSelector(getFriendsState, fromFriends.getPendingOutcomeInvites);
 export const getRejectedFriends = createSelector(getFriendsState, fromFriends.getRejectedInvites);
+export const getFriendDiaryEntries = createSelector(getFriendsState, fromFriends.getFriendDiaryEntries);

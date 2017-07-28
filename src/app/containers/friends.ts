@@ -10,6 +10,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 
 import { Friend } from '../models/friend';
 import { AddFriendDialogComponent } from './add-friend-dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'friends-container',
@@ -63,6 +64,7 @@ export class FriendsComponent {
   constructor(
     public dialog: MdDialog,
     public store: Store<fromRoot.State>,
+    private router: Router,
     ) {
     this.friends$ = store.select(fromRoot.getFriends);
     this.outcomePendingInvites$ = store.select(fromRoot.getPendingOutcomeInvites);
@@ -85,7 +87,7 @@ export class FriendsComponent {
     this.store.dispatch(new friendsActions.AcceptInviteAction(email));
   }
 
-  goToDiary(friendId: number) {
-    // change route state
+  goToDiary(friend: any) {
+    this.router.navigate(['/friends/diaryEntries', friend.uid]);
   }
 }

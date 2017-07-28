@@ -56,6 +56,7 @@ export class AppComponent implements OnInit {
         if (providerData !== null) {
           providerData.getIdToken(true)
             .then((token: string) => {
+              console.log(token);
               const userData = {
                 token: token,
                 displayName: providerData.displayName,

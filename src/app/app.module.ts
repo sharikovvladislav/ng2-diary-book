@@ -28,6 +28,7 @@ import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { FriendsComponent } from './containers/friends';
+import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
 
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
 import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
@@ -126,6 +127,7 @@ import { FriendsEffects } from './effects/friends';
     EntryCreateDialogComponent,
     FriendsComponent,
     AddFriendDialogComponent,
+    FriendDiaryEntriesComponent,
   ],
   providers: [
     {

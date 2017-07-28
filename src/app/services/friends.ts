@@ -73,8 +73,8 @@ export class FriendsService {
     return this.http.get(`${this.API_REST_URL}friends`);
   }
 
-  try() {
-    return this.http.get('https://us-central1-diary-app-1fa1b.cloudfunctions.net/app/hello');
+  getFriendEntries(friendUid: string): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}friends/diaryEntries/${friendUid}`);
   }
 
   private getEventsDbRef(query = {}) {

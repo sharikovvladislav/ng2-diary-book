@@ -17,6 +17,7 @@ import * as fromRoot from '../reducers';
 
 import * as friendsActions from '../actions/friends';
 import { FriendsService } from '../services/friends';
+import { DiaryEntry } from '../models/diary-entry';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -78,6 +79,15 @@ export class FriendsEffects {
     });
 
   @Effect()
+  getFriendDiaryEntries: Observable<Action> = this.actions$
+    .ofType(friendsActions.GET_FRIEND_DIARY_ENTRIES)
+    .switchMap((action: any) => {
+      return this.friendsService.getFriendEntries(action.payload)
+        .map((diaryEntries: DiaryEntry[]) => new friendsActions.GetFriendDiaryEntriesSuccessAction(diaryEntries))
+        .catch(() => of(new friendsActions.GetFriendDiaryEntriesSuccessAction(([]))));
+    });
+
+  @Effect()
   getPendingInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_PENDING_INVITES)
     .withLatestFrom(this.store)
@@ -96,17 +106,10 @@ export class FriendsEffects {
   @Effect()
   getOutcomePendingInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_OUTCOME_PENDING_INVITES)
-    .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const { email } = fromRoot.getUser(state);
-
+    .switchMap(() => {
       return this.friendsService.getOutcomePendingInvites()
-        .map((data: any) => {
-          return new friendsActions.GetOutcomePendingInvitesSuccessAction(data);
-        })
-        .catch((kek) => {
-          return of(new friendsActions.GetOutcomePendingInvitesFailureAction(null));
-        });
+        .map((data: any) => new friendsActions.GetOutcomePendingInvitesSuccessAction(data))
+        .catch(() => of(new friendsActions.GetOutcomePendingInvitesFailureAction(null)));
     });
 
   @Effect()
