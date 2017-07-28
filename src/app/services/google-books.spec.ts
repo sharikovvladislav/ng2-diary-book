@@ -21,10 +21,10 @@ describe('Service: GoogleBooks', () => {
     GoogleBooksService,
     HttpTestingController], (
       googleBooksService: GoogleBooksService,
-      _httpMock: HttpTestingController
+      httpTestingController: HttpTestingController
   ) => {
     service = googleBooksService;
-    httpMock = _httpMock;
+    httpMock = httpTestingController;
   }));
 
   const data = {
