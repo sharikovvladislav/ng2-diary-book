@@ -81,8 +81,8 @@ export class FriendsComponent {
     this.dialog.open(AddFriendDialogComponent);
   }
 
-  onAccept(event: any) {
-    this.store.dispatch(new friendsActions.AcceptInviteAction(event.email));
+  onAccept(email: string) {
+    this.store.dispatch(new friendsActions.AcceptInviteAction(email));
   }
 
   goToDiary(friendId: number) {

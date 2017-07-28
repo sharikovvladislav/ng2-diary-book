@@ -3,46 +3,29 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class FriendsService {
   private API_EVENTS_PATH = '/events/friendship';
   private API_GETTER_PATH = '/friendship';
+  private API_REST_URL = environment.firebase.restURL;
 
-  sendInvite(possibleFriendEmail: string,
-             userData: User) {
-    return new Observable(observer => {
-      this.getEventsDbRef()
-        .push({
-          action: 'CREATE_FRIENDSHIP',
-          from: userData.email,
-          to: possibleFriendEmail
-        })
-        .then(() => {
-          observer.next();
-          observer.complete();
-        });
+  sendInvite(possibleFriendEmail: string) {
+    return this.http.post(`${this.API_REST_URL}friends/createFriendship`, {
+      targetEmail: possibleFriendEmail
     });
   }
 
-  acceptInvite(friendEmail: string,
-               userData: User) {
-    return new Observable(observer => {
-      this.getEventsDbRef()
-        .push({
-          action: 'ACCEPT_FRIENDSHIP',
-          friend_one: friendEmail,
-          friend_two: userData.email
-        })
-        .then(() => {
-          observer.next();
-          observer.complete();
-        });
+  acceptInvite(friendEmail: string) {
+    return this.http.put(`${this.API_REST_URL}friends`, {
+      targetEmail: friendEmail
     });
   }
 
   rejectInvite(friendEmail: string,
                userData: User) {
+    // FIXME сделать
     return new Observable(observer => {
       this.getEventsDbRef()
         .push({
@@ -59,6 +42,7 @@ export class FriendsService {
 
   stopFriendship(friendEmail: string,
                userData: User) {
+    // Сделать
     return new Observable(observer => {
       this.getEventsDbRef()
         .push({
@@ -74,55 +58,23 @@ export class FriendsService {
   }
 
   getPendingInvites(currentUserEmail: string) {
-    return this.getGetterDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'PENDING') || [];
-      })
-      .take(1);
+    return this.http.get(`${this.API_REST_URL}pendingFriends`);
   }
 
-  getOutcomePendingInvites(currentUserEmail: string) {
-    return this.getGetterDbRef({
-      query: {
-        orderByChild: 'from',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'PENDING') || [];
-      })
-      .take(1);
+  getOutcomePendingInvites() {
+    return this.http.get(`${this.API_REST_URL}pendingOutcomeFriends`);
   }
 
-  getRejectedInvites(currentUserEmail: string): Observable<any> {
-    return this.getGetterDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'REJECTED') || [];
-      })
-      .take(1);
+  getRejectedInvites(): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}rejectedInvites`);
   }
 
-  getFriends(currentUserEmail: string): Observable<any> {
-    return this.getGetterDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'ACCEPTED') || [];
-      })
-      .take(1);
+  getFriends(): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}friends`);
+  }
+
+  try() {
+    return this.http.get('https://us-central1-diary-app-1fa1b.cloudfunctions.net/app/hello');
   }
 
   private getEventsDbRef(query = {}) {

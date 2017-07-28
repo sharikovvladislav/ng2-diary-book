@@ -11,10 +11,10 @@ import { DiaryEntry } from '../models/diary-entry';
     </div>
     <div *ngIf="friends.length > 0">
       <div *ngFor="let friend of friends">
-        <span>Name:&nbsp;</span><span>{{friend.name}}</span>
+        <span>Name:&nbsp;</span><span>{{friend.displayName}}</span>
         <span>E-mail:&nbsp;</span><span>{{friend.email}}</span>
         <div *ngIf="isPendingMode">
-          <button md-button (click)="accept.emit(friend)">Accept</button>
+          <button md-button (click)="accept.emit(friend.email)">Accept</button>
         </div>
         <div *ngIf="isGoToDiaries">
           <button md-button (click)="goToDiary.emit(friend)">Go to diary</button>
@@ -31,8 +31,10 @@ import { DiaryEntry } from '../models/diary-entry';
 
 export class FriendsListComponent {
   @Input() friends: Friend[];
+
   @Input() isPendingMode: Boolean = false;
-  @Output() accept = new EventEmitter<Friend>();
+  @Output() accept = new EventEmitter<string>();
+
   @Input() isGoToDiaries: Boolean = false;
   @Output() goToDiary = new EventEmitter<number>();
 

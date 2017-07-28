@@ -50,11 +50,8 @@ export class FriendsEffects {
   @Effect()
   add$: Observable<Action> = this.actions$
     .ofType(friendsActions.CREATE_FRIENDSHIP)
-    .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const userData = fromRoot.getUser(state);
-
-      return this.friendsService.sendInvite(action.payload, userData)
+    .switchMap((action: any) => {
+      return this.friendsService.sendInvite(action.payload)
         .map((data: any) => new friendsActions.CreateFriendshipSuccessAction())
         .catch(() => of(new friendsActions.CreateFriendshipFailureAction()));
     });
@@ -62,11 +59,8 @@ export class FriendsEffects {
   @Effect()
   acceptInvite$: Observable<Action> = this.actions$
     .ofType(friendsActions.ACCEPT_INVITE)
-    .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const userData = fromRoot.getUser(state);
-
-      return this.friendsService.acceptInvite(action.payload, userData)
+    .switchMap((action: any) => {
+      return this.friendsService.acceptInvite(action.payload)
         .mergeMap(() => from([
           new friendsActions.AcceptInviteSuccessAction(),
           new friendsActions.GetAllListsAction(),
@@ -77,11 +71,8 @@ export class FriendsEffects {
   @Effect()
   getFriends$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_FRIENDS)
-    .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const userData = fromRoot.getUser(state);
-
-      return this.friendsService.getFriends(userData.email)
+    .switchMap(() => {
+      return this.friendsService.getFriends()
         .map((data: any) => new friendsActions.GetFriendsSuccessAction(data))
         .catch(() => of(new friendsActions.GetFriendsFailureAction()));
     });
@@ -109,7 +100,7 @@ export class FriendsEffects {
     .switchMap(([action, state]) => {
       const { email } = fromRoot.getUser(state);
 
-      return this.friendsService.getOutcomePendingInvites(email)
+      return this.friendsService.getOutcomePendingInvites()
         .map((data: any) => {
           return new friendsActions.GetOutcomePendingInvitesSuccessAction(data);
         })
@@ -121,11 +112,8 @@ export class FriendsEffects {
   @Effect()
   getRejectedInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_REJECTED_INVITES)
-    .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const { email } = fromRoot.getUser(state);
-
-      return this.friendsService.getRejectedInvites(email)
+    .switchMap(() => {
+      return this.friendsService.getRejectedInvites()
         .map((data: any) => {
           return new friendsActions.GetRejectedInvitesSuccessAction(data);
         })

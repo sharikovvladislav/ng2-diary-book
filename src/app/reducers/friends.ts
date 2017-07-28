@@ -21,40 +21,28 @@ export function reducer(state = initialState, action: friendsActions.Actions): S
     case friendsActions.GET_PENDING_INVITES_SUCCESS: {
       return {
         ...state,
-        pendingInvites: action.payload.map((invite: any) => ({
-          email: invite.from,
-          name: 'some name'
-        }))
+        pendingInvites: action.payload.items
       };
     }
 
     case friendsActions.GET_FRIENDS_SUCCESS: {
       return {
         ...state,
-        friends: action.payload.map((invite: any) => ({
-          email: invite.from,
-          name: 'some name'
-        }))
+        friends: action.payload.items
       };
     }
 
     case friendsActions.GET_REJECTED_INVITES_SUCCESS: {
       return {
         ...state,
-        rejectedInvites: action.payload.map((invite: any) => ({
-          email: invite.from,
-          name: 'some name'
-        }))
+        rejectedInvites: action.payload.items
       };
     }
 
     case friendsActions.GET_OUTCOME_PENDING_INVITES_SUCCESS: {
       return {
         ...state,
-        pendingOutcomeInvites: action.payload.map((invite: any) => ({
-          email: invite.to,
-          name: 'some name'
-        }))
+        pendingOutcomeInvites: action.payload.items
       };
     }
 

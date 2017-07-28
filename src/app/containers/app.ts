@@ -9,6 +9,7 @@ import * as user from '../actions/user';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { FriendsService } from '../services/friends';
 
 @Component({
   selector: 'bc-app',
@@ -54,7 +55,7 @@ export class AppComponent implements OnInit {
       .subscribe((providerData: any) => {
         if (providerData !== null) {
           providerData.getIdToken(true)
-            .then((token) => {
+            .then((token: string) => {
               const userData = {
                 token: token,
                 displayName: providerData.displayName,
@@ -69,7 +70,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  constructor(private store: Store<fromRoot.State>, public afAuth: AngularFireAuth) {
+  constructor(private store: Store<fromRoot.State>, public afAuth: AngularFireAuth, private friendsService: FriendsService) {
     /**
      * Selectors can be applied with the `select` operator which passes the state
      * tree to the provided selector
