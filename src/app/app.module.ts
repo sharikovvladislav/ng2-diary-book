@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,7 +28,7 @@ import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { FriendsComponent } from './containers/friends';
-import { FriendsPendingComponent } from './containers/friends-pending';
+import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
 
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
 import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
@@ -36,6 +36,10 @@ import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+import { AuthInterceptor } from './core/inteceptors';
 
 import { GoogleBooksService } from './services/google-books';
 import { DiaryEntryService } from './services/diary-entry';
@@ -58,7 +62,7 @@ import { FriendsEffects } from './effects/friends';
     BrowserAnimationsModule,
     MaterialModule,
     ComponentsModule,
-    HttpModule,
+    HttpClientModule,
     RouterModule.forRoot(routes, { useHash: true }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -122,10 +126,15 @@ import { FriendsEffects } from './effects/friends';
     EntryEditDialogComponent,
     EntryCreateDialogComponent,
     FriendsComponent,
-    FriendsPendingComponent,
     AddFriendDialogComponent,
+    FriendDiaryEntriesComponent,
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
     BookExistsGuard,
     GoogleBooksService,
     DiaryEntryService,

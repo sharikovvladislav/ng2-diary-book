@@ -7,6 +7,7 @@ import { CollectionPageComponent } from './containers/collection-page';
 import { NotFoundPageComponent } from './containers/not-found-page';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { FriendsComponent } from './containers/friends';
+import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
 
 export const routes: Routes = [
   {
@@ -20,6 +21,10 @@ export const routes: Routes = [
   {
     path: 'friends',
     component: FriendsComponent
+  },
+  {
+    path: 'friends/diaryEntries/:friendUid',
+    component: FriendDiaryEntriesComponent
   },
   {
     path: 'book/collection',

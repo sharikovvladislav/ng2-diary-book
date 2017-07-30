@@ -2,23 +2,53 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { User } from '../models/user';
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class FriendsService {
   private API_EVENTS_PATH = '/events/friendship';
   private API_GETTER_PATH = '/friendship';
+  private API_REST_URL = environment.firebase.restURL;
 
-  sendInvite(possibleFriendEmail: string,
-             userData: User) {
-    console.log(userData, possibleFriendEmail);
+  sendInvite(possibleFriendEmail: string) {
+    return this.http.post(`${this.API_REST_URL}friends/createFriendship`, {
+      targetEmail: possibleFriendEmail
+    });
+  }
 
+  acceptInvite(friendEmail: string) {
+    return this.http.put(`${this.API_REST_URL}friends`, {
+      targetEmail: friendEmail
+    });
+  }
+
+  rejectInvite(friendEmail: string,
+               userData: User) {
+    // FIXME сделать
     return new Observable(observer => {
-      this.getDbRef()
+      this.getEventsDbRef()
         .push({
-          action: 'CREATE_FRIENDSHIP',
-          status: 'PENDING', // must be moved to backend functions (server-side logic)
-          from: userData.email,
-          to: possibleFriendEmail
+          action: 'REJECT_FRIENDSHIP',
+          friend_one: friendEmail,
+          friend_two: userData.email
+        })
+        .then(() => {
+          observer.next();
+          observer.complete();
+        });
+    });
+  }
+
+  stopFriendship(friendEmail: string,
+               userData: User) {
+    // Сделать
+    return new Observable(observer => {
+      this.getEventsDbRef()
+        .push({
+          action: 'STOP_FRIENDSHIP',
+          friend_one: friendEmail,
+          friend_two: userData.email
         })
         .then(() => {
           observer.next();
@@ -28,61 +58,33 @@ export class FriendsService {
   }
 
   getPendingInvites(currentUserEmail: string) {
-    return this.getDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'PENDING') || [];
-      })
-      .take(1);
+    return this.http.get(`${this.API_REST_URL}pendingFriends`);
   }
 
-  getOutcomePendingInvites(currentUserEmail: string) {
-    return this.getDbRef({
-      query: {
-        orderByChild: 'from',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'PENDING') || [];
-      })
-      .take(1);
+  getOutcomePendingInvites() {
+    return this.http.get(`${this.API_REST_URL}pendingOutcomeFriends`);
   }
 
-  getRejectedInvites(currentUserEmail: string): Observable<any> {
-    return this.getDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'REJECTED') || [];
-      })
-      .take(1);
+  getRejectedInvites(): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}rejectedInvites`);
   }
 
-  getFriends(currentUserEmail: string): Observable<any> {
-    return this.getDbRef({
-      query: {
-        orderByChild: 'to',
-        equalTo: currentUserEmail
-      }
-    })
-      .map((res) => {
-        return res.filter((invite: any) => invite.status === 'ACCEPTED') || [];
-      })
-      .take(1);
+  getFriends(): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}friends`);
   }
 
-  private getDbRef(query = {}) {
+  getFriendEntries(friendUid: string): Observable<any> {
+    return this.http.get(`${this.API_REST_URL}friends/diaryEntries/${friendUid}`);
+  }
+
+  private getEventsDbRef(query = {}) {
     return this.db.list(`${this.API_EVENTS_PATH}`, query);
   }
 
-  constructor(private db: AngularFireDatabase) {
+  private getGetterDbRef(query = {}) {
+    return this.db.list(`${this.API_GETTER_PATH}`, query);
+  }
+
+  constructor(private db: AngularFireDatabase, private http: HttpClient) {
   }
 }

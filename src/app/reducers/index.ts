@@ -173,6 +173,7 @@ export const getUserState = (state: State) => state.user;
 export const getUser = createSelector(getUserState, fromUser.getUser);
 export const getIsLoggedIn = createSelector(getUserState, fromUser.isLoggedIn);
 export const getUid = createSelector(getUserState, fromUser.getUid);
+export const getUserToken = createSelector(getUserState, fromUser.getToken);
 
 /**
  * Diary Reducers
@@ -189,3 +190,4 @@ export const getFriends = createSelector(getFriendsState, fromFriends.getFriends
 export const getPendingFriends = createSelector(getFriendsState, fromFriends.getPendingInvites);
 export const getPendingOutcomeInvites = createSelector(getFriendsState, fromFriends.getPendingOutcomeInvites);
 export const getRejectedFriends = createSelector(getFriendsState, fromFriends.getRejectedInvites);
+export const getFriendDiaryEntries = createSelector(getFriendsState, fromFriends.getFriendDiaryEntries);
