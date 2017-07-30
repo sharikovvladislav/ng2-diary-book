@@ -11,8 +11,6 @@ import * as fromRoot from '../reducers/index';
 import * as friendActions from '../actions/friends';
 
 import { DiaryEntry } from '../models/diary-entry';
-import { FriendsService } from '../services/friends';
-import { isLoggedIn } from '../reducers/user';
 
 @Component({
   selector: 'diary-page',
