@@ -16,6 +16,7 @@ import { of } from 'rxjs/observable/of';
 import * as fromRoot from '../reducers';
 
 import * as friendsActions from '../actions/friends';
+import * as layoutActions from '../actions/layout';
 import { FriendsService } from '../services/friends';
 import { DiaryEntry } from '../models/diary-entry';
 
@@ -41,6 +42,7 @@ export class FriendsEffects {
   @Effect()
   getAllLists$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_ALL_LISTS_ACTION)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .mergeMap(() => from([
       new friendsActions.GetRejectedInvitesAction(),
       new friendsActions.GetFriendsAction(),
@@ -51,45 +53,54 @@ export class FriendsEffects {
   @Effect()
   add$: Observable<Action> = this.actions$
     .ofType(friendsActions.CREATE_FRIENDSHIP)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap((action: any) => {
       return this.friendsService.sendInvite(action.payload)
         .map((data: any) => new friendsActions.CreateFriendshipSuccessAction())
-        .catch(() => of(new friendsActions.CreateFriendshipFailureAction()));
+        .catch(() => of(new friendsActions.CreateFriendshipFailureAction()))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   acceptInvite$: Observable<Action> = this.actions$
     .ofType(friendsActions.ACCEPT_INVITE)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap((action: any) => {
       return this.friendsService.acceptInvite(action.payload)
         .mergeMap(() => from([
           new friendsActions.AcceptInviteSuccessAction(),
           new friendsActions.GetAllListsAction(),
         ]))
-        .catch(() => of(new friendsActions.AcceptInviteFailureAction()));
+        .catch(() => of(new friendsActions.AcceptInviteFailureAction()))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   getFriends$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_FRIENDS)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap(() => {
       return this.friendsService.getFriends()
         .map((data: any) => new friendsActions.GetFriendsSuccessAction(data))
-        .catch(() => of(new friendsActions.GetFriendsFailureAction()));
+        .catch(() => of(new friendsActions.GetFriendsFailureAction()))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   getFriendDiaryEntries: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_FRIEND_DIARY_ENTRIES)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap((action: any) => {
       return this.friendsService.getFriendEntries(action.payload)
         .map((diaryEntries: DiaryEntry[]) => new friendsActions.GetFriendDiaryEntriesSuccessAction(diaryEntries))
-        .catch(() => of(new friendsActions.GetFriendDiaryEntriesSuccessAction(([]))));
+        .catch(() => of(new friendsActions.GetFriendDiaryEntriesSuccessAction(([]))))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   getPendingInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_PENDING_INVITES)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .withLatestFrom(this.store)
     .switchMap(([action, state]) => {
       const { email } = fromRoot.getUser(state);
@@ -98,31 +109,32 @@ export class FriendsEffects {
         .map((data: any) => {
           return new friendsActions.GetPendingInvitesSuccessAction(data);
         })
-        .catch((kek) => {
-          return of(new friendsActions.GetPendingInvitesFailureAction(null));
-        });
+        .catch(() => of(new friendsActions.GetPendingInvitesFailureAction(null)))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   getOutcomePendingInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_OUTCOME_PENDING_INVITES)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap(() => {
       return this.friendsService.getOutcomePendingInvites()
         .map((data: any) => new friendsActions.GetOutcomePendingInvitesSuccessAction(data))
-        .catch(() => of(new friendsActions.GetOutcomePendingInvitesFailureAction(null)));
+        .catch(() => of(new friendsActions.GetOutcomePendingInvitesFailureAction(null)))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
   @Effect()
   getRejectedInvites$: Observable<Action> = this.actions$
     .ofType(friendsActions.GET_REJECTED_INVITES)
+    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction()))
     .switchMap(() => {
       return this.friendsService.getRejectedInvites()
         .map((data: any) => {
           return new friendsActions.GetRejectedInvitesSuccessAction(data);
         })
-        .catch(() => {
-          return of(new friendsActions.GetRejectedInvitesFailureAction());
-        });
+        .catch(() => of(new friendsActions.GetRejectedInvitesFailureAction()))
+        .do(() => this.store.dispatch(new layoutActions.HideSpinnerAction()));
     });
 
     constructor(

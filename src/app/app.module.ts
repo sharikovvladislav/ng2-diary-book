@@ -29,6 +29,7 @@ import { EntryCreateContainerComponent } from './containers/entry-create-contain
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { FriendsComponent } from './containers/friends';
 import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
+import { LoaderComponent } from './containers/loader';
 
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
 import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
@@ -54,6 +55,7 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
 import { AddFriendDialogComponent } from './containers/add-friend-dialog';
 import { FriendsService } from './services/friends';
 import { FriendsEffects } from './effects/friends';
+import { SpinnerEffects } from './effects/spinner';
 
 @NgModule({
   imports: [
@@ -105,6 +107,7 @@ import { FriendsEffects } from './effects/friends';
     EffectsModule.run(CollectionEffects),
     EffectsModule.run(DiaryEntriesEffects),
     EffectsModule.run(FriendsEffects),
+    EffectsModule.run(SpinnerEffects),
 
     /**
      * `provideDB` sets up @ngrx/db with the provided schema and makes the Database
@@ -128,6 +131,7 @@ import { FriendsEffects } from './effects/friends';
     FriendsComponent,
     AddFriendDialogComponent,
     FriendDiaryEntriesComponent,
+    LoaderComponent,
   ],
   providers: [
     {
