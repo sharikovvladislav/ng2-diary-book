@@ -10,12 +10,13 @@ import { DiaryEntry } from '../models/diary-entry';
       <md-card-content><div [innerHTML]="entry.message | diaryMarkdown"></div></md-card-content>
       <md-card-footer>
         Create date: {{ entry.createDate | date }}
-        <span (click)="onClick.emit(entry)">Edit</span>
+        <span *ngIf="!isEditDisabled" (click)="onClick.emit(entry)">Edit</span>
       </md-card-footer>
     </md-card>
   `
 })
 export class EntryListItemComponent {
   @Input() entry: DiaryEntry;
+  @Input() isEditDisabled = false;
   @Output() onClick = new EventEmitter();
 }

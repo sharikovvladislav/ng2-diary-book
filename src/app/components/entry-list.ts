@@ -9,6 +9,7 @@ import { DiaryEntry } from '../models/diary-entry';
       <div *ngFor="let entry of entries">
         <diary-list-item 
           [entry]="entry"
+          [isEditDisabled]="isEditDisabled"
           (onClick)="onClick.emit($event)"
         ></diary-list-item>
       </div>
@@ -23,6 +24,7 @@ import { DiaryEntry } from '../models/diary-entry';
 
 export class EntryListComponent {
   @Input() entries: DiaryEntry[];
+  @Input() isEditDisabled = false;
   @Output() onClick = new EventEmitter();
 
   constructor() {
