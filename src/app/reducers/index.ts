@@ -165,6 +165,7 @@ export const isSelectedBookInCollection = createSelector(getCollectionBookIds, g
  */
 export const getLayoutState = (state: State) => state.layout;
 export const getShowSidenav = createSelector(getLayoutState, fromLayout.getShowSidenav);
+export const getIsSpinnerShown = createSelector(getLayoutState, fromLayout.getIsSpinnerShown);
 
 /**
  * User Reducers

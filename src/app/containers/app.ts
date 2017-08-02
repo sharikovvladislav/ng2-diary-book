@@ -40,7 +40,7 @@ import { FriendsService } from '../services/friends';
       <bc-toolbar (openMenu)="openSidenav()">
         Diary
       </bc-toolbar>
-
+      <diary-loader></diary-loader>
       <router-outlet></router-outlet>
     </bc-layout>
   `
