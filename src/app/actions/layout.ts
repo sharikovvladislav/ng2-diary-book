@@ -17,10 +17,14 @@ export class CloseSidenavAction implements Action {
 
 export class ShowSpinnerAction implements Action {
   readonly type = SHOW_SPINNER;
+
+  constructor(public payload: string) {}
 }
 
 export class HideSpinnerAction implements Action {
   readonly type = HIDE_SPINNER;
+
+  constructor(public payload: string) {}
 }
 
 

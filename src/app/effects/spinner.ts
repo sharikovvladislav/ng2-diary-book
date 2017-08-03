@@ -44,12 +44,12 @@ export class SpinnerEffects {
   @Effect()
   showSpinner$: Observable<Action> = this.actions$
     .ofType(diaryActions.LOAD_LIST)
-    .mapTo(new spinnerActions.ShowSpinnerAction());
+    .map((action) => new spinnerActions.ShowSpinnerAction(action.type));
 
   @Effect()
   hideSpinner$: Observable<Action> = this.actions$
     .ofType(diaryActions.LOAD_LIST_SUCCESS, diaryActions.LOAD_LIST_FAILURE)
-    .mapTo(new spinnerActions.HideSpinnerAction());
+    .map((action) => new spinnerActions.HideSpinnerAction(action.type));
 
   constructor(
       private actions$: Actions,
