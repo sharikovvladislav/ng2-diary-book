@@ -20,6 +20,7 @@ import { DiaryEntry } from '../models/diary-entry';
       <div>
         <diary-entry-list
           [entries]="diaryEntries$ | async"
+          [isEditDisabled]="true"
         ></diary-entry-list>
       </div>
     </common-show-if-logged-in>
