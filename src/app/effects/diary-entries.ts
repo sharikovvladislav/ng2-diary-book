@@ -78,6 +78,7 @@ export class DiaryEntriesEffects {
         .map((updatedEntryData: DiaryEntry) =>
           new diaryEntry.EditEntrySuccessAction(updatedEntryData)
         )
+        .do(() => this.store.dispatch(new diaryEntry.LoadListAction()))
         .catch(() => of(new diaryEntry.EditEntryFailureAction(null)));
     });
 
