@@ -22,6 +22,7 @@ import { DiaryEntry } from '../models/diary-entry';
 import { DiaryEntrySet } from '../models/diary-entry-set';
 
 import * as moment from 'moment';
+import { DialogFactoryService } from '../services/dialog-factory';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your
@@ -64,6 +65,7 @@ export class DiaryEntriesEffects {
 
       return this.diaryEntryService.createEntry(uid, action.payload)
         .map((newEntryData: DiaryEntry) => new diaryEntry.CreateEntrySuccessAction(newEntryData))
+        .do(() => this.dialogFactory.closeCreateEntryDialog())
         .catch(() => of(new diaryEntry.CreateEntryFailureAction([])));
     });
 
@@ -78,12 +80,14 @@ export class DiaryEntriesEffects {
         .map((updatedEntryData: DiaryEntry) =>
           new diaryEntry.EditEntrySuccessAction(updatedEntryData)
         )
+        .do(() => this.dialogFactory.closeEditEntryDialog())
         .catch(() => of(new diaryEntry.EditEntryFailureAction(null)));
     });
 
     constructor(
       private actions$: Actions,
       private diaryEntryService: DiaryEntryService,
+      private dialogFactory: DialogFactoryService,
       private store: Store<fromRoot.State>,
     ) { }
 }

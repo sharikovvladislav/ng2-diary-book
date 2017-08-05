@@ -45,6 +45,7 @@ import { AuthInterceptor } from './core/inteceptors';
 import { GoogleBooksService } from './services/google-books';
 import { DiaryEntryService } from './services/diary-entry';
 import { DiaryProcessorService } from './services/diary-processor';
+import { DialogFactoryService } from './services/dialog-factory';
 
 import { routes } from './routes';
 import { reducer } from './reducers';
@@ -144,6 +145,7 @@ import { SpinnerEffects } from './effects/spinner';
     DiaryEntryService,
     DiaryProcessorService,
     FriendsService,
+    DialogFactoryService,
   ],
   entryComponents: [
     EntryEditDialogComponent,

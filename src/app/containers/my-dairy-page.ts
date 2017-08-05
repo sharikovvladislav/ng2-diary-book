@@ -12,6 +12,7 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 
 import { EntryCreateDialogComponent } from './create-entry-dialog';
 import { EntryEditDialogComponent } from './edit-entry-dialog';
+import { DialogFactoryService } from '../services/dialog-factory';
 
 @Component({
   selector: 'diary-page',
@@ -43,6 +44,7 @@ export class MyDairyPageComponent {
     private store: Store<fromRoot.State>,
     public dialog: MdDialog,
     private changeDetectorRef: ChangeDetectorRef,
+    private dialogFactory: DialogFactoryService,
   ) {
     this.diaryEntries$ = store.select(fromRoot.getEntries);
     store.select(fromRoot.getIsLoggedIn)
@@ -55,16 +57,11 @@ export class MyDairyPageComponent {
   }
 
   openCreateDialog() {
-    const createDialogRef = this.dialog.open(EntryCreateDialogComponent);
-    createDialogRef.afterClosed().subscribe(result => {
-      this.selectedOption = result;
-    });
+    this.dialogFactory.openCreateEntryDialog();
     // this.store.dispatch(new diaryDialogs.OpenCreateDialogAction());
   }
 
   openEditDialog(entryToEdit: DiaryEntry) {
-    this.dialog.open(EntryEditDialogComponent, {
-      data: entryToEdit
-    });
+    this.dialogFactory.openEditEntryDialog(entryToEdit);
   }
 }
