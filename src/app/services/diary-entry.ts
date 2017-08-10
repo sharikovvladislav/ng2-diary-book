@@ -25,28 +25,29 @@ export class DiaryEntryService {
     this.list$ = this.db.list(this.API_PATH);
   }
 
-  retrieveEntries(uid: string): Observable<DiaryEntry[]> {
-    return this.http.get(`${this.API_REST_URL}diaryEntries`) ///app/diaryEntries
+  retrieveEntries(): Observable<DiaryEntry[]> {
+    return this.http.get(`${this.API_REST_URL}diaryEntries`)
       .map((diaryEntries: RemoteList) => diaryEntries.items);
+  }
+
+  updateEntry(entryData: DiaryEntry): Observable<any> {
+    const entryKey = entryData.$key;
+    const dataToSend = { ...entryData };
+
+    // приходится удалять ключ, чтобы firebase не умер
+    delete dataToSend.$key;
+    // удаляем дату создания
+    delete dataToSend.createDate;
+
+    // TODO probably should update only with diff there and model must know what to save by itself
+
+    return this.http.put(`${this.API_REST_URL}diaryEntries/${entryKey}`, dataToSend);
   }
 
   createEntry(uid: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
     return new Observable(observer => {
       this.getDbRef(uid)
         .push(this.diaryProcessor.prepareForServerProcess(entryData))
-        .then(() => {
-          observer.next(entryData);
-          observer.complete();
-        });
-    });
-  }
-
-  updateEntry(userId: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
-    const itemKey = entryData.$key;
-
-    return new Observable(observer => {
-      this.getDbRef(userId)
-        .update(itemKey, this.diaryProcessor.prepareForServerProcess(entryData))
         .then(() => {
           observer.next(entryData);
           observer.complete();
