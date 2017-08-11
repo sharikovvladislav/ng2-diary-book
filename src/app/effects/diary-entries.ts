@@ -48,10 +48,8 @@ export class DiaryEntriesEffects {
     .ofType(diaryEntry.LOAD_LIST)
     .withLatestFrom(this.store)
     .filter(([action, state]) => fromRoot.getIsLoggedIn(state))
-    .switchMap(([action, state]) => {
-      const uid = fromRoot.getUid(state);
-
-      return this.diaryEntryService.retrieveEntries(uid)
+    .switchMap(() => {
+      return this.diaryEntryService.retrieveEntries()
         .map((diaryEntries: DiaryEntry[]) => new diaryEntry.LoadListSuccessAction(diaryEntries))
         .catch(() => of(new diaryEntry.LoadListFailureAction([])));
     });
@@ -73,13 +71,12 @@ export class DiaryEntriesEffects {
   edit$: Observable<Action> = this.actions$
     .ofType(diaryEntry.EDIT_ENTRY)
     .withLatestFrom(this.store)
-    .switchMap(([action, state]) => {
-      const uid = fromRoot.getUid(state);
-
-      return this.diaryEntryService.updateEntry(uid, action.payload)
+    .switchMap(([action]) => {
+      return this.diaryEntryService.updateEntry(action.payload)
         .map((updatedEntryData: DiaryEntry) =>
           new diaryEntry.EditEntrySuccessAction(updatedEntryData)
         )
+        .do(() => this.store.dispatch(new diaryEntry.LoadListAction()))
         .do(() => this.dialogFactory.closeEditEntryDialog())
         .catch(() => of(new diaryEntry.EditEntryFailureAction(null)));
     });
