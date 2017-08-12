@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <md-input-container>
-      <input mdInput [value]="dateValue" [mdDatepicker]="picker" placeholder="Choose a date">
+      <input disabled mdInput [value]="dateValue" [mdDatepicker]="picker" placeholder="Choose a date">
       <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker (selectedChanged)="onSelectedChanged($event)"  #picker></md-datepicker>
