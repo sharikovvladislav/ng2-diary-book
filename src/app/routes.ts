@@ -9,6 +9,10 @@ export const routes: Routes = [
     path: 'diary',
     loadChildren: './diary/diary.module#DiaryModule',
   },
+  {
+    path: 'friends',
+    loadChildren: './friends/friends.module#FriendsModule',
+  },
   { path: '', component: KekComponent },
   { path: 'lul', component: LulComponent },
   { path: '**', component: NotFoundPageComponent },

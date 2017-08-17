@@ -123,7 +123,7 @@
     "component-selector": [
       true,
       "element",
-      ["app", "bc", "diary", "common"],
+      ["app", "bc", "diary", "friends", "common"],
       "kebab-case"
     ],
     "use-input-property-decorator": true,
@@ -135,7 +135,6 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
-    "no-access-missing-member": true,
     "templates-use-public": true,
     "invoke-injectable": true
   }

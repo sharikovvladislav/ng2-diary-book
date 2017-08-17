@@ -6,8 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { DiaryComponent } from './diary';
 import { EntryDetailComponent } from './entry-detail';
-import { EntryListComponent } from './entry-list';
-import { EntryListItemComponent } from './entry-list-item';
 import { CommonDatePickerComponent } from './common-date-picker';
 
 import { PipesModule } from '../../shared/pipes';
@@ -15,8 +13,6 @@ import { PipesModule } from '../../shared/pipes';
 export const COMPONENTS = [
   DiaryComponent,
   EntryDetailComponent,
-  EntryListComponent,
-  EntryListItemComponent,
   CommonDatePickerComponent,
 ];
 

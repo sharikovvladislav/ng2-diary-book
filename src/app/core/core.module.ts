@@ -12,11 +12,15 @@ import { LayoutComponent } from './components/layout';
 import { NavItemComponent } from './components/nav-item';
 import { SidenavComponent } from './components/sidenav';
 import { ToolbarComponent } from './components/toolbar';
+import { EntryListItemComponent } from './components/entry-list-item';
+import { EntryListComponent } from './components/entry-list';
 import { NotLoggedInComponent } from './components/not-logged-in';
 import { LulComponent } from './containers/lul';
 import { KekComponent } from './containers/kek';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 import { LoaderComponent } from './containers/loader';
+
+import { PipesModule } from '../shared/pipes';
 
 export const COMPONENTS = [
   AppComponent,
@@ -27,13 +31,16 @@ export const COMPONENTS = [
   NavItemComponent,
   SidenavComponent,
   ToolbarComponent,
+  EntryListItemComponent,
+  EntryListComponent,
   NotLoggedInComponent,
   CommonShowIfLoggedInComponent,
   LoaderComponent,
 ];
 
+
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule],
+  imports: [CommonModule, RouterModule, MaterialModule, PipesModule],
   declarations: COMPONENTS,
   exports: COMPONENTS,
   providers: [
