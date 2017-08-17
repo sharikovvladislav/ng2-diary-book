@@ -3,7 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
-import * as fromDiary from '../reducers/index';
+import * as fromDiary from '../reducers';
 
 import * as diaryEntries from '../actions/diary-entries';
 
