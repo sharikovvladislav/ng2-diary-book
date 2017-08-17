@@ -62,7 +62,7 @@ export class DiaryEffects {
     .ofType(diaryActions.CREATE_ENTRY)
     .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)))
     .withLatestFrom(this.store)
-    .switchMap(([action, state]: [any, any]) => {
+    .switchMap(([action, state]: [diaryActions.CreateEntryAction, fromRoot.State]) => {
       const uid = fromRoot.getUserUid(state);
 
       return this.diaryEntryService.createEntry(uid, <DiaryEntrySet>action.payload)
