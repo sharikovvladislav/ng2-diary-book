@@ -15,8 +15,6 @@ import { ToolbarComponent } from './components/toolbar';
 import { EntryListItemComponent } from './components/entry-list-item';
 import { EntryListComponent } from './components/entry-list';
 import { NotLoggedInComponent } from './components/not-logged-in';
-import { LulComponent } from './containers/lul';
-import { KekComponent } from './containers/kek';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 import { LoaderComponent } from './containers/loader';
 
@@ -25,8 +23,6 @@ import { PipesModule } from '../shared/pipes';
 export const COMPONENTS = [
   AppComponent,
   NotFoundPageComponent,
-  LulComponent,
-  KekComponent,
   LayoutComponent,
   NavItemComponent,
   SidenavComponent,
