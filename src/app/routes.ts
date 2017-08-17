@@ -1,46 +1,15 @@
 import { Routes } from '@angular/router';
-
-import { BookExistsGuard } from './guards/book-exists';
-import { FindBookPageComponent } from './containers/find-book-page';
-import { ViewBookPageComponent } from './containers/view-book-page';
-import { CollectionPageComponent } from './containers/collection-page';
-import { NotFoundPageComponent } from './containers/not-found-page';
-import { MyDairyPageComponent } from './containers/my-dairy-page';
-import { FriendsComponent } from './containers/friends';
-import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
+import { NotFoundPageComponent } from './core/containers/not-found-page';
+import { LulComponent } from './core/containers/lul';
+import { KekComponent } from './core/containers/kek';
 
 export const routes: Routes = [
+  // {path: '/', redirectTo: '/', pathMatch: 'full'},
   {
-    path: '',
-    component: MyDairyPageComponent
+    path: 'diary',
+    loadChildren: './diary/diary.module#DiaryModule',
   },
-  {
-    path: 'diary/my-dairy',
-    component: MyDairyPageComponent
-  },
-  {
-    path: 'friends',
-    component: FriendsComponent
-  },
-  {
-    path: 'friends/diaryEntries/:friendUid',
-    component: FriendDiaryEntriesComponent
-  },
-  {
-    path: 'book/collection',
-    component: CollectionPageComponent
-  },
-  {
-    path: 'book/find',
-    component: FindBookPageComponent
-  },
-  {
-    path: 'book/:id',
-    canActivate: [ BookExistsGuard ],
-    component: ViewBookPageComponent
-  },
-  {
-    path: '**',
-    component: NotFoundPageComponent
-  }
+  { path: '', component: KekComponent },
+  { path: 'lul', component: LulComponent },
+  { path: '**', component: NotFoundPageComponent },
 ];
