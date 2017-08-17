@@ -17,7 +17,7 @@ import * as friendsActions from '../actions/friends';
 export class AddFriendComponent {
   email: string;
 
-  constructor(private store: Store<fromRoot.State>,) {
+  constructor(private store: Store<fromRoot.State>) {
     this.email = '';
   }
 
