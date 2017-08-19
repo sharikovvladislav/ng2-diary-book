@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdButtonModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +28,9 @@ import { CoreModule } from '../core/core.module';
     MaterialModule,
     ComponentsModule,
     CoreModule,
+
+    MdButtonModule,
+
     RouterModule.forChild([
       { path: '', component: MyDairyPageComponent },
     ]),
