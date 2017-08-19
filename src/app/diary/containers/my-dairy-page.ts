@@ -16,17 +16,28 @@ import { DialogFactoryService } from '../services/dialog-factory';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <common-show-if-logged-in>
-      <div>
-        <button md-button (click)="openCreateDialog()">+ Добавить запись</button>
-      </div>
-      <div>
-        <diary-entry-list
-          [entries]="diaryEntries$ | async"
-          (onClick)="openEditDialog($event)"
-        ></diary-entry-list>
-      </div>
+        <!--<button md-button (click)="openCreateDialog()">+ Добавить запись</button>-->
+    <diary-entry-list
+      [entries]="diaryEntries$ | async"
+      (onClick)="openEditDialog($event)"
+    ></diary-entry-list>
     </common-show-if-logged-in>
-  `
+    <button md-mini-fab class="example-fab" (click)="openCreateDialog()">
+      <md-icon>add</md-icon>
+    </button>
+  `,
+  styles: [
+    `diary-page {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }`,
+    `.example-fab {
+        position: fixed;
+        right: 20px;
+        bottom: 10px;
+      }`
+  ]
 })
 export class MyDairyPageComponent {
   diaryEntries$: Observable<DiaryEntry[]>;
