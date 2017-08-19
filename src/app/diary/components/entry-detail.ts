@@ -1,4 +1,10 @@
-import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
@@ -23,8 +29,8 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
     }`,
     `.example-full-width {
       width: 100%;
-    }`
-  ]
+    }`,
+  ],
 })
 export class EntryDetailComponent {
   @Input() options: any;
@@ -38,7 +44,7 @@ export class EntryDetailComponent {
   }
   set entry(value: DiaryEntry) {
     this._entry = {
-      ...value
+      ...value,
     };
   }
 }

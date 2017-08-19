@@ -1,4 +1,9 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnInit,
+} from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
@@ -25,25 +30,29 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
         ></diary-entry-list>
       </div>
     </common-show-if-logged-in>
-  `
+  `,
 })
 export class FriendDiaryEntriesComponent implements OnInit {
   diaryEntries$: Observable<DiaryEntry[]>;
 
-  constructor(private store: Store<fromFriends.State>,
-              private route: ActivatedRoute,
-              ) {
-  }
+  constructor(
+    private store: Store<fromFriends.State>,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.diaryEntries$ = this.store.select(fromFriends.getFriendDiaryEntries);
-    this.store.select(fromRoot.getUserIsLoggedIn)
+    this.store
+      .select(fromRoot.getUserIsLoggedIn)
       .filter(isLoggedIn => !!isLoggedIn)
       .subscribe(() =>
-        this.route.paramMap
-          .subscribe((params: any) =>
-            this.store.dispatch(new friendActions.GetFriendDiaryEntriesAction(params.get('friendUid')))
+        this.route.paramMap.subscribe((params: any) =>
+          this.store.dispatch(
+            new friendActions.GetFriendDiaryEntriesAction(
+              params.get('friendUid')
+            )
           )
+        )
       );
   }
 }

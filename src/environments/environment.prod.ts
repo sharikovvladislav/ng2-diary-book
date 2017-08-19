@@ -6,6 +6,6 @@ export const environment = {
     restURL: 'https://us-central1-diary-app-1fa1b.cloudfunctions.net/app/',
     databaseURL: 'https://diary-app-1fa1b.firebaseio.com/',
     projectId: 'diary-app-1fa1b',
-    storageBucket: 'gs://diary-app-1fa1b.appspot.com/'
-  }
+    storageBucket: 'gs://diary-app-1fa1b.appspot.com/',
+  },
 };

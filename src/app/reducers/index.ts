@@ -68,7 +68,6 @@ export const getIsSpinnerShown = createSelector(
   fromLayout.getIsSpinnerShown
 );
 
-
 export const getUserState = createFeatureSelector<fromUser.State>('user');
 
 export const getUserIsLoggedIn = createSelector(
@@ -76,17 +75,8 @@ export const getUserIsLoggedIn = createSelector(
   fromUser.isLoggedIn
 );
 
-export const getUserUid = createSelector(
-  getUserState,
-  fromUser.getUid
-);
+export const getUserUid = createSelector(getUserState, fromUser.getUid);
 
-export const getUser = createSelector(
-  getUserState,
-  fromUser.getUser
-);
+export const getUser = createSelector(getUserState, fromUser.getUser);
 
-export const getUserToken = createSelector(
-  getUserState,
-  fromUser.getToken
-);
+export const getUserToken = createSelector(getUserState, fromUser.getToken);

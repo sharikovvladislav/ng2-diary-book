@@ -9,7 +9,7 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import {Action, Store, State } from '@ngrx/store';
+import { Action, Store, State } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -47,50 +47,74 @@ export class DiaryEffects {
   @Effect()
   load$: Observable<Action> = this.actions$
     .ofType(diaryActions.LOAD_LIST)
-    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)))
+    .do((action: any) =>
+      this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type))
+    )
     .withLatestFrom(this.store)
     .filter(([action, state]) => fromRoot.getUserIsLoggedIn(state))
     .switchMap(() => {
-      return this.diaryEntryService.retrieveEntries()
-        .map((diaryEntries: DiaryEntry[]) => new diaryActions.LoadListSuccessAction(diaryEntries))
+      return this.diaryEntryService
+        .retrieveEntries()
+        .map(
+          (diaryEntries: DiaryEntry[]) =>
+            new diaryActions.LoadListSuccessAction(diaryEntries)
+        )
         .catch(() => of(new diaryActions.LoadListFailureAction([])))
-        .do(({type}) => this.store.dispatch(new layoutActions.HideSpinnerAction(type)));
+        .do(({ type }) =>
+          this.store.dispatch(new layoutActions.HideSpinnerAction(type))
+        );
     });
 
   @Effect()
   create$: Observable<Action> = this.actions$
     .ofType(diaryActions.CREATE_ENTRY)
-    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)))
+    .do((action: any) =>
+      this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type))
+    )
     .withLatestFrom(this.store)
-    .switchMap(([action, state]: [diaryActions.CreateEntryAction, fromRoot.State]) => {
-      const uid = fromRoot.getUserUid(state);
+    .switchMap(
+      ([action, state]: [diaryActions.CreateEntryAction, fromRoot.State]) => {
+        const uid = fromRoot.getUserUid(state);
 
-      return this.diaryEntryService.createEntry(uid, <DiaryEntrySet>action.payload)
-        .map((newEntryData: DiaryEntry) => new diaryActions.CreateEntrySuccessAction(newEntryData))
-        .do(() => this.dialogFactory.closeCreateEntryDialog())
-        .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
-        .do(({type}) => this.store.dispatch(new layoutActions.HideSpinnerAction(type)));
-    });
+        return this.diaryEntryService
+          .createEntry(uid, <DiaryEntrySet>action.payload)
+          .map(
+            (newEntryData: DiaryEntry) =>
+              new diaryActions.CreateEntrySuccessAction(newEntryData)
+          )
+          .do(() => this.dialogFactory.closeCreateEntryDialog())
+          .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
+          .do(({ type }) =>
+            this.store.dispatch(new layoutActions.HideSpinnerAction(type))
+          );
+      }
+    );
 
   @Effect()
   edit$: Observable<Action> = this.actions$
     .ofType(diaryActions.EDIT_ENTRY)
-    .do((action: any) => this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)))
+    .do((action: any) =>
+      this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type))
+    )
     .switchMap((action: diaryActions.EditEntryAction) => {
-      return this.diaryEntryService.updateEntry(action.payload)
-        .map((updatedEntryData: DiaryEntry) =>
-          new diaryActions.EditEntrySuccessAction(updatedEntryData)
+      return this.diaryEntryService
+        .updateEntry(action.payload)
+        .map(
+          (updatedEntryData: DiaryEntry) =>
+            new diaryActions.EditEntrySuccessAction(updatedEntryData)
         )
         .do(() => this.store.dispatch(new diaryActions.LoadListAction()))
         .do(() => this.dialogFactory.closeEditEntryDialog())
         .catch(() => of(new diaryActions.EditEntryFailureAction(null)))
-        .do(({type}) => this.store.dispatch(new layoutActions.HideSpinnerAction(type)));
+        .do(({ type }) =>
+          this.store.dispatch(new layoutActions.HideSpinnerAction(type))
+        );
     });
 
   constructor(
     private actions$: Actions,
     private diaryEntryService: DiaryEntryService,
     private dialogFactory: DialogFactoryService,
-    private store: Store<fromRoot.State>,
-  ) { }
+    private store: Store<fromRoot.State>
+  ) {}
 }

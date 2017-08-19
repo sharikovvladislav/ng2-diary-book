@@ -1,8 +1,7 @@
 import { Action } from '@ngrx/store';
 
-export const LOAD_USER_DATA    =  '[User] Login';
-export const UNLOAD_USER_DATA  =  '[User] Logout';
-
+export const LOAD_USER_DATA = '[User] Login';
+export const UNLOAD_USER_DATA = '[User] Logout';
 
 /**
  * Every action is comprised of at least a type and an optional
@@ -14,7 +13,7 @@ export const UNLOAD_USER_DATA  =  '[User] Logout';
 export class LoadUserAction implements Action {
   readonly type = LOAD_USER_DATA;
 
-  constructor(public payload: any) { }
+  constructor(public payload: any) {}
 }
 
 export class UnloadUserAction implements Action {
@@ -25,6 +24,4 @@ export class UnloadUserAction implements Action {
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
  */
-export type Actions
-  = UnloadUserAction
-  | LoadUserAction;
+export type Actions = UnloadUserAction | LoadUserAction;

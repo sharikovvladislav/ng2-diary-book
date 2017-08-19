@@ -12,7 +12,7 @@ import * as friendsActions from '../actions/friends';
       </md-input-container>
       <button md-button (click)="onAddClick();">Add friend</button>
     </div>
-  `
+  `,
 })
 export class AddFriendComponent {
   email: string;

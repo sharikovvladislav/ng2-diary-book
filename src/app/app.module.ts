@@ -7,9 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import {
-  StoreRouterConnectingModule,
-} from '@ngrx/router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers, metaReducers } from './reducers';
@@ -47,6 +45,6 @@ import 'hammerjs';
     CoreModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

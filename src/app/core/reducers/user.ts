@@ -1,25 +1,24 @@
 import * as user from '../actions/user';
 import { User } from '../../shared/models/user';
 
-
 export interface State {
   user: User;
 }
 
 export const initialState: State = {
-  user: null
+  user: null,
 };
 
 export function reducer(state = initialState, action: user.Actions): State {
   switch (action.type) {
     case user.LOAD_USER_DATA:
       return {
-        user: action.payload
+        user: action.payload,
       };
 
     case user.UNLOAD_USER_DATA:
       return {
-        user: null
+        user: null,
       };
 
     default: {

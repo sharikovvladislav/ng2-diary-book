@@ -20,28 +20,29 @@ describe('MyDairyPageComponent', () => {
   let fixture: ComponentFixture<MyDairyPageComponent>;
   let store: Store<fromFeature.State>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [
-        MdIconModule,
-        StoreModule.forRoot({
-          ...fromRoot.reducers,
-          'diary': combineReducers(fromFeature.reducers)
-        }),
-        ComponentsModule,
-        CoreModule
-      ],
-      declarations: [
-        MyDairyPageComponent,
-      ],
-      providers: [
-        DialogFactoryService, DiaryProcessorService, DiaryEntryService
-      ]
-    })
-    .compileComponents();
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        imports: [
+          MdIconModule,
+          StoreModule.forRoot({
+            ...fromRoot.reducers,
+            diary: combineReducers(fromFeature.reducers),
+          }),
+          ComponentsModule,
+          CoreModule,
+        ],
+        declarations: [MyDairyPageComponent],
+        providers: [
+          DialogFactoryService,
+          DiaryProcessorService,
+          DiaryEntryService,
+        ],
+      }).compileComponents();
 
-    store = TestBed.get(Store);
-  }));
+      store = TestBed.get(Store);
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MyDairyPageComponent);

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { Friend } from '../../shared/models/friend';
 
 @Component({
@@ -22,12 +28,11 @@ import { Friend } from '../../shared/models/friend';
     </div>
   `,
   styles: [
-      `friends-list-item {
+    `friends-list-item {
       padding: 20px;
-    }`
-  ]
+    }`,
+  ],
 })
-
 export class FriendsListComponent {
   @Input() friends: Friend[];
 
@@ -37,6 +42,5 @@ export class FriendsListComponent {
   @Input() isGoToDiaries: Boolean = false;
   @Output() goToDiary = new EventEmitter<number>();
 
-  constructor() {
-  }
+  constructor() {}
 }

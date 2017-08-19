@@ -9,12 +9,13 @@ describe('DiaryComponent1', () => {
   let component: DiaryComponent;
   let fixture: ComponentFixture<DiaryComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DiaryComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [DiaryComponent],
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DiaryComponent);

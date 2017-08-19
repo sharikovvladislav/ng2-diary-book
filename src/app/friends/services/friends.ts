@@ -13,25 +13,24 @@ export class FriendsService {
 
   sendInvite(possibleFriendEmail: string) {
     return this.http.post(`${this.API_REST_URL}friends/createFriendship`, {
-      targetEmail: possibleFriendEmail
+      targetEmail: possibleFriendEmail,
     });
   }
 
   acceptInvite(friendEmail: string) {
     return this.http.put(`${this.API_REST_URL}friends`, {
-      targetEmail: friendEmail
+      targetEmail: friendEmail,
     });
   }
 
-  rejectInvite(friendEmail: string,
-               userData: User) {
+  rejectInvite(friendEmail: string, userData: User) {
     // FIXME сделать
     return new Observable(observer => {
       this.getEventsDbRef()
         .push({
           action: 'REJECT_FRIENDSHIP',
           friend_one: friendEmail,
-          friend_two: userData.email
+          friend_two: userData.email,
         })
         .then(() => {
           observer.next();
@@ -40,15 +39,14 @@ export class FriendsService {
     });
   }
 
-  stopFriendship(friendEmail: string,
-                 userData: User) {
+  stopFriendship(friendEmail: string, userData: User) {
     // Сделать
     return new Observable(observer => {
       this.getEventsDbRef()
         .push({
           action: 'STOP_FRIENDSHIP',
           friend_one: friendEmail,
-          friend_two: userData.email
+          friend_two: userData.email,
         })
         .then(() => {
           observer.next();
@@ -74,7 +72,9 @@ export class FriendsService {
   }
 
   getFriendEntries(friendUid: string): Observable<any> {
-    return this.http.get(`${this.API_REST_URL}friends/diaryEntries/${friendUid}`);
+    return this.http.get(
+      `${this.API_REST_URL}friends/diaryEntries/${friendUid}`
+    );
   }
 
   private getEventsDbRef(query = {}) {
@@ -85,6 +85,5 @@ export class FriendsService {
     return this.db.list(`${this.API_GETTER_PATH}`, query);
   }
 
-  constructor(private db: AngularFireDatabase, private http: HttpClient) {
-  }
+  constructor(private db: AngularFireDatabase, private http: HttpClient) {}
 }

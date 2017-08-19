@@ -9,4 +9,3 @@ export const PIPES = [MarkdownPipe];
   exports: PIPES,
 })
 export class PipesModule {}
-

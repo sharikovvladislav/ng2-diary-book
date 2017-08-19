@@ -8,12 +8,11 @@ export class DialogFactoryService {
   editEntryDialog: any = null;
   createEntryDialog: any = null;
 
-  constructor(private dialog: MdDialog) {
-  }
+  constructor(private dialog: MdDialog) {}
 
   openCreateEntryDialog(): void {
     this.editEntryDialog = this.dialog.open(EntryCreateDialogComponent, {
-      disableClose: true
+      disableClose: true,
     });
   }
 
@@ -24,7 +23,7 @@ export class DialogFactoryService {
   openEditEntryDialog(dialogData: any): void {
     this.createEntryDialog = this.dialog.open(EntryEditDialogComponent, {
       data: dialogData,
-      disableClose: true
+      disableClose: true,
     });
   }
 

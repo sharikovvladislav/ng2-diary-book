@@ -53,10 +53,7 @@ export const getRejectedInvites = createSelector(
   getDiaryState,
   fromFriends.getRejectedInvites
 );
-export const getFriends = createSelector(
-  getDiaryState,
-  fromFriends.getFriends
-);
+export const getFriends = createSelector(getDiaryState, fromFriends.getFriends);
 export const getPendingInvites = createSelector(
   getDiaryState,
   fromFriends.getPendingInvites

@@ -8,50 +8,52 @@ export interface State {
 }
 
 export const initialState: State = {
-  entries: []
+  entries: [],
 };
 
-export function reducer(state = initialState, action: diaryEntries.Actions | user.Actions): State {
+export function reducer(
+  state = initialState,
+  action: diaryEntries.Actions | user.Actions
+): State {
   switch (action.type) {
     case user.UNLOAD_USER_DATA: {
       return {
         ...state,
-        entries: []
+        entries: [],
       };
     }
 
     case diaryEntries.LOAD_LIST_SUCCESS: {
-      const entries = action.payload
-        .map(entry => ({
-          ...entry,
-          $key: entry.$key,
-          createDate: moment(entry.createDate).toDate(),
-          date: moment(entry.date).toDate()
-        }));
+      const entries = action.payload.map(entry => ({
+        ...entry,
+        $key: entry.$key,
+        createDate: moment(entry.createDate).toDate(),
+        date: moment(entry.date).toDate(),
+      }));
 
       return {
         ...state,
-        entries: entries
+        entries: entries,
       };
     }
 
     case diaryEntries.EDIT_ENTRY_SUCCESS: {
       const itemKey = action.payload.$key;
-      const updatedEntries =
-        state.entries.map(entry =>
+      const updatedEntries = state.entries.map(
+        entry =>
           entry.$key === itemKey ? { ...action.payload, $key: itemKey } : entry
-        );
+      );
 
       return {
         ...state,
-        entries: updatedEntries
+        entries: updatedEntries,
       };
     }
 
     case diaryEntries.CREATE_ENTRY_SUCCESS: {
       return {
         ...state,
-        entries: [action.payload, ...state.entries]
+        entries: [action.payload, ...state.entries],
       };
     }
 

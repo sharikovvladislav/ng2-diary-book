@@ -45,27 +45,28 @@ export class AppComponent implements OnInit {
   user$: Observable<firebase.User>;
 
   ngOnInit() {
-    this.user$
-      .subscribe((providerData: any) => {
-        if (providerData !== null) {
-          providerData.getIdToken(true)
-            .then((token: string) => {
-              console.log(token);
-              const userData = {
-                token: token,
-                displayName: providerData.displayName,
-                email: providerData.email,
-                uid: providerData.uid
-              };
-              this.store.dispatch(new user.LoadUserAction(userData));
-            });
-        } else {
-          this.store.dispatch(new user.UnloadUserAction());
-        }
-      });
+    this.user$.subscribe((providerData: any) => {
+      if (providerData !== null) {
+        providerData.getIdToken(true).then((token: string) => {
+          console.log(token);
+          const userData = {
+            token: token,
+            displayName: providerData.displayName,
+            email: providerData.email,
+            uid: providerData.uid,
+          };
+          this.store.dispatch(new user.LoadUserAction(userData));
+        });
+      } else {
+        this.store.dispatch(new user.UnloadUserAction());
+      }
+    });
   }
 
-  constructor(private store: Store<fromRoot.State>, public afAuth: AngularFireAuth) {
+  constructor(
+    private store: Store<fromRoot.State>,
+    public afAuth: AngularFireAuth
+  ) {
     /**
      * Selectors can be applied with the `select` operator which passes the state
      * tree to the provided selector

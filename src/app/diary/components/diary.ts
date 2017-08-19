@@ -6,13 +6,10 @@ import { Component, OnInit } from '@angular/core';
     <p>
       diary works!
     </p>
-  `
+  `,
 })
 export class DiaryComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

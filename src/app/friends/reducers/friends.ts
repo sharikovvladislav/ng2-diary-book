@@ -2,7 +2,6 @@ import * as friendsActions from '../actions/friends';
 import { Friend } from '../../shared/models/friend';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
-
 export interface State {
   friends: Friend[];
   pendingInvites: Friend[];
@@ -19,40 +18,43 @@ export const initialState: State = {
   friendDiaryEntries: [],
 };
 
-export function reducer(state = initialState, action: friendsActions.Actions): State {
+export function reducer(
+  state = initialState,
+  action: friendsActions.Actions
+): State {
   switch (action.type) {
     case friendsActions.GET_FRIEND_DIARY_ENTRIES_SUCCESS: {
       return {
         ...state,
-        friendDiaryEntries: action.payload.items
+        friendDiaryEntries: action.payload.items,
       };
     }
 
     case friendsActions.GET_PENDING_INVITES_SUCCESS: {
       return {
         ...state,
-        pendingInvites: action.payload.items
+        pendingInvites: action.payload.items,
       };
     }
 
     case friendsActions.GET_FRIENDS_SUCCESS: {
       return {
         ...state,
-        friends: action.payload.items
+        friends: action.payload.items,
       };
     }
 
     case friendsActions.GET_REJECTED_INVITES_SUCCESS: {
       return {
         ...state,
-        rejectedInvites: action.payload.items
+        rejectedInvites: action.payload.items,
       };
     }
 
     case friendsActions.GET_OUTCOME_PENDING_INVITES_SUCCESS: {
       return {
         ...state,
-        pendingOutcomeInvites: action.payload.items
+        pendingOutcomeInvites: action.payload.items,
       };
     }
 
@@ -73,6 +75,7 @@ export function reducer(state = initialState, action: friendsActions.Actions): S
 
 export const getFriends = (state: State) => state.friends;
 export const getPendingInvites = (state: State) => state.pendingInvites;
-export const getPendingOutcomeInvites = (state: State) => state.pendingOutcomeInvites;
+export const getPendingOutcomeInvites = (state: State) =>
+  state.pendingOutcomeInvites;
 export const getRejectedInvites = (state: State) => state.rejectedInvites;
 export const getFriendDiaryEntries = (state: State) => state.friendDiaryEntries;

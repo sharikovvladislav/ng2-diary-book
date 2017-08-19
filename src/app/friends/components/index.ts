@@ -11,11 +11,7 @@ import { EntryListComponent } from '../../core/components/entry-list';
 
 import { PipesModule } from '../../shared/pipes';
 
-
-export const COMPONENTS = [
-  FriendsListComponent,
-];
-
+export const COMPONENTS = [FriendsListComponent];
 
 @NgModule({
   imports: [
@@ -29,7 +25,6 @@ export const COMPONENTS = [
     MdDatepickerModule,
   ],
   declarations: COMPONENTS,
-  exports: COMPONENTS
+  exports: COMPONENTS,
 })
-export class ComponentsModule {
-}
+export class ComponentsModule {}

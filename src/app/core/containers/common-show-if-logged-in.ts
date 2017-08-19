@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 import { Store } from '@ngrx/store';
 
@@ -16,15 +16,12 @@ import * as fromRoot from '../../reducers';
         <diary-not-logged-in></diary-not-logged-in>
       </div>
     </div>
-  `
+  `,
 })
-
 export class CommonShowIfLoggedInComponent {
   isLoggedIn$: Observable<boolean>;
 
-  constructor(
-    private store: Store<fromRoot.State>
-  ) {
+  constructor(private store: Store<fromRoot.State>) {
     this.isLoggedIn$ = store.select(fromRoot.getUserIsLoggedIn);
   }
 }
