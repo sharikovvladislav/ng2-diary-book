@@ -12,8 +12,8 @@
     "prettier": "prettier --parser typescript --single-quote --trailing-comma --write \"./**/*.ts\""
   },
   "pre-commit": [
-    "lint",
-    "prettier"
+    "prettier",
+    "lint"
   ],
   "private": true,
   "dependencies": {
