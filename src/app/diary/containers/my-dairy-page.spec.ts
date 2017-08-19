@@ -13,6 +13,8 @@ import { DialogFactoryService } from '../services/dialog-factory';
 import { DiaryProcessorService } from '../services/diary-processor';
 import { DiaryEntryService } from '../services/diary-entry';
 
+import { MdIconModule } from '@angular/material';
+
 describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
   let fixture: ComponentFixture<MyDairyPageComponent>;
@@ -21,6 +23,7 @@ describe('MyDairyPageComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        MdIconModule,
         StoreModule.forRoot({
           ...fromRoot.reducers,
           'diary': combineReducers(fromFeature.reducers)
