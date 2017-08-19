@@ -38,7 +38,9 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
       width: 60%;
     }`,
     `.content-footer {
+      font-size: 80%;
       padding-top: 20px;
+      color: #909090;
     }`
   ]
 })
