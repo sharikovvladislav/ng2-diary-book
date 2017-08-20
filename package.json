@@ -9,7 +9,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --parser typescript --single-quote --trailing-comma --write \"./**/*.ts\""
+    "prettier": "prettier --parser typescript --single-quote --trailing-comma --write \"./**/*.ts\"",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --parser typescript --single-quote --trailing-comma --write \"./**/*.ts\"",
+      "git add"
+    ]
   },
   "private": true,
   "dependencies": {
