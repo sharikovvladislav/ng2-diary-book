@@ -9,6 +9,7 @@ import * as user from '../actions/user';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { MarkdownPipe } from '../../shared/pipes/markdown';
 
 @Component({
   selector: 'app-root',
@@ -34,6 +35,7 @@ import * as firebase from 'firebase/app';
       </bc-toolbar>
       <app-loader></app-loader>
       <div (click)="closeSidenav();">
+        <div>{{someMarkdownedText}}</div>
       <router-outlet></router-outlet>
       </div>
     </bc-layout>
@@ -43,6 +45,8 @@ export class AppComponent implements OnInit {
   showSidenav$: Observable<boolean>;
   isLoggedIn$: Observable<boolean>;
   user$: Observable<firebase.User>;
+
+  someMarkdownedText = new MarkdownPipe().transform(`*abc*`);
 
   ngOnInit() {
     this.user$.subscribe((providerData: any) => {
