@@ -5,7 +5,7 @@ import {
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-// kek
+
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
