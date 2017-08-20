@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-// try pretteir
+
 @Component({
   selector: 'diary-create-dialog',
   template: `
