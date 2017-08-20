@@ -30,8 +30,11 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     FormsModule,
     RouterModule.forChild([
-      {path: '', component: FriendsComponent},
-      {path: 'diaryEntries/:friendUid', component: FriendDiaryEntriesComponent},
+      { path: '', component: FriendsComponent },
+      {
+        path: 'diaryEntries/:friendUid',
+        component: FriendDiaryEntriesComponent,
+      },
     ]),
 
     HttpClientModule,
@@ -52,7 +55,7 @@ import { FormsModule } from '@angular/forms';
      * All Effects will only be instantiated once regardless of
      * whether they are registered once or multiple times.
      */
-    EffectsModule.forFeature([ FriendsEffects ]),
+    EffectsModule.forFeature([FriendsEffects]),
   ],
   declarations: [
     AddFriendDialogComponent,
@@ -61,9 +64,6 @@ import { FormsModule } from '@angular/forms';
     FriendsComponent,
   ],
   providers: [FriendsService],
-  entryComponents: [
-    AddFriendDialogComponent,
-  ]
+  entryComponents: [AddFriendDialogComponent],
 })
-export class FriendsModule {
-}
+export class FriendsModule {}

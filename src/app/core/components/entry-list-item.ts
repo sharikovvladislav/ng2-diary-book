@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
@@ -41,8 +47,8 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
       font-size: 80%;
       padding-top: 20px;
       color: #909090;
-    }`
-  ]
+    }`,
+  ],
 })
 export class EntryListItemComponent {
   @Input() entry: DiaryEntry;

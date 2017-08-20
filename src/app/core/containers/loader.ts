@@ -50,16 +50,15 @@ import * as fromRoot from '../../reducers';
       .aligner-item {
         max-width: 50%;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class LoaderComponent implements OnInit {
   showLoader$: Observable<Boolean>;
   showLoader: Boolean = true;
 
   ngOnInit() {
-    this.showLoader$
-        .subscribe(isLoading => this.showLoader = isLoading);
+    this.showLoader$.subscribe(isLoading => (this.showLoader = isLoading));
   }
 
   constructor(store: Store<fromRoot.State>) {

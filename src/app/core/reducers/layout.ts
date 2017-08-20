@@ -1,11 +1,10 @@
 import * as layout from '../actions/layout';
 
-
 export interface State {
   showSidenav: boolean;
   spinner: {
-    isShown: boolean,
-    pending: string[]
+    isShown: boolean;
+    pending: string[];
   };
 }
 
@@ -13,8 +12,8 @@ const initialState: State = {
   showSidenav: false,
   spinner: {
     isShown: false,
-    pending: []
-  }
+    pending: [],
+  },
 };
 
 export function reducer(state = initialState, action: layout.Actions): State {
@@ -23,13 +22,13 @@ export function reducer(state = initialState, action: layout.Actions): State {
       // return Object.assign({}, state, {showSidenav: false});
       return {
         ...state,
-        showSidenav: false
+        showSidenav: false,
       };
 
     case layout.OPEN_SIDENAV:
       return {
         ...state,
-        showSidenav: true
+        showSidenav: true,
       };
 
     case layout.SHOW_SPINNER: {
@@ -39,20 +38,22 @@ export function reducer(state = initialState, action: layout.Actions): State {
         ...state,
         spinner: {
           pending: newPending,
-          isShown: true
-        }
+          isShown: true,
+        },
       };
     }
 
     case layout.HIDE_SPINNER: {
-      const newPending = state.spinner.pending.filter(item => !action.payload.includes(item));
+      const newPending = state.spinner.pending.filter(
+        item => !action.payload.includes(item)
+      );
 
       return {
         ...state,
         spinner: {
           pending: newPending,
-          isShown: newPending.length > 0
-        }
+          isShown: newPending.length > 0,
+        },
       };
     }
 

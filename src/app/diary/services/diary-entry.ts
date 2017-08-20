@@ -2,14 +2,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/take';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import {
+  AngularFireDatabase,
+  FirebaseListObservable,
+} from 'angularfire2/database';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
 import { DiaryProcessorService } from './diary-processor';
 import { HttpClient } from '@angular/common/http';
 import { RemoteList } from '../models/remote-list';
 import { environment } from '../../../environments/environment';
-
 
 @Injectable()
 export class DiaryEntryService {
@@ -20,13 +22,14 @@ export class DiaryEntryService {
   constructor(
     private db: AngularFireDatabase,
     private diaryProcessor: DiaryProcessorService,
-    private http: HttpClient,
+    private http: HttpClient
   ) {
     this.list$ = this.db.list(this.API_PATH);
   }
 
   retrieveEntries(): Observable<DiaryEntry[]> {
-    return this.http.get(`${this.API_REST_URL}diaryEntries`)
+    return this.http
+      .get(`${this.API_REST_URL}diaryEntries`)
       .map((diaryEntries: RemoteList) => diaryEntries.items);
   }
 
@@ -41,7 +44,10 @@ export class DiaryEntryService {
 
     // TODO probably should update only with diff there and model must know what to save by itself
 
-    return this.http.put(`${this.API_REST_URL}diaryEntries/${entryKey}`, dataToSend);
+    return this.http.put(
+      `${this.API_REST_URL}diaryEntries/${entryKey}`,
+      dataToSend
+    );
   }
 
   createEntry(uid: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {

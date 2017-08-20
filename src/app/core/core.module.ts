@@ -34,7 +34,6 @@ export const COMPONENTS = [
   LoaderComponent,
 ];
 
-
 @NgModule({
   imports: [CommonModule, RouterModule, MaterialModule, PipesModule],
   declarations: COMPONENTS,
@@ -45,7 +44,7 @@ export const COMPONENTS = [
       useClass: AuthInterceptor,
       multi: true,
     },
-  ]
+  ],
 })
 export class CoreModule {
   static forRoot() {

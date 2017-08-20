@@ -54,7 +54,7 @@ import { Router } from '@angular/router';
         </md-tab>
       </md-tab-group>
     </common-show-if-logged-in>
-  `
+  `,
 })
 export class FriendsComponent {
   friends$: Observable<Friend[]>;
@@ -62,24 +62,25 @@ export class FriendsComponent {
   outcomePendingInvites$: Observable<Friend[]>;
   pendingFriends$: Observable<Friend[]>;
 
-  constructor(public dialog: MdDialog,
-              public store: Store<fromRoot.State>,
-              public friendsStore: Store<fromFriends.State>,
-              private router: Router,
-              ) {
+  constructor(
+    public dialog: MdDialog,
+    public store: Store<fromRoot.State>,
+    public friendsStore: Store<fromFriends.State>,
+    private router: Router
+  ) {
     this.friends$ = friendsStore.select(fromFriends.getFriends);
-    this.friends$
-      .subscribe(kek => console.log(kek));
-    this.outcomePendingInvites$ = friendsStore.select(fromFriends.getPendingOutcomeInvites);
+    this.friends$.subscribe(kek => console.log(kek));
+    this.outcomePendingInvites$ = friendsStore.select(
+      fromFriends.getPendingOutcomeInvites
+    );
     this.rejectedInvites$ = friendsStore.select(fromFriends.getRejectedInvites);
     this.pendingFriends$ = friendsStore.select(fromFriends.getPendingInvites);
 
-    store.select(fromRoot.getUserIsLoggedIn)
-      .subscribe((isLoggedIn) => {
-        if (isLoggedIn) {
-          store.dispatch(new friendsActions.GetAllListsAction());
-        }
-      });
+    store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        store.dispatch(new friendsActions.GetAllListsAction());
+      }
+    });
   }
 
   onAddFriendClick() {

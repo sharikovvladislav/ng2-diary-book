@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule, MdButtonModule, MdIconModule } from '@angular/material';
+import {
+  MaterialModule,
+  MdButtonModule,
+  MdIconModule,
+} from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
@@ -33,9 +37,7 @@ import { CoreModule } from '../core/core.module';
     ComponentsModule,
     CoreModule,
 
-    RouterModule.forChild([
-      { path: '', component: MyDairyPageComponent },
-    ]),
+    RouterModule.forChild([{ path: '', component: MyDairyPageComponent }]),
 
     HttpClientModule,
 
@@ -65,9 +67,6 @@ import { CoreModule } from '../core/core.module';
     MyDairyPageComponent,
   ],
   providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
-  entryComponents: [
-    EntryEditDialogComponent,
-    EntryCreateDialogComponent,
-  ]
+  entryComponents: [EntryEditDialogComponent, EntryCreateDialogComponent],
 })
 export class DiaryModule {}

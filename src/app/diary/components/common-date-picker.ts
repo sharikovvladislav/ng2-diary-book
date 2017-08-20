@@ -1,4 +1,10 @@
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 
 @Component({
   selector: 'common-date-picker',
@@ -9,7 +15,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
       <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker (selectedChanged)="onSelectedChanged($event)"  #picker></md-datepicker>
-  `
+  `,
 })
 export class CommonDatePickerComponent {
   dateValue: any;

@@ -15,7 +15,7 @@ import * as diaryActions from '../actions/diary-entries';
       [options]="entryDetailComponentOptions"
       (submit)="onEdit($event)"
     ></diary-entry-detail>
-  `
+  `,
 })
 export class EntryEditContainerComponent {
   @Input() entry: DiaryEntry;
@@ -23,7 +23,7 @@ export class EntryEditContainerComponent {
 
   constructor(private store: Store<fromRoot.State>) {
     this.entryDetailComponentOptions = {
-      buttonLabel: 'Edit'
+      buttonLabel: 'Edit',
     };
   }
 

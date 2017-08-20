@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import {
+  MaterialModule,
+  MdDatepickerModule,
+  MdNativeDateModule,
+} from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 

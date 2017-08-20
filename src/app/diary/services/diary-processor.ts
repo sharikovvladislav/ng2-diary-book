@@ -12,7 +12,7 @@ export class DiaryProcessorService {
     return {
       ...diaryToSaveCopy,
       createDate: moment().toISOString(),
-      date: moment(diaryToSave.date).format('YYYY-MM-DD')
+      date: moment(diaryToSave.date).format('YYYY-MM-DD'),
     };
   }
 }

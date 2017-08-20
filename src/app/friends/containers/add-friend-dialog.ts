@@ -8,6 +8,5 @@ import { MdDialog, MdDialogRef } from '@angular/material';
   `,
 })
 export class AddFriendDialogComponent {
-  constructor(public dialogRef: MdDialogRef<AddFriendDialogComponent>) {
-  }
+  constructor(public dialogRef: MdDialogRef<AddFriendDialogComponent>) {}
 }

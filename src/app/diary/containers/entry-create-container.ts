@@ -15,7 +15,7 @@ import * as diaryActions from '../actions/diary-entries';
       [options]="entryDetailComponentOptions"
       (submit)="onCreate($event)"
     ></diary-entry-detail>
-  `
+  `,
 })
 export class EntryCreateContainerComponent {
   entryToCreate: DiaryEntry;
@@ -23,11 +23,11 @@ export class EntryCreateContainerComponent {
 
   constructor(private store: Store<fromRoot.State>) {
     this.entryDetailComponentOptions = {
-      buttonLabel: 'Create'
+      buttonLabel: 'Create',
     };
     this.entryToCreate = {
       date: new Date(),
-      message: ''
+      message: '',
     };
   }
 

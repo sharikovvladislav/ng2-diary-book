@@ -1,11 +1,10 @@
 import { Action } from '@ngrx/store';
 
-export const OPEN_SIDENAV =   '[Layout] Open Sidenav';
-export const CLOSE_SIDENAV =  '[Layout] Close Sidenav';
+export const OPEN_SIDENAV = '[Layout] Open Sidenav';
+export const CLOSE_SIDENAV = '[Layout] Close Sidenav';
 
-export const SHOW_SPINNER =   '[Spinner] Show Spinner';
-export const HIDE_SPINNER =   '[Spinner] Hide Spinner';
-
+export const SHOW_SPINNER = '[Spinner] Show Spinner';
+export const HIDE_SPINNER = '[Spinner] Hide Spinner';
 
 export class OpenSidenavAction implements Action {
   readonly type = OPEN_SIDENAV;
@@ -27,9 +26,8 @@ export class HideSpinnerAction implements Action {
   constructor(public payload: string) {}
 }
 
-
-export type Actions
-  = OpenSidenavAction
+export type Actions =
+  | OpenSidenavAction
   | CloseSidenavAction
   | ShowSpinnerAction
   | HideSpinnerAction;

@@ -1,4 +1,10 @@
-import {Component, EventEmitter, Input, Output, ChangeDetectionStrategy} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
@@ -18,15 +24,13 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
   styles: [
     `diary-list-item {
       padding: 20px;
-    }`
-  ]
+    }`,
+  ],
 })
-
 export class EntryListComponent {
   @Input() entries: DiaryEntry[];
   @Input() isEditDisabled = false;
   @Output() onClick = new EventEmitter();
 
-  constructor() {
-  }
+  constructor() {}
 }

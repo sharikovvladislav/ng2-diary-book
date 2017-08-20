@@ -4,6 +4,6 @@ import { Component } from '@angular/core';
   selector: 'diary-not-logged-in',
   template: `
     You are not logged in. Click to log in.
-  `
+  `,
 })
 export class NotLoggedInComponent {}
