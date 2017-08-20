@@ -52,6 +52,9 @@ export class MyDairyPageComponent {
     private dialogFactory: DialogFactoryService
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
+    this.diaryEntries$.subscribe((newData) => {
+      console.log('new data emited', newData);
+    });
     store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {
       if (isLoggedIn) {
         this.store.dispatch(new diaryEntries.LoadListAction());
