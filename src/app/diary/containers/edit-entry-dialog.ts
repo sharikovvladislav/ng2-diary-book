@@ -14,9 +14,7 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
 export class EntryEditDialogComponent {
   entry: DiaryEntry;
 
-  constructor(
-    @Inject(MD_DIALOG_DATA) public data: any
-  ) {
+  constructor(@Inject(MD_DIALOG_DATA) public data: any) {
     this.entry = data;
   }
 }

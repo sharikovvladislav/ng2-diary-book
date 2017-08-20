@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
 import {
 
-  MdDialogRef } from '@angular/material';
+
+  Component } from '@angular/core';
 
 @Component({
   selector: 'diary-create-dialog',
