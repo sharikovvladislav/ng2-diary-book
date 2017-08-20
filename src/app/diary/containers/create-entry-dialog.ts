@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+// kek
 @Component({
   selector: 'diary-create-dialog',
   template: `
