@@ -11,7 +11,6 @@ import { ComponentsModule } from '../components';
 import { CoreModule } from '../../core/core.module';
 import { DialogFactoryService } from '../services/dialog-factory';
 import { DiaryProcessorService } from '../services/diary-processor';
-import { DiaryEntryService } from '../services/diary-entry';
 
 import { MdIconModule } from '@angular/material';
 
@@ -33,11 +32,7 @@ describe('MyDairyPageComponent', () => {
           CoreModule,
         ],
         declarations: [MyDairyPageComponent],
-        providers: [
-          DialogFactoryService,
-          DiaryProcessorService,
-          DiaryEntryService,
-        ],
+        providers: [DialogFactoryService, DiaryProcessorService],
       }).compileComponents();
 
       store = TestBed.get(Store);
@@ -52,5 +47,9 @@ describe('MyDairyPageComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should match snapshot', () => {
+    expect(fixture.nativeElement.innerHTML).toMatchSnapshot();
   });
 });

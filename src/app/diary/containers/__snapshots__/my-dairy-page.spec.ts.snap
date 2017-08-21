@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyDairyPageComponent should match snapshot 1`] = `
+"
+    <common-show-if-logged-in _ngcontent-c4=\\"\\">
+    <div ng-reflect-ng-switch=\\"false\\">
+      <!--bindings={
+  \\"ng-reflect-ng-switch-case\\": \\"true\\"
+}-->
+      <!--bindings={
+  \\"ng-reflect-ng-switch-case\\": \\"false\\"
+}--><div>
+        <diary-not-logged-in>
+    You are not logged in. Click to log in.
+  </diary-not-logged-in>
+      </div>
+    </div>
+  </common-show-if-logged-in>
+  "
+`;
