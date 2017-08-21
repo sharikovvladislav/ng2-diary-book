@@ -8,4 +8,4 @@ dependencies:
     - yarn global add @angular/cli
 test:
   override:
-    - yarn jest
+    - yarn jest -- --debug
