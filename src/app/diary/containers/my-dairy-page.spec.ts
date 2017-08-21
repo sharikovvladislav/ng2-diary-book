@@ -14,7 +14,10 @@ import { DiaryProcessorService } from '../services/diary-processor';
 
 import { MdIconModule } from '@angular/material';
 
-describe('MyDairyPageComponent', () => {
+import * as userActions from '../../core/actions/user';
+import * as diaryActions from '../actions/diary-entries';
+
+fdescribe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
   let fixture: ComponentFixture<MyDairyPageComponent>;
   let store: Store<fromFeature.State>;
@@ -26,13 +29,13 @@ describe('MyDairyPageComponent', () => {
           MdIconModule,
           StoreModule.forRoot({
             ...fromRoot.reducers,
-            diary: combineReducers(fromFeature.reducers),
+            diary: combineReducers(fromFeature.reducers)
           }),
           ComponentsModule,
-          CoreModule,
+          CoreModule
         ],
         declarations: [MyDairyPageComponent],
-        providers: [DialogFactoryService, DiaryProcessorService],
+        providers: [DialogFactoryService, DiaryProcessorService]
       }).compileComponents();
 
       store = TestBed.get(Store);
@@ -51,5 +54,34 @@ describe('MyDairyPageComponent', () => {
 
   it('should match snapshot', () => {
     expect(fixture).toMatchSnapshot();
+  });
+
+  describe('полная имитация', () => {
+    it('', () => {
+      const userDataMock = {
+        /*...*/
+      };
+      store.dispatch(new userActions.LoadUserAction(userDataMock));
+      store.dispatch(
+        new diaryActions.LoadListSuccessAction([
+          {
+            createDate: '2017-08-19T23:22:34.856Z',
+            date: '2017-08-19T21:00:00.000Z',
+            message: '13123123asdasdasd',
+            $key: '-KrwnXF5o7VRJDTXJw-I'
+          },
+          {
+            createDate: '2017-08-17T15:24:17.399Z',
+            date: '2017-08-16T21:00:00.000Z',
+            message: '123123123123123',
+            $key: '-KrkmsupthRsqGXqVBeK'
+          }
+        ])
+      );
+
+      fixture.detectChanges();
+
+      expect(fixture).toMatchSnapshot();
+    });
   });
 });

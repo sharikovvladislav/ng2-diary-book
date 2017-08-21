@@ -6,12 +6,11 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --parser typescript --single-quote --trailing-comma --write \"./**/*.ts\"",
+    "prettier": "prettier --parser typescript --single-quote --write \"./**/*.ts\"",
     "precommit": "lint-staged",
-    "jest": "jest"
+    "test": "jest"
   },
   "lint-staged": {
     "*.ts": [
