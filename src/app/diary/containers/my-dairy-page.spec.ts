@@ -50,6 +50,6 @@ describe('MyDairyPageComponent', () => {
   });
 
   it('should match snapshot', () => {
-    expect(fixture.nativeElement.innerHTML).toMatchSnapshot();
+    expect(fixture).toMatchSnapshot();
   });
 });
