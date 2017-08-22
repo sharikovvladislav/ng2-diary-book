@@ -8,7 +8,7 @@ exports[`MyDairyPageComponent should match snapshot 1`] = `
   store={[Function Store]}
 >
   <common-show-if-logged-in
-    _ngcontent-c4=""
+    _ngcontent-c3=""
   >
     <div
       ng-reflect-ng-switch="false"
@@ -31,141 +31,26 @@ exports[`MyDairyPageComponent полная имитация  1`] = `
   store={[Function Store]}
 >
   <common-show-if-logged-in
-    _ngcontent-c8=""
+    _ngcontent-c6=""
   >
     <div
       ng-reflect-ng-switch="true"
     >
       <div>
         <diary-entry-list
-          _ngcontent-c8=""
-          _nghost-c9=""
+          _ngcontent-c6=""
+          _nghost-c7=""
           ng-reflect-entries="[object Object],[object Object"
         >
-          <div
-            _ngcontent-c9=""
-          >
-            <div
-              _ngcontent-c9=""
-            >
-              <diary-list-item
-                _ngcontent-c9=""
-                _nghost-c11=""
-                ng-reflect-entry="[object Object]"
-                ng-reflect-is-edit-disabled="false"
-              >
-                <md-card
-                  _ngcontent-c11=""
-                  class="mat-card"
-                >
-                  <div
-                    _ngcontent-c11=""
-                    class="edit-button-container"
-                  >
-                    <md-icon
-                      _ngcontent-c11=""
-                      class="mat-icon material-icons"
-                      role="img"
-                      title="Edit"
-                      aria-hidden="true"
-                    >
-                      mode_edit
-                    </md-icon>
-                  </div>
-                  <div
-                    _ngcontent-c11=""
-                  >
-                    <md-card-title
-                      _ngcontent-c11=""
-                      class="mat-card-title "
-                    >
-                      Aug 20
-                    </md-card-title>
-                    <md-card-content
-                      _ngcontent-c11=""
-                      class="mat-card-content"
-                    >
-                      <div
-                        _ngcontent-c11=""
-                      >
-                        13123123asdasdasd
-                      </div>
-                      <div
-                        _ngcontent-c11=""
-                        class="content-footer"
-                      >
-                        Create date: Aug 20, 2017
-                      </div>
-                    </md-card-content>
-                  </div>
-                </md-card>
-              </diary-list-item>
-            </div>
-            <div
-              _ngcontent-c9=""
-            >
-              <diary-list-item
-                _ngcontent-c9=""
-                _nghost-c11=""
-                ng-reflect-entry="[object Object]"
-                ng-reflect-is-edit-disabled="false"
-              >
-                <md-card
-                  _ngcontent-c11=""
-                  class="mat-card"
-                >
-                  <div
-                    _ngcontent-c11=""
-                    class="edit-button-container"
-                  >
-                    <md-icon
-                      _ngcontent-c11=""
-                      class="mat-icon material-icons"
-                      role="img"
-                      title="Edit"
-                      aria-hidden="true"
-                    >
-                      mode_edit
-                    </md-icon>
-                  </div>
-                  <div
-                    _ngcontent-c11=""
-                  >
-                    <md-card-title
-                      _ngcontent-c11=""
-                      class="mat-card-title "
-                    >
-                      Aug 17
-                    </md-card-title>
-                    <md-card-content
-                      _ngcontent-c11=""
-                      class="mat-card-content"
-                    >
-                      <div
-                        _ngcontent-c11=""
-                      >
-                        123123123123123
-                      </div>
-                      <div
-                        _ngcontent-c11=""
-                        class="content-footer"
-                      >
-                        Create date: Aug 17, 2017
-                      </div>
-                    </md-card-content>
-                  </div>
-                </md-card>
-              </diary-list-item>
-            </div>
-          </div>
+          entry-list
         </diary-entry-list>
         <button
-          _ngcontent-c8=""
+          _ngcontent-c6=""
           class="example-fab"
           md-mini-fab=""
         >
           <md-icon
-            _ngcontent-c8=""
+            _ngcontent-c6=""
             class="mat-icon material-icons"
             role="img"
             aria-hidden="true"

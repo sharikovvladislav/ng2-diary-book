@@ -17,8 +17,8 @@ import { MdIconModule } from '@angular/material';
 import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
-import { MockedDatePipe } from '../../../date-mock';
-import { DatePipe } from '@angular/common';
+import { EntryListMockMetadata } from '../../core/components/__mocks__/entry-list-mock-metadata';
+import { EntryListComponent } from '../../core/components/entry-list';
 
 describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
@@ -27,7 +27,9 @@ describe('MyDairyPageComponent', () => {
 
   beforeEach(
     async(() => {
-      TestBed.overridePipe(DatePipe, { set: MockedDatePipe })
+      TestBed.overrideComponent(EntryListComponent, {
+        set: EntryListMockMetadata,
+      })
         .configureTestingModule({
           imports: [
             MdIconModule,
@@ -39,11 +41,7 @@ describe('MyDairyPageComponent', () => {
             CoreModule,
           ],
           declarations: [MyDairyPageComponent],
-          providers: [
-            DialogFactoryService,
-            DiaryProcessorService,
-            MockedDatePipe,
-          ],
+          providers: [DialogFactoryService, DiaryProcessorService],
         })
         .compileComponents();
 
