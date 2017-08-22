@@ -45,7 +45,7 @@ export function reducer(state = initialState, action: layout.Actions): State {
 
     case layout.HIDE_SPINNER: {
       const newPending = state.spinner.pending.filter(
-        item => !action.payload.includes(item)
+        item => !action.payload.includes(item),
       );
 
       return {

@@ -65,7 +65,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private store: Store<fromRoot.State>,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
   ) {
     /**
      * Selectors can be applied with the `select` operator which passes the state

@@ -66,12 +66,12 @@ export class FriendsComponent {
     public dialog: MdDialog,
     public store: Store<fromRoot.State>,
     public friendsStore: Store<fromFriends.State>,
-    private router: Router
+    private router: Router,
   ) {
     this.friends$ = friendsStore.select(fromFriends.getFriends);
     this.friends$.subscribe(kek => console.log(kek));
     this.outcomePendingInvites$ = friendsStore.select(
-      fromFriends.getPendingOutcomeInvites
+      fromFriends.getPendingOutcomeInvites,
     );
     this.rejectedInvites$ = friendsStore.select(fromFriends.getRejectedInvites);
     this.pendingFriends$ = friendsStore.select(fromFriends.getPendingInvites);

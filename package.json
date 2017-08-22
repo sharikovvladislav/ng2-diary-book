@@ -8,7 +8,7 @@
     "build": "ng build",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "prettier --parser typescript --single-quote --write \"./**/*.ts\"",
+    "prettier": "prettier --parser typescript --single-quote --trailing-comma=all --write \"./**/*.ts\"",
     "precommit": "lint-staged",
     "test": "jest"
   },
@@ -51,7 +51,9 @@
       "^.+\\.(ts|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js",
       "^.+\\.js$": "babel-jest"
     },
-    "transformIgnorePatterns": ["node_modules/(?!(@ngrx|angularfire2))"],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(@ngrx|angularfire2))"
+    ],
     "globals": {
       "ts-jest": {
         "tsConfigFile": "src/tsconfig.spec.json",

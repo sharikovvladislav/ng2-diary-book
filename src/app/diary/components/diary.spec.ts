@@ -14,7 +14,7 @@ describe('DiaryComponent', () => {
       TestBed.configureTestingModule({
         declarations: [DiaryComponent],
       }).compileComponents();
-    })
+    }),
   );
 
   beforeEach(() => {

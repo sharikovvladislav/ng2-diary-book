@@ -47,22 +47,22 @@ export const getModuleState = createFeatureSelector<FriendsState>('friends');
  */
 export const getDiaryState = createSelector(
   getModuleState,
-  (state: FriendsState) => state.friends
+  (state: FriendsState) => state.friends,
 );
 export const getRejectedInvites = createSelector(
   getDiaryState,
-  fromFriends.getRejectedInvites
+  fromFriends.getRejectedInvites,
 );
 export const getFriends = createSelector(getDiaryState, fromFriends.getFriends);
 export const getPendingInvites = createSelector(
   getDiaryState,
-  fromFriends.getPendingInvites
+  fromFriends.getPendingInvites,
 );
 export const getFriendDiaryEntries = createSelector(
   getDiaryState,
-  fromFriends.getFriendDiaryEntries
+  fromFriends.getFriendDiaryEntries,
 );
 export const getPendingOutcomeInvites = createSelector(
   getDiaryState,
-  fromFriends.getPendingOutcomeInvites
+  fromFriends.getPendingOutcomeInvites,
 );

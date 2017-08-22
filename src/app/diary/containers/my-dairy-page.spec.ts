@@ -48,7 +48,7 @@ describe('MyDairyPageComponent', () => {
         .compileComponents();
 
       store = TestBed.get(Store);
-    })
+    }),
   );
 
   beforeEach(() => {
@@ -85,7 +85,7 @@ describe('MyDairyPageComponent', () => {
             message: '123123123123123',
             $key: '-KrkmsupthRsqGXqVBeK',
           },
-        ])
+        ]),
       );
 
       fixture.detectChanges();

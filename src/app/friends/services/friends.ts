@@ -73,7 +73,7 @@ export class FriendsService {
 
   getFriendEntries(friendUid: string): Observable<any> {
     return this.http.get(
-      `${this.API_REST_URL}friends/diaryEntries/${friendUid}`
+      `${this.API_REST_URL}friends/diaryEntries/${friendUid}`,
     );
   }
 
