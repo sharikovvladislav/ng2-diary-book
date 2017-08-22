@@ -13,7 +13,7 @@ export const initialState: State = {
 
 export function reducer(
   state = initialState,
-  action: diaryEntries.Actions | user.Actions
+  action: diaryEntries.Actions | user.Actions,
 ): State {
   switch (action.type) {
     case user.UNLOAD_USER_DATA: {
@@ -41,7 +41,7 @@ export function reducer(
       const itemKey = action.payload.$key;
       const updatedEntries = state.entries.map(
         entry =>
-          entry.$key === itemKey ? { ...action.payload, $key: itemKey } : entry
+          entry.$key === itemKey ? { ...action.payload, $key: itemKey } : entry,
       );
 
       return {

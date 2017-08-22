@@ -20,7 +20,7 @@ export const initialState: State = {
 
 export function reducer(
   state = initialState,
-  action: friendsActions.Actions
+  action: friendsActions.Actions,
 ): State {
   switch (action.type) {
     case friendsActions.GET_FRIEND_DIARY_ENTRIES_SUCCESS: {

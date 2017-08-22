@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import { DiaryComponent } from './diary';
 
-describe('DiaryComponent1', () => {
+describe('DiaryComponent', () => {
   let component: DiaryComponent;
   let fixture: ComponentFixture<DiaryComponent>;
 
@@ -14,7 +14,7 @@ describe('DiaryComponent1', () => {
       TestBed.configureTestingModule({
         declarations: [DiaryComponent],
       }).compileComponents();
-    })
+    }),
   );
 
   beforeEach(() => {
@@ -25,5 +25,9 @@ describe('DiaryComponent1', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('snapshot test', () => {
+    expect(fixture.nativeElement.innerHTML).toMatchSnapshot();
   });
 });

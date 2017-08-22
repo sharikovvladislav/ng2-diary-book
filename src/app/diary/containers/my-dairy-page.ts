@@ -49,7 +49,7 @@ export class MyDairyPageComponent {
   constructor(
     private store: Store<fromDiary.State>,
     private changeDetectorRef: ChangeDetectorRef,
-    private dialogFactory: DialogFactoryService
+    private dialogFactory: DialogFactoryService,
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
     store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {

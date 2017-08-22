@@ -47,9 +47,9 @@ export const getModuleState = createFeatureSelector<DiaryState>('diary');
  */
 export const getDiaryState = createSelector(
   getModuleState,
-  (state: DiaryState) => state.diary
+  (state: DiaryState) => state.diary,
 );
 export const getDiaryEntries = createSelector(
   getDiaryState,
-  fromDiary.getEntries
+  fromDiary.getEntries,
 );

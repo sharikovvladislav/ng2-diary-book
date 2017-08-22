@@ -37,7 +37,7 @@ export class FriendDiaryEntriesComponent implements OnInit {
 
   constructor(
     private store: Store<fromFriends.State>,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -49,10 +49,10 @@ export class FriendDiaryEntriesComponent implements OnInit {
         this.route.paramMap.subscribe((params: any) =>
           this.store.dispatch(
             new friendActions.GetFriendDiaryEntriesAction(
-              params.get('friendUid')
-            )
-          )
-        )
+              params.get('friendUid'),
+            ),
+          ),
+        ),
       );
   }
 }

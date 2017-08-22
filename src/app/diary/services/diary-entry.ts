@@ -22,7 +22,7 @@ export class DiaryEntryService {
   constructor(
     private db: AngularFireDatabase,
     private diaryProcessor: DiaryProcessorService,
-    private http: HttpClient
+    private http: HttpClient,
   ) {
     this.list$ = this.db.list(this.API_PATH);
   }
@@ -46,7 +46,7 @@ export class DiaryEntryService {
 
     return this.http.put(
       `${this.API_REST_URL}diaryEntries/${entryKey}`,
-      dataToSend
+      dataToSend,
     );
   }
 

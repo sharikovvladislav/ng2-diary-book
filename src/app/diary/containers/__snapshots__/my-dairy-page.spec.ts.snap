@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyDairyPageComponent should match snapshot 1`] = `
+<diary-page
+  changeDetectorRef={[Function ViewRef_]}
+  dialogFactory={[Function DialogFactoryService]}
+  diaryEntries$={[Function Store]}
+  store={[Function Store]}
+>
+  <common-show-if-logged-in
+    _ngcontent-c3=""
+  >
+    <div
+      ng-reflect-ng-switch="false"
+    >
+      <div>
+        <diary-not-logged-in>
+          You are not logged in. Click to log in.
+        </diary-not-logged-in>
+      </div>
+    </div>
+  </common-show-if-logged-in>
+</diary-page>
+`;
+
+exports[`MyDairyPageComponent полная имитация  1`] = `
+<diary-page
+  changeDetectorRef={[Function ViewRef_]}
+  dialogFactory={[Function DialogFactoryService]}
+  diaryEntries$={[Function Store]}
+  store={[Function Store]}
+>
+  <common-show-if-logged-in
+    _ngcontent-c6=""
+  >
+    <div
+      ng-reflect-ng-switch="true"
+    >
+      <div>
+        <diary-entry-list
+          _ngcontent-c6=""
+          _nghost-c7=""
+          ng-reflect-entries="[object Object],[object Object"
+        >
+          entry-list
+        </diary-entry-list>
+        <button
+          _ngcontent-c6=""
+          class="example-fab"
+          md-mini-fab=""
+        >
+          <md-icon
+            _ngcontent-c6=""
+            class="mat-icon material-icons"
+            role="img"
+            aria-hidden="true"
+          >
+            add
+          </md-icon>
+        </button>
+      </div>
+    </div>
+  </common-show-if-logged-in>
+</diary-page>
+`;

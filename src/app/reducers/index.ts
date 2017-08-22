@@ -61,18 +61,18 @@ export const getLayoutState = createFeatureSelector<fromLayout.State>('layout');
 
 export const getShowSidenav = createSelector(
   getLayoutState,
-  fromLayout.getShowSidenav
+  fromLayout.getShowSidenav,
 );
 export const getIsSpinnerShown = createSelector(
   getLayoutState,
-  fromLayout.getIsSpinnerShown
+  fromLayout.getIsSpinnerShown,
 );
 
 export const getUserState = createFeatureSelector<fromUser.State>('user');
 
 export const getUserIsLoggedIn = createSelector(
   getUserState,
-  fromUser.isLoggedIn
+  fromUser.isLoggedIn,
 );
 
 export const getUserUid = createSelector(getUserState, fromUser.getUid);
