@@ -17,26 +17,35 @@ import { MdIconModule } from '@angular/material';
 import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
-fdescribe('MyDairyPageComponent', () => {
+import { MockedDatePipe } from '../../../date-mock';
+import { DatePipe } from '@angular/common';
+
+describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
   let fixture: ComponentFixture<MyDairyPageComponent>;
   let store: Store<fromFeature.State>;
 
   beforeEach(
     async(() => {
-      TestBed.configureTestingModule({
-        imports: [
-          MdIconModule,
-          StoreModule.forRoot({
-            ...fromRoot.reducers,
-            diary: combineReducers(fromFeature.reducers)
-          }),
-          ComponentsModule,
-          CoreModule
-        ],
-        declarations: [MyDairyPageComponent],
-        providers: [DialogFactoryService, DiaryProcessorService]
-      }).compileComponents();
+      TestBed.overridePipe(DatePipe, { set: MockedDatePipe })
+        .configureTestingModule({
+          imports: [
+            MdIconModule,
+            StoreModule.forRoot({
+              ...fromRoot.reducers,
+              diary: combineReducers(fromFeature.reducers),
+            }),
+            ComponentsModule,
+            CoreModule,
+          ],
+          declarations: [MyDairyPageComponent],
+          providers: [
+            DialogFactoryService,
+            DiaryProcessorService,
+            MockedDatePipe,
+          ],
+        })
+        .compileComponents();
 
       store = TestBed.get(Store);
     })
@@ -68,14 +77,14 @@ fdescribe('MyDairyPageComponent', () => {
             createDate: '2017-08-19T23:22:34.856Z',
             date: '2017-08-19T21:00:00.000Z',
             message: '13123123asdasdasd',
-            $key: '-KrwnXF5o7VRJDTXJw-I'
+            $key: '-KrwnXF5o7VRJDTXJw-I',
           },
           {
             createDate: '2017-08-17T15:24:17.399Z',
             date: '2017-08-16T21:00:00.000Z',
             message: '123123123123123',
-            $key: '-KrkmsupthRsqGXqVBeK'
-          }
+            $key: '-KrkmsupthRsqGXqVBeK',
+          },
         ])
       );
 
