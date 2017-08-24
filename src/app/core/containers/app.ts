@@ -34,7 +34,8 @@ import * as firebase from 'firebase/app';
       </bc-toolbar>
       <app-loader></app-loader>
       <div (click)="closeSidenav();">
-      <router-outlet></router-outlet>
+        <app-breadcrumbs></app-breadcrumbs>
+        <router-outlet></router-outlet>
       </div>
     </bc-layout>
   `,
@@ -48,7 +49,7 @@ export class AppComponent implements OnInit {
     this.user$.subscribe((providerData: any) => {
       if (providerData !== null) {
         providerData.getIdToken(true).then((token: string) => {
-          console.log(token);
+          // console.log(token);
           const userData = {
             token: token,
             displayName: providerData.displayName,

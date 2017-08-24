@@ -30,10 +30,19 @@ import { FormsModule } from '@angular/forms';
     CoreModule,
     FormsModule,
     RouterModule.forChild([
-      { path: '', component: FriendsComponent },
+      {
+        path: '',
+        component: FriendsComponent,
+        data: {
+          breadcrumb: 'Friends',
+        },
+      },
       {
         path: 'diaryEntries/:friendUid',
         component: FriendDiaryEntriesComponent,
+        data: {
+          breadcrumb: 'Friend diary',
+        },
       },
     ]),
 

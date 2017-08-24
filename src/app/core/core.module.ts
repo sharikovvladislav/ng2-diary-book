@@ -17,6 +17,10 @@ import { EntryListComponent } from './components/entry-list';
 import { NotLoggedInComponent } from './components/not-logged-in';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 import { LoaderComponent } from './containers/loader';
+import { BreadcrumbsComponent } from './components/breadcrumbs';
+import { BreadcrumbsContainer } from './containers/breadcrumbs';
+
+import { BreadcrumbsService } from './services/breadcrumbs';
 
 import { PipesModule } from '../shared/pipes';
 
@@ -32,6 +36,8 @@ export const COMPONENTS = [
   NotLoggedInComponent,
   CommonShowIfLoggedInComponent,
   LoaderComponent,
+  BreadcrumbsComponent,
+  BreadcrumbsContainer,
 ];
 
 @NgModule({
@@ -39,6 +45,7 @@ export const COMPONENTS = [
   declarations: COMPONENTS,
   exports: COMPONENTS,
   providers: [
+    BreadcrumbsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

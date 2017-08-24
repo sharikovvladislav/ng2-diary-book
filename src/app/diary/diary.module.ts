@@ -37,7 +37,15 @@ import { CoreModule } from '../core/core.module';
     ComponentsModule,
     CoreModule,
 
-    RouterModule.forChild([{ path: '', component: MyDairyPageComponent }]),
+    RouterModule.forChild([
+      {
+        path: '',
+        component: MyDairyPageComponent,
+        data: {
+          breadcrumb: 'My dairy',
+        },
+      },
+    ]),
 
     HttpClientModule,
 
