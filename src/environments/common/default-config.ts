@@ -1,3 +1,5 @@
-const defaultConfig = {};
+const defaultConfig = {
+  hmr: false,
+};
 
 export { defaultConfig };

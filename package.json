@@ -11,7 +11,8 @@
     "prettier": "prettier --parser typescript --single-quote --trailing-comma=all --write \"./**/*.ts\"",
     "precommit": "lint-staged",
     "test": "jest",
-    "test:dev": "jest --watch"
+    "test:dev": "jest --watch",
+    "hmr": "ng serve --hmr -e=hmr"
   },
   "lint-staged": {
     "*.ts": [
@@ -67,6 +68,7 @@
     "@angular/cli": "1.3.0",
     "@angular/compiler-cli": "^4.2.4",
     "@angular/language-service": "^4.2.4",
+    "@angularclass/hmr": "^2.1.3",
     "@types/jest": "^20.0.7",
     "@types/node": "~6.0.60",
     "babel-preset-env": "^1.6.0",
