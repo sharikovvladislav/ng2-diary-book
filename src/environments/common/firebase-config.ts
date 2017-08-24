@@ -1,4 +1,4 @@
-const firebase = {
+const firebaseConfig = {
   apiKey: 'AIzaSyCJcbeUFfA0FMq7nTR6uF0vGZvcle0Um3g',
   authDomain: 'diary-app-1fa1b.firebaseapp.com',
   restURL: 'https://us-central1-diary-app-1fa1b.cloudfunctions.net/app/',
@@ -7,4 +7,4 @@ const firebase = {
   storageBucket: 'gs://diary-app-1fa1b.appspot.com/',
 };
 
-export { firebase };
+export { firebaseConfig };
