@@ -6,6 +6,7 @@ import * as fromRoot from '../../reducers/index';
 import * as fromFriends from '../reducers';
 
 import * as friendsActions from '../actions/friends';
+import * as fromRouter from '../../core/actions/router';
 
 import { MdDialog } from '@angular/material';
 
@@ -95,6 +96,11 @@ export class FriendsComponent {
 
   goToDiary(friend: any): void {
     // this.router.navigate([`/friends/${friend.uid}/diary`]);
-    this.router.navigate([`${friend.uid}/diary`], { relativeTo: this.route });
+    // this.router.navigate([`${friend.uid}/diary`], { relativeTo: this.route });
+    this.store.dispatch(
+      new fromRouter.Go({
+        path: [`/friends/${friend.uid}/diary`],
+      }),
+    );
   }
 }

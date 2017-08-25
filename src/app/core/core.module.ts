@@ -23,6 +23,8 @@ import { BreadcrumbsContainer } from './containers/breadcrumbs';
 import { BreadcrumbsService } from './services/breadcrumbs';
 
 import { PipesModule } from '../shared/pipes';
+import { EffectsModule } from '@ngrx/effects';
+import { RouterEffects } from './effects/router';
 
 export const COMPONENTS = [
   AppComponent,
@@ -41,7 +43,13 @@ export const COMPONENTS = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, MaterialModule, PipesModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MaterialModule,
+    PipesModule,
+    EffectsModule.forRoot([RouterEffects]),
+  ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
   providers: [

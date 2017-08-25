@@ -4,6 +4,7 @@ import {
   createFeatureSelector,
   ActionReducer,
 } from '@ngrx/store';
+import * as fromRouter from '@ngrx/router-store';
 import { environment } from '../../environments/environment';
 
 /**
@@ -23,6 +24,7 @@ import * as fromUser from '../core/reducers/user';
 export interface State {
   layout: fromLayout.State;
   user: fromUser.State;
+  routerReducer: fromRouter.RouterReducerState;
 }
 
 /**
@@ -33,6 +35,7 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
   layout: fromLayout.reducer,
   user: fromUser.reducer,
+  routerReducer: fromRouter.routerReducer,
 };
 
 // console.log all actions
