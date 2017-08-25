@@ -34,19 +34,22 @@ import { FormsModule } from '@angular/forms';
       {
         path: '',
         component: FriendRootContainer,
+        data: {
+          isRoot: true,
+        },
         children: [
-          {
-            path: '',
-            component: FriendsComponent,
-            data: {
-              breadcrumb: 'Friends list',
-            },
-          },
           {
             path: ':friendUid/diary',
             component: FriendDiaryEntriesComponent,
             data: {
               breadcrumb: 'Friend diary',
+            },
+          },
+          {
+            path: '',
+            component: FriendsComponent,
+            data: {
+              breadcrumb: 'Friends list',
             },
           },
         ],

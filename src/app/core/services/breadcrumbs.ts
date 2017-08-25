@@ -7,17 +7,18 @@ export class BreadcrumbsService {
     activatedRouteSnapshot: ActivatedRouteSnapshot,
     accumulatedBreadcrumbs: string[] = [],
   ) {
-    if (activatedRouteSnapshot.children.length === 0) {
+    const { children, data: { breadcrumb, isRoot } } = activatedRouteSnapshot;
+    if (children.length === 0) {
       // TODO должно быть заменено на что-то более логичное
-      const currentBreadcrumb = activatedRouteSnapshot.data.breadcrumb || '';
+      const currentBreadcrumb = breadcrumb || '';
       return [...accumulatedBreadcrumbs, currentBreadcrumb];
     }
 
-    const currentBreadcrumb = activatedRouteSnapshot.data.breadcrumb || '';
+    const currentBreadcrumb = !isRoot ? breadcrumb || '' : '';
 
-    return this.getBreadcrumbs(activatedRouteSnapshot.children[0], [
+    return this.getBreadcrumbs(children[0], [
       ...accumulatedBreadcrumbs,
       ...(!!currentBreadcrumb ? [currentBreadcrumb] : []),
-    ]);
+    ]).filter(br => br !== '');
   }
 }
