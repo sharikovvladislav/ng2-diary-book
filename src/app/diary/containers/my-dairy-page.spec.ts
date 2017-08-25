@@ -7,12 +7,8 @@ import * as fromFeature from '../reducers';
 import * as fromRoot from '../../reducers';
 
 import { MyDairyPageComponent } from './my-dairy-page';
-import { ComponentsModule } from '../components';
-import { CoreModule } from '../../core/core.module';
-import { DialogFactoryService } from '../services/dialog-factory';
-import { DiaryProcessorService } from '../services/diary-processor';
 
-import { MdIconModule } from '@angular/material';
+import { DiaryModule } from '../diary.module';
 
 import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
@@ -32,16 +28,12 @@ describe('MyDairyPageComponent', () => {
       })
         .configureTestingModule({
           imports: [
-            MdIconModule,
+            DiaryModule,
             StoreModule.forRoot({
               ...fromRoot.reducers,
               diary: combineReducers(fromFeature.reducers),
             }),
-            ComponentsModule,
-            CoreModule,
           ],
-          declarations: [MyDairyPageComponent],
-          providers: [DialogFactoryService, DiaryProcessorService],
         })
         .compileComponents();
 
