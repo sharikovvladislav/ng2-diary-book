@@ -7,10 +7,13 @@ import { HttpModule } from '@angular/http';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import {
+  StoreRouterConnectingModule,
+  RouterStateSerializer,
+} from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
-import { reducers, metaReducers } from './reducers';
+import { reducers, metaReducers, CustomSerializer } from './reducers';
 
 import { routes } from './routes';
 
@@ -25,6 +28,8 @@ import { AppComponent } from './core/containers/app';
 
 import 'hammerjs';
 
+console.log(environment.production);
+
 @NgModule({
   imports: [
     CommonModule,
@@ -35,7 +40,9 @@ import 'hammerjs';
 
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    !environment.production
+      ? StoreDevtoolsModule.instrument({ maxAge: 50 })
+      : [],
 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
@@ -44,7 +51,7 @@ import 'hammerjs';
     EffectsModule.forRoot([]),
     CoreModule.forRoot(),
   ],
-  providers: [],
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

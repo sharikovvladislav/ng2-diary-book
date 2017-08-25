@@ -167,9 +167,9 @@
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-4.0.2.tgz#31d6d14b1ca2380b5be061e91d9a0edb0f0f27c7"
 
-"@ngrx/router-store@4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.0.2.tgz#787c9fe3af60f5f9318ed80d3f8c8ac2601b94da"
+"@ngrx/router-store@4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@ngrx/router-store/-/router-store-4.0.4.tgz#ab59f35aae93465088384faf009e21b22edd456a"
 
 "@ngrx/store-devtools@^4.0.0":
   version "4.0.0"
