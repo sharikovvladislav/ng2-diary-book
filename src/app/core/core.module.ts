@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
+import {
+  MaterialModule,
+  MdButtonModule,
+  MdIconModule,
+} from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './modules/http-interceptors/auth-append-token';
 
 import { AppComponent } from './containers/app';
@@ -23,6 +27,7 @@ import { BreadcrumbsService } from './services/breadcrumbs';
 import { PipesModule } from '../shared/pipes';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './effects/router';
+import { Form, FormsModule } from '@angular/forms';
 
 export const COMPONENTS = [
   AppComponent,
@@ -38,16 +43,26 @@ export const COMPONENTS = [
   BreadcrumbsContainer,
 ];
 
+const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
+
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
+    ...MD_MODULES,
     RouterModule,
-    MaterialModule,
     PipesModule,
+    HttpClientModule,
     EffectsModule.forRoot([RouterEffects]),
   ],
   declarations: COMPONENTS,
-  exports: COMPONENTS,
+  exports: [
+    ...COMPONENTS,
+    CommonModule,
+    FormsModule,
+    ...MD_MODULES,
+    HttpClientModule,
+  ],
   providers: [
     BreadcrumbsService,
     {
