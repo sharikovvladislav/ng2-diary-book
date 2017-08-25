@@ -29,11 +29,10 @@ export class BreadcrumbsContainer implements OnInit {
   ngOnInit() {
     this.router.events
       .filter(event => event instanceof NavigationEnd)
-      .subscribe(event => {
-        console.log(this.activatedRoute.snapshot);
-        console.log(
-          this.breadcrumbsService.getBreadcrumbs(this.activatedRoute.snapshot),
-        );
+      .subscribe(() => {
+        this.breadcrumbs = this.breadcrumbsService
+          .getBreadcrumbs(this.activatedRoute.snapshot)
+          .map(breadcrumb => ({ path: breadcrumb }));
       });
   }
 }

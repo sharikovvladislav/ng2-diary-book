@@ -34,11 +34,20 @@ import * as firebase from 'firebase/app';
       </bc-toolbar>
       <app-loader></app-loader>
       <div (click)="closeSidenav();">
-        <app-breadcrumbs></app-breadcrumbs>
-        <router-outlet></router-outlet>
+        <div class="contents">
+          <app-breadcrumbs></app-breadcrumbs>
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </bc-layout>
   `,
+  styles: [
+    `div.contents {
+      margin: 0 auto;
+      padding-top: 10px;
+      width: 60%;
+    }`,
+  ],
 })
 export class AppComponent implements OnInit {
   showSidenav$: Observable<boolean>;
