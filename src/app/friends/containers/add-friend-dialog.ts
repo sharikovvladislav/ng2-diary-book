@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
 
 @Component({
   selector: 'friends-add-dialog',
@@ -8,5 +7,5 @@ import { MdDialog, MdDialogRef } from '@angular/material';
   `,
 })
 export class AddFriendDialogComponent {
-  constructor(public dialogRef: MdDialogRef<AddFriendDialogComponent>) {}
+  constructor() {}
 }

@@ -11,6 +11,7 @@ import { AddFriendDialogComponent } from './containers/add-friend-dialog';
 import { AddFriendComponent } from './containers/add-friend';
 import { FriendDiaryEntriesComponent } from './containers/friend-diary-page';
 import { FriendsComponent } from './containers/friends';
+import { FriendRootContainer } from './containers/root';
 
 import { FriendsService } from './services/friends';
 
@@ -32,17 +33,23 @@ import { FormsModule } from '@angular/forms';
     RouterModule.forChild([
       {
         path: '',
-        component: FriendsComponent,
-        data: {
-          breadcrumb: 'Friends',
-        },
-      },
-      {
-        path: 'diaryEntries/:friendUid',
-        component: FriendDiaryEntriesComponent,
-        data: {
-          breadcrumb: 'Friend diary',
-        },
+        component: FriendRootContainer,
+        children: [
+          {
+            path: '',
+            component: FriendsComponent,
+            data: {
+              breadcrumb: 'Friends list',
+            },
+          },
+          {
+            path: ':friendUid/diary',
+            component: FriendDiaryEntriesComponent,
+            data: {
+              breadcrumb: 'Friend diary',
+            },
+          },
+        ],
       },
     ]),
 
@@ -71,6 +78,7 @@ import { FormsModule } from '@angular/forms';
     AddFriendComponent,
     FriendDiaryEntriesComponent,
     FriendsComponent,
+    FriendRootContainer,
   ],
   providers: [FriendsService],
   entryComponents: [AddFriendDialogComponent],
