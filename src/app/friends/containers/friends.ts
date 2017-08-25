@@ -11,7 +11,7 @@ import { MdDialog } from '@angular/material';
 
 import { Friend } from '../../shared/models/friend';
 import { AddFriendDialogComponent } from './add-friend-dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'friends-container',
@@ -69,6 +69,7 @@ export class FriendsComponent {
     public store: Store<fromRoot.State>,
     public friendsStore: Store<fromFriends.State>,
     private router: Router,
+    private route: ActivatedRoute,
   ) {
     this.friends$ = friendsStore.select(fromFriends.getFriends);
     this.outcomePendingInvites$ = friendsStore.select(
@@ -93,6 +94,7 @@ export class FriendsComponent {
   }
 
   goToDiary(friend: any): void {
-    this.router.navigate([`/friends/${friend.uid}/diary`]);
+    // this.router.navigate([`/friends/${friend.uid}/diary`]);
+    this.router.navigate([`${friend.uid}/diary`], { relativeTo: this.route });
   }
 }
