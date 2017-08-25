@@ -12,8 +12,6 @@ import { LayoutComponent } from './components/layout';
 import { NavItemComponent } from './components/nav-item';
 import { SidenavComponent } from './components/sidenav';
 import { ToolbarComponent } from './components/toolbar';
-import { EntryListItemComponent } from './components/entry-list-item';
-import { EntryListComponent } from './components/entry-list';
 import { NotLoggedInComponent } from './components/not-logged-in';
 import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logged-in';
 import { LoaderComponent } from './containers/loader';
@@ -33,8 +31,6 @@ export const COMPONENTS = [
   NavItemComponent,
   SidenavComponent,
   ToolbarComponent,
-  EntryListItemComponent,
-  EntryListComponent,
   NotLoggedInComponent,
   CommonShowIfLoggedInComponent,
   LoaderComponent,

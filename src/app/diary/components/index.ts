@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 import { DiaryComponent } from './diary';
 import { EntryDetailComponent } from './entry-detail';
 import { CommonDatePickerComponent } from './common-date-picker';
+import { EntryListComponent } from './entry-list';
+import { EntryListItemComponent } from './entry-list-item';
 
 import { PipesModule } from '../../shared/pipes';
 
@@ -18,6 +20,8 @@ export const COMPONENTS = [
   DiaryComponent,
   EntryDetailComponent,
   CommonDatePickerComponent,
+  EntryListComponent,
+  EntryListItemComponent,
 ];
 
 @NgModule({

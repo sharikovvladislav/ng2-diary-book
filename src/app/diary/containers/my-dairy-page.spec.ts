@@ -14,7 +14,14 @@ import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
 import { EntryListMockMetadata } from '../../core/components/__mocks__/entry-list-mock-metadata';
-import { EntryListComponent } from '../../core/components/entry-list';
+import { EntryListComponent } from '../components/entry-list';
+
+import { ComponentsModule as DiaryComponentsModule } from '../components/index';
+import { CoreModule } from '../../core/core.module';
+import { MdIconModule } from '@angular/material';
+import { CommonShowIfLoggedInComponent } from '../../core/containers/common-show-if-logged-in';
+import { NotLoggedInComponent } from '../../core/components/not-logged-in';
+import { DialogFactoryService } from '../services/dialog-factory';
 
 describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
@@ -28,12 +35,19 @@ describe('MyDairyPageComponent', () => {
       })
         .configureTestingModule({
           imports: [
-            DiaryModule,
+            MdIconModule,
+            DiaryComponentsModule,
             StoreModule.forRoot({
               ...fromRoot.reducers,
               diary: combineReducers(fromFeature.reducers),
             }),
           ],
+          declarations: [
+            MyDairyPageComponent,
+            CommonShowIfLoggedInComponent,
+            NotLoggedInComponent,
+          ],
+          providers: [DialogFactoryService],
         })
         .compileComponents();
 

@@ -23,12 +23,15 @@ import { RouterModule } from '@angular/router';
 import { CoreModule } from '../core/core.module';
 import { FormsModule } from '@angular/forms';
 
+import { ComponentsModule as DiaryComponentsModule } from '../diary/components/index';
+
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     ComponentsModule,
     CoreModule,
+    DiaryComponentsModule,
     FormsModule,
     RouterModule.forChild([
       {
