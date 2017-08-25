@@ -8,7 +8,7 @@ exports[`MyDairyPageComponent should match snapshot 1`] = `
   store={[Function Store]}
 >
   <common-show-if-logged-in
-    _ngcontent-c3=""
+    _ngcontent-c4=""
   >
     <div
       ng-reflect-ng-switch="false"
@@ -31,32 +31,46 @@ exports[`MyDairyPageComponent полная имитация  1`] = `
   store={[Function Store]}
 >
   <common-show-if-logged-in
-    _ngcontent-c6=""
+    _ngcontent-c8=""
   >
     <div
       ng-reflect-ng-switch="true"
     >
       <div>
         <diary-entry-list
-          _ngcontent-c6=""
-          _nghost-c7=""
+          _ngcontent-c8=""
+          _nghost-c9=""
           ng-reflect-entries="[object Object],[object Object"
         >
           entry-list
         </diary-entry-list>
         <button
-          _ngcontent-c6=""
-          class="example-fab"
+          _ngcontent-c8=""
+          class="example-fab mat-mini-fab mat-accent"
           md-mini-fab=""
         >
-          <md-icon
-            _ngcontent-c6=""
-            class="mat-icon material-icons"
-            role="img"
-            aria-hidden="true"
+          <span
+            class="mat-button-wrapper"
           >
-            add
-          </md-icon>
+            <md-icon
+              _ngcontent-c8=""
+              class="mat-icon material-icons"
+              role="img"
+              aria-hidden="true"
+            >
+              add
+            </md-icon>
+          </span>
+          <div
+            class="mat-button-ripple mat-ripple mat-button-ripple-round"
+            md-ripple=""
+            ng-reflect-trigger="[object HTMLButtonElement]"
+            ng-reflect-centered="false"
+            ng-reflect-disabled="false"
+          />
+          <div
+            class="mat-button-focus-overlay"
+          />
         </button>
       </div>
     </div>
