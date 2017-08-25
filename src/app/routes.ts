@@ -21,7 +21,7 @@ export const routes: Routes = [
     path: '**',
     component: NotFoundPageComponent,
     data: {
-      breadcrumb: "Not found :'(",
+      breadcrumb: 'Not found',
     },
   },
 ];
