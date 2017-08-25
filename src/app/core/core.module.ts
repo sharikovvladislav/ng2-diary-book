@@ -48,11 +48,7 @@ export const COMPONENTS = [
     RouterModule,
     MaterialModule,
     PipesModule,
-    EffectsModule.forRoot(
-      [
-        /*RouterEffects*/
-      ],
-    ),
+    EffectsModule.forRoot([RouterEffects]),
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,
