@@ -1,3 +1,5 @@
+import 'hammerjs';
+
 const mock = () => {
   let storage = {};
   return {

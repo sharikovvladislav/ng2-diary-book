@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {
-  MaterialModule,
-  MdButtonModule,
-  MdIconModule,
-} from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
 
 import { ComponentsModule } from './components';
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
@@ -28,12 +21,6 @@ import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MaterialModule,
-
-    MdButtonModule,
-    MdIconModule,
-
     ComponentsModule,
     CoreModule,
 
@@ -46,8 +33,6 @@ import { CoreModule } from '../core/core.module';
         },
       },
     ]),
-
-    HttpClientModule,
 
     /**
      * StoreModule.forFeature is used for composing state
