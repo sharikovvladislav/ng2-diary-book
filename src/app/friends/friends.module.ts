@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialModule } from '@angular/material';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
 
 import { ComponentsModule } from './components';
 
@@ -21,18 +18,14 @@ import { reducers } from './reducers';
 import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
-import { FormsModule } from '@angular/forms';
 
 import { ComponentsModule as DiaryComponentsModule } from '../diary/components/index';
 
 @NgModule({
   imports: [
-    CommonModule,
-    MaterialModule,
-    ComponentsModule,
     CoreModule,
+    ComponentsModule,
     DiaryComponentsModule,
-    FormsModule,
     RouterModule.forChild([
       {
         path: '',
@@ -58,8 +51,6 @@ import { ComponentsModule as DiaryComponentsModule } from '../diary/components/i
         ],
       },
     ]),
-
-    HttpClientModule,
 
     /**
      * StoreModule.forFeature is used for composing state

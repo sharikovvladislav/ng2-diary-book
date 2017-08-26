@@ -8,8 +8,6 @@ import * as fromRoot from '../../reducers';
 
 import { MyDairyPageComponent } from './my-dairy-page';
 
-import { DiaryModule } from '../diary.module';
-
 import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
@@ -17,7 +15,6 @@ import { EntryListMockMetadata } from '../../core/components/__mocks__/entry-lis
 import { EntryListComponent } from '../components/entry-list';
 
 import { ComponentsModule as DiaryComponentsModule } from '../components/index';
-import { CoreModule } from '../../core/core.module';
 import { MdIconModule } from '@angular/material';
 import { CommonShowIfLoggedInComponent } from '../../core/containers/common-show-if-logged-in';
 import { NotLoggedInComponent } from '../../core/components/not-logged-in';
