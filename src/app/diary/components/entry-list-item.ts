@@ -39,10 +39,6 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
       height:20px;
       width: 20px;
     }`,
-    `md-card {
-      margin: 0 auto;
-      width: 60%;
-    }`,
     `.content-footer {
       font-size: 80%;
       padding-top: 20px;

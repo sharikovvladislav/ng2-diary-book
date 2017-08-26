@@ -5,6 +5,12 @@ import {
   ActionReducer,
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { Params, RouterStateSnapshot } from '@angular/router';
+import {
+  routerReducer,
+  RouterReducerState,
+  RouterStateSerializer,
+} from '@ngrx/router-store';
 
 /**
  * Every reducer module's default export is the reducer function itself. In
@@ -23,6 +29,23 @@ import * as fromUser from '../core/reducers/user';
 export interface State {
   layout: fromLayout.State;
   user: fromUser.State;
+  routerReducer: RouterReducerState<RouterStateUrl>;
+}
+
+export interface RouterStateUrl {
+  url: string;
+  queryParams: Params;
+}
+
+export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
+  serialize(routerState: RouterStateSnapshot): RouterStateUrl {
+    const { url } = routerState;
+    const queryParams = routerState.root.queryParams;
+
+    // Only return an object including the URL and query params
+    // instead of the entire snapshot
+    return { url, queryParams };
+  }
 }
 
 /**
@@ -33,6 +56,7 @@ export interface State {
 export const reducers: ActionReducerMap<State> = {
   layout: fromLayout.reducer,
   user: fromUser.reducer,
+  routerReducer: routerReducer,
 };
 
 // console.log all actions

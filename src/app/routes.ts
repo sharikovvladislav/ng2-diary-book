@@ -6,10 +6,22 @@ export const routes: Routes = [
   {
     path: 'diary',
     loadChildren: './diary/diary.module#DiaryModule',
+    data: {
+      breadcrumb: 'Diary',
+    },
   },
   {
     path: 'friends',
     loadChildren: './friends/friends.module#FriendsModule',
+    data: {
+      breadcrumb: 'Friends',
+    },
   },
-  { path: '**', component: NotFoundPageComponent },
+  {
+    path: '**',
+    component: NotFoundPageComponent,
+    data: {
+      breadcrumb: 'Not found',
+    },
+  },
 ];

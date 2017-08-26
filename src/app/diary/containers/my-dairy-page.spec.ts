@@ -7,18 +7,21 @@ import * as fromFeature from '../reducers';
 import * as fromRoot from '../../reducers';
 
 import { MyDairyPageComponent } from './my-dairy-page';
-import { ComponentsModule } from '../components';
-import { CoreModule } from '../../core/core.module';
-import { DialogFactoryService } from '../services/dialog-factory';
-import { DiaryProcessorService } from '../services/diary-processor';
 
-import { MdIconModule } from '@angular/material';
+import { DiaryModule } from '../diary.module';
 
 import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
 import { EntryListMockMetadata } from '../../core/components/__mocks__/entry-list-mock-metadata';
-import { EntryListComponent } from '../../core/components/entry-list';
+import { EntryListComponent } from '../components/entry-list';
+
+import { ComponentsModule as DiaryComponentsModule } from '../components/index';
+import { CoreModule } from '../../core/core.module';
+import { MdIconModule } from '@angular/material';
+import { CommonShowIfLoggedInComponent } from '../../core/containers/common-show-if-logged-in';
+import { NotLoggedInComponent } from '../../core/components/not-logged-in';
+import { DialogFactoryService } from '../services/dialog-factory';
 
 describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
@@ -33,15 +36,18 @@ describe('MyDairyPageComponent', () => {
         .configureTestingModule({
           imports: [
             MdIconModule,
+            DiaryComponentsModule,
             StoreModule.forRoot({
               ...fromRoot.reducers,
               diary: combineReducers(fromFeature.reducers),
             }),
-            ComponentsModule,
-            CoreModule,
           ],
-          declarations: [MyDairyPageComponent],
-          providers: [DialogFactoryService, DiaryProcessorService],
+          declarations: [
+            MyDairyPageComponent,
+            CommonShowIfLoggedInComponent,
+            NotLoggedInComponent,
+          ],
+          providers: [DialogFactoryService],
         })
         .compileComponents();
 

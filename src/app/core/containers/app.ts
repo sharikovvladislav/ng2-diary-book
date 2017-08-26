@@ -34,10 +34,20 @@ import * as firebase from 'firebase/app';
       </bc-toolbar>
       <app-loader></app-loader>
       <div (click)="closeSidenav();">
-      <router-outlet></router-outlet>
+        <div class="contents">
+          <app-breadcrumbs></app-breadcrumbs>
+          <router-outlet></router-outlet>
+        </div>
       </div>
     </bc-layout>
   `,
+  styles: [
+    `div.contents {
+      margin: 0 auto;
+      padding-top: 10px;
+      width: 60%;
+    }`,
+  ],
 })
 export class AppComponent implements OnInit {
   showSidenav$: Observable<boolean>;
@@ -48,7 +58,7 @@ export class AppComponent implements OnInit {
     this.user$.subscribe((providerData: any) => {
       if (providerData !== null) {
         providerData.getIdToken(true).then((token: string) => {
-          console.log(token);
+          // console.log(token);
           const userData = {
             token: token,
             displayName: providerData.displayName,
