@@ -73,5 +73,6 @@ import { TagsEditorComponent } from './components/tags-editor';
     TagsAddContainer,
     TagsEditorComponent,
   ],
+  providers: [TagsService],
 })
 export class TagsModule {}

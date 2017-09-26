@@ -21,8 +21,25 @@ import { TagsService } from '../../core/services/tags';
 
 @Injectable()
 export class TagsEffects {
+  @Effect()
+  add$: Observable<Action> = this.actions$
+    .ofType(tagsActions.GET_TAGS_LIST)
+    // .do((action: any) =>
+    //   this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)),
+    // )
+    .switchMap(() => {
+      return this.tagsService
+        .getTagsList()
+        .map((data: any) => new tagsActions.GetTagsListSuccessAction(data))
+        .catch(() => of(new tagsActions.GetTagsListFailureAction()));
+      // .do(({ type }) =>
+      //   this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
+      // );
+    });
+
   constructor(
     private actions$: Actions,
+    private tagsService: TagsService,
     private store: Store<fromRoot.State>,
   ) {}
 }

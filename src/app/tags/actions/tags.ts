@@ -18,7 +18,7 @@ export class GetTagsListSuccessAction implements Action {
 export class GetTagsListFailureAction implements Action {
   readonly type = GET_TAGS_LIST_FAILURE;
 
-  constructor(public payload: any) {}
+  constructor(public payload?: any) {}
 }
 export type Actions =
   | GetTagsListAction
