@@ -18,6 +18,13 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'tags',
+    loadChildren: './tags/tags.module#TagsModule',
+    data: {
+      breadcrumb: 'Tags management',
+    },
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
     data: {

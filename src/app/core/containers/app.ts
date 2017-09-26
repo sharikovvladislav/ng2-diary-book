@@ -19,6 +19,9 @@ import * as firebase from 'firebase/app';
         <bc-nav-item (activate)="closeSidenav()" routerLink="/diary" icon="chat" hint="View your diary">
           My dairy
         </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/tags" icon="supervisor_account" hint="Tags management">
+          Tags
+        </bc-nav-item>
         <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
           Friends
         </bc-nav-item>
