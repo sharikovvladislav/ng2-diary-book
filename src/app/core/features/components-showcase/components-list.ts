@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
 @Component({
   template: `
     <md-card>
@@ -9,6 +11,8 @@ import { Component } from '@angular/core';
 })
 export class ComponentsListComponent {
   goToTagsAutoComplete() {
-    console.log('kek');
+    this.router.navigate(['tags-auto-complete'], { relativeTo: this.route });
   }
+
+  constructor(private route: ActivatedRoute, private router: Router) {}
 }

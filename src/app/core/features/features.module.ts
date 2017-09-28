@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { FeaturesRootComponent } from './root';
 import { ComponentsListComponent } from './components-showcase/components-list';
 import { MaterialModule, MdButtonModule } from '@angular/material';
+import { ExampleComponentsContainer } from './components-showcase/components-container';
 
 const MD_MODULES = [MaterialModule, MdButtonModule];
 
@@ -31,7 +32,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule];
             path: '',
             component: ComponentsListComponent,
             data: {
-              breadcrumb: 'Select a component1',
+              breadcrumb: 'Select a component',
             },
           },
         ],
@@ -42,6 +43,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule];
     FeaturesRootComponent,
     TagsAutoCompleteExampleComponent,
     ComponentsListComponent,
+    ExampleComponentsContainer,
   ],
 })
 export class FeaturesModule {}
