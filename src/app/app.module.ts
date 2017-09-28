@@ -15,7 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers, metaReducers, CustomSerializer } from './reducers';
 
-import { routes } from './routes';
+import { getRoutes } from './routes';
 
 import { environment } from '../environments/environment';
 
@@ -36,7 +36,7 @@ console.log(environment.production);
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(getRoutes(!environment.production), { useHash: true }),
 
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule,

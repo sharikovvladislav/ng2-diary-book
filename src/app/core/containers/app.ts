@@ -25,6 +25,13 @@ import * as firebase from 'firebase/app';
         <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
           Friends
         </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()"
+                     routerLink="/components-showcase"
+                     icon="supervisor_account"
+                     hint="Examples of component usage"
+        >
+          Components showcase
+        </bc-nav-item>
         <bc-nav-item *ngIf="!(isLoggedIn$ | async)" (activate)="login()">
           Login
         </bc-nav-item>
