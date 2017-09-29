@@ -51,6 +51,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
       .distinctUntilChanged()
       .switchMap(query => this.tagsService.getTagsList(query))
       .do(() => this.changeDetectorRef.markForCheck())
+      .do(tags => console.log(tags))
       .subscribe(
         // уберем уже выбранные теги
         (tags: Tag[]) =>
