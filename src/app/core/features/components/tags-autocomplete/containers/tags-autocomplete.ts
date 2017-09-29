@@ -33,7 +33,10 @@ import { TagsService } from '../../../../services/tags';
 export class TagsAutoCompleteContainerComponent implements OnInit {
   inputChanged = new Subject<string>();
 
-  selectedTags: Tag[] = [{ name: 'здоровье' }, { name: '52недели' }];
+  selectedTags: Tag[] = [
+    { id: 1, name: 'здоровье' },
+    { id: 5, name: '52недели' },
+  ];
   queryResultsTags: Tag[] = [];
   clearInputValueEmitter = new EventEmitter();
 
@@ -60,8 +63,10 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
     this.clearInputValueEmitter.emit();
   }
 
-  onDeleteSelected(tag: Tag): void {
-    console.log('delete tag', tag);
+  onDeleteSelected(tagToDelete: Tag): void {
+    this.selectedTags = this.selectedTags.filter(
+      tag => tag.id !== tagToDelete.id,
+    );
   }
 
   onInputChange(query: string): void {

@@ -7,8 +7,8 @@ import { Tag } from '../../../../../shared/models/tag';
     <div>
       <div>
         selectedTags:
-        <span *ngFor="let tag of selectedTags" (click)="deleteTag.emit(tag);">
-          {{tag.name}}
+        <span *ngFor="let tag of selectedTags">
+          {{tag.name}}&nbsp;<span (click)="deleteTag.emit(tag);">X</span>
         </span>
         <span *ngIf="selectedTags.length === 0">No tags</span>
       </div>
