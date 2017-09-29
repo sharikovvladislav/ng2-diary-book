@@ -5,9 +5,10 @@ import { TagsAutoCompleteContainerComponent } from './containers/tags-autocomple
 import { TagsAutoCompleteInputComponent } from './components/input';
 import { TagsAutoCompleteResultsComponent } from './components/results';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, FormsModule],
   declarations: [
     TagsAutoCompleteContainerComponent,
     TagsAutoCompleteInputComponent,

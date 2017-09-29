@@ -13,7 +13,7 @@ import { Tag } from '../../../../../shared/models/tag';
         <span *ngIf="selectedTags.length === 0">No tags</span>
       </div>
       <div>
-        <input />
+        <input #input [(ngModel)]="inputValue" (keyup)="inputChanged.emit(input.value)"/>
       </div>
     </div>
   `,
@@ -21,5 +21,8 @@ import { Tag } from '../../../../../shared/models/tag';
 export class TagsAutoCompleteInputComponent {
   @Input() selectedTags: Tag[] = [];
 
+  inputValue = '';
+
   @Output() deleteTag = new EventEmitter<Tag>();
+  @Output() inputChanged = new EventEmitter<string>();
 }

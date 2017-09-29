@@ -7,6 +7,7 @@ import { Tag } from '../../../../../shared/models/tag';
     hello world!
     <tags-internal-auto-complete-input
       [selectedTags]="selectedTagsTestData"
+      (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
     <tags-internal-auto-complete-results
@@ -29,5 +30,9 @@ export class TagsAutoCompleteContainerComponent {
 
   onDeleteSelected(tag: Tag): void {
     console.log('delete tag', tag);
+  }
+
+  onInputChange(query: string): void {
+    console.log('query changed: ', query);
   }
 }
