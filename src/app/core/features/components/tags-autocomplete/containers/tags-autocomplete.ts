@@ -16,7 +16,6 @@ import { TagsService } from '../../../../services/tags';
 @Component({
   selector: 'tags-auto-complete',
   template: `
-    hello world!
     <tags-internal-auto-complete-input
       [selectedTags]="selectedTags"
       [clearInputValue]="clearInputValueEmitter"
