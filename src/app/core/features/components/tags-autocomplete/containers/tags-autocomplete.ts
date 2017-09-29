@@ -42,7 +42,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   ngOnInit() {
     this.inputChanged
       .do(inputValue => {
-        // очистим результат если очистили полег с тегами
+        // очистим результат если очистили поле
         if (inputValue.length === 0) {
           this.queryResultsTags = [];
         }
