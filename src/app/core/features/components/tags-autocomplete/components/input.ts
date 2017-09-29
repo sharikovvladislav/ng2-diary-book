@@ -13,7 +13,7 @@ import { Tag } from '../../../../../shared/models/tag';
         <span *ngIf="selectedTags.length === 0">No tags</span>
       </div>
       <div>
-        <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value)"/>
+        <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value);"/>
       </div>
     </div>
   `,
