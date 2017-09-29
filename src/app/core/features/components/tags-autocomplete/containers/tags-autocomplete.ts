@@ -15,7 +15,7 @@ import { Tag } from '../../../../../shared/models/tag';
       [data]="queryResultsTestData"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
-    <button (click)="clearInput();"></button>
+    <button (click)="clearInput();">Clear input</button>
   `,
 })
 export class TagsAutoCompleteContainerComponent {
