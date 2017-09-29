@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Tag } from '../../../../../shared/models/tag';
 
 @Component({
@@ -13,16 +13,21 @@ import { Tag } from '../../../../../shared/models/tag';
         <span *ngIf="selectedTags.length === 0">No tags</span>
       </div>
       <div>
-        <input #input [(ngModel)]="inputValue" (keyup)="inputChanged.emit(input.value)"/>
+        <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value)"/>
       </div>
     </div>
   `,
 })
-export class TagsAutoCompleteInputComponent {
+export class TagsAutoCompleteInputComponent implements OnInit {
   @Input() selectedTags: Tag[] = [];
+  @Input() clearInputValue: EventEmitter<any>;
 
   inputValue = '';
 
   @Output() deleteTag = new EventEmitter<Tag>();
   @Output() inputChanged = new EventEmitter<string>();
+
+  ngOnInit() {
+    this.clearInputValue.subscribe(() => (this.inputValue = ''));
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Tag } from '../../../../../shared/models/tag';
 
 @Component({
@@ -7,6 +7,7 @@ import { Tag } from '../../../../../shared/models/tag';
     hello world!
     <tags-internal-auto-complete-input
       [selectedTags]="selectedTagsTestData"
+      [clearInputValue]="clearInputValueEmitter"
       (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
@@ -14,6 +15,7 @@ import { Tag } from '../../../../../shared/models/tag';
       [data]="queryResultsTestData"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
+    <button (click)="clearInput();"></button>
   `,
 })
 export class TagsAutoCompleteContainerComponent {
@@ -23,6 +25,7 @@ export class TagsAutoCompleteContainerComponent {
     { name: 'спина' },
     { name: 'сделал-сам' },
   ];
+  clearInputValueEmitter = new EventEmitter();
 
   onResultSelect(tag: Tag): void {
     console.log('add tag', tag);
@@ -34,5 +37,9 @@ export class TagsAutoCompleteContainerComponent {
 
   onInputChange(query: string): void {
     console.log('query changed: ', query);
+  }
+
+  clearInput() {
+    this.clearInputValueEmitter.emit();
   }
 }
