@@ -27,7 +27,6 @@ import { TagsService } from '../../../../services/tags';
       [data]="queryResultsTags"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
-    <button (click)="clearInput();">Clear input</button>
   `,
 })
 export class TagsAutoCompleteContainerComponent implements OnInit {
@@ -42,6 +41,13 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
 
   ngOnInit() {
     this.inputChanged
+      .do(inputValue => {
+        // очистим результат если очистили полег с тегами
+        if (inputValue.length === 0) {
+          this.queryResultsTags = [];
+        }
+      })
+      .filter(inputValue => inputValue.length > 0)
       .debounceTime(400)
       .distinctUntilChanged()
       .switchMap(query => this.tagsService.getTagsList(query))
@@ -61,6 +67,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   onResultSelect(tag: Tag): void {
     this.selectedTags.push(tag);
     this.clearInputValueEmitter.emit();
+    this.queryResultsTags = [];
   }
 
   onDeleteSelected(tagToDelete: Tag): void {
@@ -71,10 +78,6 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
 
   onInputChange(query: string): void {
     this.inputChanged.next(query);
-  }
-
-  clearInput() {
-    this.clearInputValueEmitter.emit();
   }
 
   constructor(
