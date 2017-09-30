@@ -25,6 +25,12 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
     </div>
   `,
   styles: [
+    `
+      textarea {
+        min-height: 70px;
+        min-width: 500px;
+      }
+    `,
     `.example-form {
       width: 500px;
     }`,

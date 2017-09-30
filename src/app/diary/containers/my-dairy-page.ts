@@ -14,6 +14,7 @@ import * as diaryEntries from '../actions/diary-entries';
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 import { DialogFactoryService } from '../services/dialog-factory';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'diary-page',
@@ -50,6 +51,8 @@ export class MyDairyPageComponent {
     private store: Store<fromDiary.State>,
     private changeDetectorRef: ChangeDetectorRef,
     private dialogFactory: DialogFactoryService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
     store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {
@@ -61,7 +64,7 @@ export class MyDairyPageComponent {
   }
 
   openCreateDialog() {
-    this.dialogFactory.openCreateEntryDialog();
+    this.router.navigate(['./add'], { relativeTo: this.route });
   }
 
   openEditDialog(entryToEdit: DiaryEntry) {

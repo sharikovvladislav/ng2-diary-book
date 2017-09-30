@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { EntryCreateDialogComponent } from '../containers/create-entry-dialog';
 import { MdDialog } from '@angular/material';
 import { EntryEditDialogComponent } from '../containers/edit-entry-dialog';
 
@@ -9,12 +8,6 @@ export class DialogFactoryService {
   createEntryDialog: any = null;
 
   constructor(private dialog: MdDialog) {}
-
-  openCreateEntryDialog(): void {
-    this.editEntryDialog = this.dialog.open(EntryCreateDialogComponent, {
-      disableClose: true,
-    });
-  }
 
   closeCreateEntryDialog(): void {
     this.editEntryDialog.close();

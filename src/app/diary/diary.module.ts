@@ -4,7 +4,6 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { ComponentsModule } from './components';
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
-import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
@@ -19,6 +18,7 @@ import { reducers } from './reducers';
 import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
+import { EntryCreateContainer } from './containers/entry-create-page';
 
 @NgModule({
   imports: [
@@ -38,6 +38,13 @@ import { CoreModule } from '../core/core.module';
             component: MyDairyPageComponent,
             data: {
               breadcrumb: 'My diary',
+            },
+          },
+          {
+            path: 'add',
+            component: EntryCreateContainer,
+            data: {
+              breadcrumb: 'Create entry',
             },
           },
         ],
@@ -64,13 +71,13 @@ import { CoreModule } from '../core/core.module';
   ],
   declarations: [
     EntryEditDialogComponent,
-    EntryCreateDialogComponent,
     EntryEditContainerComponent,
     EntryCreateContainerComponent,
     MyDairyPageComponent,
     DiaryRootComponent,
+    EntryCreateContainer,
   ],
   providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
-  entryComponents: [EntryEditDialogComponent, EntryCreateDialogComponent],
+  entryComponents: [EntryEditDialogComponent],
 })
 export class DiaryModule {}
