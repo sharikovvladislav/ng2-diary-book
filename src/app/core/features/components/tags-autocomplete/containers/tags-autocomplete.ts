@@ -23,10 +23,16 @@ import { TagsService } from '../../../../services/tags';
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
     <tags-internal-auto-complete-results
+      [class.hidden]="queryResultsTags.length === 0"
       [data]="queryResultsTags"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
   `,
+  styles: [
+    `tags-internal-auto-complete-results.hidden {
+      display: none;
+    }`,
+  ],
 })
 export class TagsAutoCompleteContainerComponent implements OnInit {
   inputChanged = new Subject<string>();
