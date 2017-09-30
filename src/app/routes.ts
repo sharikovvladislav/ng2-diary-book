@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/containers/not-found-page';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', redirectTo: '/diary', pathMatch: 'full' },
   {
     path: 'diary',
@@ -32,3 +32,16 @@ export const routes: Routes = [
     },
   },
 ];
+
+const devRoutes: Routes = [
+  {
+    path: 'components-showcase',
+    loadChildren: './core/features/features.module#FeaturesModule',
+    data: {
+      breadcrumb: 'Components showcase',
+    },
+  },
+];
+
+export const getRoutes = isDevEnv =>
+  isDevEnv ? [...devRoutes, ...routes] : routes;

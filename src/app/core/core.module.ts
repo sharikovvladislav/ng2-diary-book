@@ -27,7 +27,8 @@ import { BreadcrumbsService } from './services/breadcrumbs';
 import { PipesModule } from '../shared/pipes';
 import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './effects/router';
-import { Form, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { TagsAutoCompleteModule } from './features/components/tags-autocomplete/tags-autocomplete.module';
 
 export const COMPONENTS = [
   AppComponent,
@@ -54,6 +55,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     PipesModule,
     HttpClientModule,
     EffectsModule.forRoot([RouterEffects]),
+    TagsAutoCompleteModule,
   ],
   declarations: COMPONENTS,
   exports: [

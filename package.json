@@ -70,6 +70,7 @@
     "@angular/language-service": "^4.2.4",
     "@types/jest": "^20.0.7",
     "@types/node": "~6.0.60",
+    "angular-in-memory-web-api": "^0.4.6",
     "babel-preset-env": "^1.6.0",
     "codelyzer": "~3.1.1",
     "cz-conventional-changelog": "^2.0.0",
