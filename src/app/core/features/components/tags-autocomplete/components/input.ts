@@ -4,19 +4,36 @@ import { Tag } from '../../../../../shared/models/tag';
 @Component({
   selector: 'tags-internal-auto-complete-input',
   template: `
-    <div>
-      <div>
-        selectedTags:
-        <span *ngFor="let tag of selectedTags">
+      <div class="selectedTags">
+        <span *ngFor="let tag of selectedTags" class="tag">
           {{tag.name}}&nbsp;<span (click)="deleteTag.emit(tag);">X</span>
         </span>
-        <span *ngIf="selectedTags.length === 0">No tags</span>
       </div>
-      <div>
+      <div class="input">
         <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value);"/>
       </div>
-    </div>
   `,
+  styles: [
+    `.tag {
+      display: inline-block;
+      padding: 3px 5px;
+      background-color: #cee0ed;
+      color: #33658a;
+    }`,
+    `
+      .tag:not(:first-child) {
+        margin-left: 3px;
+      }
+    `,
+    `
+    .selectedTags {
+      display: inline-block;
+    }`,
+    `
+    .input {
+      display: inline-block;
+    }`,
+  ],
 })
 export class TagsAutoCompleteInputComponent implements OnInit {
   @Input() selectedTags: Tag[] = [];
