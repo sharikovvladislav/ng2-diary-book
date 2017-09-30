@@ -2,7 +2,9 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { Tag } from '../../../../../shared/models/tag';
 import { Subject } from 'rxjs/Subject';
@@ -17,7 +19,7 @@ import { TagsService } from '../../../../services/tags';
   selector: 'tags-auto-complete',
   template: `
     <tags-internal-auto-complete-input
-      [selectedTags]="selectedTags"
+      [selectedTags]="selectedTagsValue"
       [clearInputValue]="clearInputValueEmitter"
       (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
@@ -35,12 +37,20 @@ import { TagsService } from '../../../../services/tags';
   ],
 })
 export class TagsAutoCompleteContainerComponent implements OnInit {
+  @Input()
+  get selectedTags() {
+    return this.selectedTagsValue;
+  }
+  set selectedTags(nValue) {
+    this.selectedTagsValue = nValue;
+    this.selectedTagsChange.emit(this.selectedTagsValue);
+  }
+
+  @Output() selectedTagsChange = new EventEmitter<Tag[]>();
+
   inputChanged = new Subject<string>();
 
-  selectedTags: Tag[] = [
-    { id: 1, name: 'здоровье' },
-    { id: 5, name: '52недели' },
-  ];
+  selectedTagsValue: Tag[] = [];
   queryResultsTags: Tag[] = [];
   clearInputValueEmitter = new EventEmitter();
 
@@ -70,7 +80,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   }
 
   onResultSelect(tag: Tag): void {
-    this.selectedTags.push(tag);
+    this.selectedTags = [...this.selectedTags, tag];
     this.clearInputValueEmitter.emit();
     this.queryResultsTags = [];
   }
