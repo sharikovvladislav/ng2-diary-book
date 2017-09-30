@@ -15,54 +15,7 @@ import { Tag } from '../../../../../shared/models/tag';
       </div>
     </div>
   `,
-  styles: [
-    `
-      .container {
-        border: 1px solid #9e9e9e;
-        padding: 2px;
-      }
-    `,
-    `
-      .tag {
-        display: inline-block;
-        padding: 3px 5px;
-        background-color: #cee0ed;
-        color: #33658a;
-      }
-    `,
-    `
-      .tag:hover {
-        background-color: #bed0dd;
-      }
-    `,
-    `
-      .tag:not(:first-child) {
-        margin-left: 3px;
-      }
-    `,
-    `
-      .input input {
-        margin: 4px 3px 0;
-        height: 20px;
-        border: 0;
-      }
-    `,
-    `
-      input:focus{
-        outline: none;
-      }
-    `,
-    `
-      .selectedTags {
-        display: inline-block;
-      }
-    `,
-    `
-      .input {
-        display: inline-block;
-      }
-    `,
-  ],
+  styleUrls: ['./input.styles.css'],
 })
 export class TagsAutoCompleteInputComponent implements OnInit {
   @Input() selectedTags: Tag[] = [];

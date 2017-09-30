@@ -1,0 +1,13 @@
+.tag {
+  display: inline-block;
+  padding: 3px 5px;
+  background-color: #cee0ed;
+  color: #33658a;
+}
+.tag:hover {
+  background-color: #bed0dd;
+}
+
+.tag:not(:first-child) {
+  margin-left: 3px;
+}
