@@ -30,7 +30,6 @@ import { TagsService } from '../../../../services/tags';
       [data]="queryResultsTags"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
-    <button (click)="focusInputFieldEmitter.emit()">Click me</button>
   `,
   styles: [
     `tags-internal-auto-complete-results.hidden {
