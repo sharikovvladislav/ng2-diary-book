@@ -64,7 +64,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
       })
       .filter(inputValue => inputValue.length > 0)
       .debounceTime(400)
-      .switchMap(query => this.tagsService.getTagsList(query))
+      .switchMap(query => this.tagsService.getTagsList({ query }))
       .do(() => this.changeDetectorRef.markForCheck())
       .do(tags => console.log(tags))
       .subscribe(

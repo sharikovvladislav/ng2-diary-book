@@ -14,14 +14,14 @@ export class TagsService {
   private API_TAGS_GETTER_PATH = '/tags';
   private API_REST_URL = 'api';
 
-  getTagsList(query?: string): Observable<any> {
+  getTagsList(tagsRequestFilter?: TagsRequestFilter): Observable<any> {
     return this.http
       .get<Tag[]>(`${this.API_REST_URL}${this.API_TAGS_GETTER_PATH}`)
       .switchMap((response: any) => {
         console.log('switchMap');
         const tags = response.data;
         const filteredTags = tags.filter((tag: Tag) =>
-          tag.name.includes(query),
+          tag.name.includes(tagsRequestFilter.query),
         );
 
         return Observable.of(filteredTags);
