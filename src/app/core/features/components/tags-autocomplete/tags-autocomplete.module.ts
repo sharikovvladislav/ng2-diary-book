@@ -17,7 +17,9 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
     HttpClientModule,
     CommonModule,
     FormsModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    InMemoryWebApiModule.forRoot(InMemoryDataService, {
+      passThruUnknownUrl: true,
+    }),
   ],
   declarations: [
     TagsAutoCompleteContainerComponent,
