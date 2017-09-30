@@ -14,25 +14,29 @@ import { Tag } from '../../../../../shared/models/tag';
       </div>
   `,
   styles: [
-    `.tag {
-      display: inline-block;
-      padding: 3px 5px;
-      background-color: #cee0ed;
-      color: #33658a;
-    }`,
+    `
+      .tag {
+        display: inline-block;
+        padding: 3px 5px;
+        background-color: #cee0ed;
+        color: #33658a;
+      }
+    `,
     `
       .tag:not(:first-child) {
         margin-left: 3px;
       }
     `,
     `
-    .selectedTags {
-      display: inline-block;
-    }`,
+      .selectedTags {
+        display: inline-block;
+      }
+    `,
     `
-    .input {
-      display: inline-block;
-    }`,
+      .input {
+        display: inline-block;
+      }
+    `,
   ],
 })
 export class TagsAutoCompleteInputComponent implements OnInit {
