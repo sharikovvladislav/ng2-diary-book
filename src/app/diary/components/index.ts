@@ -15,6 +15,7 @@ import { EntryListComponent } from './entry-list';
 import { EntryListItemComponent } from './entry-list-item';
 
 import { PipesModule } from '../../shared/pipes';
+import { CoreModule } from '../../core/core.module';
 
 export const COMPONENTS = [
   DiaryComponent,
@@ -35,6 +36,7 @@ export const COMPONENTS = [
     MdNativeDateModule,
     MdDatepickerModule,
     MdDatepickerModule,
+    CoreModule,
   ],
   declarations: COMPONENTS,
   exports: COMPONENTS,

@@ -64,6 +64,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     FormsModule,
     ...MD_MODULES,
     HttpClientModule,
+    TagsAutoCompleteModule,
   ],
   providers: [
     BreadcrumbsService,

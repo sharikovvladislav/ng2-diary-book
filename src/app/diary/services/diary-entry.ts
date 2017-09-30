@@ -27,6 +27,8 @@ export class DiaryEntryService {
     const entryKey = entryData.$key;
     const dataToSend = { ...entryData };
 
+    // подготовим теги
+
     // приходится удалять ключ, чтобы firebase не умер
     delete dataToSend.$key;
     // удаляем дату создания

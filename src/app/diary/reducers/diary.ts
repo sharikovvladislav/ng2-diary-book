@@ -33,7 +33,7 @@ export function reducer(
 
       return {
         ...state,
-        entries: entries,
+        entries: entries.map(kek => ({ ...kek, tags: [] })),
       };
     }
 

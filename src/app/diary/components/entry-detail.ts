@@ -21,6 +21,7 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
       <p>
         <common-date-picker [(date)]="_entry.date"></common-date-picker>
       </p>
+      <tags-auto-complete [(selectedTags)]="_entry.tags"></tags-auto-complete>
       <button md-raised-button (click)="submit.emit(_entry)">{{options.buttonLabel}}</button>
     </div>
   `,
@@ -44,7 +45,6 @@ export class EntryDetailComponent {
   @Output() submit = new EventEmitter<DiaryEntry>();
 
   _entry: DiaryEntry;
-
   @Input()
   get entry(): DiaryEntry {
     return this._entry;
