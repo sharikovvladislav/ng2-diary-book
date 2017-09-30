@@ -21,6 +21,7 @@ import { TagsService } from '../../../../services/tags';
     <tags-internal-auto-complete-input
       [selectedTags]="selectedTagsValue"
       [clearInputValue]="clearInputValueEmitter"
+      [focusInputField]="focusInputFieldEmitter"
       (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
@@ -29,6 +30,7 @@ import { TagsService } from '../../../../services/tags';
       [data]="queryResultsTags"
       (selectTag)="onResultSelect($event);"
     ></tags-internal-auto-complete-results>
+    <button (click)="focusInputFieldEmitter.emit()">Click me</button>
   `,
   styles: [
     `tags-internal-auto-complete-results.hidden {
@@ -53,6 +55,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   selectedTagsValue: Tag[] = [];
   queryResultsTags: Tag[] = [];
   clearInputValueEmitter = new EventEmitter();
+  focusInputFieldEmitter = new EventEmitter();
 
   ngOnInit() {
     this.inputChanged
@@ -83,6 +86,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
     this.selectedTags = [...this.selectedTags, tag];
     this.clearInputValueEmitter.emit();
     this.queryResultsTags = [];
+    this.focusInputFieldEmitter.emit();
   }
 
   onDeleteSelected(tagToDelete: Tag): void {

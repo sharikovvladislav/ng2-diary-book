@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { Tag } from '../../../../../shared/models/tag';
 
 @Component({
@@ -22,8 +30,11 @@ import { Tag } from '../../../../../shared/models/tag';
   styleUrls: ['./input.styles.css'],
 })
 export class TagsAutoCompleteInputComponent implements OnInit {
+  @ViewChild('input') inputRef: ElementRef;
+
   @Input() selectedTags: Tag[] = [];
   @Input() clearInputValue: EventEmitter<any>;
+  @Input() focusInputField: EventEmitter<any>;
 
   inputValue = '';
 
@@ -38,5 +49,6 @@ export class TagsAutoCompleteInputComponent implements OnInit {
 
   ngOnInit() {
     this.clearInputValue.subscribe(() => (this.inputValue = ''));
+    this.focusInputField.subscribe(() => this.inputRef.nativeElement.focus());
   }
 }
