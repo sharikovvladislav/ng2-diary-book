@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
       <router-outlet></router-outlet>
     </div>
   `,
-  styleUrls: ['../../core/styles/general.styles.css'],
+  styleUrls: [`../../core/styles/general.styles.css`],
 })
-export class TagsRootContainer {}
+export class DiaryRootComponent {}

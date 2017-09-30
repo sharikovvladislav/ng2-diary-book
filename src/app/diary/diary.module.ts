@@ -9,6 +9,7 @@ import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { DiaryEffects } from './effects/diary';
+import { DiaryRootComponent } from './containers/root';
 
 import { DialogFactoryService } from './services/dialog-factory';
 import { DiaryProcessorService } from './services/diary-processor';
@@ -27,10 +28,19 @@ import { CoreModule } from '../core/core.module';
     RouterModule.forChild([
       {
         path: '',
-        component: MyDairyPageComponent,
+        component: DiaryRootComponent,
         data: {
-          breadcrumb: 'My dairy',
+          breadcrumb: 'Dairy',
         },
+        children: [
+          {
+            path: ``,
+            component: MyDairyPageComponent,
+            data: {
+              breadcrumb: 'My diary',
+            },
+          },
+        ],
       },
     ]),
 
@@ -58,6 +68,7 @@ import { CoreModule } from '../core/core.module';
     EntryEditContainerComponent,
     EntryCreateContainerComponent,
     MyDairyPageComponent,
+    DiaryRootComponent,
   ],
   providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
   entryComponents: [EntryEditDialogComponent, EntryCreateDialogComponent],

@@ -23,7 +23,7 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
     </div>
   `,
   styles: [
-    `diary-list-item {
+    `diary-list-item:not(:first-child) {
       padding: 20px;
     }`,
   ],
