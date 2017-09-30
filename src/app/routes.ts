@@ -43,5 +43,6 @@ const devRoutes: Routes = [
   },
 ];
 
-export const getRoutes = isDevEnv =>
-  isDevEnv ? [...devRoutes, ...routes] : routes;
+export function getRoutes(isDevEnv) {
+  return isDevEnv ? [...devRoutes, ...routes] : routes;
+}
