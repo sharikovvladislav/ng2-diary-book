@@ -4,6 +4,7 @@ import { Tag } from '../../../../../shared/models/tag';
 @Component({
   selector: 'tags-internal-auto-complete-input',
   template: `
+    <div class="container">
       <div class="selectedTags">
         <span *ngFor="let tag of selectedTags" class="tag">
           {{tag.name}}&nbsp;<span (click)="deleteTag.emit(tag);">X</span>
@@ -12,8 +13,15 @@ import { Tag } from '../../../../../shared/models/tag';
       <div class="input">
         <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value);"/>
       </div>
+    </div>
   `,
   styles: [
+    `
+      .container {
+        border: 1px solid #9e9e9e;
+        padding: 2px;
+      }
+    `,
     `
       .tag {
         display: inline-block;
@@ -23,8 +31,25 @@ import { Tag } from '../../../../../shared/models/tag';
       }
     `,
     `
+      .tag:hover {
+        background-color: #bed0dd;
+      }
+    `,
+    `
       .tag:not(:first-child) {
         margin-left: 3px;
+      }
+    `,
+    `
+      .input input {
+        margin: 4px 3px 0;
+        height: 20px;
+        border: 0;
+      }
+    `,
+    `
+      input:focus{
+        outline: none;
       }
     `,
     `
