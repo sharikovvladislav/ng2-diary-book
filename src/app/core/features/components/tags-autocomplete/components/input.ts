@@ -11,7 +11,11 @@ import { Tag } from '../../../../../shared/models/tag';
         </span>
       </div>
       <div class="input">
-        <input #input [(ngModel)]="inputValue" (ngModelChange)="inputChanged.emit(input.value);"/>
+        <input #input
+               (keydown.backspace)="onBackspacePressed(input.value)"
+               [(ngModel)]="inputValue"
+               (ngModelChange)="inputChanged.emit(input.value);"
+        />
       </div>
     </div>
   `,
@@ -25,6 +29,12 @@ export class TagsAutoCompleteInputComponent implements OnInit {
 
   @Output() deleteTag = new EventEmitter<Tag>();
   @Output() inputChanged = new EventEmitter<string>();
+
+  onBackspacePressed({ length: inputValueLength }) {
+    if (inputValueLength === 0) {
+      this.deleteTag.emit(this.selectedTags[this.selectedTags.length - 1]);
+    }
+  }
 
   ngOnInit() {
     this.clearInputValue.subscribe(() => (this.inputValue = ''));
