@@ -10,6 +10,8 @@ import * as user from '../actions/user';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -19,8 +21,19 @@ import * as firebase from 'firebase/app';
         <bc-nav-item (activate)="closeSidenav()" routerLink="/diary" icon="chat" hint="View your diary">
           My dairy
         </bc-nav-item>
+        <bc-nav-item (activate)="closeSidenav()" routerLink="/tags" icon="supervisor_account" hint="Tags management">
+          Tags
+        </bc-nav-item>
         <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
           Friends
+        </bc-nav-item>
+        <bc-nav-item *ngIf="!isProduction();"
+                     (activate)="closeSidenav()"
+                     routerLink="/components-showcase"
+                     icon="supervisor_account"
+                     hint="Examples of component usage"
+        >
+          Components showcase
         </bc-nav-item>
         <bc-nav-item *ngIf="!(isLoggedIn$ | async)" (activate)="login()">
           Login
@@ -108,5 +121,9 @@ export class AppComponent implements OnInit {
   logout() {
     this.afAuth.auth.signOut();
     this.closeSidenav();
+  }
+
+  isProduction() {
+    return environment.production;
   }
 }

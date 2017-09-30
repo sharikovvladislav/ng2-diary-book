@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotFoundPageComponent } from './core/containers/not-found-page';
 
-export const routes: Routes = [
+const routes: Routes = [
   { path: '', redirectTo: '/diary', pathMatch: 'full' },
   {
     path: 'diary',
@@ -18,6 +18,13 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'tags',
+    loadChildren: './tags/tags.module#TagsModule',
+    data: {
+      breadcrumb: 'Tags management',
+    },
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
     data: {
@@ -25,3 +32,17 @@ export const routes: Routes = [
     },
   },
 ];
+
+const devRoutes: Routes = [
+  {
+    path: 'components-showcase',
+    loadChildren: './core/features/features.module#FeaturesModule',
+    data: {
+      breadcrumb: 'Components showcase',
+    },
+  },
+];
+
+export function getRoutes(isDevEnv) {
+  return isDevEnv ? [...devRoutes, ...routes] : routes;
+}
