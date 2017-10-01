@@ -23,9 +23,17 @@ export class DiaryEntryService {
       .map((diaryEntries: RemoteList) => diaryEntries.items);
   }
 
+  getEntry(entryKey: string): Observable<DiaryEntry> {
+    return this.retrieveEntries().switchMap((entries: DiaryEntry[]) => {
+      return Observable.of(entries.filter(entry => entry.$key === entryKey)[0]);
+    });
+  }
+
   updateEntry(entryData: DiaryEntry): Observable<any> {
     const entryKey = entryData.$key;
     const dataToSend = { ...entryData };
+
+    // подготовим теги
 
     // приходится удалять ключ, чтобы firebase не умер
     delete dataToSend.$key;

@@ -18,7 +18,6 @@ import { ComponentsModule as DiaryComponentsModule } from '../components/index';
 import { MdIconModule } from '@angular/material';
 import { CommonShowIfLoggedInComponent } from '../../core/containers/common-show-if-logged-in';
 import { NotLoggedInComponent } from '../../core/components/not-logged-in';
-import { DialogFactoryService } from '../services/dialog-factory';
 
 describe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
@@ -44,7 +43,7 @@ describe('MyDairyPageComponent', () => {
             CommonShowIfLoggedInComponent,
             NotLoggedInComponent,
           ],
-          providers: [DialogFactoryService],
+          providers: [],
         })
         .compileComponents();
 

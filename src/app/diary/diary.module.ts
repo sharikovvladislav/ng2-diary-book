@@ -4,13 +4,12 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { ComponentsModule } from './components';
 import { EntryEditDialogComponent } from './containers/edit-entry-dialog';
-import { EntryCreateDialogComponent } from './containers/create-entry-dialog';
 import { EntryEditContainerComponent } from './containers/entry-edit-container';
 import { EntryCreateContainerComponent } from './containers/entry-create-container';
 import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { DiaryEffects } from './effects/diary';
+import { DiaryRootComponent } from './containers/root';
 
-import { DialogFactoryService } from './services/dialog-factory';
 import { DiaryProcessorService } from './services/diary-processor';
 import { DiaryEntryService } from './services/diary-entry';
 
@@ -18,6 +17,8 @@ import { reducers } from './reducers';
 import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
+import { EntryCreateContainer } from './containers/entry-create-page';
+import { EntryEditContainer } from './containers/entry-edit-page';
 
 @NgModule({
   imports: [
@@ -27,10 +28,33 @@ import { CoreModule } from '../core/core.module';
     RouterModule.forChild([
       {
         path: '',
-        component: MyDairyPageComponent,
+        component: DiaryRootComponent,
         data: {
-          breadcrumb: 'My dairy',
+          breadcrumb: 'Dairy',
         },
+        children: [
+          {
+            path: ``,
+            component: MyDairyPageComponent,
+            data: {
+              breadcrumb: 'My diary',
+            },
+          },
+          {
+            path: 'edit/:key',
+            component: EntryEditContainer,
+            data: {
+              breadcrumb: 'Create entry',
+            },
+          },
+          {
+            path: 'add',
+            component: EntryCreateContainer,
+            data: {
+              breadcrumb: 'Create entry',
+            },
+          },
+        ],
       },
     ]),
 
@@ -54,12 +78,14 @@ import { CoreModule } from '../core/core.module';
   ],
   declarations: [
     EntryEditDialogComponent,
-    EntryCreateDialogComponent,
     EntryEditContainerComponent,
     EntryCreateContainerComponent,
     MyDairyPageComponent,
+    DiaryRootComponent,
+    EntryCreateContainer,
+    EntryEditContainer,
   ],
-  providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
-  entryComponents: [EntryEditDialogComponent, EntryCreateDialogComponent],
+  providers: [DiaryProcessorService, DiaryEntryService],
+  entryComponents: [EntryEditDialogComponent],
 })
 export class DiaryModule {}

@@ -9,11 +9,12 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { Action, Store, State } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import * as fromRoot from '../../reducers';
+import * as routerActions from '../../core/actions/router';
 
 import { DiaryEntryService } from '../services/diary-entry';
 
@@ -22,25 +23,6 @@ import * as layoutActions from '../../core/actions/layout';
 
 import { DiaryEntry } from '../../shared/models/diary-entry';
 import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
-
-import { DialogFactoryService } from '../services/dialog-factory';
-
-/**
- * Effects offer a way to isolate and easily test side-effects within your
- * application.
- * The `toPayload` helper function returns just
- * the payload of the currently dispatched action, useful in
- * instances where the current state is not necessary.
- *
- * Documentation on `toPayload` can be found here:
- * https://github.com/ngrx/effects/blob/master/docs/api.md#topayload
- *
- * If you are unfamiliar with the operators being used in these examples, please
- * check out the sources below:
- *
- * Official Docs: http://reactivex.io/rxjs/manual/overview.html#categories-of-operators
- * RxJS 5 Operators By Example: https://gist.github.com/btroncone/d6cf141d6f2c00dc6b35
- */
 
 @Injectable()
 export class DiaryEffects {
@@ -82,7 +64,6 @@ export class DiaryEffects {
             (newEntryData: DiaryEntry) =>
               new diaryActions.CreateEntrySuccessAction(newEntryData),
           )
-          .do(() => this.dialogFactory.closeCreateEntryDialog())
           .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
           .do(({ type }) =>
             this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
@@ -103,9 +84,33 @@ export class DiaryEffects {
           (updatedEntryData: DiaryEntry) =>
             new diaryActions.EditEntrySuccessAction(updatedEntryData),
         )
-        .do(() => this.store.dispatch(new diaryActions.LoadListAction()))
-        .do(() => this.dialogFactory.closeEditEntryDialog())
+        .do(() =>
+          this.store.dispatch(new routerActions.Go({ path: ['../..'] })),
+        )
         .catch(() => of(new diaryActions.EditEntryFailureAction(null)))
+        .do(() => this.store.dispatch(new diaryActions.LoadListAction()))
+        .do(() =>
+          this.store.dispatch(new diaryActions.GetEditEntryClearAction()),
+        )
+        .do(({ type }) =>
+          this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
+        );
+    });
+
+  @Effect()
+  getEntryToEdit$: Observable<Action> = this.actions$
+    .ofType(diaryActions.GET_EDIT_ENTRY)
+    .do((action: any) =>
+      this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)),
+    )
+    .switchMap((action: diaryActions.GetEditEntryAction) => {
+      return this.diaryEntryService
+        .getEntry(action.payload)
+        .map(
+          (entryToEdit: DiaryEntry) =>
+            new diaryActions.GetEditEntrySuccessAction(entryToEdit),
+        )
+        .catch(() => of(new diaryActions.GetEditEntryFailureAction()))
         .do(({ type }) =>
           this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
         );
@@ -114,7 +119,6 @@ export class DiaryEffects {
   constructor(
     private actions$: Actions,
     private diaryEntryService: DiaryEntryService,
-    private dialogFactory: DialogFactoryService,
     private store: Store<fromRoot.State>,
   ) {}
 }

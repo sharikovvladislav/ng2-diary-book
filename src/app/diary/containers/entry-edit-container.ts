@@ -1,4 +1,10 @@
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Input,
+  ChangeDetectionStrategy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { DiaryEntry } from '../../shared/models/diary-entry';
@@ -13,7 +19,7 @@ import * as diaryActions from '../actions/diary-entries';
     <diary-entry-detail
       [entry]="entry"
       [options]="entryDetailComponentOptions"
-      (submit)="onEdit($event)"
+      (submit)="onSubmit($event)"
     ></diary-entry-detail>
   `,
 })
@@ -27,7 +33,7 @@ export class EntryEditContainerComponent {
     };
   }
 
-  onEdit(entryToEdit: DiaryEntry) {
+  onSubmit(entryToEdit: DiaryEntry) {
     this.store.dispatch(new diaryActions.EditEntryAction(entryToEdit));
   }
 }

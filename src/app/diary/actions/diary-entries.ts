@@ -14,6 +14,11 @@ export const EDIT_ENTRY = '[Diary entries] Edit entry';
 export const EDIT_ENTRY_SUCCESS = '[Diary entries] Edit entry success';
 export const EDIT_ENTRY_FAILURE = '[Diary entries] Edit entry failure';
 
+export const GET_EDIT_ENTRY = '[Diary entries] Get edit entry';
+export const GET_EDIT_ENTRY_SUCCESS = '[Diary entries] Get edit entry success';
+export const GET_EDIT_ENTRY_FAILURE = '[Diary entries] Get edit entry failure';
+export const GET_EDIT_ENTRY_CLEAR = '[Diary entries] Get edit entry clear';
+
 /**
  * Every action is comprised of at least a type and an optional
  * payload. Expressing actions as classes enables powerful
@@ -73,6 +78,30 @@ export class EditEntryFailureAction implements Action {
   constructor(public payload: any) {}
 }
 
+export class GetEditEntryAction implements Action {
+  readonly type = GET_EDIT_ENTRY;
+
+  constructor(public payload: string) {}
+}
+
+export class GetEditEntrySuccessAction implements Action {
+  readonly type = GET_EDIT_ENTRY_SUCCESS;
+
+  constructor(public payload: DiaryEntry) {}
+}
+
+export class GetEditEntryFailureAction implements Action {
+  readonly type = GET_EDIT_ENTRY_FAILURE;
+
+  constructor(public payload?: any) {}
+}
+
+export class GetEditEntryClearAction implements Action {
+  readonly type = GET_EDIT_ENTRY_CLEAR;
+
+  constructor() {}
+}
+
 /**
  * Export a type alias of all actions in this action group
  * so that reducers can easily compose action types
@@ -86,4 +115,8 @@ export type Actions =
   | CreateEntryFailureAction
   | EditEntryFailureAction
   | EditEntrySuccessAction
-  | EditEntryAction;
+  | EditEntryAction
+  | GetEditEntryAction
+  | GetEditEntrySuccessAction
+  | GetEditEntryClearAction
+  | GetEditEntryFailureAction;

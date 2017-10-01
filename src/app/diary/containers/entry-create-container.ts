@@ -28,6 +28,7 @@ export class EntryCreateContainerComponent {
     this.entryToCreate = {
       date: new Date(),
       message: '',
+      tags: [],
     };
   }
 

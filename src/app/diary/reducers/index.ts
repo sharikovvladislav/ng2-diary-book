@@ -53,3 +53,7 @@ export const getDiaryEntries = createSelector(
   getDiaryState,
   fromDiary.getEntries,
 );
+export const getDiaryToEditEntry = createSelector(
+  getDiaryState,
+  fromDiary.getDiaryToEditEntry,
+);

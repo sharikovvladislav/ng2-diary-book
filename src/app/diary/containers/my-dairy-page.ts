@@ -13,7 +13,7 @@ import * as diaryEntries from '../actions/diary-entries';
 
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
-import { DialogFactoryService } from '../services/dialog-factory';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'diary-page',
@@ -23,9 +23,9 @@ import { DialogFactoryService } from '../services/dialog-factory';
       <!--<button md-button (click)="openCreateDialog()">+ Добавить запись</button>-->
       <diary-entry-list
         [entries]="diaryEntries$ | async"
-        (onClick)="openEditDialog($event)"
+        (onClick)="goToEdit($event)"
       ></diary-entry-list>
-      <button md-mini-fab class="example-fab" (click)="openCreateDialog()">
+      <button md-mini-fab class="example-fab" (click)="goToAdd()">
         <md-icon>add</md-icon>
       </button>
     </common-show-if-logged-in>
@@ -49,7 +49,8 @@ export class MyDairyPageComponent {
   constructor(
     private store: Store<fromDiary.State>,
     private changeDetectorRef: ChangeDetectorRef,
-    private dialogFactory: DialogFactoryService,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
     store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {
@@ -60,11 +61,13 @@ export class MyDairyPageComponent {
     });
   }
 
-  openCreateDialog() {
-    this.dialogFactory.openCreateEntryDialog();
+  goToAdd() {
+    this.router.navigate(['./add'], { relativeTo: this.route });
   }
 
-  openEditDialog(entryToEdit: DiaryEntry) {
-    this.dialogFactory.openEditEntryDialog(entryToEdit);
+  goToEdit(entryToEdit: DiaryEntry) {
+    this.router.navigate(['./edit', entryToEdit.$key], {
+      relativeTo: this.route,
+    });
   }
 }
