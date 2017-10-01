@@ -66,7 +66,6 @@ export class DiaryEffects {
             (newEntryData: DiaryEntry) =>
               new diaryActions.CreateEntrySuccessAction(newEntryData),
           )
-          .do(() => this.dialogFactory.closeCreateEntryDialog())
           .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
           .do(({ type }) =>
             this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
