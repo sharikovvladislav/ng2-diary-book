@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
 import * as fromRoot from '../../reducers';
+import * as routerActions from '../../core/actions/router';
 
 import { DiaryEntryService } from '../services/diary-entry';
 
@@ -85,6 +86,9 @@ export class DiaryEffects {
         .map(
           (updatedEntryData: DiaryEntry) =>
             new diaryActions.EditEntrySuccessAction(updatedEntryData),
+        )
+        .do(() =>
+          this.store.dispatch(new routerActions.Go({ path: ['../..'] })),
         )
         .catch(() => of(new diaryActions.EditEntryFailureAction(null)))
         .do(() => this.store.dispatch(new diaryActions.LoadListAction()))

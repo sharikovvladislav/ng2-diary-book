@@ -5,6 +5,7 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
 import { Store } from '@ngrx/store';
 
 import * as diaryActions from '../actions/diary-entries';
+import * as routerActions from '../../core/actions/router';
 import * as fromDiary from '../reducers';
 import * as fromRoot from '../../reducers';
 
@@ -16,7 +17,6 @@ import * as fromRoot from '../../reducers';
       </md-card-header>
       <diary-entry-edit
         [entry]="entryToEdit$ | async"
-        (submit)="goBack();"
       ></diary-entry-edit>
     </md-card>
   `,
@@ -25,7 +25,12 @@ export class EntryEditContainer {
   entryToEdit$: Observable<DiaryEntry>;
 
   goBack() {
-    this.router.navigate(['../..'], { relativeTo: this.route });
+    this.store.dispatch(
+      new routerActions.Go({
+        path: ['../..'],
+        extras: { relativeTo: this.route },
+      }),
+    );
   }
 
   constructor(

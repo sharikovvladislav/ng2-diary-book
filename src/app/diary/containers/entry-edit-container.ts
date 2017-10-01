@@ -25,7 +25,6 @@ import * as diaryActions from '../actions/diary-entries';
 })
 export class EntryEditContainerComponent {
   @Input() entry: DiaryEntry;
-  @Output() submit = new EventEmitter();
   entryDetailComponentOptions: object;
 
   constructor(private store: Store<fromRoot.State>) {
@@ -36,6 +35,5 @@ export class EntryEditContainerComponent {
 
   onSubmit(entryToEdit: DiaryEntry) {
     this.store.dispatch(new diaryActions.EditEntryAction(entryToEdit));
-    this.submit.emit();
   }
 }
