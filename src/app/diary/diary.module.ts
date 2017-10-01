@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 
 import { CoreModule } from '../core/core.module';
 import { EntryCreateContainer } from './containers/entry-create-page';
+import { EntryEditContainer } from './containers/entry-edit-page';
 
 @NgModule({
   imports: [
@@ -38,6 +39,13 @@ import { EntryCreateContainer } from './containers/entry-create-page';
             component: MyDairyPageComponent,
             data: {
               breadcrumb: 'My diary',
+            },
+          },
+          {
+            path: 'edit/:key',
+            component: EntryEditContainer,
+            data: {
+              breadcrumb: 'Create entry',
             },
           },
           {
@@ -76,6 +84,7 @@ import { EntryCreateContainer } from './containers/entry-create-page';
     MyDairyPageComponent,
     DiaryRootComponent,
     EntryCreateContainer,
+    EntryEditContainer,
   ],
   providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
   entryComponents: [EntryEditDialogComponent],

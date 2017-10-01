@@ -28,8 +28,6 @@ import { AppComponent } from './core/containers/app';
 
 import 'hammerjs';
 
-console.log(environment.production);
-
 @NgModule({
   imports: [
     CommonModule,

@@ -5,10 +5,12 @@ import * as moment from 'moment';
 
 export interface State {
   entries: DiaryEntry[];
+  diaryToEdit: DiaryEntry;
 }
 
 export const initialState: State = {
   entries: [],
+  diaryToEdit: null,
 };
 
 export function reducer(
@@ -16,6 +18,18 @@ export function reducer(
   action: diaryEntries.Actions | user.Actions,
 ): State {
   switch (action.type) {
+    case diaryEntries.GET_EDIT_ENTRY_SUCCESS: {
+      return {
+        ...state,
+        diaryToEdit: action.payload,
+      };
+    }
+    case diaryEntries.GET_EDIT_ENTRY_CLEAR: {
+      return {
+        ...state,
+        diaryToEdit: null,
+      };
+    }
     case user.UNLOAD_USER_DATA: {
       return {
         ...state,
@@ -73,3 +87,4 @@ export function reducer(
  */
 
 export const getEntries = (state: State) => state.entries;
+export const getDiaryToEditEntry = (state: State) => state.diaryToEdit;
