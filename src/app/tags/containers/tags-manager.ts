@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { Tag } from '../../shared/models/tag';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
@@ -7,23 +7,22 @@ import * as fromTags from '../reducers';
 import * as fromRoot from '../../reducers';
 
 import * as tagsActions from '../actions/tags';
+import { Actions } from '@ngrx/effects';
+
+import 'rxjs/add/operator/take';
 
 @Component({
   template: `
     <md-card>
-      <div *ngIf="(tags$ | async).length === 0">
-        You don't have any tags. <button md-button (click)="addTag();">Add first</button>.
-      </div>
-      <div *ngIf="(tags$ | async).length > 0">
-        <button md-button (click)="addTag();">Add tag</button>
-        Yay you have tags!
-        <div>
-          <div *ngFor="let tag of tags$ | async">
-            <span>{{tag.name}}</span>
-            <span>{{tag.description}}</span>
-          </div>
-        </div>
-      </div>
+      <md-list>
+        <md-list-item>
+          <tags-creator
+            [clearValue]="clearFieldEmitter"
+            (onEnterPressed)="onCreateTagCommand($event)"
+          ></tags-creator>
+        </md-list-item>
+        <md-list-item *ngFor="let tag of tags$ | async">{{tag.name}}</md-list-item>
+      </md-list>
     </md-card>
   `,
   styles: [
@@ -33,11 +32,13 @@ import * as tagsActions from '../actions/tags';
   ],
 })
 export class TagsManagerContainer {
+  clearFieldEmitter = new EventEmitter();
   tags$: Observable<Tag[]> = Observable.of([]);
 
   constructor(
     private tagsStore: Store<fromTags.State>,
     private store: Store<fromRoot.State>,
+    private actions$: Actions,
   ) {
     this.tags$ = tagsStore.select(fromTags.getTags);
 
@@ -49,7 +50,14 @@ export class TagsManagerContainer {
       );
   }
 
-  addTag() {
-    console.log('kek');
+  onCreateTagCommand(tagName) {
+    this.store.dispatch(new tagsActions.CreateTag(tagName));
+    this.actions$
+      .ofType(tagsActions.CREATE_TAG_SUCCESS)
+      .take(1)
+      .subscribe(() => {
+        this.clearFieldEmitter.emit();
+        this.store.dispatch(new tagsActions.GetTagsListAction());
+      });
   }
 }

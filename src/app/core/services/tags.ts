@@ -14,8 +14,8 @@ export class TagsService {
     return `${this.API_REST_URL}${this.API_TAGS_GETTER_PATH}`;
   }
 
-  addTag(tag: Tag): any {
-    return this.http.post(`${this.getTagsPrefix()}`, tag);
+  addTag(tagName: string): any {
+    return this.http.post(`${this.getTagsPrefix()}`, { name: tagName });
   }
 
   editTag(key: string, tag: Tag): any {
