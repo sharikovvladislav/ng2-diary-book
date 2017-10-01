@@ -41,7 +41,12 @@ export class TagsManagerContainer {
   ) {
     this.tags$ = tagsStore.select(fromTags.getTags);
 
-    this.store.dispatch(new tagsActions.GetTagsListAction());
+    store
+      .select(fromRoot.getUserIsLoggedIn)
+      .filter(isUserLoggedIn => isUserLoggedIn)
+      .subscribe(() =>
+        this.store.dispatch(new tagsActions.GetTagsListAction()),
+      );
   }
 
   addTag() {
