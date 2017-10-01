@@ -13,7 +13,6 @@ import * as diaryEntries from '../actions/diary-entries';
 
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
-import { DialogFactoryService } from '../services/dialog-factory';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -50,7 +49,6 @@ export class MyDairyPageComponent {
   constructor(
     private store: Store<fromDiary.State>,
     private changeDetectorRef: ChangeDetectorRef,
-    private dialogFactory: DialogFactoryService,
     private route: ActivatedRoute,
     private router: Router,
   ) {

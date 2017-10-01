@@ -10,7 +10,6 @@ import { MyDairyPageComponent } from './containers/my-dairy-page';
 import { DiaryEffects } from './effects/diary';
 import { DiaryRootComponent } from './containers/root';
 
-import { DialogFactoryService } from './services/dialog-factory';
 import { DiaryProcessorService } from './services/diary-processor';
 import { DiaryEntryService } from './services/diary-entry';
 
@@ -86,7 +85,7 @@ import { EntryEditContainer } from './containers/entry-edit-page';
     EntryCreateContainer,
     EntryEditContainer,
   ],
-  providers: [DialogFactoryService, DiaryProcessorService, DiaryEntryService],
+  providers: [DiaryProcessorService, DiaryEntryService],
   entryComponents: [EntryEditDialogComponent],
 })
 export class DiaryModule {}

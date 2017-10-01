@@ -9,7 +9,7 @@ import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/takeUntil';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
-import { Action, Store, State } from '@ngrx/store';
+import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -23,8 +23,6 @@ import * as layoutActions from '../../core/actions/layout';
 
 import { DiaryEntry } from '../../shared/models/diary-entry';
 import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
-
-import { DialogFactoryService } from '../services/dialog-factory';
 
 @Injectable()
 export class DiaryEffects {
@@ -121,7 +119,6 @@ export class DiaryEffects {
   constructor(
     private actions$: Actions,
     private diaryEntryService: DiaryEntryService,
-    private dialogFactory: DialogFactoryService,
     private store: Store<fromRoot.State>,
   ) {}
 }
