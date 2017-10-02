@@ -1,5 +1,5 @@
 export interface Tag {
-  id?: number;
+  $key?: string;
   name: string;
   description?: string;
 }

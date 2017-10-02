@@ -53,23 +53,18 @@ export class DiaryEffects {
     .do((action: any) =>
       this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)),
     )
-    .withLatestFrom(this.store)
-    .switchMap(
-      ([action, state]: [diaryActions.CreateEntryAction, fromRoot.State]) => {
-        const uid = fromRoot.getUserUid(state);
-
-        return this.diaryEntryService
-          .createEntry(uid, <DiaryEntrySet>action.payload)
-          .map(
-            (newEntryData: DiaryEntry) =>
-              new diaryActions.CreateEntrySuccessAction(newEntryData),
-          )
-          .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
-          .do(({ type }) =>
-            this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
-          );
-      },
-    );
+    .switchMap((action: diaryActions.CreateEntryAction) => {
+      return this.diaryEntryService
+        .createEntry(<DiaryEntrySet>action.payload)
+        .map(
+          (newEntryData: DiaryEntry) =>
+            new diaryActions.CreateEntrySuccessAction(newEntryData),
+        )
+        .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
+        .do(({ type }) =>
+          this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
+        );
+    });
 
   @Effect()
   edit$: Observable<Action> = this.actions$
