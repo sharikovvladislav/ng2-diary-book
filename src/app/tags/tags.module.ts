@@ -17,6 +17,7 @@ import { CoreModule } from '../core/core.module';
 import { TagsAddContainer } from './containers/tags-add';
 import { TagsEditContainer } from './containers/tags-edit';
 import { TagsEditorComponent } from './components/tags-editor';
+import { TagCreatorComponent } from './components/tag-creator';
 
 @NgModule({
   imports: [
@@ -72,6 +73,7 @@ import { TagsEditorComponent } from './components/tags-editor';
     TagsEditContainer,
     TagsAddContainer,
     TagsEditorComponent,
+    TagCreatorComponent,
   ],
   providers: [TagsService],
 })

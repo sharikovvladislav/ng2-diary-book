@@ -71,7 +71,7 @@ export class AppComponent implements OnInit {
     this.user$.subscribe((providerData: any) => {
       if (providerData !== null) {
         providerData.getIdToken(true).then((token: string) => {
-          // console.log(token);
+          console.log(token);
           const userData = {
             token: token,
             displayName: providerData.displayName,

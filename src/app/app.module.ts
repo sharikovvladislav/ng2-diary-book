@@ -27,9 +27,13 @@ import { CoreModule } from './core/core.module';
 import { AppComponent } from './core/containers/app';
 
 import 'hammerjs';
+import { MdInputModule } from '@angular/material';
+
+const MD_MODULES = [MdInputModule];
 
 @NgModule({
   imports: [
+    ...MD_MODULES,
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,

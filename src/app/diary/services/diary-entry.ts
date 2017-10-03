@@ -48,7 +48,19 @@ export class DiaryEntryService {
     );
   }
 
-  createEntry(uid: string, entryData: DiaryEntrySet): Observable<DiaryEntry> {
-    return Observable.of(entryData);
+  createEntry(entryData: DiaryEntrySet): Observable<any> {
+    const dataToSend: any = {};
+
+    dataToSend.date = entryData.date;
+    dataToSend.message = entryData.message;
+    dataToSend.tagIds = entryData.tags.map(tag => tag.$key);
+
+    delete dataToSend.$key;
+
+    return this.http.post(`${this.getPrefix()}`, dataToSend);
+  }
+
+  getPrefix(): string {
+    return `${this.API_REST_URL}diaryEntries`;
   }
 }

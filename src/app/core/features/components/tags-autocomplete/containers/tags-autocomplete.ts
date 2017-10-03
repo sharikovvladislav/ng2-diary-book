@@ -90,7 +90,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
 
   onDeleteSelected(tagToDelete: Tag): void {
     this.selectedTags = this.selectedTags.filter(
-      tag => tag.id !== tagToDelete.id,
+      tag => tag.$key !== tagToDelete.$key,
     );
   }
 
