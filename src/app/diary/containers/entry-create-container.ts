@@ -10,11 +10,11 @@ import * as diaryActions from '../actions/diary-entries';
   selector: 'diary-entry-create',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <diary-entry-detail
+    <diary-entry-form
       [entry]="entryToCreate"
       [options]="entryDetailComponentOptions"
       (submit)="onCreate($event)"
-    ></diary-entry-detail>
+    ></diary-entry-form>
   `,
 })
 export class EntryCreateContainerComponent {

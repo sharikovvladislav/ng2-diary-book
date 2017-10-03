@@ -20,11 +20,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <common-show-if-logged-in>
-      <!--<button md-button (click)="openCreateDialog()">+ Добавить запись</button>-->
-      <diary-entry-list
+      <diary-entries-list
         [entries]="diaryEntries$ | async"
         (onClick)="goToEdit($event)"
-      ></diary-entry-list>
+      ></diary-entries-list>
       <button md-mini-fab class="example-fab" (click)="goToAdd()">
         <md-icon>add</md-icon>
       </button>

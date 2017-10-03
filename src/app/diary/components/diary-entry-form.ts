@@ -9,7 +9,7 @@ import {
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
-  selector: 'diary-entry-detail',
+  selector: 'diary-entry-form',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="example-form">

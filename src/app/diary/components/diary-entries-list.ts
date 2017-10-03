@@ -9,21 +9,21 @@ import {
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
-  selector: 'diary-entry-list',
+  selector: 'diary-entries-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div>
       <div *ngFor="let entry of entries">
-        <diary-list-item
+        <diary-entries-list-item
           [entry]="entry"
           [isEditDisabled]="isEditDisabled"
           (onClick)="onClick.emit($event)"
-        ></diary-list-item>
+        ></diary-entries-list-item>
       </div>
     </div>
   `,
   styles: [
-    `diary-list-item:not(:first-child) {
+    `diary-entries-list-item:not(:first-child) {
       padding: 20px;
     }`,
   ],

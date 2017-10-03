@@ -16,11 +16,11 @@ import * as diaryActions from '../actions/diary-entries';
   selector: 'diary-entry-edit',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <diary-entry-detail
+    <diary-entry-form
       [entry]="entry"
       [options]="entryDetailComponentOptions"
       (submit)="onSubmit($event)"
-    ></diary-entry-detail>
+    ></diary-entry-form>
   `,
 })
 export class EntryEditContainerComponent {

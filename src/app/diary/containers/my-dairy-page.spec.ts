@@ -12,7 +12,7 @@ import * as userActions from '../../core/actions/user';
 import * as diaryActions from '../actions/diary-entries';
 
 import { EntryListMockMetadata } from '../../core/components/__mocks__/entry-list-mock-metadata';
-import { EntryListComponent } from '../components/entry-list';
+import { EntryListComponent } from '../components/diary-entries-list';
 
 import { ComponentsModule as DiaryComponentsModule } from '../components/index';
 import { MdIconModule } from '@angular/material';
