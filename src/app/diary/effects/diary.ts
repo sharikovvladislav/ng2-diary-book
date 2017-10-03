@@ -12,6 +12,7 @@ import { Effect, Actions } from '@ngrx/effects';
 import { Action, Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { from } from 'rxjs/observable/from';
 
 import * as fromRoot from '../../reducers';
 import * as routerActions from '../../core/actions/router';
@@ -75,20 +76,20 @@ export class DiaryEffects {
     .switchMap((action: diaryActions.EditEntryAction) => {
       return this.diaryEntryService
         .updateEntry(action.payload)
-        .map(
-          (updatedEntryData: DiaryEntry) =>
+        .mergeMap((updatedEntryData: DiaryEntry) =>
+          from([
             new diaryActions.EditEntrySuccessAction(updatedEntryData),
+            new layoutActions.HideSpinnerAction(action.type),
+            new routerActions.Go({ path: ['../..'] }),
+            new diaryActions.GetEditEntryClearAction(),
+            new diaryActions.LoadListAction(),
+          ]),
         )
-        .do(() =>
-          this.store.dispatch(new routerActions.Go({ path: ['../..'] })),
-        )
-        .catch(() => of(new diaryActions.EditEntryFailureAction(null)))
-        .do(() => this.store.dispatch(new diaryActions.LoadListAction()))
-        .do(() =>
-          this.store.dispatch(new diaryActions.GetEditEntryClearAction()),
-        )
-        .do(({ type }) =>
-          this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
+        .catch(({ type }) =>
+          from([
+            new diaryActions.EditEntryFailureAction(),
+            new layoutActions.HideSpinnerAction(action.type),
+          ]),
         );
     });
 

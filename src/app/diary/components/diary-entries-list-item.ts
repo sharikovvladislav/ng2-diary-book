@@ -8,7 +8,7 @@ import {
 import { DiaryEntry } from '../../shared/models/diary-entry';
 
 @Component({
-  selector: 'diary-list-item',
+  selector: 'diary-entries-list-item',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <md-card>

@@ -75,7 +75,7 @@ export class EditEntrySuccessAction implements Action {
 export class EditEntryFailureAction implements Action {
   readonly type = EDIT_ENTRY_FAILURE;
 
-  constructor(public payload: any) {}
+  constructor(public payload?: any) {}
 }
 
 export class GetEditEntryAction implements Action {

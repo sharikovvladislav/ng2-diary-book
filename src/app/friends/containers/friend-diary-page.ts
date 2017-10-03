@@ -19,10 +19,10 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
   template: `
     <common-show-if-logged-in>
       <div>
-        <diary-entry-list
+        <diary-entries-list
           [entries]="diaryEntries$ | async"
           [isEditDisabled]="true"
-        ></diary-entry-list>
+        ></diary-entries-list>
       </div>
     </common-show-if-logged-in>
   `,

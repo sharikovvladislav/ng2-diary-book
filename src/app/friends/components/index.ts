@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { FriendsListComponent } from './friends-list';
-import { EntryListComponent } from '../../diary/components/entry-list';
 
 import { PipesModule } from '../../shared/pipes';
 
