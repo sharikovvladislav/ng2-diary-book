@@ -22,8 +22,8 @@ import { DiaryEntryService } from '../services/diary-entry';
 import * as diaryActions from '../actions/diary-entries';
 import * as layoutActions from '../../core/actions/layout';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
-import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
+import { DiaryEntrySet } from 'ng2-diary-book-shared-models';
 
 @Injectable()
 export class DiaryEffects {

@@ -10,7 +10,7 @@ import * as fromRouter from '../../core/actions/router';
 
 import { MdDialog } from '@angular/material';
 
-import { Friend } from '../../shared/models/friend';
+import { Friend } from 'ng2-diary-book-shared-models';
 import { AddFriendDialogComponent } from './add-friend-dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 

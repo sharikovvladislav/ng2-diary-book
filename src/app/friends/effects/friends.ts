@@ -19,7 +19,7 @@ import * as fromRoot from '../../reducers';
 import * as friendsActions from '../actions/friends';
 import * as layoutActions from '../../core/actions/layout';
 import { FriendsService } from '../services/friends';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 /**
  * Effects offer a way to isolate and easily test side-effects within your

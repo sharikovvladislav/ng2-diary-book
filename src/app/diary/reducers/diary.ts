@@ -1,6 +1,6 @@
 import * as diaryEntries from '../actions/diary-entries';
 import * as user from '../../core/actions/user';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 import * as moment from 'moment';
 
 export interface State {

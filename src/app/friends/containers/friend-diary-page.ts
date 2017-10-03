@@ -11,7 +11,7 @@ import * as fromFriends from '../reducers';
 
 import * as friendActions from '../actions/friends';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'diary-page',

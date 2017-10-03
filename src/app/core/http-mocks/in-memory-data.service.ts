@@ -1,5 +1,5 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Tag } from '../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {

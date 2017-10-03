@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 export const LOAD_LIST = '[Diary entries] Load list';
 export const LOAD_LIST_SUCCESS = '[Diary entries] Load list success';

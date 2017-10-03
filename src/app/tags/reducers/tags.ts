@@ -1,5 +1,5 @@
 import * as tagsActions from '../actions/tags';
-import { Tag } from '../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 export interface State {
   tags: Tag[];

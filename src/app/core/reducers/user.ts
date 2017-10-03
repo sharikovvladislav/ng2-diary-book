@@ -1,5 +1,5 @@
 import * as user from '../actions/user';
-import { User } from '../../shared/models/user';
+import { User } from 'ng2-diary-book-shared-models';
 
 export interface State {
   user: User;

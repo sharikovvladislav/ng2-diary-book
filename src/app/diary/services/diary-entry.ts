@@ -4,13 +4,13 @@ import 'rxjs/add/observable/of';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
-import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
+import { DiaryEntrySet } from 'ng2-diary-book-shared-models';
 
 import { HttpClient } from '@angular/common/http';
 import { RemoteList } from '../models/remote-list';
 import { environment } from '../../../environments/environment';
-import { Tag } from '../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 @Injectable()
 export class DiaryEntryService {
