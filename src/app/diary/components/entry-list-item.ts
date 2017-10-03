@@ -20,6 +20,8 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
         <md-card-content>
           <div [innerHTML]="entry.message | diaryMarkdown"></div>
 
+          <tags-viewer [tags]="entry.tags"></tags-viewer>
+
           <div class="content-footer">
             Create date: {{ entry.createDate | date }}
           </div>

@@ -29,6 +29,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { RouterEffects } from './effects/router';
 import { FormsModule } from '@angular/forms';
 import { TagsAutoCompleteModule } from './features/components/tags-autocomplete/tags-autocomplete.module';
+import { TagsViewerModule } from './features/components/tags-viewer/tags-viewer.module';
 
 export const COMPONENTS = [
   AppComponent,
@@ -56,6 +57,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     HttpClientModule,
     EffectsModule.forRoot([RouterEffects]),
     TagsAutoCompleteModule,
+    TagsViewerModule,
   ],
   declarations: COMPONENTS,
   exports: [
@@ -65,6 +67,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     ...MD_MODULES,
     HttpClientModule,
     TagsAutoCompleteModule,
+    TagsViewerModule,
   ],
   providers: [
     BreadcrumbsService,

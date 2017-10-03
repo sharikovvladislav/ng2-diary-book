@@ -47,7 +47,7 @@ export function reducer(
 
       return {
         ...state,
-        entries: entries.map(kek => ({ ...kek, tags: [] })),
+        entries: entries.map(kek => ({ tags: [], ...kek })),
       };
     }
 
