@@ -10,6 +10,7 @@ import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
 import { HttpClient } from '@angular/common/http';
 import { RemoteList } from '../models/remote-list';
 import { environment } from '../../../environments/environment';
+import { Tag } from '../../shared/models/tag';
 
 @Injectable()
 export class DiaryEntryService {
@@ -31,16 +32,11 @@ export class DiaryEntryService {
 
   updateEntry(entryData: DiaryEntry): Observable<any> {
     const entryKey = entryData.$key;
-    const dataToSend = { ...entryData };
+    const dataToSend: any = {};
 
-    // подготовим теги
-
-    // приходится удалять ключ, чтобы firebase не умер
-    delete dataToSend.$key;
-    // удаляем дату создания
-    delete dataToSend.createDate;
-
-    // TODO probably should update only with diff there and model must know what to save by itself
+    dataToSend.tagIds = entryData.tags.map((tag: Tag) => tag.$key);
+    dataToSend.message = entryData.message;
+    dataToSend.date = entryData.date;
 
     return this.http.put(
       `${this.API_REST_URL}diaryEntries/${entryKey}`,
