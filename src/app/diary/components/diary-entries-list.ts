@@ -13,7 +13,7 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div>
-      <div *ngFor="let entry of entries">
+      <div *ngFor="let entry of entries" class="item">
         <diary-entries-list-item
           [entry]="entry"
           [isEditDisabled]="isEditDisabled"
@@ -23,8 +23,8 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
     </div>
   `,
   styles: [
-    `diary-entries-list-item:not(:first-child) {
-      padding: 20px;
+    `.item:not(:first-child) {
+      padding-top: 20px;
     }`,
   ],
 })
