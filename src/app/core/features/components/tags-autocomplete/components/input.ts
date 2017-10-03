@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Tag } from '../../../../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'tags-internal-auto-complete-input',

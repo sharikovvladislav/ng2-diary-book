@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
 import { MD_DIALOG_DATA } from '@angular/material';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'diary-edit-dialog',

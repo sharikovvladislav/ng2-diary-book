@@ -11,7 +11,7 @@ import * as fromDiary from '../reducers';
 
 import * as diaryEntries from '../actions/diary-entries';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 import { ActivatedRoute, Router } from '@angular/router';
 

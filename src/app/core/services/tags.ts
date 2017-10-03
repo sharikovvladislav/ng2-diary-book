@@ -3,7 +3,8 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from '../../../environments/environment';
-import { Tag } from '../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
+import { TagsRequestFilter } from 'ng2-diary-book-shared-models';
 
 @Injectable()
 export class TagsService {

@@ -1,4 +1,4 @@
-import { DiaryEntrySet } from '../../shared/models/diary-entry-set';
+import { DiaryEntrySet } from 'ng2-diary-book-shared-models';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 

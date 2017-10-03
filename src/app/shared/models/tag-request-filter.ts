@@ -1,3 +1,0 @@
-interface TagsRequestFilter {
-  query?: string;
-}

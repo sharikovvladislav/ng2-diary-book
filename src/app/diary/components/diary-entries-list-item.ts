@@ -5,7 +5,7 @@ import {
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'diary-entries-list-item',

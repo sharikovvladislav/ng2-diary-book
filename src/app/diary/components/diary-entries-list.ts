@@ -6,14 +6,14 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'diary-entries-list',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div>
-      <div *ngFor="let entry of entries">
+      <div *ngFor="let entry of entries" class="item">
         <diary-entries-list-item
           [entry]="entry"
           [isEditDisabled]="isEditDisabled"
@@ -23,8 +23,8 @@ import { DiaryEntry } from '../../shared/models/diary-entry';
     </div>
   `,
   styles: [
-    `diary-entries-list-item:not(:first-child) {
-      padding: 20px;
+    `.item:not(:first-child) {
+      padding-top: 20px;
     }`,
   ],
 })

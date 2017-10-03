@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 import { Store } from '@ngrx/store';
 
 import * as diaryActions from '../actions/diary-entries';

@@ -6,7 +6,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Tag } from '../../../../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 import { Subject } from 'rxjs/Subject';
 
 import 'rxjs/add/operator/debounceTime';

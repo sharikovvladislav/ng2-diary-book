@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Tag } from '../../../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'tags-viewer',

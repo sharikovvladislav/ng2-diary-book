@@ -1,6 +1,6 @@
 import * as friendsActions from '../actions/friends';
-import { Friend } from '../../shared/models/friend';
-import { DiaryEntry } from '../../shared/models/diary-entry';
+import { Friend } from 'ng2-diary-book-shared-models';
+import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 export interface State {
   friends: Friend[];

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { User } from '../../shared/models/user';
+import { User } from 'ng2-diary-book-shared-models';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';

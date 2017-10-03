@@ -5,7 +5,7 @@ import {
   Output,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { Friend } from '../../shared/models/friend';
+import { Friend } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'friends-list',

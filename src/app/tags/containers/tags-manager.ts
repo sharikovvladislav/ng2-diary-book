@@ -1,5 +1,5 @@
 import { Component, EventEmitter } from '@angular/core';
-import { Tag } from '../../shared/models/tag';
+import { Tag } from 'ng2-diary-book-shared-models';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
