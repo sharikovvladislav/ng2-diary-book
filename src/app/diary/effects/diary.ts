@@ -57,13 +57,19 @@ export class DiaryEffects {
     .switchMap((action: diaryActions.CreateEntryAction) => {
       return this.diaryEntryService
         .createEntry(<DiaryEntrySet>action.payload)
-        .map(
-          (newEntryData: DiaryEntry) =>
+        .mergeMap((newEntryData: DiaryEntry) =>
+          from([
             new diaryActions.CreateEntrySuccessAction(newEntryData),
+            new routerActions.Go({ path: ['../..'] }),
+            new diaryActions.LoadListAction(),
+            new layoutActions.HideSpinnerAction(action.type),
+          ]),
         )
-        .catch(() => of(new diaryActions.CreateEntryFailureAction([])))
-        .do(({ type }) =>
-          this.store.dispatch(new layoutActions.HideSpinnerAction(type)),
+        .catch(() =>
+          from([
+            new diaryActions.CreateEntryFailureAction([]),
+            new layoutActions.HideSpinnerAction(action.type),
+          ]),
         );
     });
 
@@ -85,7 +91,7 @@ export class DiaryEffects {
             new diaryActions.LoadListAction(),
           ]),
         )
-        .catch(({ type }) =>
+        .catch(() =>
           from([
             new diaryActions.EditEntryFailureAction(),
             new layoutActions.HideSpinnerAction(action.type),
