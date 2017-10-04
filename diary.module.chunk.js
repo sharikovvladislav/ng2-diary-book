@@ -1405,13 +1405,19 @@ var DiaryEffects = (function () {
             .switchMap(function (action) {
             return _this.diaryEntryService
                 .createEntry(action.payload)
-                .map(function (newEntryData) {
-                return new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["e" /* CreateEntrySuccessAction */](newEntryData);
+                .mergeMap(function (newEntryData) {
+                return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
+                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["e" /* CreateEntrySuccessAction */](newEntryData),
+                    new __WEBPACK_IMPORTED_MODULE_15__core_actions_router__["d" /* Go */]({ path: ['../..'] }),
+                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["t" /* LoadListAction */](),
+                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                ]);
             })
-                .catch(function () { return Object(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["d" /* CreateEntryFailureAction */]([])); })
-                .do(function (_a) {
-                var type = _a.type;
-                return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](type));
+                .catch(function () {
+                return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
+                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["d" /* CreateEntryFailureAction */]([]),
+                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                ]);
             });
         });
         this.edit$ = this.actions$
@@ -1431,8 +1437,7 @@ var DiaryEffects = (function () {
                     new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["t" /* LoadListAction */](),
                 ]);
             })
-                .catch(function (_a) {
-                var type = _a.type;
+                .catch(function () {
                 return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
                     new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["i" /* EditEntryFailureAction */](),
                     new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),

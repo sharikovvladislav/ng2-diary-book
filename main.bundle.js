@@ -1990,6 +1990,7 @@ var MarkdownPipe = (function () {
     function MarkdownPipe() {
     }
     MarkdownPipe.prototype.transform = function (textAsMarkdown) {
+        if (textAsMarkdown === void 0) { textAsMarkdown = ''; }
         return __WEBPACK_IMPORTED_MODULE_0_markdown_js__["makeHtml"](textAsMarkdown);
     };
     return MarkdownPipe;
