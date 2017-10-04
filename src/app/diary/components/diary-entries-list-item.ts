@@ -13,7 +13,7 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
   template: `
     <md-card>
       <div class="edit-button-container" *ngIf="!isEditDisabled">
-        <md-icon title="Edit" (click)="onClick.emit(entry)">mode_edit</md-icon>
+        <md-icon class="edit-icon" title="Edit" (click)="onClick.emit(entry)">mode_edit</md-icon>
       </div>
       <div>
         <md-card-title>{{ entry.date | date:'MMM d' }}</md-card-title>
@@ -30,6 +30,14 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
     </md-card>
   `,
   styles: [
+    `.edit-icon {
+        padding: 2px;
+     }`,
+    `
+      .edit-icon:hover {
+        background-color: #d6d6d6;
+      }
+    `,
     `.edit-button-container {
       position: absolute;
       top: 15px;
