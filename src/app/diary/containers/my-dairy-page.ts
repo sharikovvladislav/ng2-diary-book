@@ -25,6 +25,9 @@ import { of } from 'rxjs/observable/of';
         [entries]="diaryEntries$ | async"
         (onClick)="goToEdit($event)"
       ></diary-entries-list>
+      <div *ngIf="(diaryEntries$ | async)?.length === 0">
+        <md-card>No entries found :'(</md-card>
+      </div>
       <button md-mini-fab class="example-fab" (click)="goToAdd()">
         <md-icon>add</md-icon>
       </button>
