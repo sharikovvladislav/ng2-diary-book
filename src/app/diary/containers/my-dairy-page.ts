@@ -59,7 +59,7 @@ export class MyDairyPageComponent {
       .filter(isLoggedIn => isLoggedIn)
       .subscribe(() => {
         this.route.paramMap.subscribe((data: ParamMap) => {
-          const tagNames = (data.get('tags') || '').split(',');
+          const tagNames = (data.get('tagNames') || '').split(',');
 
           this.store.dispatch(new diaryEntries.LoadListAction(tagNames));
         });

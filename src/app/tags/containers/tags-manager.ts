@@ -76,7 +76,7 @@ export class TagsManagerContainer {
         path: [
           `/diary`,
           {
-            tags: [tag.name],
+            tagNames: [tag.name],
           },
         ],
       }),
