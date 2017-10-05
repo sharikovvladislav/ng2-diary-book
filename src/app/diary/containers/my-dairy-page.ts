@@ -13,7 +13,8 @@ import * as diaryEntries from '../actions/diary-entries';
 
 import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { of } from 'rxjs/observable/of';
 
 @Component({
   selector: 'diary-page',
@@ -53,12 +54,16 @@ export class MyDairyPageComponent {
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
     this.diaryEntries$.subscribe(data => console.log(data));
-    store.select(fromRoot.getUserIsLoggedIn).subscribe(isLoggedIn => {
-      if (isLoggedIn) {
-        this.store.dispatch(new diaryEntries.LoadListAction());
-        changeDetectorRef.markForCheck();
-      }
-    });
+    store
+      .select(fromRoot.getUserIsLoggedIn)
+      .filter(isLoggedIn => isLoggedIn)
+      .subscribe(() => {
+        this.route.paramMap.subscribe((data: ParamMap) => {
+          const tagNames = (data.get('tags') || '').split(',');
+
+          this.store.dispatch(new diaryEntries.LoadListAction(tagNames));
+        });
+      });
   }
 
   goToAdd() {

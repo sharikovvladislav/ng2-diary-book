@@ -18,14 +18,11 @@ export class DiaryEntryService {
 
   constructor(private http: HttpClient) {}
 
-  retrieveEntries(tags?: Tag[]): Observable<DiaryEntry[]> {
+  retrieveEntries(tagsNames?: string[]): Observable<DiaryEntry[]> {
     let url = `${this.API_REST_URL}diaryEntries`;
 
-    if (tags) {
-      url += this.generateQueryPartialFromArray(
-        'tags',
-        tags.map(tag => tag.name),
-      );
+    if (tagsNames) {
+      url += '?' + this.generateQueryPartialFromArray('tagNames', tagsNames);
     }
 
     return this.http
