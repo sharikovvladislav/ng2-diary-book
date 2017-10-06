@@ -7,10 +7,10 @@ import * as fromTags from '../reducers';
 import * as fromRoot from '../../reducers';
 
 import * as tagsActions from '../actions/tags';
-import * as routerActions from '../../core/actions/router';
 import { Actions } from '@ngrx/effects';
 
 import 'rxjs/add/operator/take';
+import { RouterHelperService } from '../../core/services/router';
 
 @Component({
   template: `
@@ -48,6 +48,7 @@ export class TagsManagerContainer {
     private tagsStore: Store<fromTags.State>,
     private store: Store<fromRoot.State>,
     private actions$: Actions,
+    private routerService: RouterHelperService,
   ) {
     this.tags$ = tagsStore.select(fromTags.getTags);
 
@@ -71,15 +72,6 @@ export class TagsManagerContainer {
   }
 
   onClick(tag: Tag) {
-    this.store.dispatch(
-      new routerActions.Go({
-        path: [
-          `/diary`,
-          {
-            tagNames: [tag.name],
-          },
-        ],
-      }),
-    );
+    this.routerService.goToDiary([tag.name]);
   }
 }

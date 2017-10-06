@@ -30,6 +30,7 @@ import { RouterEffects } from './effects/router';
 import { FormsModule } from '@angular/forms';
 import { TagsAutoCompleteModule } from './features/components/tags-autocomplete/tags-autocomplete.module';
 import { TagsViewerModule } from './features/components/tags-viewer/tags-viewer.module';
+import { RouterHelperService } from './services/router';
 
 export const COMPONENTS = [
   AppComponent,
@@ -70,6 +71,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     TagsViewerModule,
   ],
   providers: [
+    RouterHelperService,
     BreadcrumbsService,
     {
       provide: HTTP_INTERCEPTORS,
