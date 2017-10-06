@@ -14,7 +14,8 @@ import * as diaryEntries from '../actions/diary-entries';
 import { DiaryEntry } from 'ng2-diary-book-shared-models';
 
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { of } from 'rxjs/observable/of';
+import { RouterHelperService } from '../../core/services/router';
+import { Tag } from 'ng2-diary-book-shared-models';
 
 @Component({
   selector: 'diary-page',
@@ -23,7 +24,8 @@ import { of } from 'rxjs/observable/of';
     <common-show-if-logged-in>
       <diary-entries-list
         [entries]="diaryEntries$ | async"
-        (onClick)="goToEdit($event)"
+        (edit)="goToEdit($event)"
+        (tagClick)="onTagClicked($event);"
       ></diary-entries-list>
       <div *ngIf="(diaryEntries$ | async)?.length === 0">
         <md-card>No entries found :'(</md-card>
@@ -51,7 +53,7 @@ export class MyDairyPageComponent {
 
   constructor(
     private store: Store<fromDiary.State>,
-    private changeDetectorRef: ChangeDetectorRef,
+    private routerService: RouterHelperService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
@@ -77,5 +79,9 @@ export class MyDairyPageComponent {
     this.router.navigate(['./edit', entryToEdit.$key], {
       relativeTo: this.route,
     });
+  }
+
+  onTagClicked(tag: Tag) {
+    this.routerService.goToDiary([tag.name]);
   }
 }

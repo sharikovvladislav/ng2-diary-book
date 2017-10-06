@@ -17,7 +17,8 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
         <diary-entries-list-item
           [entry]="entry"
           [isEditDisabled]="isEditDisabled"
-          (onClick)="onClick.emit($event)"
+          (edit)="edit.emit($event)"
+          (tagClick)="tagClick.emit($event);"
         ></diary-entries-list-item>
       </div>
     </div>
@@ -31,7 +32,6 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
 export class EntryListComponent {
   @Input() entries: DiaryEntry[];
   @Input() isEditDisabled = false;
-  @Output() onClick = new EventEmitter();
-
-  constructor() {}
+  @Output() edit = new EventEmitter();
+  @Output() tagClick = new EventEmitter();
 }

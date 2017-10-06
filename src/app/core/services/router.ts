@@ -11,9 +11,6 @@ export class RouterHelperService {
     this.store.dispatch(
       new fromRouter.Go({
         path: [`/diary`, { tagNames: tagNames }],
-        extras: {
-          relativeTo: this.route,
-        },
       }),
     );
   }
