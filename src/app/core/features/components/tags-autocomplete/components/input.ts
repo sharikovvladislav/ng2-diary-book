@@ -20,6 +20,7 @@ import { Tag } from 'ng2-diary-book-shared-models';
       </div>
       <div class="input">
         <input #input
+               placeholder="{{placeholder}}"
                (keydown.backspace)="onBackspacePressed(input.value)"
                [(ngModel)]="inputValue"
                (ngModelChange)="inputChanged.emit(input.value);"
@@ -33,6 +34,7 @@ export class TagsAutoCompleteInputComponent implements OnInit {
   @ViewChild('input') inputRef: ElementRef;
 
   @Input() selectedTags: Tag[] = [];
+  @Input() placeholder = '';
   @Input() clearInputValue: EventEmitter<any>;
   @Input() focusInputField: EventEmitter<any>;
 
