@@ -1,8 +1,4 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
@@ -22,6 +18,12 @@ import { Tag } from 'ng2-diary-book-shared-models';
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <common-show-if-logged-in>
+      <md-card>
+        <tags-auto-complete
+          [(selectedTags)]="filterTags"
+          (selectedTagsChange)="onTagsFilterChanged($event)"
+        ></tags-auto-complete>
+      </md-card>
       <diary-entries-list
         [entries]="diaryEntries$ | async"
         (edit)="goToEdit($event)"
@@ -50,6 +52,7 @@ import { Tag } from 'ng2-diary-book-shared-models';
 })
 export class MyDairyPageComponent {
   diaryEntries$: Observable<DiaryEntry[]>;
+  filterTags: Tag[] = [];
 
   constructor(
     private store: Store<fromDiary.State>,
@@ -64,9 +67,13 @@ export class MyDairyPageComponent {
       .filter(isLoggedIn => isLoggedIn)
       .subscribe(() => {
         this.route.paramMap.subscribe((data: ParamMap) => {
-          const tagNames = (data.get('tagNames') || '').split(',');
+          const tagNamesParameter = data.get('tagNames') || '';
+          const tagNames = tagNamesParameter
+            ? tagNamesParameter.split(',')
+            : [];
 
           this.store.dispatch(new diaryEntries.LoadListAction(tagNames));
+          this.filterTags = tagNames.map(name => ({ name }));
         });
       });
   }
@@ -83,5 +90,9 @@ export class MyDairyPageComponent {
 
   onTagClicked(tag: Tag) {
     this.routerService.goToDiary([tag.name]);
+  }
+
+  onTagsFilterChanged(tags: Tag[]) {
+    this.routerService.goToDiary(tags.map(tag => tag.name));
   }
 }
