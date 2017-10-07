@@ -22,7 +22,7 @@ import { AuthInterceptor } from '../../../modules/http-interceptors/auth-append-
     InMemoryWebApiModule.forRoot(InMemoryDataService, {
       passThruUnknownUrl: true,
     }),
-    NgxMaskModule,
+    NgxMaskModule.forRoot(),
   ],
   declarations: [
     TagsAutoCompleteContainerComponent,
