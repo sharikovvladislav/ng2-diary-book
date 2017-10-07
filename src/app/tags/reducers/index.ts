@@ -21,3 +21,7 @@ export const getTagsState = createSelector(
   (state: TagsState) => state.tags,
 );
 export const getTags = createSelector(getTagsState, fromTags.getTags);
+export const getTagsAreLoading = createSelector(
+  getTagsState,
+  fromTags.getTagsAreLoading,
+);

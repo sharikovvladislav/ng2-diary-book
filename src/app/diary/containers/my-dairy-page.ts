@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 
 import * as fromRoot from '../../reducers';
 import * as fromDiary from '../reducers';
+import * as fromTags from '../../tags/reducers';
 
 import * as diaryEntries from '../actions/diary-entries';
 
@@ -31,7 +32,7 @@ import { Tag } from 'ng2-diary-book-shared-models';
         (tagClick)="onTagClicked($event);"
       ></diary-entries-list>
       <div *ngIf="(diaryEntries$ | async)?.length === 0">
-        <md-card>No entries found :'(</md-card>
+        <md-card [class.hidden]="areTagsLoading === true">No entries found :'(</md-card>
       </div>
       <button md-mini-fab class="example-fab" (click)="goToAdd()">
         <md-icon>add</md-icon>
@@ -58,17 +59,21 @@ import { Tag } from 'ng2-diary-book-shared-models';
 })
 export class MyDairyPageComponent {
   diaryEntries$: Observable<DiaryEntry[]>;
+  areTagsLoading$: Observable<boolean>;
+  areTagsLoading = false;
   filterTags: Tag[] = [];
 
   constructor(
-    private store: Store<fromDiary.State>,
+    private diaryStore: Store<fromDiary.State>,
+    private tagsStore: Store<fromTags.State>,
     private routerService: RouterHelperService,
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
+    this.diaryEntries$ = diaryStore.select(fromDiary.getDiaryEntries);
+    tagsStore.select(fromTags.getTagsAreLoading);
     this.diaryEntries$.subscribe(data => console.log(data));
-    store
+    diaryStore
       .select(fromRoot.getUserIsLoggedIn)
       .filter(isLoggedIn => isLoggedIn)
       .subscribe(() => {
@@ -78,7 +83,7 @@ export class MyDairyPageComponent {
             ? tagNamesParameter.split(',')
             : [];
 
-          this.store.dispatch(new diaryEntries.LoadListAction(tagNames));
+          this.diaryStore.dispatch(new diaryEntries.LoadListAction(tagNames));
           this.filterTags = tagNames.map(name => ({ name }));
         });
       });

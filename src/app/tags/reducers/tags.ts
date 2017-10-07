@@ -3,10 +3,12 @@ import { Tag } from 'ng2-diary-book-shared-models';
 
 export interface State {
   tags: Tag[];
+  areTagsLoading: boolean;
 }
 
 export const initialState: State = {
   tags: [],
+  areTagsLoading: false,
 };
 
 export function reducer(
@@ -14,9 +16,23 @@ export function reducer(
   action: tagsActions.Actions,
 ): State {
   switch (action.type) {
+    case tagsActions.GET_TAGS_LIST: {
+      return {
+        ...state,
+        isTagsLoading: true,
+      };
+    }
     case tagsActions.GET_TAGS_LIST_SUCCESS: {
       return {
+        ...state,
         tags: action.payload,
+      };
+    }
+    case tagsActions.GET_TAGS_LIST_SUCCESS:
+    case tagsActions.GET_TAGS_LIST_FAILURE: {
+      return {
+        ...state,
+        isTagsLoading: false,
       };
     }
     default: {
@@ -35,3 +51,4 @@ export function reducer(
  */
 
 export const getTags = (state: State) => state.tags;
+export const getTagsAreLoading = (state: State) => state.areTagsLoading;
