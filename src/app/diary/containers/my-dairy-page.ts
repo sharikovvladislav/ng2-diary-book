@@ -39,6 +39,11 @@ import { Tag } from 'ng2-diary-book-shared-models';
     </common-show-if-logged-in>
   `,
   styles: [
+    `
+      md-card {
+        margin-bottom: 10px;
+      }
+    `,
     `diary-page {
       position: absolute;
       width: 100%;
