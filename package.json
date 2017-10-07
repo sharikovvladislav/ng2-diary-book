@@ -21,8 +21,8 @@
   },
   "lint-staged": {
     "*.ts": [
-      "npm run prettier",
-      "npm run lint",
+      "yarn run prettier",
+      "yarn run lint",
       "git add"
     ]
   },

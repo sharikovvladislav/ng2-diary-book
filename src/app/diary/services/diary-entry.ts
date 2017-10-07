@@ -18,9 +18,15 @@ export class DiaryEntryService {
 
   constructor(private http: HttpClient) {}
 
-  retrieveEntries(): Observable<DiaryEntry[]> {
+  retrieveEntries(tagsNames?: string[]): Observable<DiaryEntry[]> {
+    let url = `${this.API_REST_URL}diaryEntries`;
+
+    if (tagsNames) {
+      url += '?' + this.generateQueryPartialFromArray('tagNames', tagsNames);
+    }
+
     return this.http
-      .get(`${this.API_REST_URL}diaryEntries`)
+      .get(url)
       .map((diaryEntries: RemoteList) => diaryEntries.items);
   }
 
@@ -58,5 +64,9 @@ export class DiaryEntryService {
 
   getPrefix(): string {
     return `${this.API_REST_URL}diaryEntries`;
+  }
+
+  generateQueryPartialFromArray(parameterName: string, array: string[]) {
+    return array.map(item => `${parameterName}=${item}`).join('&');
   }
 }

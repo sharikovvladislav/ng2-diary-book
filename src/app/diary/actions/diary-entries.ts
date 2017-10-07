@@ -28,6 +28,8 @@ export const GET_EDIT_ENTRY_CLEAR = '[Diary entries] Get edit entry clear';
  */
 export class LoadListAction implements Action {
   readonly type = LOAD_LIST;
+
+  constructor(public payload?: string[]) {}
 }
 
 export class LoadListSuccessAction implements Action {

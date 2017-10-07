@@ -13,14 +13,14 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
   template: `
     <md-card>
       <div class="edit-button-container" *ngIf="!isEditDisabled">
-        <md-icon class="edit-icon" title="Edit" (click)="onClick.emit(entry)">mode_edit</md-icon>
+        <md-icon class="edit-icon" title="Edit" (click)="edit.emit(entry)">mode_edit</md-icon>
       </div>
       <div>
         <md-card-title>{{ entry.date | date:'MMM d' }}</md-card-title>
         <md-card-content>
           <div [innerHTML]="entry.message | diaryMarkdown"></div>
 
-          <tags-viewer [tags]="entry.tags"></tags-viewer>
+          <tags-viewer [tags]="entry.tags" (tagClick)="tagClick.emit($event)"></tags-viewer>
 
           <div class="content-footer">
             Create date: {{ entry.createDate | date }}
@@ -59,5 +59,6 @@ import { DiaryEntry } from 'ng2-diary-book-shared-models';
 export class EntryListItemComponent {
   @Input() entry: DiaryEntry;
   @Input() isEditDisabled = false;
-  @Output() onClick = new EventEmitter();
+  @Output() edit = new EventEmitter();
+  @Output() tagClick = new EventEmitter();
 }

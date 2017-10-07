@@ -10,6 +10,7 @@ import * as tagsActions from '../actions/tags';
 import { Actions } from '@ngrx/effects';
 
 import 'rxjs/add/operator/take';
+import { RouterHelperService } from '../../core/services/router';
 
 @Component({
   template: `
@@ -21,11 +22,19 @@ import 'rxjs/add/operator/take';
             (onEnterPressed)="onCreateTagCommand($event)"
           ></tags-creator>
         </md-list-item>
-        <md-list-item *ngFor="let tag of tags$ | async">{{tag.name}}</md-list-item>
+        <md-list-item *ngFor="let tag of tags$ | async">
+          {{tag.name}}
+          <md-icon (click)="onClick(tag);">comment</md-icon>
+        </md-list-item>
       </md-list>
     </md-card>
   `,
   styles: [
+    `
+      md-list-item:not(:first-child) {
+        border-top: 1px dashed #dcdcdc;
+      }
+    `,
     `button {
       background-color: #4bccbc
     }`,
@@ -39,6 +48,7 @@ export class TagsManagerContainer {
     private tagsStore: Store<fromTags.State>,
     private store: Store<fromRoot.State>,
     private actions$: Actions,
+    private routerService: RouterHelperService,
   ) {
     this.tags$ = tagsStore.select(fromTags.getTags);
 
@@ -59,5 +69,9 @@ export class TagsManagerContainer {
         this.clearFieldEmitter.emit();
         this.store.dispatch(new tagsActions.GetTagsListAction());
       });
+  }
+
+  onClick(tag: Tag) {
+    this.routerService.goToDiary([tag.name]);
   }
 }

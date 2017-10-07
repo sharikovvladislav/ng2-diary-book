@@ -33,11 +33,9 @@ export class DiaryEffects {
     .do((action: any) =>
       this.store.dispatch(new layoutActions.ShowSpinnerAction(action.type)),
     )
-    .withLatestFrom(this.store)
-    .filter(([action, state]) => fromRoot.getUserIsLoggedIn(state))
-    .switchMap(() => {
+    .switchMap(action => {
       return this.diaryEntryService
-        .retrieveEntries()
+        .retrieveEntries(action.payload)
         .map(
           (diaryEntries: DiaryEntry[]) =>
             new diaryActions.LoadListSuccessAction(diaryEntries),

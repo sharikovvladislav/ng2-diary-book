@@ -22,6 +22,7 @@ import { TagsService } from '../../../../services/tags';
       [selectedTags]="selectedTagsValue"
       [clearInputValue]="clearInputValueEmitter"
       [focusInputField]="focusInputFieldEmitter"
+      [placeholder]="placeholder"
       (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
@@ -46,6 +47,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
     this.selectedTagsValue = nValue;
     this.selectedTagsChange.emit(this.selectedTagsValue);
   }
+  @Input() placeholder = '';
 
   @Output() selectedTagsChange = new EventEmitter<Tag[]>();
 
