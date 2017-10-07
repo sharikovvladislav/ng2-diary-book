@@ -20,6 +20,7 @@ import { Tag } from 'ng2-diary-book-shared-models';
       </div>
       <div class="input">
         <input #input
+               mask="00:00:00"
                placeholder="{{placeholder}}"
                (keydown.backspace)="onBackspacePressed(input.value)"
                [(ngModel)]="inputValue"

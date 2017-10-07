@@ -7,6 +7,7 @@ import { TagsAutoCompleteResultsComponent } from './components/results';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TagsService } from '../../../services/tags';
+import { NgxMaskModule } from 'ngx-mask';
 
 // TODO To remove
 import { InMemoryDataService } from '../../../http-mocks/in-memory-data.service';
@@ -21,6 +22,7 @@ import { AuthInterceptor } from '../../../modules/http-interceptors/auth-append-
     InMemoryWebApiModule.forRoot(InMemoryDataService, {
       passThruUnknownUrl: true,
     }),
+    NgxMaskModule,
   ],
   declarations: [
     TagsAutoCompleteContainerComponent,
