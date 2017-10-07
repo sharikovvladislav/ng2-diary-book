@@ -640,17 +640,21 @@ var EntryEditContainerNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_
 /* unused harmony export View_MyDairyPageComponent_Host_0 */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyDairyPageComponentNgFactory; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_containers_common_show_if_logged_in_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/core/containers/common-show-if-logged-in.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__app_core_containers_common_show_if_logged_in__ = __webpack_require__("../../../../../src/app/core/containers/common-show-if-logged-in.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_diary_containers_my_dairy_page__ = __webpack_require__("../../../../../src/app/diary/containers/my-dairy-page.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_diary_entries_list_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/diary/components/diary-entries-list.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_diary_components_diary_entries_list__ = __webpack_require__("../../../../../src/app/diary/components/diary-entries-list.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__gendir_node_modules_angular_material_typings_index_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/node_modules/@angular/material/typings/index.ngfactory.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_cdk__ = __webpack_require__("../../../cdk/@angular/cdk.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/node_modules/@angular/material/typings/index.ngfactory.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material__ = __webpack_require__("../../../material/@angular/material.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_containers_common_show_if_logged_in_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/core/containers/common-show-if-logged-in.ngfactory.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_core_containers_common_show_if_logged_in__ = __webpack_require__("../../../../../src/app/core/containers/common-show-if-logged-in.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_diary_containers_my_dairy_page__ = __webpack_require__("../../../../../src/app/diary/containers/my-dairy-page.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__core_features_components_tags_autocomplete_containers_tags_autocomplete_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/core/features/components/tags-autocomplete/containers/tags-autocomplete.ngfactory.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_core_features_components_tags_autocomplete_containers_tags_autocomplete__ = __webpack_require__("../../../../../src/app/core/features/components/tags-autocomplete/containers/tags-autocomplete.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_core_services_tags__ = __webpack_require__("../../../../../src/app/core/services/tags.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_diary_entries_list_ngfactory__ = __webpack_require__("../../../../../src/$$_gendir/app/diary/components/diary-entries-list.ngfactory.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_diary_components_diary_entries_list__ = __webpack_require__("../../../../../src/app/diary/components/diary-entries-list.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_common__ = __webpack_require__("../../../common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_cdk__ = __webpack_require__("../../../cdk/@angular/cdk.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_core_services_router__ = __webpack_require__("../../../../../src/app/core/services/router.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
 /**
  * @fileoverview This file is generated by the Angular template compiler.
  * Do not edit.
@@ -669,23 +673,57 @@ var EntryEditContainerNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_
 
 
 
-var styles_MyDairyPageComponent = ['diary-page[_ngcontent-%COMP%] {\n      position: absolute;\n      width: 100%;\n      height: 100%;\n    }',
+
+
+
+
+var styles_MyDairyPageComponent = ['md-card[_ngcontent-%COMP%] {\n        margin-bottom: 10px;\n      }',
+    'diary-page[_ngcontent-%COMP%] {\n      position: absolute;\n      width: 100%;\n      height: 100%;\n    }',
     '.example-fab[_ngcontent-%COMP%] {\n      position: fixed;\n      right: 20px;\n      bottom: 10px;\n    }'];
 var RenderType_MyDairyPageComponent = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_18" /* ɵcrt */]({ encapsulation: 0,
     styles: styles_MyDairyPageComponent, data: {} });
+function View_MyDairyPageComponent_1(_l) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, null, 6, 'div', [], null, null, null, null, null)), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, null, 3, 'md-card', [['class', 'mat-card']], null, null, null, __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["w" /* View_MdCard_0 */], __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["e" /* RenderType_MdCard */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["G" /* MdCard */], [], null, null),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['No entries found :\'('])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n      ']))], null, null);
+}
 function View_MyDairyPageComponent_0(_l) {
-    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵvid */](2, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, null, 17, 'common-show-if-logged-in', [], null, null, null, __WEBPACK_IMPORTED_MODULE_1__core_containers_common_show_if_logged_in_ngfactory__["b" /* View_CommonShowIfLoggedInComponent_0 */], __WEBPACK_IMPORTED_MODULE_1__core_containers_common_show_if_logged_in_ngfactory__["a" /* RenderType_CommonShowIfLoggedInComponent */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_2__app_core_containers_common_show_if_logged_in__["a" /* CommonShowIfLoggedInComponent */], [__WEBPACK_IMPORTED_MODULE_3__ngrx_store__["o" /* Store */]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 2, 'diary-entries-list', [], null, [[null, 'onClick']], function (_v, en, $event) {
+    return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵvid */](2, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, null, 29, 'common-show-if-logged-in', [], null, null, null, __WEBPACK_IMPORTED_MODULE_3__core_containers_common_show_if_logged_in_ngfactory__["b" /* View_CommonShowIfLoggedInComponent_0 */], __WEBPACK_IMPORTED_MODULE_3__core_containers_common_show_if_logged_in_ngfactory__["a" /* RenderType_CommonShowIfLoggedInComponent */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_4__app_core_containers_common_show_if_logged_in__["a" /* CommonShowIfLoggedInComponent */], [__WEBPACK_IMPORTED_MODULE_5__ngrx_store__["o" /* Store */]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 6, 'md-card', [['class', 'mat-card']], null, null, null, __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["w" /* View_MdCard_0 */], __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["e" /* RenderType_MdCard */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["G" /* MdCard */], [], null, null),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n        '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 1, 'tags-auto-complete', [], null, [[null, 'selectedTagsChange']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
-            if (('onClick' === en)) {
+            if (('selectedTagsChange' === en)) {
+                var pd_0 = ((_co.filterTags = $event) !== false);
+                ad = (pd_0 && ad);
+            }
+            if (('selectedTagsChange' === en)) {
+                var pd_1 = (_co.onTagsFilterChanged($event) !== false);
+                ad = (pd_1 && ad);
+            }
+            return ad;
+        }, __WEBPACK_IMPORTED_MODULE_7__core_features_components_tags_autocomplete_containers_tags_autocomplete_ngfactory__["b" /* View_TagsAutoCompleteContainerComponent_0 */], __WEBPACK_IMPORTED_MODULE_7__core_features_components_tags_autocomplete_containers_tags_autocomplete_ngfactory__["a" /* RenderType_TagsAutoCompleteContainerComponent */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](114688, null, 0, __WEBPACK_IMPORTED_MODULE_8__app_core_features_components_tags_autocomplete_containers_tags_autocomplete__["a" /* TagsAutoCompleteContainerComponent */], [__WEBPACK_IMPORTED_MODULE_9__app_core_services_tags__["a" /* TagsService */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]], { selectedTags: [0, 'selectedTags'], placeholder: [1, 'placeholder'] }, { selectedTagsChange: 'selectedTagsChange' }), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 2, 'diary-entries-list', [], null, [[null, 'edit'], [null, 'tagClick']], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (('edit' === en)) {
                 var pd_0 = (_co.goToEdit($event) !== false);
                 ad = (pd_0 && ad);
             }
+            if (('tagClick' === en)) {
+                var pd_1 = (_co.onTagClicked($event) !== false);
+                ad = (pd_1 && ad);
+            }
             return ad;
-        }, __WEBPACK_IMPORTED_MODULE_5__components_diary_entries_list_ngfactory__["b" /* View_EntryListComponent_0 */], __WEBPACK_IMPORTED_MODULE_5__components_diary_entries_list_ngfactory__["a" /* RenderType_EntryListComponent */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_6__app_diary_components_diary_entries_list__["a" /* EntryListComponent */], [], { entries: [0, 'entries'] }, { onClick: 'onClick' }), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_36" /* ɵpid */](131072, __WEBPACK_IMPORTED_MODULE_7__angular_common__["b" /* AsyncPipe */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]]),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 9, 'button', [['class', 'example-fab mat-mini-fab'], ['md-mini-fab', '']], [[8, 'disabled',
-                0]], [[null, 'click']], function (_v, en, $event) {
+        }, __WEBPACK_IMPORTED_MODULE_10__components_diary_entries_list_ngfactory__["b" /* View_EntryListComponent_0 */], __WEBPACK_IMPORTED_MODULE_10__components_diary_entries_list_ngfactory__["a" /* RenderType_EntryListComponent */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_11__app_diary_components_diary_entries_list__["a" /* EntryListComponent */], [], { entries: [0, 'entries'] }, { edit: 'edit', tagClick: 'tagClick' }), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_36" /* ɵpid */](131072, __WEBPACK_IMPORTED_MODULE_12__angular_common__["b" /* AsyncPipe */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]]),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_15" /* ɵand */](16777216, null, 0, 2, null, View_MyDairyPageComponent_1)), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_12__angular_common__["l" /* NgIf */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["_3" /* ViewContainerRef */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["Z" /* TemplateRef */]], { ngIf: [0, 'ngIf'] }, null),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_36" /* ɵpid */](131072, __WEBPACK_IMPORTED_MODULE_12__angular_common__["b" /* AsyncPipe */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */]]), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])),
+        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 9, 'button', [['class', 'example-fab mat-mini-fab'],
+            ['md-mini-fab', '']], [[8, 'disabled', 0]], [[null, 'click']], function (_v, en, $event) {
             var ad = true;
             var _co = _v.component;
             if (('click' === en)) {
@@ -693,28 +731,34 @@ function View_MyDairyPageComponent_0(_l) {
                 ad = (pd_0 && ad);
             }
             return ad;
-        }, __WEBPACK_IMPORTED_MODULE_8__gendir_node_modules_angular_material_typings_index_ngfactory__["u" /* View_MdButton_0 */], __WEBPACK_IMPORTED_MODULE_8__gendir_node_modules_angular_material_typings_index_ngfactory__["d" /* RenderType_MdButton */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_9__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_9__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](180224, null, 0, __WEBPACK_IMPORTED_MODULE_9__angular_material__["x" /* MdButton */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["L" /* Platform */], __WEBPACK_IMPORTED_MODULE_9__angular_material__["g" /* FocusOriginMonitor */]], null, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_9__angular_material__["_27" /* MdMiniFab */], [[2, __WEBPACK_IMPORTED_MODULE_9__angular_material__["x" /* MdButton */]],
-            [8, null]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n        '])),
-        (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 3, 'md-icon', [['class', 'mat-icon'], ['role',
-                'img']], null, null, null, __WEBPACK_IMPORTED_MODULE_8__gendir_node_modules_angular_material_typings_index_ngfactory__["z" /* View_MdIcon_0 */], __WEBPACK_IMPORTED_MODULE_8__gendir_node_modules_angular_material_typings_index_ngfactory__["i" /* RenderType_MdIcon */])),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_9__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_9__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]],
-            __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](638976, null, 0, __WEBPACK_IMPORTED_MODULE_9__angular_material__["_9" /* MdIcon */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_9__angular_material__["_12" /* MdIconRegistry */], [8, null]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['add'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n  ']))], function (_ck, _v) {
+        }, __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["u" /* View_MdButton_0 */], __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["d" /* RenderType_MdButton */])), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](180224, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["x" /* MdButton */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Renderer2 */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_13__angular_cdk__["L" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__angular_material__["g" /* FocusOriginMonitor */]], null, null),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_27" /* MdMiniFab */], [[2, __WEBPACK_IMPORTED_MODULE_2__angular_material__["x" /* MdButton */]], [8, null]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n        '])), (_l()(),
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, 0, 3, 'md-icon', [['class', 'mat-icon'], ['role', 'img']], null, null, null, __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["z" /* View_MdIcon_0 */], __WEBPACK_IMPORTED_MODULE_1__gendir_node_modules_angular_material_typings_index_ngfactory__["i" /* RenderType_MdIcon */])),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](16384, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_36" /* MdPrefixRejector */], [[2, __WEBPACK_IMPORTED_MODULE_2__angular_material__["j" /* MATERIAL_COMPATIBILITY_MODE */]],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */]], null, null), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](638976, null, 0, __WEBPACK_IMPORTED_MODULE_2__angular_material__["_9" /* MdIcon */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["Q" /* Renderer2 */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ElementRef */], __WEBPACK_IMPORTED_MODULE_2__angular_material__["_12" /* MdIconRegistry */], [8, null]], null, null), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['add'])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n      '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](0, ['\n    '])), (_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_41" /* ɵted */](null, ['\n  ']))], function (_ck, _v) {
         var _co = _v.component;
-        var currVal_0 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵunv */](_v, 5, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_35" /* ɵnov */](_v, 6).transform(_co.diaryEntries$));
-        _ck(_v, 5, 0, currVal_0);
-        _ck(_v, 15, 0);
+        var currVal_0 = _co.filterTags;
+        var currVal_1 = 'Введите теги...';
+        _ck(_v, 9, 0, currVal_0, currVal_1);
+        var currVal_2 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵunv */](_v, 13, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_35" /* ɵnov */](_v, 14).transform(_co.diaryEntries$));
+        _ck(_v, 13, 0, currVal_2);
+        var tmp_3_0 = null;
+        var currVal_3 = ((((tmp_3_0 = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_42" /* ɵunv */](_v, 17, 0, __WEBPACK_IMPORTED_MODULE_0__angular_core__["_35" /* ɵnov */](_v, 18).transform(_co.diaryEntries$))) == null) ? null : tmp_3_0.length) === 0);
+        _ck(_v, 17, 0, currVal_3);
+        _ck(_v, 27, 0);
     }, function (_ck, _v) {
-        var currVal_1 = (__WEBPACK_IMPORTED_MODULE_0__angular_core__["_35" /* ɵnov */](_v, 10).disabled || null);
-        _ck(_v, 8, 0, currVal_1);
+        var currVal_4 = (__WEBPACK_IMPORTED_MODULE_0__angular_core__["_35" /* ɵnov */](_v, 22).disabled || null);
+        _ck(_v, 20, 0, currVal_4);
     });
 }
 function View_MyDairyPageComponent_Host_0(_l) {
     return __WEBPACK_IMPORTED_MODULE_0__angular_core__["_43" /* ɵvid */](0, [(_l()(), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_21" /* ɵeld */](0, null, null, 1, 'diary-page', [], null, null, null, View_MyDairyPageComponent_0, RenderType_MyDairyPageComponent)),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_4__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], [__WEBPACK_IMPORTED_MODULE_3__ngrx_store__["o" /* Store */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */],
-            __WEBPACK_IMPORTED_MODULE_11__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_11__angular_router__["n" /* Router */]], null, null)], null, null);
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_19" /* ɵdid */](49152, null, 0, __WEBPACK_IMPORTED_MODULE_6__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], [__WEBPACK_IMPORTED_MODULE_5__ngrx_store__["o" /* Store */], __WEBPACK_IMPORTED_MODULE_14__app_core_services_router__["a" /* RouterHelperService */],
+            __WEBPACK_IMPORTED_MODULE_15__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_15__angular_router__["n" /* Router */]], null, null)], null, null);
 }
-var MyDairyPageComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ɵccf */]('diary-page', __WEBPACK_IMPORTED_MODULE_4__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], View_MyDairyPageComponent_Host_0, {}, {}, []);
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2NvbnRhaW5lcnMvbXktZGFpcnktcGFnZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9jb250YWluZXJzL215LWRhaXJ5LXBhZ2UudHMiLCJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9jb250YWluZXJzL215LWRhaXJ5LXBhZ2UudHMuTXlEYWlyeVBhZ2VDb21wb25lbnQuaHRtbCIsIm5nOi8vL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2NvbnRhaW5lcnMvbXktZGFpcnktcGFnZS50cy5NeURhaXJ5UGFnZUNvbXBvbmVudF9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIlxuICAgIDxjb21tb24tc2hvdy1pZi1sb2dnZWQtaW4+XG4gICAgICA8ZGlhcnktZW50cmllcy1saXN0XG4gICAgICAgIFtlbnRyaWVzXT1cImRpYXJ5RW50cmllcyQgfCBhc3luY1wiXG4gICAgICAgIChvbkNsaWNrKT1cImdvVG9FZGl0KCRldmVudClcIlxuICAgICAgPjwvZGlhcnktZW50cmllcy1saXN0PlxuICAgICAgPGJ1dHRvbiBtZC1taW5pLWZhYiBjbGFzcz1cImV4YW1wbGUtZmFiXCIgKGNsaWNrKT1cImdvVG9BZGQoKVwiPlxuICAgICAgICA8bWQtaWNvbj5hZGQ8L21kLWljb24+XG4gICAgICA8L2J1dHRvbj5cbiAgICA8L2NvbW1vbi1zaG93LWlmLWxvZ2dlZC1pbj5cbiAgIiwiPGRpYXJ5LXBhZ2U+PC9kaWFyeS1wYWdlPiJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7b0JDQUEsMkNBQ0k7TUFBQTtNQUFBO2FBQUE7VUFBQSxlQUEwQixpQ0FDeEI7VUFBQTtVQUFBO1lBQUE7WUFBQTtZQUVFO2NBQUE7Y0FBQTtZQUFBO1lBRkY7VUFBQSx5RUFBQTtVQUFBO1VBQUEsNEJBQ0U7TUFFb0IsaUNBQ3RCO1VBQUE7Y0FBQTtZQUFBO1lBQUE7WUFBd0M7Y0FBQTtjQUFBO1lBQUE7WUFBeEM7VUFBQSxxREFBQTtVQUFBO1VBQUEsb0NBQUE7VUFBQTtVQUFBLHNCQUFBO1VBQUEsZ0RBQTREO01BQzFEO1VBQUE7YUFBQTt1QkFBQSxzQ0FBQTtVQUFBO1VBQUEsNkJBQVMsNEJBQWE7VUFBQSxlQUNmLCtCQUNnQjtVQUFBOztJQU52QjtJQURGLFdBQ0UsU0FERjtJQUtFOztJQURGO0lBQUEsV0FBQSxTQUFBOzs7O29CQ05OO01BQUE7YUFBQTt1Q0FBQTs7OzsifQ==
+var MyDairyPageComponentNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_16" /* ɵccf */]('diary-page', __WEBPACK_IMPORTED_MODULE_6__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], View_MyDairyPageComponent_Host_0, {}, {}, []);
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2NvbnRhaW5lcnMvbXktZGFpcnktcGFnZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9jb250YWluZXJzL215LWRhaXJ5LXBhZ2UudHMiLCJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9jb250YWluZXJzL215LWRhaXJ5LXBhZ2UudHMuTXlEYWlyeVBhZ2VDb21wb25lbnQuaHRtbCIsIm5nOi8vL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2NvbnRhaW5lcnMvbXktZGFpcnktcGFnZS50cy5NeURhaXJ5UGFnZUNvbXBvbmVudF9Ib3N0Lmh0bWwiXSwic291cmNlc0NvbnRlbnQiOlsiICIsIlxuICAgIDxjb21tb24tc2hvdy1pZi1sb2dnZWQtaW4+XG4gICAgICA8bWQtY2FyZD5cbiAgICAgICAgPHRhZ3MtYXV0by1jb21wbGV0ZVxuICAgICAgICAgIFtwbGFjZWhvbGRlcl09XCIn0JLQstC10LTQuNGC0LUg0YLQtdCz0LguLi4nXCJcbiAgICAgICAgICBbKHNlbGVjdGVkVGFncyldPVwiZmlsdGVyVGFnc1wiXG4gICAgICAgICAgKHNlbGVjdGVkVGFnc0NoYW5nZSk9XCJvblRhZ3NGaWx0ZXJDaGFuZ2VkKCRldmVudClcIlxuICAgICAgICA+PC90YWdzLWF1dG8tY29tcGxldGU+XG4gICAgICA8L21kLWNhcmQ+XG4gICAgICA8ZGlhcnktZW50cmllcy1saXN0XG4gICAgICAgIFtlbnRyaWVzXT1cImRpYXJ5RW50cmllcyQgfCBhc3luY1wiXG4gICAgICAgIChlZGl0KT1cImdvVG9FZGl0KCRldmVudClcIlxuICAgICAgICAodGFnQ2xpY2spPVwib25UYWdDbGlja2VkKCRldmVudCk7XCJcbiAgICAgID48L2RpYXJ5LWVudHJpZXMtbGlzdD5cbiAgICAgIDxkaXYgKm5nSWY9XCIoZGlhcnlFbnRyaWVzJCB8IGFzeW5jKT8ubGVuZ3RoID09PSAwXCI+XG4gICAgICAgIDxtZC1jYXJkPk5vIGVudHJpZXMgZm91bmQgOicoPC9tZC1jYXJkPlxuICAgICAgPC9kaXY+XG4gICAgICA8YnV0dG9uIG1kLW1pbmktZmFiIGNsYXNzPVwiZXhhbXBsZS1mYWJcIiAoY2xpY2spPVwiZ29Ub0FkZCgpXCI+XG4gICAgICAgIDxtZC1pY29uPmFkZDwvbWQtaWNvbj5cbiAgICAgIDwvYnV0dG9uPlxuICAgIDwvY29tbW9uLXNob3ctaWYtbG9nZ2VkLWluPlxuICAiLCI8ZGlhcnktcGFnZT48L2RpYXJ5LXBhZ2U+Il0sIm1hcHBpbmdzIjoiQUFBQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O29CQ2NNO01BQUEsd0VBQW1EO2FBQUEsZ0NBQ2pEO01BQUE7MkNBQUEsVUFBQTtNQUFBO2FBQUE7TUFBUyw4Q0FBOEI7VUFBQTs7O29CQWYvQywyQ0FDSTtNQUFBO01BQUE7YUFBQTtVQUFBLGVBQTBCLGlDQUN4QjtVQUFBOytDQUFBLFVBQUE7VUFBQTthQUFBO01BQVMsbUNBQ1A7VUFBQTtvQkFBQTtZQUFBO1lBQUE7WUFFRTtjQUFBO2NBQUE7WUFBQTtZQUNBO2NBQUE7Y0FBQTtZQUFBO1lBSEY7VUFBQTthQUFBOzhCQUFBO1VBQUEsMkNBSXNCO01BQ2QsaUNBQ1Y7VUFBQTtVQUFBO1lBQUE7WUFBQTtZQUVFO2NBQUE7Y0FBQTtZQUFBO1lBQ0E7Y0FBQTtjQUFBO1lBQUE7WUFIRjtVQUFBLDJFQUFBO1VBQUE7VUFBQSwwQ0FDRTtNQUdvQixpQ0FDdEI7VUFBQSxtREFBQTtVQUFBO2FBQUssOENBRUM7TUFDTjtVQUFBO2dCQUFBO1FBQUE7UUFBQTtRQUF3QztVQUFBO1VBQUE7UUFBQTtRQUF4QztNQUFBLHFEQUFBOzhCQUFBO1VBQUEsc0JBQUE7MERBQUE7YUFBQTtVQUFBLDZCQUE0RCxtQ0FDMUQ7aUJBQUE7Y0FBQTthQUFBO3VCQUFBLHNDQUFBO1VBQUE7VUFBQSw2QkFBUyw0QkFBYTtVQUFBLGVBQ2YsK0JBQ2dCO1VBQUE7O0lBZnJCO0lBREE7SUFERixXQUVFLFVBREEsU0FERjtJQU9BO0lBREYsWUFDRSxTQURGO0lBS0s7SUFBQTtJQUFMLFlBQUssU0FBTDtJQUlFOztJQURGO0lBQUEsWUFBQSxTQUFBOzs7O29CQ2pCTjtNQUFBO2FBQUE7dUNBQUE7Ozs7In0=
 //# sourceMappingURL=my-dairy-page.ngfactory.js.map
 
 /***/ }),
@@ -785,34 +829,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular_in_memory_web_api_http_in_memory_web_api_module__ = __webpack_require__("../../../../angular-in-memory-web-api/http-in-memory-web-api.module.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__ = __webpack_require__("../../../../angular-in-memory-web-api/interfaces.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__app_core_services_tags__ = __webpack_require__("../../../../../src/app/core/services/tags.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_core_services_breadcrumbs__ = __webpack_require__("../../../../../src/app/core/services/breadcrumbs.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__app_diary_services_diary_processor__ = __webpack_require__("../../../../../src/app/diary/services/diary-processor.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__app_core_services_router__ = __webpack_require__("../../../../../src/app/core/services/router.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_shared_pipes_index__ = __webpack_require__("../../../../../src/app/shared/pipes/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__ = __webpack_require__("../../../../@ngrx/effects/@ngrx/effects.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__app_core_effects_router__ = __webpack_require__("../../../../../src/app/core/effects/router.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_angular_in_memory_web_api_in_memory_web_api_module__ = __webpack_require__("../../../../angular-in-memory-web-api/in-memory-web-api.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__app_core_features_components_tags_autocomplete_tags_autocomplete_module__ = __webpack_require__("../../../../../src/app/core/features/components/tags-autocomplete/tags-autocomplete.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_viewer_tags_viewer_module__ = __webpack_require__("../../../../../src/app/core/features/components/tags-viewer/tags-viewer.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__app_core_core_module__ = __webpack_require__("../../../../../src/app/core/core.module.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_diary_components_index__ = __webpack_require__("../../../../../src/app/diary/components/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__app_diary_reducers_diary__ = __webpack_require__("../../../../../src/app/diary/reducers/diary.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__app_core_http_mocks_in_memory_data_service__ = __webpack_require__("../../../../../src/app/core/http-mocks/in-memory-data.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32_angular_in_memory_web_api_http_client_in_memory_web_api_module__ = __webpack_require__("../../../../angular-in-memory-web-api/http-client-in-memory-web-api.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33__app_core_modules_http_interceptors_auth_append_token__ = __webpack_require__("../../../../../src/app/core/modules/http-interceptors/auth-append-token.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__app_diary_services_diary_entry__ = __webpack_require__("../../../../../src/app/diary/services/diary-entry.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__app_diary_effects_diary__ = __webpack_require__("../../../../../src/app/diary/effects/diary.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__app_diary_containers_root__ = __webpack_require__("../../../../../src/app/diary/containers/root.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__app_diary_containers_my_dairy_page__ = __webpack_require__("../../../../../src/app/diary/containers/my-dairy-page.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__app_diary_containers_entry_edit_page__ = __webpack_require__("../../../../../src/app/diary/containers/entry-edit-page.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__app_diary_containers_entry_create_page__ = __webpack_require__("../../../../../src/app/diary/containers/entry-create-page.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__app_core_services_breadcrumbs__ = __webpack_require__("../../../../../src/app/core/services/breadcrumbs.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__app_diary_services_diary_processor__ = __webpack_require__("../../../../../src/app/diary/services/diary-processor.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__app_shared_pipes_index__ = __webpack_require__("../../../../../src/app/shared/pipes/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__ = __webpack_require__("../../../../@ngrx/effects/@ngrx/effects.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__app_core_effects_router__ = __webpack_require__("../../../../../src/app/core/effects/router.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26_angular_in_memory_web_api_in_memory_web_api_module__ = __webpack_require__("../../../../angular-in-memory-web-api/in-memory-web-api.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_autocomplete_tags_autocomplete_module__ = __webpack_require__("../../../../../src/app/core/features/components/tags-autocomplete/tags-autocomplete.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__app_core_features_components_tags_viewer_tags_viewer_module__ = __webpack_require__("../../../../../src/app/core/features/components/tags-viewer/tags-viewer.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__app_core_core_module__ = __webpack_require__("../../../../../src/app/core/core.module.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__app_diary_components_index__ = __webpack_require__("../../../../../src/app/diary/components/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_31__app_diary_reducers_diary__ = __webpack_require__("../../../../../src/app/diary/reducers/diary.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_32__app_core_http_mocks_in_memory_data_service__ = __webpack_require__("../../../../../src/app/core/http-mocks/in-memory-data.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_33_angular_in_memory_web_api_http_client_in_memory_web_api_module__ = __webpack_require__("../../../../angular-in-memory-web-api/http-client-in-memory-web-api.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_34__app_core_modules_http_interceptors_auth_append_token__ = __webpack_require__("../../../../../src/app/core/modules/http-interceptors/auth-append-token.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_35__app_diary_services_diary_entry__ = __webpack_require__("../../../../../src/app/diary/services/diary-entry.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__app_diary_effects_diary__ = __webpack_require__("../../../../../src/app/diary/effects/diary.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__app_diary_containers_root__ = __webpack_require__("../../../../../src/app/diary/containers/root.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__app_diary_containers_my_dairy_page__ = __webpack_require__("../../../../../src/app/diary/containers/my-dairy-page.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__app_diary_containers_entry_edit_page__ = __webpack_require__("../../../../../src/app/diary/containers/entry-edit-page.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__app_diary_containers_entry_create_page__ = __webpack_require__("../../../../../src/app/diary/containers/entry-create-page.ts");
 /**
  * @fileoverview This file is generated by the Angular template compiler.
  * Do not edit.
  * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride}
  */
 /* tslint:disable */
+
 
 
 
@@ -875,10 +921,10 @@ var DiaryModuleNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_17" /* 
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_60" /* MdSnackBar */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_60" /* MdSnackBar */], [__WEBPACK_IMPORTED_MODULE_12__angular_material__["_88" /* Overlay */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["F" /* LiveAnnouncer */],
             [3, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_60" /* MdSnackBar */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_65" /* MdSortHeaderIntl */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_65" /* MdSortHeaderIntl */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_12__angular_material__["e" /* DateAdapter */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_85" /* NativeDateAdapter */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["j" /* HttpXhrBackend */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["j" /* HttpXhrBackend */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["l" /* XhrFactory */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](5120, __WEBPACK_IMPORTED_MODULE_13__angular_http__["m" /* XHRBackend */], __WEBPACK_IMPORTED_MODULE_15_angular_in_memory_web_api_http_in_memory_web_api_module__["a" /* httpInMemBackendServiceFactory */], [__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* Injector */], __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["c" /* InMemoryDbService */],
-            __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_17__app_core_services_tags__["a" /* TagsService */], __WEBPACK_IMPORTED_MODULE_17__app_core_services_tags__["a" /* TagsService */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_18__app_core_services_breadcrumbs__["a" /* BreadcrumbsService */], __WEBPACK_IMPORTED_MODULE_18__app_core_services_breadcrumbs__["a" /* BreadcrumbsService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_19__app_diary_services_diary_processor__["a" /* DiaryProcessorService */], __WEBPACK_IMPORTED_MODULE_19__app_diary_services_diary_processor__["a" /* DiaryProcessorService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* CommonModule */], []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["n" /* ɵba */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["n" /* ɵba */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["l" /* ReactiveFormsModule */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["l" /* ReactiveFormsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["c" /* CompatibilityModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["c" /* CompatibilityModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["c" /* BidiModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["c" /* BidiModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_12__angular_material__["k" /* MATERIAL_SANITY_CHECKS */], true, []),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["R" /* MdCommonModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["R" /* MdCommonModule */], [[2, __WEBPACK_IMPORTED_MODULE_11__angular_platform_browser__["b" /* DOCUMENT */]], [2, __WEBPACK_IMPORTED_MODULE_12__angular_material__["k" /* MATERIAL_SANITY_CHECKS */]]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["M" /* PlatformModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["M" /* PlatformModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_92" /* ScrollDispatchModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_92" /* ScrollDispatchModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_48" /* MdRippleModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_48" /* MdRippleModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_52" /* MdSelectionModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_52" /* MdSelectionModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_33" /* MdOptionModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_33" /* MdOptionModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["O" /* PortalModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["O" /* PortalModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_90" /* OverlayModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_90" /* OverlayModule */], []),
+            __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_17__app_core_services_tags__["a" /* TagsService */], __WEBPACK_IMPORTED_MODULE_17__app_core_services_tags__["a" /* TagsService */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_18__app_core_services_router__["a" /* RouterHelperService */], __WEBPACK_IMPORTED_MODULE_18__app_core_services_router__["a" /* RouterHelperService */], [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["o" /* Store */], __WEBPACK_IMPORTED_MODULE_20__angular_router__["a" /* ActivatedRoute */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_21__app_core_services_breadcrumbs__["a" /* BreadcrumbsService */], __WEBPACK_IMPORTED_MODULE_21__app_core_services_breadcrumbs__["a" /* BreadcrumbsService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](4608, __WEBPACK_IMPORTED_MODULE_22__app_diary_services_diary_processor__["a" /* DiaryProcessorService */], __WEBPACK_IMPORTED_MODULE_22__app_diary_services_diary_processor__["a" /* DiaryProcessorService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* CommonModule */], __WEBPACK_IMPORTED_MODULE_8__angular_common__["c" /* CommonModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["n" /* ɵba */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["n" /* ɵba */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["l" /* ReactiveFormsModule */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["l" /* ReactiveFormsModule */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["c" /* CompatibilityModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["c" /* CompatibilityModule */], []),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["c" /* BidiModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["c" /* BidiModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_12__angular_material__["k" /* MATERIAL_SANITY_CHECKS */], true, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["R" /* MdCommonModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["R" /* MdCommonModule */], [[2, __WEBPACK_IMPORTED_MODULE_11__angular_platform_browser__["b" /* DOCUMENT */]], [2, __WEBPACK_IMPORTED_MODULE_12__angular_material__["k" /* MATERIAL_SANITY_CHECKS */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["M" /* PlatformModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["M" /* PlatformModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_92" /* ScrollDispatchModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_92" /* ScrollDispatchModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_48" /* MdRippleModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_48" /* MdRippleModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_52" /* MdSelectionModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_52" /* MdSelectionModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_33" /* MdOptionModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_33" /* MdOptionModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["O" /* PortalModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["O" /* PortalModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_90" /* OverlayModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_90" /* OverlayModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["w" /* MdAutocompleteModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["w" /* MdAutocompleteModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_97" /* StyleModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_97" /* StyleModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["z" /* MdButtonModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["z" /* MdButtonModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_9__angular_forms__["e" /* FormsModule */], __WEBPACK_IMPORTED_MODULE_9__angular_forms__["e" /* FormsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["D" /* MdButtonToggleModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["D" /* MdButtonToggleModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["K" /* MdCardModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["K" /* MdCardModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["Q" /* MdChipsModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["Q" /* MdChipsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["I" /* ObserveContentModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["I" /* ObserveContentModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["O" /* MdCheckboxModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["O" /* MdCheckboxModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["a" /* A11yModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["a" /* A11yModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_1" /* MdDialogModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_1" /* MdDialogModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["X" /* MdDatepickerModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["X" /* MdDatepickerModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["m" /* CdkTableModule */], __WEBPACK_IMPORTED_MODULE_10__angular_cdk__["m" /* CdkTableModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_77" /* MdTableModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_77" /* MdTableModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_2" /* MdExpansionModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_2" /* MdExpansionModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_18" /* MdLineModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_18" /* MdLineModule */], []),
@@ -887,34 +933,34 @@ var DiaryModuleNgFactory = __WEBPACK_IMPORTED_MODULE_0__angular_core__["_17" /* 
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_57" /* MdSlideToggleModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_57" /* MdSlideToggleModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_62" /* MdSnackBarModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_62" /* MdSnackBarModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_66" /* MdSortModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_66" /* MdSortModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_78" /* MdTabsModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_78" /* MdTabsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_80" /* MdToolbarModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_80" /* MdToolbarModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["s" /* MaterialModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["s" /* MaterialModule */], []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_20__angular_router__["q" /* RouterModule */], __WEBPACK_IMPORTED_MODULE_20__angular_router__["q" /* RouterModule */], [[2, __WEBPACK_IMPORTED_MODULE_20__angular_router__["w" /* ɵa */]], [2, __WEBPACK_IMPORTED_MODULE_20__angular_router__["n" /* Router */]]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_21__app_shared_pipes_index__["a" /* PipesModule */], __WEBPACK_IMPORTED_MODULE_21__app_shared_pipes_index__["a" /* PipesModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_86" /* NativeDateModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_86" /* NativeDateModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_29" /* MdNativeDateModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_29" /* MdNativeDateModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["e" /* HttpClientXsrfModule */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["e" /* HttpClientXsrfModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["d" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["d" /* HttpClientModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["h" /* ɵe */], undefined, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["j" /* ɵg */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["j" /* ɵg */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["h" /* ɵe */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["c" /* EffectSources */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["c" /* EffectSources */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["j" /* ɵg */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](131584, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["k" /* ɵh */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["k" /* ɵh */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["c" /* EffectSources */],
-            __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["a" /* Actions */], [__WEBPACK_IMPORTED_MODULE_23__ngrx_store__["l" /* ScannedActionsSubject */]]),
-        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__app_core_effects_router__["a" /* RouterEffects */], __WEBPACK_IMPORTED_MODULE_24__app_core_effects_router__["a" /* RouterEffects */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_20__angular_router__["n" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_8__angular_common__["h" /* Location */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["f" /* ɵc */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["d" /* ɵa */], [__WEBPACK_IMPORTED_MODULE_24__app_core_effects_router__["a" /* RouterEffects */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["i" /* ɵf */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["i" /* ɵf */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["c" /* EffectSources */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["k" /* ɵh */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["f" /* ɵc */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_25_angular_in_memory_web_api_in_memory_web_api_module__["a" /* InMemoryWebApiModule */], __WEBPACK_IMPORTED_MODULE_25_angular_in_memory_web_api_in_memory_web_api_module__["a" /* InMemoryWebApiModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_26__app_core_features_components_tags_autocomplete_tags_autocomplete_module__["a" /* TagsAutoCompleteModule */], __WEBPACK_IMPORTED_MODULE_26__app_core_features_components_tags_autocomplete_tags_autocomplete_module__["a" /* TagsAutoCompleteModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_viewer_tags_viewer_module__["a" /* TagsViewerModule */], __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_viewer_tags_viewer_module__["a" /* TagsViewerModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_28__app_core_core_module__["a" /* CoreModule */], __WEBPACK_IMPORTED_MODULE_28__app_core_core_module__["a" /* CoreModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_29__app_diary_components_index__["a" /* ComponentsModule */], __WEBPACK_IMPORTED_MODULE_29__app_diary_components_index__["a" /* ComponentsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["k" /* STORE_FEATURES */], function () {
-            return [{ key: 'diary', reducerFactory: __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["B" /* combineReducers */], metaReducers: [],
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_23__app_shared_pipes_index__["a" /* PipesModule */], __WEBPACK_IMPORTED_MODULE_23__app_shared_pipes_index__["a" /* PipesModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_86" /* NativeDateModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_86" /* NativeDateModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_12__angular_material__["_29" /* MdNativeDateModule */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["_29" /* MdNativeDateModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["e" /* HttpClientXsrfModule */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["e" /* HttpClientXsrfModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["d" /* HttpClientModule */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["d" /* HttpClientModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["h" /* ɵe */], undefined, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["j" /* ɵg */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["j" /* ɵg */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["h" /* ɵe */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["c" /* EffectSources */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["c" /* EffectSources */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["j" /* ɵg */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](131584, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["k" /* ɵh */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["k" /* ɵh */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["c" /* EffectSources */],
+            __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["a" /* Actions */], [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["l" /* ScannedActionsSubject */]]),
+        __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_25__app_core_effects_router__["a" /* RouterEffects */], __WEBPACK_IMPORTED_MODULE_25__app_core_effects_router__["a" /* RouterEffects */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_20__angular_router__["n" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_8__angular_common__["h" /* Location */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["f" /* ɵc */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["d" /* ɵa */], [__WEBPACK_IMPORTED_MODULE_25__app_core_effects_router__["a" /* RouterEffects */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["i" /* ɵf */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["i" /* ɵf */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["c" /* EffectSources */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["k" /* ɵh */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["f" /* ɵc */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_26_angular_in_memory_web_api_in_memory_web_api_module__["a" /* InMemoryWebApiModule */], __WEBPACK_IMPORTED_MODULE_26_angular_in_memory_web_api_in_memory_web_api_module__["a" /* InMemoryWebApiModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_autocomplete_tags_autocomplete_module__["a" /* TagsAutoCompleteModule */], __WEBPACK_IMPORTED_MODULE_27__app_core_features_components_tags_autocomplete_tags_autocomplete_module__["a" /* TagsAutoCompleteModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_28__app_core_features_components_tags_viewer_tags_viewer_module__["a" /* TagsViewerModule */], __WEBPACK_IMPORTED_MODULE_28__app_core_features_components_tags_viewer_tags_viewer_module__["a" /* TagsViewerModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_29__app_core_core_module__["a" /* CoreModule */], __WEBPACK_IMPORTED_MODULE_29__app_core_core_module__["a" /* CoreModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_30__app_diary_components_index__["a" /* ComponentsModule */], __WEBPACK_IMPORTED_MODULE_30__app_diary_components_index__["a" /* ComponentsModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["k" /* STORE_FEATURES */], function () {
+            return [{ key: 'diary', reducerFactory: __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["B" /* combineReducers */], metaReducers: [],
                     initialState: undefined }];
-        }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["s" /* _FEATURE_REDUCERS */], function () {
-            return [{ diary: __WEBPACK_IMPORTED_MODULE_30__app_diary_reducers_diary__["c" /* reducer */] }];
-        }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["t" /* _FEATURE_REDUCERS_TOKEN */], function (p0_0) {
+        }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["s" /* _FEATURE_REDUCERS */], function () {
+            return [{ diary: __WEBPACK_IMPORTED_MODULE_31__app_diary_reducers_diary__["c" /* reducer */] }];
+        }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["t" /* _FEATURE_REDUCERS_TOKEN */], function (p0_0) {
             return [p0_0];
-        }, [__WEBPACK_IMPORTED_MODULE_23__ngrx_store__["s" /* _FEATURE_REDUCERS */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["b" /* FEATURE_REDUCERS */], function (p0_0, p0_1) {
-            return [__WEBPACK_IMPORTED_MODULE_23__ngrx_store__["y" /* _createFeatureReducers */](p0_0, p0_1)];
-        }, [__WEBPACK_IMPORTED_MODULE_23__ngrx_store__["s" /* _FEATURE_REDUCERS */], [2, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["t" /* _FEATURE_REDUCERS_TOKEN */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](131584, __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["p" /* StoreFeatureModule */], __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["p" /* StoreFeatureModule */], [__WEBPACK_IMPORTED_MODULE_23__ngrx_store__["k" /* STORE_FEATURES */], __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["b" /* FEATURE_REDUCERS */],
-            __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["h" /* ReducerManager */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["c" /* InMemoryDbService */], __WEBPACK_IMPORTED_MODULE_31__app_core_http_mocks_in_memory_data_service__["a" /* InMemoryDataService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */], { passThruUnknownUrl: true }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](2048, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["l" /* XhrFactory */], null, [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["b" /* HttpBackend */], __WEBPACK_IMPORTED_MODULE_32_angular_in_memory_web_api_http_client_in_memory_web_api_module__["a" /* httpClientInMemBackendServiceFactory */], [__WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["c" /* InMemoryDbService */], __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */],
+        }, [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["s" /* _FEATURE_REDUCERS */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["b" /* FEATURE_REDUCERS */], function (p0_0, p0_1) {
+            return [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["y" /* _createFeatureReducers */](p0_0, p0_1)];
+        }, [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["s" /* _FEATURE_REDUCERS */], [2, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["t" /* _FEATURE_REDUCERS_TOKEN */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](131584, __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["p" /* StoreFeatureModule */], __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["p" /* StoreFeatureModule */], [__WEBPACK_IMPORTED_MODULE_19__ngrx_store__["k" /* STORE_FEATURES */], __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["b" /* FEATURE_REDUCERS */],
+            __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["h" /* ReducerManager */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["c" /* InMemoryDbService */], __WEBPACK_IMPORTED_MODULE_32__app_core_http_mocks_in_memory_data_service__["a" /* InMemoryDataService */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */], { passThruUnknownUrl: true }, []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](2048, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["l" /* XhrFactory */], null, [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["m" /* ɵd */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["b" /* HttpBackend */], __WEBPACK_IMPORTED_MODULE_33_angular_in_memory_web_api_http_client_in_memory_web_api_module__["a" /* httpClientInMemBackendServiceFactory */], [__WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["c" /* InMemoryDbService */], __WEBPACK_IMPORTED_MODULE_16_angular_in_memory_web_api_interfaces__["a" /* InMemoryBackendConfig */],
             __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["l" /* XhrFactory */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["n" /* ɵe */], 'XSRF-TOKEN', []),
         __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["k" /* HttpXsrfTokenExtractor */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["p" /* ɵg */], [__WEBPACK_IMPORTED_MODULE_8__angular_common__["d" /* DOCUMENT */], __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* PLATFORM_ID */],
             __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["n" /* ɵe */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["o" /* ɵf */], 'X-XSRF-TOKEN', []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["q" /* ɵh */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["q" /* ɵh */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["k" /* HttpXsrfTokenExtractor */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["o" /* ɵf */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["a" /* HTTP_INTERCEPTORS */], function (p0_0, p1_0, p2_0) {
-            return [p0_0, new __WEBPACK_IMPORTED_MODULE_33__app_core_modules_http_interceptors_auth_append_token__["a" /* AuthInterceptor */](p1_0), new __WEBPACK_IMPORTED_MODULE_33__app_core_modules_http_interceptors_auth_append_token__["a" /* AuthInterceptor */](p2_0)];
-        }, [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["q" /* ɵh */], __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["o" /* Store */], __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["f" /* HttpHandler */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["r" /* ɵinterceptingHandler */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["b" /* HttpBackend */], [2, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["a" /* HTTP_INTERCEPTORS */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["f" /* HttpHandler */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_34__app_diary_services_diary_entry__["a" /* DiaryEntryService */], __WEBPACK_IMPORTED_MODULE_34__app_diary_services_diary_entry__["a" /* DiaryEntryService */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_35__app_diary_effects_diary__["a" /* DiaryEffects */], __WEBPACK_IMPORTED_MODULE_35__app_diary_effects_diary__["a" /* DiaryEffects */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_34__app_diary_services_diary_entry__["a" /* DiaryEntryService */], __WEBPACK_IMPORTED_MODULE_23__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["g" /* ɵd */], function (p0_0) {
-            return [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["d" /* ɵa */](p0_0)];
-        }, [__WEBPACK_IMPORTED_MODULE_35__app_diary_effects_diary__["a" /* DiaryEffects */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["e" /* ɵb */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["e" /* ɵb */], [__WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["i" /* ɵf */], __WEBPACK_IMPORTED_MODULE_22__ngrx_effects__["g" /* ɵd */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_1__app_diary_diary_module__["a" /* DiaryModule */], __WEBPACK_IMPORTED_MODULE_1__app_diary_diary_module__["a" /* DiaryModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_12__angular_material__["l" /* MD_DATE_FORMATS */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["o" /* MD_NATIVE_DATE_FORMATS */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_20__angular_router__["l" /* ROUTES */], function () {
-            return [[{ path: '', component: __WEBPACK_IMPORTED_MODULE_36__app_diary_containers_root__["a" /* DiaryRootComponent */], data: { breadcrumb: 'Dairy' },
-                        children: [{ path: '', component: __WEBPACK_IMPORTED_MODULE_37__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], data: { breadcrumb: 'My diary' } },
-                            { path: 'edit/:key', component: __WEBPACK_IMPORTED_MODULE_38__app_diary_containers_entry_edit_page__["a" /* EntryEditContainer */], data: { breadcrumb: 'Create entry' } },
-                            { path: 'add', component: __WEBPACK_IMPORTED_MODULE_39__app_diary_containers_entry_create_page__["a" /* EntryCreateContainer */], data: { breadcrumb: 'Create entry' } }] }]];
+            return [p0_0, new __WEBPACK_IMPORTED_MODULE_34__app_core_modules_http_interceptors_auth_append_token__["a" /* AuthInterceptor */](p1_0), new __WEBPACK_IMPORTED_MODULE_34__app_core_modules_http_interceptors_auth_append_token__["a" /* AuthInterceptor */](p2_0)];
+        }, [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["q" /* ɵh */], __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["o" /* Store */], __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["f" /* HttpHandler */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["r" /* ɵinterceptingHandler */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["b" /* HttpBackend */], [2, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["a" /* HTTP_INTERCEPTORS */]]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */], __WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["f" /* HttpHandler */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_35__app_diary_services_diary_entry__["a" /* DiaryEntryService */], __WEBPACK_IMPORTED_MODULE_35__app_diary_services_diary_entry__["a" /* DiaryEntryService */], [__WEBPACK_IMPORTED_MODULE_14__angular_common_http__["c" /* HttpClient */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_36__app_diary_effects_diary__["a" /* DiaryEffects */], __WEBPACK_IMPORTED_MODULE_36__app_diary_effects_diary__["a" /* DiaryEffects */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["a" /* Actions */], __WEBPACK_IMPORTED_MODULE_35__app_diary_services_diary_entry__["a" /* DiaryEntryService */], __WEBPACK_IMPORTED_MODULE_19__ngrx_store__["o" /* Store */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["g" /* ɵd */], function (p0_0) {
+            return [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["d" /* ɵa */](p0_0)];
+        }, [__WEBPACK_IMPORTED_MODULE_36__app_diary_effects_diary__["a" /* DiaryEffects */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["e" /* ɵb */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["e" /* ɵb */], [__WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["i" /* ɵf */], __WEBPACK_IMPORTED_MODULE_24__ngrx_effects__["g" /* ɵd */]]), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](512, __WEBPACK_IMPORTED_MODULE_1__app_diary_diary_module__["a" /* DiaryModule */], __WEBPACK_IMPORTED_MODULE_1__app_diary_diary_module__["a" /* DiaryModule */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](256, __WEBPACK_IMPORTED_MODULE_12__angular_material__["l" /* MD_DATE_FORMATS */], __WEBPACK_IMPORTED_MODULE_12__angular_material__["o" /* MD_NATIVE_DATE_FORMATS */], []), __WEBPACK_IMPORTED_MODULE_0__angular_core__["_33" /* ɵmpd */](1024, __WEBPACK_IMPORTED_MODULE_20__angular_router__["l" /* ROUTES */], function () {
+            return [[{ path: '', component: __WEBPACK_IMPORTED_MODULE_37__app_diary_containers_root__["a" /* DiaryRootComponent */], data: { breadcrumb: 'Dairy' },
+                        children: [{ path: '', component: __WEBPACK_IMPORTED_MODULE_38__app_diary_containers_my_dairy_page__["a" /* MyDairyPageComponent */], data: { breadcrumb: 'My diary' } },
+                            { path: 'edit/:key', component: __WEBPACK_IMPORTED_MODULE_39__app_diary_containers_entry_edit_page__["a" /* EntryEditContainer */], data: { breadcrumb: 'Create entry' } },
+                            { path: 'add', component: __WEBPACK_IMPORTED_MODULE_40__app_diary_containers_entry_create_page__["a" /* EntryCreateContainer */], data: { breadcrumb: 'Create entry' } }] }]];
         }, [])]);
 });
-//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2RpYXJ5Lm1vZHVsZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9kaWFyeS5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiICJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
+//# sourceMappingURL=data:application/json;base64,eyJmaWxlIjoiL1VzZXJzL3N2bGFkL2Rldi9uZzItZGlhcnktYm9vay9zcmMvYXBwL2RpYXJ5L2RpYXJ5Lm1vZHVsZS5uZ2ZhY3RvcnkudHMiLCJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJuZzovLy9Vc2Vycy9zdmxhZC9kZXYvbmcyLWRpYXJ5LWJvb2svc3JjL2FwcC9kaWFyeS9kaWFyeS5tb2R1bGUudHMiXSwic291cmNlc0NvbnRlbnQiOlsiICJdLCJtYXBwaW5ncyI6IkFBQUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
 //# sourceMappingURL=diary.module.ngfactory.js.map
 
 /***/ }),
@@ -970,7 +1016,8 @@ var GET_EDIT_ENTRY_CLEAR = '[Diary entries] Get edit entry clear';
  * See Discriminated Unions: https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
 var LoadListAction = (function () {
-    function LoadListAction() {
+    function LoadListAction(payload) {
+        this.payload = payload;
         this.type = LOAD_LIST;
     }
     return LoadListAction;
@@ -1231,12 +1278,12 @@ var EntryEditContainer = (function () {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyDairyPageComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers__ = __webpack_require__("../../../../../src/app/reducers/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__reducers__ = __webpack_require__("../../../../../src/app/diary/reducers/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__actions_diary_entries__ = __webpack_require__("../../../../../src/app/diary/actions/diary-entries.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngrx_store__ = __webpack_require__("../../../../@ngrx/store/@ngrx/store.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__reducers__ = __webpack_require__("../../../../../src/app/reducers/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__reducers__ = __webpack_require__("../../../../../src/app/diary/reducers/index.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__actions_diary_entries__ = __webpack_require__("../../../../../src/app/diary/actions/diary-entries.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__core_services_router__ = __webpack_require__("../../../../../src/app/core/services/router.ts");
 
 
 
@@ -1244,19 +1291,27 @@ var EntryEditContainer = (function () {
 
 
 var MyDairyPageComponent = (function () {
-    function MyDairyPageComponent(store, changeDetectorRef, route, router) {
+    function MyDairyPageComponent(store, routerService, route, router) {
         var _this = this;
         this.store = store;
-        this.changeDetectorRef = changeDetectorRef;
+        this.routerService = routerService;
         this.route = route;
         this.router = router;
-        this.diaryEntries$ = store.select(__WEBPACK_IMPORTED_MODULE_3__reducers__["a" /* getDiaryEntries */]);
+        this.filterTags = [];
+        this.diaryEntries$ = store.select(__WEBPACK_IMPORTED_MODULE_2__reducers__["a" /* getDiaryEntries */]);
         this.diaryEntries$.subscribe(function (data) { return console.log(data); });
-        store.select(__WEBPACK_IMPORTED_MODULE_2__reducers__["e" /* getUserIsLoggedIn */]).subscribe(function (isLoggedIn) {
-            if (isLoggedIn) {
-                _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_4__actions_diary_entries__["t" /* LoadListAction */]());
-                changeDetectorRef.markForCheck();
-            }
+        store
+            .select(__WEBPACK_IMPORTED_MODULE_1__reducers__["e" /* getUserIsLoggedIn */])
+            .filter(function (isLoggedIn) { return isLoggedIn; })
+            .subscribe(function () {
+            _this.route.paramMap.subscribe(function (data) {
+                var tagNamesParameter = data.get('tagNames') || '';
+                var tagNames = tagNamesParameter
+                    ? tagNamesParameter.split(',')
+                    : [];
+                _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_3__actions_diary_entries__["t" /* LoadListAction */](tagNames));
+                _this.filterTags = tagNames.map(function (name) { return ({ name: name }); });
+            });
         });
     }
     MyDairyPageComponent.prototype.goToAdd = function () {
@@ -1267,7 +1322,13 @@ var MyDairyPageComponent = (function () {
             relativeTo: this.route,
         });
     };
-    MyDairyPageComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_1__ngrx_store__["o" /* Store */] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectorRef */] }, { type: __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* ActivatedRoute */] }, { type: __WEBPACK_IMPORTED_MODULE_5__angular_router__["n" /* Router */] }]; };
+    MyDairyPageComponent.prototype.onTagClicked = function (tag) {
+        this.routerService.goToDiary([tag.name]);
+    };
+    MyDairyPageComponent.prototype.onTagsFilterChanged = function (tags) {
+        this.routerService.goToDiary(tags.map(function (tag) { return tag.name; }));
+    };
+    MyDairyPageComponent.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_0__ngrx_store__["o" /* Store */] }, { type: __WEBPACK_IMPORTED_MODULE_5__core_services_router__["a" /* RouterHelperService */] }, { type: __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* ActivatedRoute */] }, { type: __WEBPACK_IMPORTED_MODULE_4__angular_router__["n" /* Router */] }]; };
     return MyDairyPageComponent;
 }());
 
@@ -1336,11 +1397,10 @@ var DiaryModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__ = __webpack_require__("../../../../rxjs/observable/from.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__reducers__ = __webpack_require__("../../../../../src/app/reducers/index.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__core_actions_router__ = __webpack_require__("../../../../../src/app/core/actions/router.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_diary_entry__ = __webpack_require__("../../../../../src/app/diary/services/diary-entry.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__ = __webpack_require__("../../../../../src/app/diary/actions/diary-entries.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__ = __webpack_require__("../../../../../src/app/core/actions/layout.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__core_actions_router__ = __webpack_require__("../../../../../src/app/core/actions/router.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__services_diary_entry__ = __webpack_require__("../../../../../src/app/diary/services/diary-entry.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__ = __webpack_require__("../../../../../src/app/diary/actions/diary-entries.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__ = __webpack_require__("../../../../../src/app/core/actions/layout.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1368,7 +1428,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var DiaryEffects = (function () {
     function DiaryEffects(actions$, diaryEntryService, store) {
         var _this = this;
@@ -1376,93 +1435,88 @@ var DiaryEffects = (function () {
         this.diaryEntryService = diaryEntryService;
         this.store = store;
         this.load$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["r" /* LOAD_LIST */])
+            .ofType(__WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["r" /* LOAD_LIST */])
             .do(function (action) {
-            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
+            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
         })
-            .withLatestFrom(this.store)
-            .filter(function (_a) {
-            var action = _a[0], state = _a[1];
-            return __WEBPACK_IMPORTED_MODULE_14__reducers__["e" /* getUserIsLoggedIn */](state);
-        })
-            .switchMap(function () {
+            .switchMap(function (action) {
             return _this.diaryEntryService
-                .retrieveEntries()
+                .retrieveEntries(action.payload)
                 .map(function (diaryEntries) {
-                return new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["v" /* LoadListSuccessAction */](diaryEntries);
+                return new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["v" /* LoadListSuccessAction */](diaryEntries);
             })
-                .catch(function () { return Object(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["u" /* LoadListFailureAction */]([])); })
+                .catch(function () { return Object(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["u" /* LoadListFailureAction */]([])); })
                 .do(function (_a) {
                 var type = _a.type;
-                return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](type));
+                return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](type));
             });
         });
         this.create$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["a" /* CREATE_ENTRY */])
+            .ofType(__WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["a" /* CREATE_ENTRY */])
             .do(function (action) {
-            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
+            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
         })
             .switchMap(function (action) {
             return _this.diaryEntryService
                 .createEntry(action.payload)
                 .mergeMap(function (newEntryData) {
                 return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["e" /* CreateEntrySuccessAction */](newEntryData),
-                    new __WEBPACK_IMPORTED_MODULE_15__core_actions_router__["d" /* Go */]({ path: ['../..'] }),
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["t" /* LoadListAction */](),
-                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["e" /* CreateEntrySuccessAction */](newEntryData),
+                    new __WEBPACK_IMPORTED_MODULE_14__core_actions_router__["d" /* Go */]({ path: ['../..'] }),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["t" /* LoadListAction */](),
+                    new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
                 ]);
             })
                 .catch(function () {
                 return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["d" /* CreateEntryFailureAction */]([]),
-                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["d" /* CreateEntryFailureAction */]([]),
+                    new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
                 ]);
             });
         });
         this.edit$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["f" /* EDIT_ENTRY */])
+            .ofType(__WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["f" /* EDIT_ENTRY */])
             .do(function (action) {
-            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
+            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
         })
             .switchMap(function (action) {
             return _this.diaryEntryService
                 .updateEntry(action.payload)
                 .mergeMap(function (updatedEntryData) {
                 return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["j" /* EditEntrySuccessAction */](updatedEntryData),
-                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
-                    new __WEBPACK_IMPORTED_MODULE_15__core_actions_router__["d" /* Go */]({ path: ['../..'] }),
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["o" /* GetEditEntryClearAction */](),
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["t" /* LoadListAction */](),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["j" /* EditEntrySuccessAction */](updatedEntryData),
+                    new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                    new __WEBPACK_IMPORTED_MODULE_14__core_actions_router__["d" /* Go */]({ path: ['../..'] }),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["o" /* GetEditEntryClearAction */](),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["t" /* LoadListAction */](),
                 ]);
             })
                 .catch(function () {
                 return Object(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_from__["from"])([
-                    new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["i" /* EditEntryFailureAction */](),
-                    new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
+                    new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["i" /* EditEntryFailureAction */](),
+                    new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](action.type),
                 ]);
             });
         });
         this.getEntryToEdit$ = this.actions$
-            .ofType(__WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["k" /* GET_EDIT_ENTRY */])
+            .ofType(__WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["k" /* GET_EDIT_ENTRY */])
             .do(function (action) {
-            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
+            return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["h" /* ShowSpinnerAction */](action.type));
         })
             .switchMap(function (action) {
             return _this.diaryEntryService
                 .getEntry(action.payload)
                 .map(function (entryToEdit) {
-                return new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["q" /* GetEditEntrySuccessAction */](entryToEdit);
+                return new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["q" /* GetEditEntrySuccessAction */](entryToEdit);
             })
-                .catch(function () { return Object(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_17__actions_diary_entries__["p" /* GetEditEntryFailureAction */]()); })
+                .catch(function () { return Object(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__["of"])(new __WEBPACK_IMPORTED_MODULE_16__actions_diary_entries__["p" /* GetEditEntryFailureAction */]()); })
                 .do(function (_a) {
                 var type = _a.type;
-                return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_18__core_actions_layout__["d" /* HideSpinnerAction */](type));
+                return _this.store.dispatch(new __WEBPACK_IMPORTED_MODULE_17__core_actions_layout__["d" /* HideSpinnerAction */](type));
             });
         });
     }
-    DiaryEffects.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_9__ngrx_effects__["a" /* Actions */] }, { type: __WEBPACK_IMPORTED_MODULE_16__services_diary_entry__["a" /* DiaryEntryService */] }, { type: __WEBPACK_IMPORTED_MODULE_10__ngrx_store__["o" /* Store */] }]; };
+    DiaryEffects.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_9__ngrx_effects__["a" /* Actions */] }, { type: __WEBPACK_IMPORTED_MODULE_15__services_diary_entry__["a" /* DiaryEntryService */] }, { type: __WEBPACK_IMPORTED_MODULE_10__ngrx_store__["o" /* Store */] }]; };
     return DiaryEffects;
 }());
 
@@ -1637,9 +1691,13 @@ var DiaryEntryService = (function () {
         this.http = http;
         this.API_REST_URL = __WEBPACK_IMPORTED_MODULE_5__environments_environment__["a" /* environment */].firebase.restURL;
     }
-    DiaryEntryService.prototype.retrieveEntries = function () {
+    DiaryEntryService.prototype.retrieveEntries = function (tagsNames) {
+        var url = this.API_REST_URL + "diaryEntries";
+        if (tagsNames) {
+            url += '?' + this.generateQueryPartialFromArray('tagNames', tagsNames);
+        }
         return this.http
-            .get(this.API_REST_URL + "diaryEntries")
+            .get(url)
             .map(function (diaryEntries) { return diaryEntries.items; });
     };
     DiaryEntryService.prototype.getEntry = function (entryKey) {
@@ -1665,6 +1723,9 @@ var DiaryEntryService = (function () {
     };
     DiaryEntryService.prototype.getPrefix = function () {
         return this.API_REST_URL + "diaryEntries";
+    };
+    DiaryEntryService.prototype.generateQueryPartialFromArray = function (parameterName, array) {
+        return array.map(function (item) { return parameterName + "=" + item; }).join('&');
     };
     DiaryEntryService.ctorParameters = function () { return [{ type: __WEBPACK_IMPORTED_MODULE_4__angular_common_http__["c" /* HttpClient */] }]; };
     return DiaryEntryService;
