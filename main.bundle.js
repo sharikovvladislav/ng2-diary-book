@@ -1880,7 +1880,9 @@ var TagsService = (function () {
         return "" + this.API_REST_URL + this.API_TAGS_GETTER_PATH;
     };
     TagsService.prototype.addTag = function (tagName) {
-        return this.http.post("" + this.getTagsPrefix(), { name: tagName });
+        return this.http.post("" + this.getTagsPrefix(), {
+            name: tagName.toLowerCase(),
+        });
     };
     TagsService.prototype.editTag = function (key, tag) {
         return this.http.post(this.getTagsPrefix() + "/" + key, tag);
