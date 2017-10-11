@@ -9,6 +9,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
              [(ngModel)]="value"
              (keyup.enter)="onEnterPressed.emit(input.value);"
              placeholder="Введите название тега..."
+             mask="XXXXXXXXXXXXXXX"
       />
     </md-input-container>
   `,
