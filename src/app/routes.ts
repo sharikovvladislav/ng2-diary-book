@@ -11,13 +11,6 @@ const routes: Routes = [
     },
   },
   {
-    path: 'friends',
-    loadChildren: './friends/friends.module#FriendsModule',
-    data: {
-      breadcrumb: 'Friends',
-    },
-  },
-  {
     path: 'tags',
     loadChildren: './tags/tags.module#TagsModule',
     data: {
