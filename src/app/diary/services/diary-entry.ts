@@ -18,7 +18,7 @@ export class DiaryEntryService {
 
   constructor(private http: HttpClient) {}
 
-  retrieveEntries(tagsNames?: string[]): Observable<DiaryEntry[]> {
+  retrieveEntries(tagsNames?: string[]): Observable<any> {
     let url = `${this.API_REST_URL}diaryEntries`;
 
     if (tagsNames) {
