@@ -16,43 +16,44 @@ import { environment } from '../../../environments/environment';
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <bc-layout>
-      <bc-sidenav [open]="showSidenav$ | async">
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/diary" icon="chat" hint="View your diary">
-          My dairy
-        </bc-nav-item>
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/tags" icon="supervisor_account" hint="Tags management">
-          Tags
-        </bc-nav-item>
-        <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
-          Friends
-        </bc-nav-item>
-        <bc-nav-item *ngIf="!isProduction();"
-                     (activate)="closeSidenav()"
-                     routerLink="/components-showcase"
-                     icon="supervisor_account"
-                     hint="Examples of component usage"
-        >
-          Components showcase
-        </bc-nav-item>
-        <bc-nav-item *ngIf="!(isLoggedIn$ | async)" (activate)="login()">
-          Login
-        </bc-nav-item>
-        <bc-nav-item *ngIf="isLoggedIn$ | async" (activate)="logout()">
-          Logout
-        </bc-nav-item>
-      </bc-sidenav>
-      <bc-toolbar (openMenu)="openSidenav()">
-        Diary
-      </bc-toolbar>
-      <app-loader></app-loader>
-      <div (click)="closeSidenav();">
-        <div class="contents">
-          <app-breadcrumbs></app-breadcrumbs>
-          <router-outlet></router-outlet>
+    <app-loader>
+      <bc-layout>
+        <bc-sidenav [open]="showSidenav$ | async">
+          <bc-nav-item (activate)="closeSidenav()" routerLink="/diary" icon="chat" hint="View your diary">
+            My dairy
+          </bc-nav-item>
+          <bc-nav-item (activate)="closeSidenav()" routerLink="/tags" icon="supervisor_account" hint="Tags management">
+            Tags
+          </bc-nav-item>
+          <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
+            Friends
+          </bc-nav-item>
+          <bc-nav-item *ngIf="!isProduction();"
+                       (activate)="closeSidenav()"
+                       routerLink="/components-showcase"
+                       icon="supervisor_account"
+                       hint="Examples of component usage"
+          >
+            Components showcase
+          </bc-nav-item>
+          <bc-nav-item *ngIf="!(isLoggedIn$ | async)" (activate)="login()">
+            Login
+          </bc-nav-item>
+          <bc-nav-item *ngIf="isLoggedIn$ | async" (activate)="logout()">
+            Logout
+          </bc-nav-item>
+        </bc-sidenav>
+        <bc-toolbar (openMenu)="openSidenav()">
+          Diary
+        </bc-toolbar>
+        <div (click)="closeSidenav();">
+          <div class="contents">
+            <app-breadcrumbs></app-breadcrumbs>
+            <router-outlet></router-outlet>
+          </div>
         </div>
-      </div>
-    </bc-layout>
+      </bc-layout>
+    </app-loader>
   `,
   styles: [
     `div.contents {
