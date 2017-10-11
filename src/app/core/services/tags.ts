@@ -16,7 +16,9 @@ export class TagsService {
   }
 
   addTag(tagName: string): any {
-    return this.http.post(`${this.getTagsPrefix()}`, { name: tagName });
+    return this.http.post(`${this.getTagsPrefix()}`, {
+      name: tagName.toLowerCase(),
+    });
   }
 
   editTag(key: string, tag: Tag): any {

@@ -18,8 +18,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'friends-container',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <md-card>
-      <common-show-if-logged-in>
+    <common-show-if-logged-in>
+      <md-card>
         <button md-button (click)="onAddFriendClick()">+ Add friend</button>
         <md-tab-group>
           <md-tab>
@@ -55,8 +55,8 @@ import { ActivatedRoute, Router } from '@angular/router';
             <friends-list [friends]="outcomePendingInvites$ | async"></friends-list>
           </md-tab>
         </md-tab-group>
-      </common-show-if-logged-in>
-    </md-card>
+      </md-card>
+    </common-show-if-logged-in>
   `,
 })
 export class FriendsComponent {

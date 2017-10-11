@@ -15,4 +15,5 @@ deployment:
   production:
     branch: master
     commands:
-    - ./scripts/deploy-ghpages.sh build
+    - yarn run build:gh:dev
+    - yarn run publish

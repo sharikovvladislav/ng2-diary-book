@@ -14,20 +14,22 @@ import { RouterHelperService } from '../../core/services/router';
 
 @Component({
   template: `
-    <md-card>
-      <md-list>
-        <md-list-item>
-          <tags-creator
-            [clearValue]="clearFieldEmitter"
-            (onEnterPressed)="onCreateTagCommand($event)"
-          ></tags-creator>
-        </md-list-item>
-        <md-list-item *ngFor="let tag of tags$ | async">
-          {{tag.name}}
-          <md-icon (click)="onClick(tag);">comment</md-icon>
-        </md-list-item>
-      </md-list>
-    </md-card>
+    <common-show-if-logged-in>
+      <md-card>
+        <md-list>
+          <md-list-item>
+            <tags-creator
+              [clearValue]="clearFieldEmitter"
+              (onEnterPressed)="onCreateTagCommand($event)"
+            ></tags-creator>
+          </md-list-item>
+          <md-list-item *ngFor="let tag of tags$ | async">
+            {{tag.name}}
+            <md-icon (click)="onClick(tag);">comment</md-icon>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </common-show-if-logged-in>
   `,
   styles: [
     `
