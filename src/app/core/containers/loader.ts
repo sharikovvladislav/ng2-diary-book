@@ -9,12 +9,19 @@ import * as fromRoot from '../../reducers';
 @Component({
   selector: 'app-loader',
   template: `
-    <div *ngIf="showLoader">
-      <div class="full-page has-opacity filled-background"></div>
-      <div class="full-page aligner">
-        <div class="aligner-item">
-          <md-progress-spinner mode="indeterminate"></md-progress-spinner>
+    <div>
+      <div class="full-page"
+           [class.has-opacity]="showLoader"
+           [class.filled-background]="showLoader"
+      >
+        <div class="spinner" [class.hidden]="!showLoader">
+          <div class="full-page aligner">
+            <div class="aligner-item">
+              <md-progress-spinner mode="indeterminate"></md-progress-spinner>
+            </div>
+          </div>
         </div>
+        <ng-content></ng-content>
       </div>
     </div>
   `,
@@ -35,11 +42,6 @@ import * as fromRoot from '../../reducers';
       }
     `,
     `
-      .filled-background {
-        background-color: #b0b0b0;
-      }
-    `,
-    `
       .aligner {
         display: flex;
         align-items: center;
@@ -49,6 +51,11 @@ import * as fromRoot from '../../reducers';
     `
       .aligner-item {
         max-width: 50%;
+      }
+    `,
+    `
+      .hidden {
+        display: none;
       }
     `,
   ],
