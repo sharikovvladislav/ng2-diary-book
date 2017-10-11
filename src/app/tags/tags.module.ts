@@ -18,6 +18,7 @@ import { TagsAddContainer } from './containers/tags-add';
 import { TagsEditContainer } from './containers/tags-edit';
 import { TagsEditorComponent } from './components/tags-editor';
 import { TagCreatorComponent } from './components/tag-creator';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   imports: [
@@ -66,6 +67,13 @@ import { TagCreatorComponent } from './components/tag-creator';
      * whether they are registered once or multiple times.
      */
     EffectsModule.forFeature([TagsEffects]),
+    NgxMaskModule.forRoot({
+      patterns: {
+        X: {
+          pattern: new RegExp('[a-zA-Zа-яА-Я-]'),
+        },
+      },
+    }),
   ],
   declarations: [
     TagsManagerContainer,
