@@ -17,14 +17,14 @@ import { Tag } from 'ng2-diary-book-shared-models';
         <span *ngFor="let tag of selectedTags" class="tag">
           {{tag.name}}&nbsp;<span (click)="deleteTag.emit(tag);">X</span>
         </span>
-      </div>
-      <div class="input">
-        <input #input
-               placeholder="{{placeholder}}"
-               (keydown.backspace)="onBackspacePressed(input.value)"
-               [(ngModel)]="inputValue"
-               (ngModelChange)="inputChanged.emit(input.value);"
-        />
+        <div class="input">
+          <input #input
+                 placeholder="{{placeholder}}"
+                 (keydown.backspace)="onBackspacePressed(input.value)"
+                 [(ngModel)]="inputValue"
+                 (ngModelChange)="inputChanged.emit(input.value);"
+          />
+        </div>
       </div>
     </div>
   `,
