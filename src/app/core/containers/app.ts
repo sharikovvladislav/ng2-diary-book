@@ -25,9 +25,6 @@ import { environment } from '../../../environments/environment';
           <bc-nav-item (activate)="closeSidenav()" routerLink="/tags" icon="supervisor_account" hint="Tags management">
             Tags
           </bc-nav-item>
-          <bc-nav-item (activate)="closeSidenav()" routerLink="/friends" icon="supervisor_account" hint="Friends list">
-            Friends
-          </bc-nav-item>
           <bc-nav-item *ngIf="!isProduction();"
                        (activate)="closeSidenav()"
                        routerLink="/components-showcase"
