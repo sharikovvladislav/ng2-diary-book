@@ -23,6 +23,7 @@ import { TagsService } from '../../../../services/tags';
       [clearInputValue]="clearInputValueEmitter"
       [focusInputField]="focusInputFieldEmitter"
       [placeholder]="placeholder"
+      [showLoader]="isLoading"
       (inputChanged)="onInputChange($event);"
       (deleteTag)="onDeleteSelected($event);"
     ></tags-internal-auto-complete-input>
@@ -52,7 +53,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   @Output() selectedTagsChange = new EventEmitter<Tag[]>();
 
   inputChanged = new Subject<string>();
-
+  isLoading = false;
   selectedTagsValue: Tag[] = [];
   queryResultsTags: Tag[] = [];
   clearInputValueEmitter = new EventEmitter();
@@ -68,9 +69,16 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
       })
       .filter(inputValue => inputValue.length > 0)
       .debounceTime(400)
+      .do(() => {
+        this.isLoading = true;
+        this.changeDetectorRef.markForCheck();
+      })
       .switchMap(query => this.tagsService.getTagsList({ query }))
+      .do(() => {
+        this.isLoading = false;
+        this.changeDetectorRef.markForCheck();
+      })
       .do(() => this.changeDetectorRef.markForCheck())
-      .do(tags => console.log(tags))
       .subscribe(
         // уберем уже выбранные теги
         (tags: Tag[]) =>

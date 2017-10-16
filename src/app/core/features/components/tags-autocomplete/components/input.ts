@@ -24,6 +24,7 @@ import { Tag } from 'ng2-diary-book-shared-models';
                  [(ngModel)]="inputValue"
                  (ngModelChange)="inputChanged.emit(input.value);"
           />
+          <tags-auto-complete-loader class="loader" [class.hidden]="!showLoader"></tags-auto-complete-loader>
         </div>
       </div>
     </div>
@@ -37,6 +38,7 @@ export class TagsAutoCompleteInputComponent implements OnInit {
   @Input() placeholder = '';
   @Input() clearInputValue: EventEmitter<any>;
   @Input() focusInputField: EventEmitter<any>;
+  @Input() showLoader = false;
 
   inputValue = '';
 
