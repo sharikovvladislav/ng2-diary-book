@@ -4,6 +4,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TagsAutoCompleteContainerComponent } from './containers/tags-autocomplete';
 import { TagsAutoCompleteInputComponent } from './components/input';
 import { TagsAutoCompleteResultsComponent } from './components/results';
+import { TagsAutoCompleteLoaderComponent } from './components/loader';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TagsService } from '../../../services/tags';
@@ -25,6 +26,7 @@ import { AuthInterceptor } from '../../../modules/http-interceptors/auth-append-
     NgxMaskModule.forRoot(),
   ],
   declarations: [
+    TagsAutoCompleteLoaderComponent,
     TagsAutoCompleteContainerComponent,
     TagsAutoCompleteInputComponent,
     TagsAutoCompleteResultsComponent,

@@ -18,3 +18,11 @@ input:focus {
 .input {
   display: inline-block;
 }
+
+.loader {
+  float: right;
+}
+
+.hidden {
+  display: none;
+}
