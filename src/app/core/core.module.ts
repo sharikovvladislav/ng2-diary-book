@@ -21,6 +21,7 @@ import { CommonShowIfLoggedInComponent } from './containers/common-show-if-logge
 import { LoaderComponent } from './containers/loader';
 import { BreadcrumbsComponent } from './components/breadcrumbs';
 import { BreadcrumbsContainer } from './containers/breadcrumbs';
+import { UserInfoContainer } from './containers/user-info';
 
 import { BreadcrumbsService } from './services/breadcrumbs';
 
@@ -44,6 +45,7 @@ export const COMPONENTS = [
   LoaderComponent,
   BreadcrumbsComponent,
   BreadcrumbsContainer,
+  UserInfoContainer,
 ];
 
 const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];

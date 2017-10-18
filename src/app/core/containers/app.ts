@@ -42,6 +42,7 @@ import { environment } from '../../../environments/environment';
         </bc-sidenav>
         <bc-toolbar (openMenu)="openSidenav()">
           Diary
+          <app-user-info></app-user-info>
         </bc-toolbar>
         <div (click)="closeSidenav();">
           <div class="contents">
@@ -75,6 +76,7 @@ export class AppComponent implements OnInit {
             displayName: providerData.displayName,
             email: providerData.email,
             uid: providerData.uid,
+            photoURL: providerData.photoURL,
           };
           this.store.dispatch(new user.LoadUserAction(userData));
         });

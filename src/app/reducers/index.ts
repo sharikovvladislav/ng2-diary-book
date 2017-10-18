@@ -100,7 +100,10 @@ export const getUserIsLoggedIn = createSelector(
 );
 
 export const getUserUid = createSelector(getUserState, fromUser.getUid);
-
+export const getDisplayName = createSelector(
+  getUserState,
+  fromUser.getDisplayName,
+);
+export const getPhotoURL = createSelector(getUserState, fromUser.getPhotoURL);
 export const getUser = createSelector(getUserState, fromUser.getUser);
-
 export const getUserToken = createSelector(getUserState, fromUser.getToken);
