@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test',
@@ -10,5 +11,5 @@ import { Component } from '@angular/core';
   `,
 })
 export class TestComponent {
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
 }
