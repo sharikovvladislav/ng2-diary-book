@@ -12,19 +12,15 @@ import * as fromRoot from '../../reducers';
       <div class="image" *ngIf="hasPhotoURL()">
         <img src="{{photoURL$ | async}}" />
       </div>
-      <div class="text">
+      <div class="name">
         <span>{{displayName$ | async}}</span>
       </div>
-      <span class="exit-button"></span>
+      <span class="exit-button">
+        <md-icon>exit_to_app</md-icon>
+      </span>
     </div>
   `,
-  styles: [
-    `.image > img {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-    }`,
-  ],
+  styleUrls: ['./user-info.css'],
 })
 export class UserInfoContainer {
   displayName$: Observable<string>;
