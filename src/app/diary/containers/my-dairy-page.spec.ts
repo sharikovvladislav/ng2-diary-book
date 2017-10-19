@@ -21,7 +21,7 @@ import { TagsAutoCompleteModule } from '../../core/features/components/tags-auto
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterHelperService } from '../../core/services/router';
 
-describe('MyDairyPageComponent', () => {
+xdescribe('MyDairyPageComponent', () => {
   let component: MyDairyPageComponent;
   let fixture: ComponentFixture<MyDairyPageComponent>;
   let store: Store<fromFeature.State>;
