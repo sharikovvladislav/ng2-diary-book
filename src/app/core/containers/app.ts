@@ -7,10 +7,8 @@ import * as fromRoot from '../../reducers';
 import * as layout from '../actions/layout';
 import * as user from '../actions/user';
 
-import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
-
 import { environment } from '../../../environments/environment';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -62,10 +60,9 @@ import { environment } from '../../../environments/environment';
 export class AppComponent implements OnInit {
   showSidenav$: Observable<boolean>;
   isLoggedIn$: Observable<boolean>;
-  user$: Observable<firebase.User>;
 
   ngOnInit() {
-    this.user$.subscribe((providerData: any) => {
+    this.authService.user$.subscribe((providerData: any) => {
       if (providerData !== null) {
         providerData.getIdToken(true).then((token: string) => {
           console.log(token);
@@ -85,8 +82,8 @@ export class AppComponent implements OnInit {
   }
 
   constructor(
+    private authService: AuthService,
     private store: Store<fromRoot.State>,
-    public afAuth: AngularFireAuth,
   ) {
     /**
      * Selectors can be applied with the `select` operator which passes the state
@@ -94,7 +91,6 @@ export class AppComponent implements OnInit {
      */
     this.showSidenav$ = this.store.select(fromRoot.getShowSidenav);
     this.isLoggedIn$ = this.store.select(fromRoot.getUserIsLoggedIn);
-    this.user$ = afAuth.authState;
   }
 
   closeSidenav() {
@@ -112,12 +108,12 @@ export class AppComponent implements OnInit {
   }
 
   login() {
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.authService.login();
     this.closeSidenav();
   }
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.authService.logout();
     this.closeSidenav();
   }
 

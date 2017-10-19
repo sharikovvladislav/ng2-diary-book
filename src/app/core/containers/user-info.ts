@@ -1,9 +1,9 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { AsyncPipe } from '@angular/common';
 
 import * as fromRoot from '../../reducers';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-info',
@@ -19,7 +19,7 @@ export class UserInfoContainer {
   displayName$: Observable<string>;
   photoURL$: Observable<string>;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(private store: Store<fromRoot.State>, private auth: AuthService) {
     store
       .select(fromRoot.getUserIsLoggedIn)
       .filter(isUserLoggedIn => isUserLoggedIn)
@@ -30,6 +30,6 @@ export class UserInfoContainer {
   }
 
   onExitClick(): void {
-    console.log('exit');
+    this.auth.logout();
   }
 }

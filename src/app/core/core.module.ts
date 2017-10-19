@@ -33,6 +33,7 @@ import { TagsAutoCompleteModule } from './features/components/tags-autocomplete/
 import { TagsViewerModule } from './features/components/tags-viewer/tags-viewer.module';
 import { RouterHelperService } from './services/router';
 import { UserInfoComponent } from './components/user-info';
+import { AuthService } from './services/auth.service';
 
 export const COMPONENTS = [
   AppComponent,
@@ -82,6 +83,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
       useClass: AuthInterceptor,
       multi: true,
     },
+    AuthService,
   ],
 })
 export class CoreModule {
