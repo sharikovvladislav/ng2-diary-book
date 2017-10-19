@@ -67,7 +67,7 @@ export class MyDairyPageComponent {
     private router: Router,
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
-    this.diaryEntries$.subscribe(data => console.log(data));
+
     store
       .select(fromRoot.getUserIsLoggedIn)
       .filter(isLoggedIn => isLoggedIn)
