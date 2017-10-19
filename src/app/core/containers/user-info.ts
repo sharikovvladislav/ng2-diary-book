@@ -8,28 +8,18 @@ import * as fromRoot from '../../reducers';
 @Component({
   selector: 'app-user-info',
   template: `
-    <div class="user-info">
-      <div class="image" *ngIf="hasPhotoURL()">
-        <img src="{{photoURL$ | async}}" />
-      </div>
-      <div class="name">
-        <span>{{displayName$ | async}}</span>
-      </div>
-      <span class="exit-button">
-        <md-icon>exit_to_app</md-icon>
-      </span>
-    </div>
+    <app-user-info-component
+      [photoURL]="photoURL$ | async"
+      [displayName]="displayName$ | async"
+      (onExit)="onExitClick();"
+    ></app-user-info-component>
   `,
-  styleUrls: ['./user-info.css'],
 })
 export class UserInfoContainer {
   displayName$: Observable<string>;
   photoURL$: Observable<string>;
 
-  constructor(
-    private store: Store<fromRoot.State>,
-    private ref: ChangeDetectorRef,
-  ) {
+  constructor(private store: Store<fromRoot.State>) {
     store
       .select(fromRoot.getUserIsLoggedIn)
       .filter(isUserLoggedIn => isUserLoggedIn)
@@ -39,10 +29,7 @@ export class UserInfoContainer {
       });
   }
 
-  hasPhotoURL(): boolean {
-    const pipe = new AsyncPipe(this.ref);
-    const value = pipe.transform(this.photoURL$);
-
-    return value !== null;
+  onExitClick(): void {
+    console.log('exit');
   }
 }

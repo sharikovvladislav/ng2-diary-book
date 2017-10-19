@@ -57,18 +57,7 @@ import { environment } from '../../../environments/environment';
       </bc-layout>
     </app-loader>
   `,
-  styles: [
-    `div.contents {
-      margin: 0 auto;
-      padding-top: 10px;
-      width: 60%;
-    }`,
-    `.header {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-    }`,
-  ],
+  styleUrls: ['./app.css'],
 })
 export class AppComponent implements OnInit {
   showSidenav$: Observable<boolean>;

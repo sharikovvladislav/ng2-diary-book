@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { TagsAutoCompleteModule } from './features/components/tags-autocomplete/tags-autocomplete.module';
 import { TagsViewerModule } from './features/components/tags-viewer/tags-viewer.module';
 import { RouterHelperService } from './services/router';
+import { UserInfoComponent } from './components/user-info';
 
 export const COMPONENTS = [
   AppComponent,
@@ -46,6 +47,7 @@ export const COMPONENTS = [
   BreadcrumbsComponent,
   BreadcrumbsContainer,
   UserInfoContainer,
+  UserInfoComponent,
 ];
 
 const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];

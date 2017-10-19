@@ -1,0 +1,12 @@
+div.contents {
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 60%;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+}
