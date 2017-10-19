@@ -67,6 +67,7 @@ export class MyDairyPageComponent {
     private router: Router,
   ) {
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
+
     store
       .select(fromRoot.getUserIsLoggedIn)
       .filter(isLoggedIn => isLoggedIn)

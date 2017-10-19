@@ -62,7 +62,7 @@
       "^.+\\.js$": "babel-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(@ngrx|angularfire2))"
+      "node_modules/(?!(@ngrx|angularfire2|ngx-mask))"
     ],
     "globals": {
       "ts-jest": {
