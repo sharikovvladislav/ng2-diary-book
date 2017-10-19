@@ -41,8 +41,12 @@ import { environment } from '../../../environments/environment';
           </bc-nav-item>
         </bc-sidenav>
         <bc-toolbar (openMenu)="openSidenav()">
-            Diary
-            <app-user-info></app-user-info>
+            <div class="header">
+              <div>
+                Diary
+              </div>
+              <app-user-info></app-user-info>
+            </div>
         </bc-toolbar>
         <div (click)="closeSidenav();">
           <div class="contents">
@@ -60,6 +64,7 @@ import { environment } from '../../../environments/environment';
       width: 60%;
     }`,
     `.header {
+      width: 100%;
       display: flex;
       justify-content: space-between;
     }`,
