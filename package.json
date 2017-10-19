@@ -16,7 +16,7 @@
     "e2e": "ng e2e",
     "prettier": "prettier --parser typescript --single-quote --trailing-comma=all --write \"./**/*.ts\"",
     "precommit": "lint-staged",
-    "test": "exit 0",
+    "test": "jest",
     "test:dev": "jest --watch"
   },
   "lint-staged": {
