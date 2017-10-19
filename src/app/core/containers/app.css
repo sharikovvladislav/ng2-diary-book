@@ -4,6 +4,12 @@ div.contents {
   width: 60%;
 }
 
+@media (max-width: 800px) {
+  div.contents {
+    width: 90%;
+  }
+}
+
 .header {
   width: 100%;
   display: flex;
