@@ -34,6 +34,7 @@ import { TagsViewerModule } from './features/components/tags-viewer/tags-viewer.
 import { RouterHelperService } from './services/router';
 import { UserInfoComponent } from './components/user-info';
 import { AuthService } from './services/auth.service';
+import { LayoutEffects } from './effects/layout';
 
 export const COMPONENTS = [
   AppComponent,
@@ -61,7 +62,7 @@ const MD_MODULES = [MaterialModule, MdButtonModule, MdIconModule];
     RouterModule,
     PipesModule,
     HttpClientModule,
-    EffectsModule.forRoot([RouterEffects]),
+    EffectsModule.forRoot([RouterEffects, LayoutEffects]),
     TagsAutoCompleteModule,
     TagsViewerModule,
   ],

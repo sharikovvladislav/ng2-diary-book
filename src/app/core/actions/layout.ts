@@ -1,5 +1,7 @@
 import { Action } from '@ngrx/store';
 
+import { ShowSpinnerExtras } from '../models/show-spinner-extras';
+
 export const OPEN_SIDENAV = '[Layout] Open Sidenav';
 export const CLOSE_SIDENAV = '[Layout] Close Sidenav';
 
@@ -17,7 +19,15 @@ export class CloseSidenavAction implements Action {
 export class ShowSpinnerAction implements Action {
   readonly type = SHOW_SPINNER;
 
-  constructor(public payload: string) {}
+  constructor(public payload: string, public extras?: ShowSpinnerExtras) {
+    if (extras) {
+      this.extras = { ...extras };
+    } else {
+      this.extras = {
+        activeElement: getActiveElement(),
+      };
+    }
+  }
 }
 
 export class HideSpinnerAction implements Action {
@@ -31,3 +41,7 @@ export type Actions =
   | CloseSidenavAction
   | ShowSpinnerAction
   | HideSpinnerAction;
+
+function getActiveElement(): Element {
+  return document.activeElement;
+}

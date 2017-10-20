@@ -5,6 +5,7 @@ export interface State {
   spinner: {
     isShown: boolean;
     pending: string[];
+    lastActiveElement: Element;
   };
 }
 
@@ -13,13 +14,13 @@ const initialState: State = {
   spinner: {
     isShown: false,
     pending: [],
+    lastActiveElement: null,
   },
 };
 
 export function reducer(state = initialState, action: layout.Actions): State {
   switch (action.type) {
     case layout.CLOSE_SIDENAV:
-      // return Object.assign({}, state, {showSidenav: false});
       return {
         ...state,
         showSidenav: false,
@@ -37,6 +38,7 @@ export function reducer(state = initialState, action: layout.Actions): State {
       return {
         ...state,
         spinner: {
+          lastActiveElement: action.extras.activeElement,
           pending: newPending,
           isShown: true,
         },
@@ -51,6 +53,7 @@ export function reducer(state = initialState, action: layout.Actions): State {
       return {
         ...state,
         spinner: {
+          lastActiveElement: null,
           pending: newPending,
           isShown: newPending.length > 0,
         },
