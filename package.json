@@ -96,7 +96,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "lint-staged": "^4.0.3",
-    "ng2-diary-book-shared-models": "^1.0.7",
+    "ng2-diary-book-shared-models": "^1.0.10",
     "prettier": "^1.5.3",
     "protractor": "~5.1.2",
     "ts-jest": "^20.0.10",
