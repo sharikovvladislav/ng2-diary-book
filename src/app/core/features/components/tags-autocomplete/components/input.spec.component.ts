@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TagsAutoCompleteInputComponent } from './input';
+import { TagsAutoCompleteInputComponent } from './input.component';
 import { TagsAutoCompleteModule } from '../tags-autocomplete.module';
 import { EventEmitter } from '@angular/core';
 

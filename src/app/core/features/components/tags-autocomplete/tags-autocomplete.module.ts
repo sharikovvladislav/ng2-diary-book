@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { TagsAutoCompleteContainerComponent } from './containers/tags-autocomplete';
-import { TagsAutoCompleteInputComponent } from './components/input';
+import { TagsAutoCompleteInputComponent } from './components/input.component';
 import { TagsAutoCompleteResultsComponent } from './components/results';
 import { TagsAutoCompleteLoaderComponent } from './components/loader';
 import { CommonModule } from '@angular/common';
