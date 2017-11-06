@@ -36,8 +36,8 @@ export class TagsAutoCompleteInputComponent implements OnInit {
 
   @Input() selectedTags: Tag[] = [];
   @Input() placeholder = '';
-  @Input() clearInputValue: EventEmitter<any>;
-  @Input() focusInputField: EventEmitter<any>;
+  @Input() clearInputValue: EventEmitter<any> = new EventEmitter();
+  @Input() focusInputField: EventEmitter<any> = new EventEmitter();
   @Input() showLoader = false;
 
   inputValue = '';
@@ -51,8 +51,12 @@ export class TagsAutoCompleteInputComponent implements OnInit {
     }
   }
 
+  focusInput() {
+    this.inputRef.nativeElement.focus();
+  }
+
   ngOnInit() {
     this.clearInputValue.subscribe(() => (this.inputValue = ''));
-    this.focusInputField.subscribe(() => this.inputRef.nativeElement.focus());
+    this.focusInputField.subscribe(() => this.focusInput());
   }
 }
