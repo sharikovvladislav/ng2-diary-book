@@ -1,53 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`UserInfoComponent should handle displayName correctly should show display name if it is passed 1`] = `
-"
-    <div class=\\"user-info\\">
-      <!--bindings={
-  \\"ng-reflect-ng-if\\": \\"true\\"
-}--><div class=\\"image\\">
-        <img src=\\"\\">
-      </div>
-      <div class=\\"name\\">
-        <span>vova chuma</span>
-      </div>
-      <span class=\\"exit-button\\">
-        <md-icon class=\\"mat-icon material-icons\\" role=\\"img\\" aria-hidden=\\"true\\">exit_to_app</md-icon>
-      </span>
-    </div>
-  "
+exports[`UserInfoComponent shallow tests should handle displayName correctly should show display name if it is passed 1`] = `
+<app-user-info-component
+  displayName={[Function String]}
+  onExit={[Function EventEmitter]}
+>
+  app-user-info-component component stub
+</app-user-info-component>
 `;
 
-exports[`UserInfoComponent should handle photoURL correctly photoURL is not passed should match snapshot 1`] = `
-"
-    <div class=\\"user-info\\">
-      <!--bindings={
-  \\"ng-reflect-ng-if\\": \\"false\\"
-}-->
-      <div class=\\"name\\">
-        <span></span>
-      </div>
-      <span class=\\"exit-button\\">
-        <md-icon class=\\"mat-icon material-icons\\" role=\\"img\\" aria-hidden=\\"true\\">exit_to_app</md-icon>
-      </span>
-    </div>
-  "
+exports[`UserInfoComponent shallow tests should handle photoURL correctly photoURL is not passed should match snapshot 1`] = `
+<app-user-info-component
+  onExit={[Function EventEmitter]}
+  photoURL=""
+>
+  app-user-info-component component stub
+</app-user-info-component>
 `;
 
-exports[`UserInfoComponent should handle photoURL correctly photoURL is passed should match snapshot 1`] = `
-"
-    <div class=\\"user-info\\">
-      <!--bindings={
-  \\"ng-reflect-ng-if\\": \\"true\\"
-}--><div class=\\"image\\">
-        <img src=\\"somePhoto\\">
-      </div>
-      <div class=\\"name\\">
-        <span></span>
-      </div>
-      <span class=\\"exit-button\\">
-        <md-icon class=\\"mat-icon material-icons\\" role=\\"img\\" aria-hidden=\\"true\\">exit_to_app</md-icon>
-      </span>
-    </div>
-  "
+exports[`UserInfoComponent shallow tests should handle photoURL correctly photoURL is passed should match snapshot 1`] = `
+<app-user-info-component
+  onExit={[Function EventEmitter]}
+  photoURL={[Function String]}
+>
+  app-user-info-component component stub
+</app-user-info-component>
 `;
