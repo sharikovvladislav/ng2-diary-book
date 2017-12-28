@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Markdown with a test component snapshot is correct 1`] = `
+<ng-component
+  text={[Function String]}
+>
+  <div>
+    <pre><code>    # Header ## Second level header - bob - kek - lul How are you? =============== Another header --------------------------- **bob** </code></pre>
+  </div>
+</ng-component>
+`;
+
+exports[`Markdown with a test component snapshot is correct 22228 1`] = `
+<ng-component
+  text={[Function String]}
+>
+  <div>
+    <h1>header h1</h1> <p>abc</p> <p><em>italic</em> <strong>bold</strong></p>
+  </div>
+</ng-component>
+`;
