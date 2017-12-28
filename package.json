@@ -76,6 +76,7 @@
     "@angular/cli": "^1.4.5",
     "@angular/compiler-cli": "^4.4.4",
     "@angular/language-service": "^4.2.4",
+    "@ngrx/schematics": "github:ngrx/schematics-builds",
     "@types/jest": "^20.0.7",
     "@types/node": "~6.0.60",
     "angular-in-memory-web-api": "^0.4.6",
