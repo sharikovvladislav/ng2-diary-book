@@ -120,5 +120,40 @@ describe('TagsAutoCompleteInputComponent', () => {
         spy.mockReset();
       });
     });
+
+    it('should emit deleted tag to output when clicked on delete button', () => {
+      const spy = jest.fn();
+      component.deleteTag.subscribe(spy);
+
+      component.selectedTags = [{ name: 'A' }, { name: 'B' }];
+
+      fixture.detectChanges();
+
+      const selectedTags = de.queryAll(By.css('.selectedTags > .tag'));
+      expect(selectedTags.length).toBe(2);
+
+      const deleteButton = selectedTags[0].query(By.css('span'));
+      deleteButton.nativeElement.dispatchEvent(new MouseEvent('click'));
+
+      fixture.detectChanges();
+
+      expect(spy).toHaveBeenCalledWith(component.selectedTags[0]);
+    });
+
+    it('should render selectedTags accordingly to input', () => {
+      expect(de.queryAll(By.css('.selectedTags > .tag')).length).toBe(0);
+
+      component.selectedTags = [{ name: '1' }, { name: '2' }];
+
+      fixture.detectChanges();
+
+      expect(de.queryAll(By.css('.selectedTags > .tag')).length).toBe(2);
+
+      component.selectedTags = [{ name: '1' }, { name: '2' }, { name: 'x' }];
+
+      fixture.detectChanges();
+
+      expect(de.queryAll(By.css('.selectedTags > .tag')).length).toBe(3);
+    });
   });
 });
