@@ -121,6 +121,16 @@ describe('TagsAutoCompleteInputComponent', () => {
       });
     });
 
+    it('focus on element is called when handler is called', () => {
+      const input = de.query(By.css('input')).nativeElement;
+
+      const spy = jest.spyOn(input, 'focus');
+
+      component.focusInput();
+
+      expect(spy).toHaveBeenCalled();
+    });
+
     it('should emit deleted tag to output when clicked on delete button', () => {
       const spy = jest.fn();
       component.deleteTag.subscribe(spy);
