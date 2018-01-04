@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagsAutoCompleteInputComponent tests by snapshots initial rendering is ok 1`] = `
+<tags-internal-auto-complete-input
+  deleteTag={[Function EventEmitter]}
+  inputChanged={[Function EventEmitter]}
+  inputRef={[Function ElementRef]}
+  inputValue=""
+  placeholder=""
+  selectedTags={[Function Array]}
+  showLoader="false"
+>
+  <div
+    class="container"
+  >
+    <div
+      class="selectedTags"
+    >
+      <div
+        class="input"
+      >
+        <input
+          ng-reflect-model=""
+          placeholder=""
+          class="ng-untouched ng-pristine ng-valid"
+        />
+        <tags-auto-complete-loader
+          class="loader hidden"
+        >
+          tags-auto-complete-loader component stub
+        </tags-auto-complete-loader>
+      </div>
+    </div>
+  </div>
+</tags-internal-auto-complete-input>
+`;

@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import {} from 'reflect-metadata';
 
 export class MyTestBed extends TestBed {
   static configureTestingModule(moduleConf) {
