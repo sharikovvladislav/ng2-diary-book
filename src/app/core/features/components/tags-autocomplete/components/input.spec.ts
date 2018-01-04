@@ -90,5 +90,35 @@ describe('TagsAutoCompleteInputComponent', () => {
         expect(de.query(By.css('div > input')).nativeElement.value).toBe('');
       }),
     );
+
+    describe('backspace checks', () => {
+      it('when internal on backspace method called, should emit value to deleteTag output', () => {
+        expect.assertions(1);
+
+        component.selectedTags = [{ name: 'first' }, { name: 'second' }];
+
+        const spy = jest.fn();
+
+        component.deleteTag.subscribe(spy);
+
+        component.onBackspacePressed({ length: 0 });
+
+        expect(spy).toHaveBeenCalledWith(component.selectedTags[1]);
+      });
+
+      it('when backspace pressed, event handler is called', () => {
+        const spy = jest.spyOn(component, 'onBackspacePressed');
+        const event = new KeyboardEvent('keydown', {
+          key: 'backspace',
+        });
+        de.query(By.css('input')).nativeElement.dispatchEvent(event);
+
+        fixture.detectChanges();
+
+        expect(spy).toHaveBeenCalled();
+
+        spy.mockReset();
+      });
+    });
   });
 });
