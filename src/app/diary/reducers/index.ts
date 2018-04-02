@@ -57,3 +57,9 @@ export const getDiaryToEditEntry = createSelector(
   getDiaryState,
   fromDiary.getDiaryToEditEntry,
 );
+export const getDiaryEntryByKey = function(key) {
+  debugger;
+  return createSelector(getDiaryState, function(state) {
+    return fromDiary.getEntryByKey(state, key);
+  });
+};

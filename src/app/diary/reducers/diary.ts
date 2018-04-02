@@ -88,3 +88,15 @@ export function reducer(
 
 export const getEntries = (state: State) => state.entries;
 export const getDiaryToEditEntry = (state: State) => state.diaryToEdit;
+export const getEntryByKey = (state: State, key) => {
+  debugger;
+  const entries = getEntries(state);
+  let entry;
+
+  for (let i = 0; i < entries.length; i++) {
+    if (entries[i].$key === key) {
+      entry = entries[i];
+    }
+  }
+  return entry;
+};

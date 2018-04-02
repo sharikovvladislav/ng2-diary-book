@@ -14,7 +14,5 @@ export class MyTestBed extends TestBed {
 }
 
 function getSelector(componentClass) {
-  const annotations = Reflect.getMetadata('annotations', componentClass);
-  const componentMetadata = annotations[0] || {};
-  return componentMetadata.selector;
+  return 'lalala';
 }

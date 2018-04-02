@@ -66,6 +66,15 @@ export class MyDairyPageComponent {
     private route: ActivatedRoute,
     private router: Router,
   ) {
+    debugger;
+    const kek = store.select(
+      fromDiary.getDiaryEntryByKey('-Kvqg2-v7AgMQeZe5lFX'),
+    );
+    kek.subscribe(data => {
+      debugger;
+      console.log(data);
+    });
+
     this.diaryEntries$ = store.select(fromDiary.getDiaryEntries);
 
     store
