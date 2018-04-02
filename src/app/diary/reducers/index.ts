@@ -1,6 +1,7 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
 import * as fromDiary from './diary';
 import * as fromRoot from '../../reducers';
+import { getEntries } from './diary';
 
 export interface DiaryState {
   diary: fromDiary.State;
@@ -57,9 +58,17 @@ export const getDiaryToEditEntry = createSelector(
   getDiaryState,
   fromDiary.getDiaryToEditEntry,
 );
-export const getDiaryEntryByKey = function(key) {
-  debugger;
-  return createSelector(getDiaryState, function(state) {
-    return fromDiary.getEntryByKey(state, key);
-  });
-};
+
+export const getDiaryEntryByKey = key => createSelector(
+  getDiaryEntries,
+  (entries) => {
+    let entry;
+
+    for (let i = 0; i < entries.length; i++) {
+      if (entries[i].$key === key) {
+        entry = entries[i];
+      }
+    }
+    return entry;
+  }
+);
