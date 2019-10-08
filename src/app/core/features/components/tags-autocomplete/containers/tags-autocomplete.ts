@@ -5,6 +5,7 @@ import {
   Input,
   OnInit,
   Output,
+  ViewChild,
 } from '@angular/core';
 import { Tag } from 'ng2-diary-book-shared-models';
 import { Subject } from 'rxjs/Subject';
@@ -14,14 +15,14 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/switchMap';
 import { TagsService } from '../../../../services/tags';
+import { TagsAutoCompleteInputComponent } from '../components/input';
 
 @Component({
   selector: 'tags-auto-complete',
   template: `
     <tags-internal-auto-complete-input
+      #tagsInput
       [selectedTags]="selectedTagsValue"
-      [clearInputValue]="clearInputValueEmitter"
-      [focusInputField]="focusInputFieldEmitter"
       [placeholder]="placeholder"
       [showLoader]="isLoading"
       (inputChanged)="onInputChange($event);"
@@ -40,6 +41,8 @@ import { TagsService } from '../../../../services/tags';
   ],
 })
 export class TagsAutoCompleteContainerComponent implements OnInit {
+  @ViewChild('tagsInput') tagsInput: TagsAutoCompleteInputComponent;
+
   @Input()
   get selectedTags() {
     return this.selectedTagsValue;
@@ -48,7 +51,6 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
     this.selectedTagsValue = nValue;
     this.selectedTagsChange.emit(this.selectedTagsValue);
   }
-  @Input() placeholder = '';
 
   @Output() selectedTagsChange = new EventEmitter<Tag[]>();
 
@@ -56,8 +58,7 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
   isLoading = false;
   selectedTagsValue: Tag[] = [];
   queryResultsTags: Tag[] = [];
-  clearInputValueEmitter = new EventEmitter();
-  focusInputFieldEmitter = new EventEmitter();
+  placeholder = 'Введите теги...';
 
   ngOnInit() {
     this.inputChanged
@@ -93,9 +94,9 @@ export class TagsAutoCompleteContainerComponent implements OnInit {
 
   onResultSelect(tag: Tag): void {
     this.selectedTags = [...this.selectedTags, tag];
-    this.clearInputValueEmitter.emit();
+    this.tagsInput.clearInput();
     this.queryResultsTags = [];
-    this.focusInputFieldEmitter.emit();
+    this.tagsInput.focusInput();
   }
 
   onDeleteSelected(tagToDelete: Tag): void {

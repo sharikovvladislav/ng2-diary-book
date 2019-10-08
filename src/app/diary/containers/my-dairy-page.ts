@@ -20,7 +20,6 @@ import { Tag } from 'ng2-diary-book-shared-models';
     <common-show-if-logged-in>
       <md-card>
         <tags-auto-complete
-          [placeholder]="'Введите теги...'"
           [(selectedTags)]="filterTags"
           (selectedTagsChange)="onTagsFilterChanged($event)"
         ></tags-auto-complete>
